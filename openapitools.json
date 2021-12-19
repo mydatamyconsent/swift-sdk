@@ -7,7 +7,6 @@
             "swift5": {
                 "generatorName": "swift5",
                 "httpUserAgent": "MDMC-Swift-SDK",
-                "swiftPackagePath": "MyDataMyConsent",
                 "gitHost": "github.com",
                 "gitRepoId": "swift-sdk",
                 "gitUserId": "mydatamyconsent",
