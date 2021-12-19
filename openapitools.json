@@ -8,8 +8,6 @@
                 "generatorName": "swift5",
                 "httpUserAgent": "MDMC-Swift-SDK",
                 "swiftPackagePath": "MyDataMyConsent",
-                "groupId": "com.mydatamyconsent",
-                "projectName": "MyDataMyConsent",
                 "gitHost": "github.com",
                 "gitRepoId": "swift-sdk",
                 "gitUserId": "mydatamyconsent",
