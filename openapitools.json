@@ -13,7 +13,7 @@
                 "gitHost": "github.com",
                 "gitRepoId": "swift-sdk",
                 "gitUserId": "mydatamyconsent",
-                "inputSpec": "http://localhost:5000/swagger/v1/swagger.json",
+                "inputSpec": "https://api.mydatamyconsent.com/swagger/v1/swagger.json",
                 "removeOperationIdPrefix": true,
                 "additionalProperties": {
                     "developerEmail": "developers@mydatamyconsent.com",
