@@ -1,0 +1,34 @@
+{
+    "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+    "spaces": 2,
+    "generator-cli": {
+        "version": "5.2.1",
+        "generators": {
+            "swift5": {
+                "generatorName": "swift5",
+                "httpUserAgent": "MDMC-Swift-SDK",
+                "swiftPackagePath": "MyDataMyConsent",
+                "groupId": "com.mydatamyconsent",
+                "projectName": "MyDataMyConsent",
+                "gitHost": "github.com",
+                "gitRepoId": "swift-sdk",
+                "gitUserId": "mydatamyconsent",
+                "inputSpec": "http://localhost:5000/swagger/v1/swagger.json",
+                "removeOperationIdPrefix": true,
+                "additionalProperties": {
+                    "developerEmail": "developers@mydatamyconsent.com",
+                    "developerName": "Balamurali Pandranki",
+                    "developerOrganization": "DataConsent, Inc.",
+                    "developerOrganizationUrl": "https://mydatamyconsent.com",
+                    "artifactDescription": "My Data My Consent Swift Rest API SDK",
+                    "artifactUrl": "https://github.com/mydatamyconsent/swift-sdk",
+                    "artifactVersion": "v1",
+                    "licenseUrl": "https://mydatamyconsent.com/en-us/legal/terms-of-service",
+                    "licenseName": "DataConsent, Inc. ToS",
+                    "scmUrl": "https://github.com/mydatamyconsent/swift-sdk",
+                    "scmDeveloperConnection": "scm:git:git@github.com:mydatamyconsent/swift-sdk.git"
+                }
+            }
+        }
+    }
+}
