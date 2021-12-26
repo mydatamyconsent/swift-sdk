@@ -20,7 +20,7 @@ open class DataProcessingAgreementsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func v1DataAgreementsGet(pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue, completion: @escaping ((_ data: DataProcessingAgreementPaginatedList?, _ error: Error?) -> Void)) {
+    open class func v1DataAgreementsGet(pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: DataProcessingAgreementPaginatedList?, _ error: Error?) -> Void)) {
         v1DataAgreementsGetWithRequestBuilder(pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -40,7 +40,7 @@ open class DataProcessingAgreementsAPI {
      */
     open class func v1DataAgreementsGetWithRequestBuilder(pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<DataProcessingAgreementPaginatedList> {
         let localVariablePath = "/v1/data-agreements"
-        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -55,7 +55,7 @@ open class DataProcessingAgreementsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DataProcessingAgreementPaginatedList>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DataProcessingAgreementPaginatedList>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -67,7 +67,7 @@ open class DataProcessingAgreementsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func v1DataAgreementsIdDelete(id: UUID, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func v1DataAgreementsIdDelete(id: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         v1DataAgreementsIdDeleteWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -89,7 +89,7 @@ open class DataProcessingAgreementsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -100,7 +100,7 @@ open class DataProcessingAgreementsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClient.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsent.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -112,7 +112,7 @@ open class DataProcessingAgreementsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func v1DataAgreementsIdGet(id: UUID, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue, completion: @escaping ((_ data: DataProcessingAgreement?, _ error: Error?) -> Void)) {
+    open class func v1DataAgreementsIdGet(id: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: DataProcessingAgreement?, _ error: Error?) -> Void)) {
         v1DataAgreementsIdGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -134,7 +134,7 @@ open class DataProcessingAgreementsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -145,7 +145,7 @@ open class DataProcessingAgreementsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DataProcessingAgreement>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DataProcessingAgreement>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -158,7 +158,7 @@ open class DataProcessingAgreementsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func v1DataAgreementsIdPut(id: UUID, dataProcessingAgreement: DataProcessingAgreement? = nil, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue, completion: @escaping ((_ data: DataProcessingAgreement?, _ error: Error?) -> Void)) {
+    open class func v1DataAgreementsIdPut(id: UUID, dataProcessingAgreement: DataProcessingAgreement? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: DataProcessingAgreement?, _ error: Error?) -> Void)) {
         v1DataAgreementsIdPutWithRequestBuilder(id: id, dataProcessingAgreement: dataProcessingAgreement).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -181,7 +181,7 @@ open class DataProcessingAgreementsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dataProcessingAgreement)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -192,7 +192,7 @@ open class DataProcessingAgreementsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DataProcessingAgreement>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DataProcessingAgreement>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -204,7 +204,7 @@ open class DataProcessingAgreementsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func v1DataAgreementsIdTerminatePut(id: UUID, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func v1DataAgreementsIdTerminatePut(id: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         v1DataAgreementsIdTerminatePutWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -226,7 +226,7 @@ open class DataProcessingAgreementsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -237,7 +237,7 @@ open class DataProcessingAgreementsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClient.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsent.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -249,7 +249,7 @@ open class DataProcessingAgreementsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func v1DataAgreementsPost(dataProcessingAgreement: DataProcessingAgreement? = nil, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue, completion: @escaping ((_ data: DataProcessingAgreement?, _ error: Error?) -> Void)) {
+    open class func v1DataAgreementsPost(dataProcessingAgreement: DataProcessingAgreement? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: DataProcessingAgreement?, _ error: Error?) -> Void)) {
         v1DataAgreementsPostWithRequestBuilder(dataProcessingAgreement: dataProcessingAgreement).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -268,7 +268,7 @@ open class DataProcessingAgreementsAPI {
      */
     open class func v1DataAgreementsPostWithRequestBuilder(dataProcessingAgreement: DataProcessingAgreement? = nil) -> RequestBuilder<DataProcessingAgreement> {
         let localVariablePath = "/v1/data-agreements"
-        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dataProcessingAgreement)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -279,7 +279,7 @@ open class DataProcessingAgreementsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DataProcessingAgreement>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DataProcessingAgreement>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

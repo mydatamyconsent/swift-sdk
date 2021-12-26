@@ -22,7 +22,7 @@ Cancel a Consent Request by ID.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let requestId = 987 // UUID | consent request id.
 
@@ -70,7 +70,7 @@ Create a consent request.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let dataConsentRequestModel = DataConsentRequestModel(organizationId: 123, transactionId: "transactionId_example", identifiers: "TODO", startDateTime: Date(), expiryDateTime: Date(), description: "description_example", purposeCode: "purposeCode_example", purposeLink: "purposeLink_example", dataLifeUnit: DataLifeUnit(), dataLifeValue: 123, dataFetchFrequencyUnit: DataFetchFrequencyUnit(), dataFetchFrequencyUnitValue: 123, dataFetchType: DataFetchType(), agreementId: 123, identityClaims: [IdentityClaim()], financialAccounts: [DataConsentRequestedFaDto(drn: "drn_example", fromDatetime: Date(), toDatetime: Date(), providerId: 123, accountType: FinancialAccountTypes(), accountIdentifier: "accountIdentifier_example", filters: [DataConsentRfaFilterDto(filterType: FilterType(), _operator: Operator(), value: "value_example")])], documents: [DataConsentRequestedDocumentDto(drn: "drn_example", fromDatetime: Date(), toDatetime: Date(), providerId: 123, documentTypeId: "documentTypeId_example", documentIdentifier: "documentIdentifier_example")]) // DataConsentRequestModel | MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)
 
@@ -118,7 +118,7 @@ Get all Consent Requests.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let status = DataConsentStatus() // DataConsentStatus |  (optional)
 
@@ -166,7 +166,7 @@ Get a Consent Request by ID.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let requestId = 987 // UUID | 
 

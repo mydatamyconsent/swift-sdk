@@ -6,13 +6,14 @@
 
 import Foundation
 
-@available(*, deprecated, renamed: "OpenAPIClient")
-public typealias OpenAPIClientAPI = OpenAPIClient
+@available(*, deprecated, renamed: "MyDataMyConsent")
+public typealias MyDataMyConsentAPI = MyDataMyConsent
 
-open class OpenAPIClient {
+open class MyDataMyConsent {
     public static var basePath = "http://localhost"
     public static var customHeaders: [String: String] = [:]
     public static var credential: URLCredential?
+    public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()
     public static var requestBuilderFactory: RequestBuilderFactory = URLSessionRequestBuilderFactory()
     public static var apiResponseQueue: DispatchQueue = .main
 }
@@ -35,7 +36,7 @@ open class RequestBuilder<T> {
         self.parameters = parameters
         self.headers = headers
 
-        addHeaders(OpenAPIClient.customHeaders)
+        addHeaders(MyDataMyConsent.customHeaders)
     }
 
     open func addHeaders(_ aHeaders: [String: String]) {
@@ -44,7 +45,7 @@ open class RequestBuilder<T> {
         }
     }
 
-    open func execute(_ apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, Error>) -> Void) { }
+    open func execute(_ apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, Error>) -> Void) { }
 
     public func addHeader(name: String, value: String) -> Self {
         if !value.isEmpty {
@@ -54,7 +55,7 @@ open class RequestBuilder<T> {
     }
 
     open func addCredential() -> Self {
-        credential = OpenAPIClient.credential
+        credential = MyDataMyConsent.credential
         return self
     }
 }

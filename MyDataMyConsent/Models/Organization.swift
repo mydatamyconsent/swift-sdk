@@ -31,6 +31,7 @@ public struct Organization: Codable, Hashable {
     public var brandName: String?
     public var authorizedPersonnelTaxId: String?
     public var authorizedPersonnelName: String?
+    public var authorizedPersonnelKycDocumentType: AuthorizedPersonnelKycDocumentType?
     public var registrationId: String?
     public var vatId: String?
     public var taxId: String?
@@ -45,6 +46,8 @@ public struct Organization: Codable, Hashable {
     public var privacyPolicyUrl: String?
     public var termsOfServiceUrl: String?
     public var websiteUrl: String?
+    public var helpLineNumber: String?
+    public var supportEmail: String?
     public var isGovernmentOrganization: Bool?
     public var dlApiKey: String?
     public var isKyoCompleted: Bool?
@@ -70,7 +73,7 @@ public struct Organization: Codable, Hashable {
     public var isDelete: Bool?
     public var recoveryToken: UUID?
 
-    public init(createdBy: UUID? = nil, createdAtUtc: Date? = nil, updatedBy: UUID? = nil, updatedAtUtc: Date? = nil, createdByUser: ApplicationUser? = nil, updatedByUser: ApplicationUser? = nil, deletedBy: UUID? = nil, deletedAtUtc: Date? = nil, deletedByUser: ApplicationUser? = nil, id: UUID? = nil, dataPartnerId: String? = nil, typeId: UUID? = nil, categoryId: UUID? = nil, documentProviderCategoryId: UUID? = nil, name: String? = nil, regulatorName: String? = nil, brandName: String? = nil, authorizedPersonnelTaxId: String? = nil, authorizedPersonnelName: String? = nil, registrationId: String? = nil, vatId: String? = nil, taxId: String? = nil, description: String? = nil, logoUrl: String? = nil, contactEmail: String? = nil, phoneNumber: String? = nil, countryId: UUID? = nil, stateId: UUID? = nil, status: OrganizationStatus? = nil, companyCode: String? = nil, privacyPolicyUrl: String? = nil, termsOfServiceUrl: String? = nil, websiteUrl: String? = nil, isGovernmentOrganization: Bool? = nil, dlApiKey: String? = nil, isKyoCompleted: Bool? = nil, isEnabled: Bool? = nil, isDataProvider: Bool? = nil, isDataConsumer: Bool? = nil, submittedAtUtc: Date? = nil, approvedBy: UUID? = nil, approvedAtUtc: Date? = nil, isDigiLockerOrganization: Bool? = nil, isMdmcMaintained: Bool? = nil, isBbps: Bool? = nil, metaData: OrganizationMetaData? = nil, countryCode: String? = nil, organizationType: OrganizationType? = nil, organizationCategory: OrganizationCategory? = nil, documentProviderCategory: DocumentProviderCategory? = nil, addresses: [OrganizationAddress]? = nil, financialAccounts: [OrganizationFinancialAccount]? = nil, countryState: Country? = nil, approvedByUser: ApplicationUser? = nil, kyoDocuments: [OrganizationKyoDocument]? = nil, isDelete: Bool? = nil, recoveryToken: UUID? = nil) {
+    public init(createdBy: UUID? = nil, createdAtUtc: Date? = nil, updatedBy: UUID? = nil, updatedAtUtc: Date? = nil, createdByUser: ApplicationUser? = nil, updatedByUser: ApplicationUser? = nil, deletedBy: UUID? = nil, deletedAtUtc: Date? = nil, deletedByUser: ApplicationUser? = nil, id: UUID? = nil, dataPartnerId: String? = nil, typeId: UUID? = nil, categoryId: UUID? = nil, documentProviderCategoryId: UUID? = nil, name: String? = nil, regulatorName: String? = nil, brandName: String? = nil, authorizedPersonnelTaxId: String? = nil, authorizedPersonnelName: String? = nil, authorizedPersonnelKycDocumentType: AuthorizedPersonnelKycDocumentType? = nil, registrationId: String? = nil, vatId: String? = nil, taxId: String? = nil, description: String? = nil, logoUrl: String? = nil, contactEmail: String? = nil, phoneNumber: String? = nil, countryId: UUID? = nil, stateId: UUID? = nil, status: OrganizationStatus? = nil, companyCode: String? = nil, privacyPolicyUrl: String? = nil, termsOfServiceUrl: String? = nil, websiteUrl: String? = nil, helpLineNumber: String? = nil, supportEmail: String? = nil, isGovernmentOrganization: Bool? = nil, dlApiKey: String? = nil, isKyoCompleted: Bool? = nil, isEnabled: Bool? = nil, isDataProvider: Bool? = nil, isDataConsumer: Bool? = nil, submittedAtUtc: Date? = nil, approvedBy: UUID? = nil, approvedAtUtc: Date? = nil, isDigiLockerOrganization: Bool? = nil, isMdmcMaintained: Bool? = nil, isBbps: Bool? = nil, metaData: OrganizationMetaData? = nil, countryCode: String? = nil, organizationType: OrganizationType? = nil, organizationCategory: OrganizationCategory? = nil, documentProviderCategory: DocumentProviderCategory? = nil, addresses: [OrganizationAddress]? = nil, financialAccounts: [OrganizationFinancialAccount]? = nil, countryState: Country? = nil, approvedByUser: ApplicationUser? = nil, kyoDocuments: [OrganizationKyoDocument]? = nil, isDelete: Bool? = nil, recoveryToken: UUID? = nil) {
         self.createdBy = createdBy
         self.createdAtUtc = createdAtUtc
         self.updatedBy = updatedBy
@@ -90,6 +93,7 @@ public struct Organization: Codable, Hashable {
         self.brandName = brandName
         self.authorizedPersonnelTaxId = authorizedPersonnelTaxId
         self.authorizedPersonnelName = authorizedPersonnelName
+        self.authorizedPersonnelKycDocumentType = authorizedPersonnelKycDocumentType
         self.registrationId = registrationId
         self.vatId = vatId
         self.taxId = taxId
@@ -104,6 +108,8 @@ public struct Organization: Codable, Hashable {
         self.privacyPolicyUrl = privacyPolicyUrl
         self.termsOfServiceUrl = termsOfServiceUrl
         self.websiteUrl = websiteUrl
+        self.helpLineNumber = helpLineNumber
+        self.supportEmail = supportEmail
         self.isGovernmentOrganization = isGovernmentOrganization
         self.dlApiKey = dlApiKey
         self.isKyoCompleted = isKyoCompleted
@@ -150,6 +156,7 @@ public struct Organization: Codable, Hashable {
         case brandName
         case authorizedPersonnelTaxId
         case authorizedPersonnelName
+        case authorizedPersonnelKycDocumentType
         case registrationId
         case vatId
         case taxId
@@ -164,6 +171,8 @@ public struct Organization: Codable, Hashable {
         case privacyPolicyUrl
         case termsOfServiceUrl
         case websiteUrl
+        case helpLineNumber
+        case supportEmail
         case isGovernmentOrganization
         case dlApiKey
         case isKyoCompleted
@@ -213,6 +222,7 @@ public struct Organization: Codable, Hashable {
         try container.encodeIfPresent(brandName, forKey: .brandName)
         try container.encodeIfPresent(authorizedPersonnelTaxId, forKey: .authorizedPersonnelTaxId)
         try container.encodeIfPresent(authorizedPersonnelName, forKey: .authorizedPersonnelName)
+        try container.encodeIfPresent(authorizedPersonnelKycDocumentType, forKey: .authorizedPersonnelKycDocumentType)
         try container.encodeIfPresent(registrationId, forKey: .registrationId)
         try container.encodeIfPresent(vatId, forKey: .vatId)
         try container.encodeIfPresent(taxId, forKey: .taxId)
@@ -227,6 +237,8 @@ public struct Organization: Codable, Hashable {
         try container.encodeIfPresent(privacyPolicyUrl, forKey: .privacyPolicyUrl)
         try container.encodeIfPresent(termsOfServiceUrl, forKey: .termsOfServiceUrl)
         try container.encodeIfPresent(websiteUrl, forKey: .websiteUrl)
+        try container.encodeIfPresent(helpLineNumber, forKey: .helpLineNumber)
+        try container.encodeIfPresent(supportEmail, forKey: .supportEmail)
         try container.encodeIfPresent(isGovernmentOrganization, forKey: .isGovernmentOrganization)
         try container.encodeIfPresent(dlApiKey, forKey: .dlApiKey)
         try container.encodeIfPresent(isKyoCompleted, forKey: .isKyoCompleted)

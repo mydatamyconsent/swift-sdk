@@ -26,7 +26,7 @@ Get consented financial account details.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let consentId = "consentId_example" // String | 
 let accountId = "accountId_example" // String | 
@@ -76,7 +76,7 @@ Get consented financial account insights.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let consentId = "consentId_example" // String | 
 let accountId = "accountId_example" // String | 
@@ -126,7 +126,7 @@ Get consented financial account transactions.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let consentId = "consentId_example" // String | 
 let accountId = "accountId_example" // String | 
@@ -182,7 +182,7 @@ Get all accounts in a consent.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let consentId = "consentId_example" // String | 
 
@@ -230,7 +230,7 @@ Get analysis of a consented document.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let consentId = "consentId_example" // String | 
 let documentId = "documentId_example" // String | Document Id.
@@ -280,7 +280,7 @@ Download a consented document.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let consentId = "consentId_example" // String | 
 let documentId = "documentId_example" // String | Document Id.
@@ -330,7 +330,7 @@ Get consented document details.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let consentId = "consentId_example" // String | 
 let documentId = "documentId_example" // String | Document Id.
@@ -380,7 +380,7 @@ Get all documents in a consent.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let consentId = "consentId_example" // String | 
 
@@ -428,7 +428,7 @@ Get consent details by consent id.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let consentId = "consentId_example" // String | 
 
@@ -476,7 +476,7 @@ Get all consents filtered by status and time.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let status = DataConsentStatus() // DataConsentStatus | MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional)
 let startDate = Date() // Date | System.DateTime. (optional)

@@ -19,7 +19,7 @@ open class DocumentsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func issueDocument(documentIssueRequest: DocumentIssueRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue, completion: @escaping ((_ data: Bool?, _ error: Error?) -> Void)) {
+    open class func issueDocument(documentIssueRequest: DocumentIssueRequest? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: Bool?, _ error: Error?) -> Void)) {
         issueDocumentWithRequestBuilder(documentIssueRequest: documentIssueRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -38,7 +38,7 @@ open class DocumentsAPI {
      */
     open class func issueDocumentWithRequestBuilder(documentIssueRequest: DocumentIssueRequest? = nil) -> RequestBuilder<Bool> {
         let localVariablePath = "/v1/documents/issue"
-        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: documentIssueRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -49,7 +49,7 @@ open class DocumentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Bool>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Bool>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -61,7 +61,7 @@ open class DocumentsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func v1DocumentsIssuedDocumentIdGet(documentId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func v1DocumentsIssuedDocumentIdGet(documentId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         v1DocumentsIssuedDocumentIdGetWithRequestBuilder(documentId: documentId).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -83,7 +83,7 @@ open class DocumentsAPI {
         let documentIdPreEscape = "\(APIHelper.mapValueToPathItem(documentId))"
         let documentIdPostEscape = documentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{documentId}", with: documentIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -94,7 +94,7 @@ open class DocumentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClient.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsent.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -110,7 +110,7 @@ open class DocumentsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func v1DocumentsIssuedGet(documentTypeId: UUID? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageSize: Int? = nil, pageNo: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func v1DocumentsIssuedGet(documentTypeId: UUID? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageSize: Int? = nil, pageNo: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         v1DocumentsIssuedGetWithRequestBuilder(documentTypeId: documentTypeId, fromDateTime: fromDateTime, toDateTime: toDateTime, pageSize: pageSize, pageNo: pageNo).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -133,7 +133,7 @@ open class DocumentsAPI {
      */
     open class func v1DocumentsIssuedGetWithRequestBuilder(documentTypeId: UUID? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageSize: Int? = nil, pageNo: Int? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/v1/documents/issued"
-        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -151,7 +151,7 @@ open class DocumentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClient.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsent.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -164,7 +164,7 @@ open class DocumentsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func v1DocumentsTypesGet(pageSize: Int? = nil, pageNo: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func v1DocumentsTypesGet(pageSize: Int? = nil, pageNo: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         v1DocumentsTypesGetWithRequestBuilder(pageSize: pageSize, pageNo: pageNo).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -184,7 +184,7 @@ open class DocumentsAPI {
      */
     open class func v1DocumentsTypesGetWithRequestBuilder(pageSize: Int? = nil, pageNo: Int? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/v1/documents/types"
-        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -199,7 +199,7 @@ open class DocumentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClient.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsent.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

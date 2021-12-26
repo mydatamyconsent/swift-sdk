@@ -20,7 +20,7 @@ Issue a new document.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let documentIssueRequest = DocumentIssueRequest(documentTypeId: "documentTypeId_example", identifier: "identifier_example", name: "name_example", description: "description_example", receiver: Receiver(type: ReceiverType(), identifiers: [IdentifierStringKeyValuePair(key: Identifier(), value: "value_example")], identificationStrategy: IdentificationStrategy()), expiresAtUtc: "expiresAtUtc_example", base64PDFDocument: "base64PDFDocument_example", metadata: "TODO") // DocumentIssueRequest |  (optional)
 
@@ -68,7 +68,7 @@ Get issued document.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let documentId = 987 // UUID | Document id.
 
@@ -116,7 +116,7 @@ Get issued documents.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let documentTypeId = 987 // UUID |  (optional)
 let fromDateTime = Date() // Date |  (optional)
@@ -172,7 +172,7 @@ Get registered document types.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let pageSize = 987 // Int |  (optional)
 let pageNo = 987 // Int |  (optional)

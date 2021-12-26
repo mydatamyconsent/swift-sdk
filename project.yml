@@ -1,15 +1,16 @@
-name: OpenAPIClient
+name: MyDataMyConsent
 targets:
-  OpenAPIClient:
+  MyDataMyConsent:
     type: framework
     platform: iOS
     deploymentTarget: "9.0"
-    sources: [OpenAPIClient]
+    sources: [MyDataMyConsent]
     info:
       path: ./Info.plist
-      version: v1
+      version: 1.0.0
     settings:
       APPLICATION_EXTENSION_API_ONLY: true
     scheme: {}
     dependencies:
     - carthage: AnyCodable
+    - carthage: Alamofire

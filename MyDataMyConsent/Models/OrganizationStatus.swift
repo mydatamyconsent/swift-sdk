@@ -13,8 +13,8 @@ import AnyCodable
 public enum OrganizationStatus: String, Codable, CaseIterable {
     case organizationCreated = "OrganizationCreated"
     case contactDetailsUpdated = "ContactDetailsUpdated"
-    case overviewUpdated = "OverviewUpdated"
+    case authorizedPersonnelUpdated = "AuthorizedPersonnelUpdated"
+    case organizationDetailsUpdated = "OrganizationDetailsUpdated"
     case addressUpdated = "AddressUpdated"
-    case bankAccountsUpdated = "BankAccountsUpdated"
     case signUpCompleted = "SignUpCompleted"
 }

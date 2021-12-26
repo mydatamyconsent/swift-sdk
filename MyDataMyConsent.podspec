@@ -1,0 +1,17 @@
+Pod::Spec.new do |s|
+  s.name = 'MyDataMyConsent'
+  s.ios.deployment_target = '9.0'
+  s.osx.deployment_target = '10.11'
+  s.tvos.deployment_target = '9.0'
+  s.watchos.deployment_target = '3.0'
+  s.version = '1.0.0'
+  s.source = 'https://github.com/mydatamyconsent/swift-sdk'
+  s.authors = 'OpenAPI Generator'
+  s.license = 'https://mydatamyconsent.com/en-us/legal/terms-of-service'
+  s.homepage = 'https://mydatamyconsent.com'
+  s.summary = 'MyDataMyConsent Swift SDK'
+  s.description = 'My Data My Consent Rest API Swift SDK'
+  s.source_files = 'MyDataMyConsent/**/*.swift'
+  s.dependency 'Alamofire', '~> 4.9.1'
+  s.dependency 'AnyCodable-FlightSchool', '~> 0.6.1'
+end

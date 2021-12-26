@@ -20,7 +20,7 @@ Discover all data providers in My Data My Consent by country and filters.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let accountType = "accountType_example" // String | Account type. (optional)
 let documentType = "documentType_example" // String | Document type. (optional)
@@ -80,7 +80,7 @@ Get a Data Provider details.
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import MyDataMyConsent
 
 let providerId = "providerId_example" // String | Provider Id.
 
