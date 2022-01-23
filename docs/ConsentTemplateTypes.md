@@ -1,12 +1,8 @@
-# DataConsentRequestModel
+# ConsentTemplateTypes
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**consentTemplateId** | **UUID** |  | [optional] 
-**startDateTime** | **Date** |  | [optional] 
-**expiryDateTime** | **Date** |  | [optional] 
-**receiver** | [**Receiver**](Receiver.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

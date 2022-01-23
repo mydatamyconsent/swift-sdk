@@ -1,12 +1,12 @@
-# DataConsentRequestModel
+# FinancialAccounts
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**consentTemplateId** | **UUID** |  | [optional] 
-**startDateTime** | **Date** |  | [optional] 
-**expiryDateTime** | **Date** |  | [optional] 
-**receiver** | [**Receiver**](Receiver.md) |  | 
+**drn** | **String** |  | [optional] 
+**financialAccountDetailsRequired** | [FinancialAccountDetailsRequired] |  | [optional] 
+**startDate** | **Date** |  | [optional] 
+**endDate** | **Date** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

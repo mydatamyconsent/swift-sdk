@@ -13,17 +13,17 @@ import AnyCodable
 open class DataConsentRequestsAPI {
 
     /**
-     Cancel a Consent Request by ID.
+     Revoke / Cancel the ConsentRequest based on Id
      
-     - parameter requestId: (path) consent request id. 
+     - parameter requestId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func cancelConsentRequest(requestId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func cancelConsentRequest(requestId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: Bool?, _ error: Error?) -> Void)) {
         cancelConsentRequestWithRequestBuilder(requestId: requestId).execute(apiResponseQueue) { result -> Void in
             switch result {
-            case .success:
-                completion((), nil)
+            case let .success(response):
+                completion(response.body, nil)
             case let .failure(error):
                 completion(nil, error)
             }
@@ -31,13 +31,12 @@ open class DataConsentRequestsAPI {
     }
 
     /**
-     Cancel a Consent Request by ID.
+     Revoke / Cancel the ConsentRequest based on Id
      - DELETE /v1/consent-requests/{requestId}/cancel
-     - .
-     - parameter requestId: (path) consent request id. 
-     - returns: RequestBuilder<Void> 
+     - parameter requestId: (path)  
+     - returns: RequestBuilder<Bool> 
      */
-    open class func cancelConsentRequestWithRequestBuilder(requestId: UUID) -> RequestBuilder<Void> {
+    open class func cancelConsentRequestWithRequestBuilder(requestId: UUID) -> RequestBuilder<Bool> {
         var localVariablePath = "/v1/consent-requests/{requestId}/cancel"
         let requestIdPreEscape = "\(APIHelper.mapValueToPathItem(requestId))"
         let requestIdPostEscape = requestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -53,7 +52,7 @@ open class DataConsentRequestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsent.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Bool>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -65,7 +64,7 @@ open class DataConsentRequestsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func createRequest(dataConsentRequestModel: DataConsentRequestModel? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: DataConsent?, _ error: Error?) -> Void)) {
+    open class func createRequest(dataConsentRequestModel: DataConsentRequestModel? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: Bool?, _ error: Error?) -> Void)) {
         createRequestWithRequestBuilder(dataConsentRequestModel: dataConsentRequestModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -80,9 +79,9 @@ open class DataConsentRequestsAPI {
      Create a consent request.
      - POST /v1/consent-requests
      - parameter dataConsentRequestModel: (body) MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)
-     - returns: RequestBuilder<DataConsent> 
+     - returns: RequestBuilder<Bool> 
      */
-    open class func createRequestWithRequestBuilder(dataConsentRequestModel: DataConsentRequestModel? = nil) -> RequestBuilder<DataConsent> {
+    open class func createRequestWithRequestBuilder(dataConsentRequestModel: DataConsentRequestModel? = nil) -> RequestBuilder<Bool> {
         let localVariablePath = "/v1/consent-requests"
         let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dataConsentRequestModel)
@@ -95,7 +94,7 @@ open class DataConsentRequestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DataConsent>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Bool>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -103,12 +102,14 @@ open class DataConsentRequestsAPI {
     /**
      Get all Consent Requests.
      
+     - parameter pageNo: (query)  (optional)
+     - parameter pageSize: (query)  (optional)
      - parameter status: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAllConsentRequests(status: DataConsentStatus? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: AnyCodable?, _ error: Error?) -> Void)) {
-        getAllConsentRequestsWithRequestBuilder(status: status).execute(apiResponseQueue) { result -> Void in
+    open class func getAllConsentRequests(pageNo: Int? = nil, pageSize: Int? = nil, status: DataConsentStatus? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: AnyCodable?, _ error: Error?) -> Void)) {
+        getAllConsentRequestsWithRequestBuilder(pageNo: pageNo, pageSize: pageSize, status: status).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -121,16 +122,20 @@ open class DataConsentRequestsAPI {
     /**
      Get all Consent Requests.
      - GET /v1/consent-requests
+     - parameter pageNo: (query)  (optional)
+     - parameter pageSize: (query)  (optional)
      - parameter status: (query)  (optional)
      - returns: RequestBuilder<AnyCodable> 
      */
-    open class func getAllConsentRequestsWithRequestBuilder(status: DataConsentStatus? = nil) -> RequestBuilder<AnyCodable> {
+    open class func getAllConsentRequestsWithRequestBuilder(pageNo: Int? = nil, pageSize: Int? = nil, status: DataConsentStatus? = nil) -> RequestBuilder<AnyCodable> {
         let localVariablePath = "/v1/consent-requests"
         let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "pageNo": pageNo?.encodeToJSON(),
+            "pageSize": pageSize?.encodeToJSON(),
             "status": status?.encodeToJSON(),
         ])
 
