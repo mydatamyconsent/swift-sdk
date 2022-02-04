@@ -18,8 +18,8 @@ open class DataProviderDiscoveryAPI {
      - parameter accountType: (query) Account type. (optional)
      - parameter documentType: (query) Document type. (optional)
      - parameter organizationCategory: (query) Organization category. (optional)
-     - parameter pageNo: (query) Page number. (optional)
-     - parameter pageSize: (query) Page size. (optional)
+     - parameter pageNo: (query) Page number. (optional, default to 1)
+     - parameter pageSize: (query) Page size. (optional, default to 25)
      - parameter country: (query) ISO2 Country code. (optional, default to "IN")
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -42,8 +42,8 @@ open class DataProviderDiscoveryAPI {
      - parameter accountType: (query) Account type. (optional)
      - parameter documentType: (query) Document type. (optional)
      - parameter organizationCategory: (query) Organization category. (optional)
-     - parameter pageNo: (query) Page number. (optional)
-     - parameter pageSize: (query) Page size. (optional)
+     - parameter pageNo: (query) Page number. (optional, default to 1)
+     - parameter pageSize: (query) Page size. (optional, default to 25)
      - parameter country: (query) ISO2 Country code. (optional, default to "IN")
      - returns: RequestBuilder<DataProviderPaginatedList> 
      */

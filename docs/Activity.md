@@ -1,12 +1,12 @@
-# DataConsentRequestedFinancialAccount
+# Activity
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**customKey** | **String** |  | [optional] 
-**drn** | **String** |  | [optional] 
-**accountTypeId** | **UUID** |  | [optional] 
-**accountIdentifier** | **UUID** |  | [optional] 
+**actorName** | **String** |  | [optional] 
+**description** | **String** |  | [optional] 
+**actorProfileUrl** | **String** |  | [optional] 
+**dateTimeUtc** | **Date** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

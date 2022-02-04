@@ -12,45 +12,33 @@ import AnyCodable
 
 public struct DataConsentRequestedFinancialAccount: Codable, Hashable {
 
+    public var customKey: String?
     public var drn: String?
-    public var fromDatetime: Date?
-    public var toDatetime: Date?
-    public var providerId: UUID?
-    public var accountType: FinancialAccountTypes?
-    public var accountIdentifier: String?
-    public var filters: [DataConsentRfaFilter]?
+    public var accountTypeId: UUID?
+    public var accountIdentifier: UUID?
 
-    public init(drn: String? = nil, fromDatetime: Date? = nil, toDatetime: Date? = nil, providerId: UUID? = nil, accountType: FinancialAccountTypes? = nil, accountIdentifier: String? = nil, filters: [DataConsentRfaFilter]? = nil) {
+    public init(customKey: String? = nil, drn: String? = nil, accountTypeId: UUID? = nil, accountIdentifier: UUID? = nil) {
+        self.customKey = customKey
         self.drn = drn
-        self.fromDatetime = fromDatetime
-        self.toDatetime = toDatetime
-        self.providerId = providerId
-        self.accountType = accountType
+        self.accountTypeId = accountTypeId
         self.accountIdentifier = accountIdentifier
-        self.filters = filters
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case customKey
         case drn
-        case fromDatetime
-        case toDatetime
-        case providerId
-        case accountType
+        case accountTypeId
         case accountIdentifier
-        case filters
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(customKey, forKey: .customKey)
         try container.encodeIfPresent(drn, forKey: .drn)
-        try container.encodeIfPresent(fromDatetime, forKey: .fromDatetime)
-        try container.encodeIfPresent(toDatetime, forKey: .toDatetime)
-        try container.encodeIfPresent(providerId, forKey: .providerId)
-        try container.encodeIfPresent(accountType, forKey: .accountType)
+        try container.encodeIfPresent(accountTypeId, forKey: .accountTypeId)
         try container.encodeIfPresent(accountIdentifier, forKey: .accountIdentifier)
-        try container.encodeIfPresent(filters, forKey: .filters)
     }
 }
 

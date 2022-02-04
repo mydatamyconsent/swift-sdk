@@ -11,6 +11,9 @@ Name | Type | Description | Notes
 **requestedAtUtc** | **Date** |  | [optional] 
 **requester** | [**DataConsentRequesterDto**](DataConsentRequesterDto.md) |  | [optional] 
 **consentDetails** | [**GetConsentTemplateDetailsDto**](GetConsentTemplateDetailsDto.md) |  | [optional] 
+**identifiers** | [DataConsentIdentifier] |  | [optional] 
+**approvedDocuments** | [DataConsentRequestedDocument] |  | [optional] 
+**approvedFinancials** | [DataConsentRequestedFinancialAccount] |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

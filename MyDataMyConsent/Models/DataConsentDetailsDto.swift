@@ -20,8 +20,11 @@ public struct DataConsentDetailsDto: Codable, Hashable {
     public var requestedAtUtc: Date?
     public var requester: DataConsentRequesterDto?
     public var consentDetails: GetConsentTemplateDetailsDto?
+    public var identifiers: [DataConsentIdentifier]?
+    public var approvedDocuments: [DataConsentRequestedDocument]?
+    public var approvedFinancials: [DataConsentRequestedFinancialAccount]?
 
-    public init(id: UUID? = nil, status: DataConsentStatus? = nil, approvedAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, expiresAtUtc: Date? = nil, requestedAtUtc: Date? = nil, requester: DataConsentRequesterDto? = nil, consentDetails: GetConsentTemplateDetailsDto? = nil) {
+    public init(id: UUID? = nil, status: DataConsentStatus? = nil, approvedAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, expiresAtUtc: Date? = nil, requestedAtUtc: Date? = nil, requester: DataConsentRequesterDto? = nil, consentDetails: GetConsentTemplateDetailsDto? = nil, identifiers: [DataConsentIdentifier]? = nil, approvedDocuments: [DataConsentRequestedDocument]? = nil, approvedFinancials: [DataConsentRequestedFinancialAccount]? = nil) {
         self.id = id
         self.status = status
         self.approvedAtUtc = approvedAtUtc
@@ -30,6 +33,9 @@ public struct DataConsentDetailsDto: Codable, Hashable {
         self.requestedAtUtc = requestedAtUtc
         self.requester = requester
         self.consentDetails = consentDetails
+        self.identifiers = identifiers
+        self.approvedDocuments = approvedDocuments
+        self.approvedFinancials = approvedFinancials
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -41,6 +47,9 @@ public struct DataConsentDetailsDto: Codable, Hashable {
         case requestedAtUtc
         case requester
         case consentDetails
+        case identifiers
+        case approvedDocuments
+        case approvedFinancials
     }
 
     // Encodable protocol methods
@@ -55,6 +64,9 @@ public struct DataConsentDetailsDto: Codable, Hashable {
         try container.encodeIfPresent(requestedAtUtc, forKey: .requestedAtUtc)
         try container.encodeIfPresent(requester, forKey: .requester)
         try container.encodeIfPresent(consentDetails, forKey: .consentDetails)
+        try container.encodeIfPresent(identifiers, forKey: .identifiers)
+        try container.encodeIfPresent(approvedDocuments, forKey: .approvedDocuments)
+        try container.encodeIfPresent(approvedFinancials, forKey: .approvedFinancials)
     }
 }
 

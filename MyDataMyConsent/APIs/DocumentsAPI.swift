@@ -159,8 +159,8 @@ open class DocumentsAPI {
     /**
      Get registered document types.
      
-     - parameter pageSize: (query)  (optional)
-     - parameter pageNo: (query)  (optional)
+     - parameter pageSize: (query)  (optional, default to 25)
+     - parameter pageNo: (query)  (optional, default to 1)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -178,8 +178,8 @@ open class DocumentsAPI {
     /**
      Get registered document types.
      - GET /v1/documents/types
-     - parameter pageSize: (query)  (optional)
-     - parameter pageNo: (query)  (optional)
+     - parameter pageSize: (query)  (optional, default to 25)
+     - parameter pageNo: (query)  (optional, default to 1)
      - returns: RequestBuilder<Void> 
      */
     open class func v1DocumentsTypesGetWithRequestBuilder(pageSize: Int? = nil, pageNo: Int? = nil) -> RequestBuilder<Void> {

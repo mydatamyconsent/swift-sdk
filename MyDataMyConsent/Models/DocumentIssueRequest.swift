@@ -18,17 +18,17 @@ public struct DocumentIssueRequest: Codable, Hashable {
     public var description: String
     public var receiver: Receiver
     public var expiresAtUtc: String?
-    public var base64PDFDocument: String
+    public var base64PdfDocument: String
     public var metadata: AnyCodable?
 
-    public init(documentTypeId: String, identifier: String, name: String, description: String, receiver: Receiver, expiresAtUtc: String? = nil, base64PDFDocument: String, metadata: AnyCodable? = nil) {
+    public init(documentTypeId: String, identifier: String, name: String, description: String, receiver: Receiver, expiresAtUtc: String? = nil, base64PdfDocument: String, metadata: AnyCodable? = nil) {
         self.documentTypeId = documentTypeId
         self.identifier = identifier
         self.name = name
         self.description = description
         self.receiver = receiver
         self.expiresAtUtc = expiresAtUtc
-        self.base64PDFDocument = base64PDFDocument
+        self.base64PdfDocument = base64PdfDocument
         self.metadata = metadata
     }
 
@@ -39,7 +39,7 @@ public struct DocumentIssueRequest: Codable, Hashable {
         case description
         case receiver
         case expiresAtUtc
-        case base64PDFDocument
+        case base64PdfDocument
         case metadata
     }
 
@@ -53,7 +53,7 @@ public struct DocumentIssueRequest: Codable, Hashable {
         try container.encode(description, forKey: .description)
         try container.encode(receiver, forKey: .receiver)
         try container.encodeIfPresent(expiresAtUtc, forKey: .expiresAtUtc)
-        try container.encode(base64PDFDocument, forKey: .base64PDFDocument)
+        try container.encode(base64PdfDocument, forKey: .base64PdfDocument)
         try container.encodeIfPresent(metadata, forKey: .metadata)
     }
 }

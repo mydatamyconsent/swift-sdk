@@ -12,27 +12,21 @@ import AnyCodable
 
 public struct DataConsentRequestedDocument: Codable, Hashable {
 
+    public var customKey: String?
     public var drn: String?
-    public var fromDatetime: Date?
-    public var toDatetime: Date?
-    public var providerId: UUID?
-    public var documentTypeId: String?
-    public var documentIdentifier: String?
+    public var documentTypeId: UUID?
+    public var documentIdentifier: UUID?
 
-    public init(drn: String? = nil, fromDatetime: Date? = nil, toDatetime: Date? = nil, providerId: UUID? = nil, documentTypeId: String? = nil, documentIdentifier: String? = nil) {
+    public init(customKey: String? = nil, drn: String? = nil, documentTypeId: UUID? = nil, documentIdentifier: UUID? = nil) {
+        self.customKey = customKey
         self.drn = drn
-        self.fromDatetime = fromDatetime
-        self.toDatetime = toDatetime
-        self.providerId = providerId
         self.documentTypeId = documentTypeId
         self.documentIdentifier = documentIdentifier
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case customKey
         case drn
-        case fromDatetime
-        case toDatetime
-        case providerId
         case documentTypeId
         case documentIdentifier
     }
@@ -41,10 +35,8 @@ public struct DataConsentRequestedDocument: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(customKey, forKey: .customKey)
         try container.encodeIfPresent(drn, forKey: .drn)
-        try container.encodeIfPresent(fromDatetime, forKey: .fromDatetime)
-        try container.encodeIfPresent(toDatetime, forKey: .toDatetime)
-        try container.encodeIfPresent(providerId, forKey: .providerId)
         try container.encodeIfPresent(documentTypeId, forKey: .documentTypeId)
         try container.encodeIfPresent(documentIdentifier, forKey: .documentIdentifier)
     }

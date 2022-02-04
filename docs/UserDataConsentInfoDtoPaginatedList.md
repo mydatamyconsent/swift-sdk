@@ -1,12 +1,13 @@
-# DataConsentRequestedFinancialAccount
+# UserDataConsentInfoDtoPaginatedList
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**customKey** | **String** |  | [optional] 
-**drn** | **String** |  | [optional] 
-**accountTypeId** | **UUID** |  | [optional] 
-**accountIdentifier** | **UUID** |  | [optional] 
+**pageIndex** | **Int** |  | [optional] 
+**pageSize** | **Int** |  | [optional] 
+**totalPages** | **Int** |  | [optional] [readonly] 
+**totalItems** | **Int64** |  | [optional] 
+**items** | [UserDataConsentInfoDto] |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
