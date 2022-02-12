@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**icon** | **String** |  | [optional] 
-**title** | **String** |  | [optional] 
+**iconCodePoint** | **Int** |  | 
+**title** | **String** |  | 
 **description** | **String** |  | [optional] 
-**key** | **String** |  | [optional] 
-**dataType** | **String** |  | [optional] 
+**key** | **String** |  | 
+**dataType** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

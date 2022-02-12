@@ -12,21 +12,21 @@ import AnyCodable
 
 public struct Document: Codable, Hashable {
 
-    public var documentField: String?
-    public var customKey: String?
-    public var drn: [String]?
-    public var requirement: DocumentsRequired?
+    public var fieldTitle: String
+    public var fieldSlug: String
+    public var drn: [String]
+    public var requirement: DocumentsRequired
 
-    public init(documentField: String? = nil, customKey: String? = nil, drn: [String]? = nil, requirement: DocumentsRequired? = nil) {
-        self.documentField = documentField
-        self.customKey = customKey
+    public init(fieldTitle: String, fieldSlug: String, drn: [String], requirement: DocumentsRequired) {
+        self.fieldTitle = fieldTitle
+        self.fieldSlug = fieldSlug
         self.drn = drn
         self.requirement = requirement
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case documentField
-        case customKey
+        case fieldTitle
+        case fieldSlug
         case drn
         case requirement
     }
@@ -35,10 +35,10 @@ public struct Document: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(documentField, forKey: .documentField)
-        try container.encodeIfPresent(customKey, forKey: .customKey)
-        try container.encodeIfPresent(drn, forKey: .drn)
-        try container.encodeIfPresent(requirement, forKey: .requirement)
+        try container.encode(fieldTitle, forKey: .fieldTitle)
+        try container.encode(fieldSlug, forKey: .fieldSlug)
+        try container.encode(drn, forKey: .drn)
+        try container.encode(requirement, forKey: .requirement)
     }
 }
 
