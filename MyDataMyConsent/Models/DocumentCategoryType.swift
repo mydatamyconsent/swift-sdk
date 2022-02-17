@@ -11,11 +11,9 @@ import AnyCodable
 #endif
 
 public enum DocumentCategoryType: String, Codable, CaseIterable {
+    case personal = "Personal"
+    case education = "Education"
     case health = "Health"
     case finance = "Finance"
-    case education = "Education"
-    case bills = "Bills"
-    case tax = "Tax"
     case certificates = "Certificates"
-    case invoices = "Invoices"
 }
