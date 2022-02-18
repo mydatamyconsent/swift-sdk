@@ -64,7 +64,7 @@ open class DataConsentRequestsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func createRequest(dataConsentRequestModel: DataConsentRequestModel? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: Bool?, _ error: Error?) -> Void)) {
+    open class func createRequest(dataConsentRequestModel: DataConsentRequestModel? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: DataConsentRequest?, _ error: Error?) -> Void)) {
         createRequestWithRequestBuilder(dataConsentRequestModel: dataConsentRequestModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -79,9 +79,9 @@ open class DataConsentRequestsAPI {
      Create a consent request.
      - POST /v1/consent-requests
      - parameter dataConsentRequestModel: (body) MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)
-     - returns: RequestBuilder<Bool> 
+     - returns: RequestBuilder<DataConsentRequest> 
      */
-    open class func createRequestWithRequestBuilder(dataConsentRequestModel: DataConsentRequestModel? = nil) -> RequestBuilder<Bool> {
+    open class func createRequestWithRequestBuilder(dataConsentRequestModel: DataConsentRequestModel? = nil) -> RequestBuilder<DataConsentRequest> {
         let localVariablePath = "/v1/consent-requests"
         let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dataConsentRequestModel)
@@ -94,7 +94,7 @@ open class DataConsentRequestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Bool>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DataConsentRequest>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

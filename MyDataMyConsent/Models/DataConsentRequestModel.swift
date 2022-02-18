@@ -13,21 +13,15 @@ import AnyCodable
 public struct DataConsentRequestModel: Codable, Hashable {
 
     public var consentTemplateId: UUID?
-    public var startDateTime: Date?
-    public var expiryDateTime: Date?
     public var receiver: Receiver
 
-    public init(consentTemplateId: UUID? = nil, startDateTime: Date? = nil, expiryDateTime: Date? = nil, receiver: Receiver) {
+    public init(consentTemplateId: UUID? = nil, receiver: Receiver) {
         self.consentTemplateId = consentTemplateId
-        self.startDateTime = startDateTime
-        self.expiryDateTime = expiryDateTime
         self.receiver = receiver
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case consentTemplateId
-        case startDateTime
-        case expiryDateTime
         case receiver
     }
 
@@ -36,8 +30,6 @@ public struct DataConsentRequestModel: Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(consentTemplateId, forKey: .consentTemplateId)
-        try container.encodeIfPresent(startDateTime, forKey: .startDateTime)
-        try container.encodeIfPresent(expiryDateTime, forKey: .expiryDateTime)
         try container.encode(receiver, forKey: .receiver)
     }
 }

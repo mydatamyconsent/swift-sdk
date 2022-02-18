@@ -25,6 +25,7 @@ MyDataMyConsent/Models/DataConsentDetailsDto.swift
 MyDataMyConsent/Models/DataConsentDocumentsDto.swift
 MyDataMyConsent/Models/DataConsentFinancialsDto.swift
 MyDataMyConsent/Models/DataConsentIdentifier.swift
+MyDataMyConsent/Models/DataConsentRequest.swift
 MyDataMyConsent/Models/DataConsentRequestModel.swift
 MyDataMyConsent/Models/DataConsentRequestedDocument.swift
 MyDataMyConsent/Models/DataConsentRequestedFinancialAccount.swift
@@ -88,6 +89,7 @@ docs/DataConsentDetailsDto.md
 docs/DataConsentDocumentsDto.md
 docs/DataConsentFinancialsDto.md
 docs/DataConsentIdentifier.md
+docs/DataConsentRequest.md
 docs/DataConsentRequestModel.md
 docs/DataConsentRequestedDocument.md
 docs/DataConsentRequestedFinancialAccount.md

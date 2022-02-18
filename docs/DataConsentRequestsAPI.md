@@ -62,7 +62,7 @@ No authorization required
 
 # **createRequest**
 ```swift
-    open class func createRequest(dataConsentRequestModel: DataConsentRequestModel? = nil, completion: @escaping (_ data: Bool?, _ error: Error?) -> Void)
+    open class func createRequest(dataConsentRequestModel: DataConsentRequestModel? = nil, completion: @escaping (_ data: DataConsentRequest?, _ error: Error?) -> Void)
 ```
 
 Create a consent request.
@@ -72,7 +72,7 @@ Create a consent request.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let dataConsentRequestModel = DataConsentRequestModel(consentTemplateId: 123, startDateTime: Date(), expiryDateTime: Date(), receiver: Receiver(type: ReceiverType(), identifiers: [IdentifierStringKeyValuePair(key: Identifier(), value: "value_example")], identificationStrategy: IdentificationStrategy())) // DataConsentRequestModel | MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)
+let dataConsentRequestModel = DataConsentRequestModel(consentTemplateId: 123, receiver: Receiver(type: ReceiverType(), identifiers: [IdentifierStringKeyValuePair(key: Identifier(), value: "value_example")], identificationStrategy: IdentificationStrategy())) // DataConsentRequestModel | MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)
 
 // Create a consent request.
 DataConsentRequestsAPI.createRequest(dataConsentRequestModel: dataConsentRequestModel) { (response, error) in
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Bool**
+[**DataConsentRequest**](DataConsentRequest.md)
 
 ### Authorization
 
