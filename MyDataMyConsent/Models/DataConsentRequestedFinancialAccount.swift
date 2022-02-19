@@ -25,7 +25,7 @@ public struct DataConsentRequestedFinancialAccount: Codable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case customKey
+        case customKey = "custom_key"
         case drn
         case accountTypeId
         case accountIdentifier

@@ -12,21 +12,21 @@ import AnyCodable
 
 public struct Financial: Codable, Hashable {
 
-    public var accountField: String?
+    public var fieldName: String?
     public var customKey: String?
     public var accounts: [FinancialAccounts]?
     public var requirement: DocumentsRequired?
 
-    public init(accountField: String? = nil, customKey: String? = nil, accounts: [FinancialAccounts]? = nil, requirement: DocumentsRequired? = nil) {
-        self.accountField = accountField
+    public init(fieldName: String? = nil, customKey: String? = nil, accounts: [FinancialAccounts]? = nil, requirement: DocumentsRequired? = nil) {
+        self.fieldName = fieldName
         self.customKey = customKey
         self.accounts = accounts
         self.requirement = requirement
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case accountField
-        case customKey
+        case fieldName = "field_name"
+        case customKey = "custom_key"
         case accounts
         case requirement
     }
@@ -35,7 +35,7 @@ public struct Financial: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(accountField, forKey: .accountField)
+        try container.encodeIfPresent(fieldName, forKey: .fieldName)
         try container.encodeIfPresent(customKey, forKey: .customKey)
         try container.encodeIfPresent(accounts, forKey: .accounts)
         try container.encodeIfPresent(requirement, forKey: .requirement)

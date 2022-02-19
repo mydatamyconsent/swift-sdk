@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accountField** | **String** |  | [optional] 
+**fieldName** | **String** |  | [optional] 
 **customKey** | **String** |  | [optional] 
 **accounts** | [FinancialAccounts] |  | [optional] 
 **requirement** | [**DocumentsRequired**](DocumentsRequired.md) |  | [optional] 

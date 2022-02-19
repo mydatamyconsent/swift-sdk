@@ -13,22 +13,22 @@ import AnyCodable
 public struct FinancialAccounts: Codable, Hashable {
 
     public var drn: String?
-    public var financialAccountDetailsRequired: [FinancialAccountDetailsRequired]?
+    public var requiredDetails: [FinancialAccountDetailsRequired]?
     public var startDate: Date?
     public var endDate: Date?
 
-    public init(drn: String? = nil, financialAccountDetailsRequired: [FinancialAccountDetailsRequired]? = nil, startDate: Date? = nil, endDate: Date? = nil) {
+    public init(drn: String? = nil, requiredDetails: [FinancialAccountDetailsRequired]? = nil, startDate: Date? = nil, endDate: Date? = nil) {
         self.drn = drn
-        self.financialAccountDetailsRequired = financialAccountDetailsRequired
+        self.requiredDetails = requiredDetails
         self.startDate = startDate
         self.endDate = endDate
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case drn
-        case financialAccountDetailsRequired
-        case startDate
-        case endDate
+        case requiredDetails = "required_details"
+        case startDate = "start_date"
+        case endDate = "end_date"
     }
 
     // Encodable protocol methods
@@ -36,7 +36,7 @@ public struct FinancialAccounts: Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(drn, forKey: .drn)
-        try container.encodeIfPresent(financialAccountDetailsRequired, forKey: .financialAccountDetailsRequired)
+        try container.encodeIfPresent(requiredDetails, forKey: .requiredDetails)
         try container.encodeIfPresent(startDate, forKey: .startDate)
         try container.encodeIfPresent(endDate, forKey: .endDate)
     }

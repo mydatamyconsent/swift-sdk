@@ -12,14 +12,14 @@ import AnyCodable
 
 public struct IdentitySupportedFields: Codable, Hashable {
 
-    public var iconCodePoint: Int
+    public var icon: Int
     public var title: String
     public var description: String?
     public var key: String
     public var dataType: String
 
-    public init(iconCodePoint: Int, title: String, description: String? = nil, key: String, dataType: String) {
-        self.iconCodePoint = iconCodePoint
+    public init(icon: Int, title: String, description: String? = nil, key: String, dataType: String) {
+        self.icon = icon
         self.title = title
         self.description = description
         self.key = key
@@ -27,7 +27,7 @@ public struct IdentitySupportedFields: Codable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case iconCodePoint
+        case icon
         case title
         case description
         case key
@@ -38,7 +38,7 @@ public struct IdentitySupportedFields: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(iconCodePoint, forKey: .iconCodePoint)
+        try container.encode(icon, forKey: .icon)
         try container.encode(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encode(key, forKey: .key)

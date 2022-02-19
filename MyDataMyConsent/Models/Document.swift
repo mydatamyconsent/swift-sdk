@@ -25,8 +25,8 @@ public struct Document: Codable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case fieldTitle
-        case fieldSlug
+        case fieldTitle = "field_title"
+        case fieldSlug = "field_slug"
         case drn
         case requirement
     }

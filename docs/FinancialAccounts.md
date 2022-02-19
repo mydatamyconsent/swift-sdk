@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **drn** | **String** |  | [optional] 
-**financialAccountDetailsRequired** | [FinancialAccountDetailsRequired] |  | [optional] 
+**requiredDetails** | [FinancialAccountDetailsRequired] |  | [optional] 
 **startDate** | **Date** |  | [optional] 
 **endDate** | **Date** |  | [optional] 
 

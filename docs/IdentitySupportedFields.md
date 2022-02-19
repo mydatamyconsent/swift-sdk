@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**iconCodePoint** | **Int** |  | 
+**icon** | **Int** |  | 
 **title** | **String** |  | 
 **description** | **String** |  | [optional] 
 **key** | **String** |  | 

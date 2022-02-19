@@ -25,7 +25,7 @@ public struct DataConsentRequestedDocument: Codable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case customKey
+        case customKey = "custom_key"
         case drn
         case documentTypeId
         case documentIdentifier

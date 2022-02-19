@@ -22,7 +22,7 @@ Issue a new document.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let documentIssueRequest = DocumentIssueRequest(documentTypeId: "documentTypeId_example", identifier: "identifier_example", name: "name_example", description: "description_example", receiver: Receiver(type: ReceiverType(), identifiers: [IdentifierStringKeyValuePair(key: Identifier(), value: "value_example")], identificationStrategy: IdentificationStrategy()), expiresAtUtc: "expiresAtUtc_example", base64PdfDocument: "base64PdfDocument_example", metadata: "TODO") // DocumentIssueRequest |  (optional)
+let documentIssueRequest = DocumentIssueRequest(documentTypeId: "documentTypeId_example", documentIdentifier: "documentIdentifier_example", name: "name_example", description: "description_example", receiver: Receiver(type: ReceiverType(), identifiers: [IdentifierStringKeyValuePair(key: Identifier(), value: "value_example")], identificationStrategy: IdentificationStrategy()), expiresAtUtc: "expiresAtUtc_example", base64PdfDocument: "base64PdfDocument_example", metadata: "TODO") // DocumentIssueRequest |  (optional)
 
 // Issue a new document.
 DocumentsAPI.issueDocument(documentIssueRequest: documentIssueRequest) { (response, error) in

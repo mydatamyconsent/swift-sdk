@@ -13,7 +13,7 @@ import AnyCodable
 public struct DocumentIssueRequest: Codable, Hashable {
 
     public var documentTypeId: String
-    public var identifier: String
+    public var documentIdentifier: String
     public var name: String
     public var description: String
     public var receiver: Receiver
@@ -21,9 +21,9 @@ public struct DocumentIssueRequest: Codable, Hashable {
     public var base64PdfDocument: String
     public var metadata: AnyCodable?
 
-    public init(documentTypeId: String, identifier: String, name: String, description: String, receiver: Receiver, expiresAtUtc: String? = nil, base64PdfDocument: String, metadata: AnyCodable? = nil) {
+    public init(documentTypeId: String, documentIdentifier: String, name: String, description: String, receiver: Receiver, expiresAtUtc: String? = nil, base64PdfDocument: String, metadata: AnyCodable? = nil) {
         self.documentTypeId = documentTypeId
-        self.identifier = identifier
+        self.documentIdentifier = documentIdentifier
         self.name = name
         self.description = description
         self.receiver = receiver
@@ -34,7 +34,7 @@ public struct DocumentIssueRequest: Codable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case documentTypeId
-        case identifier
+        case documentIdentifier
         case name
         case description
         case receiver
@@ -48,7 +48,7 @@ public struct DocumentIssueRequest: Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(documentTypeId, forKey: .documentTypeId)
-        try container.encode(identifier, forKey: .identifier)
+        try container.encode(documentIdentifier, forKey: .documentIdentifier)
         try container.encode(name, forKey: .name)
         try container.encode(description, forKey: .description)
         try container.encode(receiver, forKey: .receiver)
