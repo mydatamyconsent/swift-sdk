@@ -1,16 +1,10 @@
-# DocumentIssueRequest
+# CreateOrganizationDataConsentRequest
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**documentTypeId** | **String** |  | 
-**documentIdentifier** | **String** |  | 
-**name** | **String** |  | 
-**description** | **String** |  | 
+**consentTemplateId** | **UUID** |  | [optional] 
 **receiver** | [**Receiver**](Receiver.md) |  | 
-**expiresAtUtc** | **Date** |  | [optional] 
-**base64PdfDocument** | **String** |  | 
-**metadata** | [**AnyCodable**](.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

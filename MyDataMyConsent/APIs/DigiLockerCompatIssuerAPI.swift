@@ -13,14 +13,14 @@ import AnyCodable
 open class DigiLockerCompatIssuerAPI {
 
     /**
-     Digilocker Compatible endpoint to Issue Documents.
+     Digilocker Compatible endpoint to issue document.
      
-     - parameter pushUriRequest: (body)  (optional)
+     - parameter pushUriRequest: (body) Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func issuerIssuedoc1XmlPost(pushUriRequest: PushUriRequest? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: PushUriResponse?, _ error: Error?) -> Void)) {
-        issuerIssuedoc1XmlPostWithRequestBuilder(pushUriRequest: pushUriRequest).execute(apiResponseQueue) { result -> Void in
+    open class func digilockerCompatIssueDocument(pushUriRequest: PushUriRequest? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: PushUriResponse?, _ error: Error?) -> Void)) {
+        digilockerCompatIssueDocumentWithRequestBuilder(pushUriRequest: pushUriRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -31,12 +31,12 @@ open class DigiLockerCompatIssuerAPI {
     }
 
     /**
-     Digilocker Compatible endpoint to Issue Documents.
+     Digilocker Compatible endpoint to issue document.
      - POST /issuer/issuedoc/1/xml
-     - parameter pushUriRequest: (body)  (optional)
+     - parameter pushUriRequest: (body) Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
      - returns: RequestBuilder<PushUriResponse> 
      */
-    open class func issuerIssuedoc1XmlPostWithRequestBuilder(pushUriRequest: PushUriRequest? = nil) -> RequestBuilder<PushUriResponse> {
+    open class func digilockerCompatIssueDocumentWithRequestBuilder(pushUriRequest: PushUriRequest? = nil) -> RequestBuilder<PushUriResponse> {
         let localVariablePath = "/issuer/issuedoc/1/xml"
         let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: pushUriRequest)

@@ -16,4 +16,5 @@ public enum DataConsentStatus: String, Codable, CaseIterable {
     case rejected = "Rejected"
     case revoked = "Revoked"
     case expired = "Expired"
+    case canceled = "Canceled"
 }

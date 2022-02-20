@@ -17,11 +17,11 @@ public struct DocumentIssueRequest: Codable, Hashable {
     public var name: String
     public var description: String
     public var receiver: Receiver
-    public var expiresAtUtc: String?
+    public var expiresAtUtc: Date?
     public var base64PdfDocument: String
     public var metadata: AnyCodable?
 
-    public init(documentTypeId: String, documentIdentifier: String, name: String, description: String, receiver: Receiver, expiresAtUtc: String? = nil, base64PdfDocument: String, metadata: AnyCodable? = nil) {
+    public init(documentTypeId: String, documentIdentifier: String, name: String, description: String, receiver: Receiver, expiresAtUtc: Date? = nil, base64PdfDocument: String, metadata: AnyCodable? = nil) {
         self.documentTypeId = documentTypeId
         self.documentIdentifier = documentIdentifier
         self.name = name
