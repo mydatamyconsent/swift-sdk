@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct DigitalSignature: Codable, Hashable {
+public struct DigitalSignature: Codable, JSONEncodable, Hashable {
 
     public var signedBy: String?
     public var certIssuedBy: String?

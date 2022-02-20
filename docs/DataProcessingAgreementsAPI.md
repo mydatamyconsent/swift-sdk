@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Create a data processing agreement.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -67,7 +67,7 @@ No authorization required
 
 Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -91,7 +91,7 @@ DataProcessingAgreementsAPI.deleteDataProcessingAgreementById(id: id) { (respons
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md) | Agreement id. | 
+ **id** | **UUID** | Agreement id. | 
 
 ### Return type
 
@@ -115,7 +115,7 @@ No authorization required
 
 Get data processing agreement by id.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -139,7 +139,7 @@ DataProcessingAgreementsAPI.getDataProcessingAgreementById(id: id) { (response, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md) | Agreement id. | 
+ **id** | **UUID** | Agreement id. | 
 
 ### Return type
 
@@ -163,7 +163,7 @@ No authorization required
 
 Get all data processing agreements.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -213,7 +213,7 @@ No authorization required
 
 Terminate a data processing agreement.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -237,7 +237,7 @@ DataProcessingAgreementsAPI.terminateDataProcessingAgreementById(id: id) { (resp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md) | Agreement id. | 
+ **id** | **UUID** | Agreement id. | 
 
 ### Return type
 
@@ -261,7 +261,7 @@ No authorization required
 
 Update a data processing agreement.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -286,7 +286,7 @@ DataProcessingAgreementsAPI.updateDataProcessingAgreement(id: id, updateDataProc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md) | Agreement id. | 
+ **id** | **UUID** | Agreement id. | 
  **updateDataProcessingAgreementRequestModel** | [**UpdateDataProcessingAgreementRequestModel**](UpdateDataProcessingAgreementRequestModel.md) | Updated data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.UpdateDataProcessingAgreementRequestModel. | [optional] 
 
 ### Return type

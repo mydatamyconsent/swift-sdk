@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FinancialAccounts: Codable, Hashable {
+public struct FinancialAccounts: Codable, JSONEncodable, Hashable {
 
     public var drn: String?
     public var requiredDetails: [FinancialAccountDetailsRequired]?

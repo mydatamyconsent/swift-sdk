@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct OrganizationFinancialAccountDto: Codable, Hashable {
+public struct OrganizationFinancialAccountDto: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var organizationId: UUID?

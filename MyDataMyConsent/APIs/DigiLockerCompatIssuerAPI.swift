@@ -19,8 +19,9 @@ open class DigiLockerCompatIssuerAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func digilockerCompatIssueDocument(pushUriRequest: PushUriRequest? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: PushUriResponse?, _ error: Error?) -> Void)) {
-        digilockerCompatIssueDocumentWithRequestBuilder(pushUriRequest: pushUriRequest).execute(apiResponseQueue) { result -> Void in
+    @discardableResult
+    open class func digilockerCompatIssueDocument(pushUriRequest: PushUriRequest? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: PushUriResponse?, _ error: Error?) -> Void)) -> RequestTask {
+        return digilockerCompatIssueDocumentWithRequestBuilder(pushUriRequest: pushUriRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -38,7 +39,7 @@ open class DigiLockerCompatIssuerAPI {
      */
     open class func digilockerCompatIssueDocumentWithRequestBuilder(pushUriRequest: PushUriRequest? = nil) -> RequestBuilder<PushUriResponse> {
         let localVariablePath = "/issuer/issuedoc/1/xml"
-        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: pushUriRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -49,7 +50,7 @@ open class DigiLockerCompatIssuerAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<PushUriResponse>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<PushUriResponse>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

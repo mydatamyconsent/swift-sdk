@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Get a Data Provider details based on provider id.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -63,7 +63,7 @@ No authorization required
 
 Discover all data providers in My Data My Consent by country and filters.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -72,7 +72,7 @@ let accountType = "accountType_example" // String | Account type. (optional)
 let documentType = "documentType_example" // String | Document type. (optional)
 let organizationCategory = "organizationCategory_example" // String | Organization category. (optional)
 let pageNo = 987 // Int | Page number. (optional) (default to 1)
-let pageSize = 987 // Int | Page size. (optional) (default to 25)
+let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 let country = "country_example" // String | ISO2 Country code. (optional) (default to "IN")
 
 // Discover all data providers in My Data My Consent by country and filters.
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
  **documentType** | **String** | Document type. | [optional] 
  **organizationCategory** | **String** | Organization category. | [optional] 
  **pageNo** | **Int** | Page number. | [optional] [default to 1]
- **pageSize** | **Int** | Page size. | [optional] [default to 25]
+ **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
  **country** | **String** | ISO2 Country code. | [optional] [default to &quot;IN&quot;]
 
 ### Return type

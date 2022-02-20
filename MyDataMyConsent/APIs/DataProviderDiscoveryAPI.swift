@@ -19,8 +19,9 @@ open class DataProviderDiscoveryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getDataProviderById(providerId: String, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: DataProvider?, _ error: Error?) -> Void)) {
-        getDataProviderByIdWithRequestBuilder(providerId: providerId).execute(apiResponseQueue) { result -> Void in
+    @discardableResult
+    open class func getDataProviderById(providerId: String, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DataProvider?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDataProviderByIdWithRequestBuilder(providerId: providerId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -41,7 +42,7 @@ open class DataProviderDiscoveryAPI {
         let providerIdPreEscape = "\(APIHelper.mapValueToPathItem(providerId))"
         let providerIdPostEscape = providerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{providerId}", with: providerIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -52,7 +53,7 @@ open class DataProviderDiscoveryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DataProvider>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DataProvider>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -64,13 +65,14 @@ open class DataProviderDiscoveryAPI {
      - parameter documentType: (query) Document type. (optional)
      - parameter organizationCategory: (query) Organization category. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
-     - parameter pageSize: (query) Page size. (optional, default to 25)
+     - parameter pageSize: (query) Number of items to return. (optional, default to 25)
      - parameter country: (query) ISO2 Country code. (optional, default to "IN")
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getDataProviders(accountType: String? = nil, documentType: String? = nil, organizationCategory: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil, country: String? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsent.apiResponseQueue, completion: @escaping ((_ data: DataProviderPaginatedList?, _ error: Error?) -> Void)) {
-        getDataProvidersWithRequestBuilder(accountType: accountType, documentType: documentType, organizationCategory: organizationCategory, pageNo: pageNo, pageSize: pageSize, country: country).execute(apiResponseQueue) { result -> Void in
+    @discardableResult
+    open class func getDataProviders(accountType: String? = nil, documentType: String? = nil, organizationCategory: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil, country: String? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DataProviderPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDataProvidersWithRequestBuilder(accountType: accountType, documentType: documentType, organizationCategory: organizationCategory, pageNo: pageNo, pageSize: pageSize, country: country).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -87,13 +89,13 @@ open class DataProviderDiscoveryAPI {
      - parameter documentType: (query) Document type. (optional)
      - parameter organizationCategory: (query) Organization category. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
-     - parameter pageSize: (query) Page size. (optional, default to 25)
+     - parameter pageSize: (query) Number of items to return. (optional, default to 25)
      - parameter country: (query) ISO2 Country code. (optional, default to "IN")
      - returns: RequestBuilder<DataProviderPaginatedList> 
      */
     open class func getDataProvidersWithRequestBuilder(accountType: String? = nil, documentType: String? = nil, organizationCategory: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil, country: String? = nil) -> RequestBuilder<DataProviderPaginatedList> {
         let localVariablePath = "/v1/data-providers"
-        let localVariableURLString = MyDataMyConsent.basePath + localVariablePath
+        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -112,7 +114,7 @@ open class DataProviderDiscoveryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DataProviderPaginatedList>.Type = MyDataMyConsent.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DataProviderPaginatedList>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

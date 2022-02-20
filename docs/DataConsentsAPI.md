@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 Download a individuals consented document.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -54,8 +54,8 @@ DataConsentsAPI.downloadConsentedDocumentById(consentId: consentId, documentId: 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
- **documentId** | [**UUID**](.md) | Document id. | 
+ **consentId** | **UUID** | Consent id. | 
+ **documentId** | **UUID** | Document id. | 
 
 ### Return type
 
@@ -79,7 +79,7 @@ No authorization required
 
 Download a organizations consented document.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -104,8 +104,8 @@ DataConsentsAPI.downloadOrgConsentedDocumentById(consentId: consentId, documentI
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
- **documentId** | [**UUID**](.md) | Document id. | 
+ **consentId** | **UUID** | Consent id. | 
+ **documentId** | **UUID** | Document id. | 
 
 ### Return type
 
@@ -129,7 +129,7 @@ No authorization required
 
 Get the individual documents based on ConsentId.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -153,7 +153,7 @@ DataConsentsAPI.getAllConsentedDocuments(consentId: consentId) { (response, erro
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
+ **consentId** | **UUID** | Consent id. | 
 
 ### Return type
 
@@ -177,7 +177,7 @@ No authorization required
 
 Get all individual consented financial accounts.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -201,7 +201,7 @@ DataConsentsAPI.getAllConsentedFinancialAccounts(consentId: consentId) { (respon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
+ **consentId** | **UUID** | Consent id. | 
 
 ### Return type
 
@@ -225,7 +225,7 @@ No authorization required
 
 Get all organizational consented financial accounts.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -249,7 +249,7 @@ DataConsentsAPI.getAllOrganizationConsentedAccounts(consentId: consentId) { (res
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
+ **consentId** | **UUID** | Consent id. | 
 
 ### Return type
 
@@ -273,7 +273,7 @@ No authorization required
 
 Get the organization documents based on ConsentId.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -297,7 +297,7 @@ DataConsentsAPI.getAllOrganizationConsentedDocuments(consentId: consentId) { (re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
+ **consentId** | **UUID** | Consent id. | 
 
 ### Return type
 
@@ -321,7 +321,7 @@ No authorization required
 
 Get all individuals consent details by consent id.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -345,7 +345,7 @@ DataConsentsAPI.getConsentDetailsById(consentId: consentId) { (response, error) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
+ **consentId** | **UUID** | Consent id. | 
 
 ### Return type
 
@@ -369,7 +369,7 @@ No authorization required
 
 Get individual consented financial account details based on account id.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -394,8 +394,8 @@ DataConsentsAPI.getConsentedAccountById(consentId: consentId, accountId: account
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
- **accountId** | [**UUID**](.md) | Account id. | 
+ **consentId** | **UUID** | Consent id. | 
+ **accountId** | **UUID** | Account id. | 
 
 ### Return type
 
@@ -419,7 +419,7 @@ No authorization required
 
 Get individuals consent document based on document id.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -444,8 +444,8 @@ DataConsentsAPI.getConsentedDocumentById(consentId: consentId, documentId: docum
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
- **documentId** | [**UUID**](.md) | Document Id. | 
+ **consentId** | **UUID** | Consent id. | 
+ **documentId** | **UUID** | Document Id. | 
 
 ### Return type
 
@@ -469,7 +469,7 @@ No authorization required
 
 Get organization consented financial account details based on account id.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -494,8 +494,8 @@ DataConsentsAPI.getConsentedFinancialAccount(consentId: consentId, accountId: ac
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
- **accountId** | [**UUID**](.md) | Account id. | 
+ **consentId** | **UUID** | Consent id. | 
+ **accountId** | **UUID** | Account id. | 
 
 ### Return type
 
@@ -519,7 +519,7 @@ No authorization required
 
 Get individual consented financial account transactions of an individual based on accountId.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -529,8 +529,8 @@ let accountId = 987 // UUID | Account id.
 let filters = "filters_example" // String | Filters. (optional)
 let fromDateTimeUtc = Date() // Date | From date time in utc timezone. (optional)
 let toDateTimeUtc = Date() // Date | Til date time in utc timezone. (optional)
-let pageNo = 987 // Int | Page no. (optional) (default to 10)
-let pageSize = 987 // Int | Page size. (optional) (default to 25)
+let pageNo = 987 // Int | Page number. (optional) (default to 10)
+let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
 // Get individual consented financial account transactions of an individual based on accountId.
 DataConsentsAPI.getConsentedFinancialAccountTransactions(consentId: consentId, accountId: accountId, filters: filters, fromDateTimeUtc: fromDateTimeUtc, toDateTimeUtc: toDateTimeUtc, pageNo: pageNo, pageSize: pageSize) { (response, error) in
@@ -549,13 +549,13 @@ DataConsentsAPI.getConsentedFinancialAccountTransactions(consentId: consentId, a
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
- **accountId** | [**UUID**](.md) | Account id. | 
+ **consentId** | **UUID** | Consent id. | 
+ **accountId** | **UUID** | Account id. | 
  **filters** | **String** | Filters. | [optional] 
  **fromDateTimeUtc** | **Date** | From date time in utc timezone. | [optional] 
  **toDateTimeUtc** | **Date** | Til date time in utc timezone. | [optional] 
- **pageNo** | **Int** | Page no. | [optional] [default to 10]
- **pageSize** | **Int** | Page size. | [optional] [default to 25]
+ **pageNo** | **Int** | Page number. | [optional] [default to 10]
+ **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
@@ -579,7 +579,7 @@ No authorization required
 
 Get the list of Consents Sent to Individuals.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -588,7 +588,7 @@ let status = DataConsentStatus() // DataConsentStatus | Data consent status MyDa
 let from = Date() // Date | From date time in utc timezone. (optional)
 let to = Date() // Date | Til date time in utc timezone. (optional)
 let pageNo = 987 // Int | Page number. (optional) (default to 1)
-let pageSize = 987 // Int | Page size. (optional) (default to 25)
+let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
 // Get the list of Consents Sent to Individuals.
 DataConsentsAPI.getConsents(status: status, from: from, to: to, pageNo: pageNo, pageSize: pageSize) { (response, error) in
@@ -611,7 +611,7 @@ Name | Type | Description  | Notes
  **from** | **Date** | From date time in utc timezone. | [optional] 
  **to** | **Date** | Til date time in utc timezone. | [optional] 
  **pageNo** | **Int** | Page number. | [optional] [default to 1]
- **pageSize** | **Int** | Page size. | [optional] [default to 25]
+ **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
@@ -635,7 +635,7 @@ No authorization required
 
 Get the list of data consents sent for organizations.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -644,7 +644,7 @@ let status = DataConsentStatus() // DataConsentStatus | Data consent status MyDa
 let from = Date() // Date | From date time in utc timezone. (optional)
 let to = Date() // Date | Til date time in utc timezone. (optional)
 let pageNo = 987 // Int | Page number. (optional) (default to 1)
-let pageSize = 987 // Int | Page size. (optional) (default to 25)
+let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
 // Get the list of data consents sent for organizations.
 DataConsentsAPI.getConsentsForOrganizations(status: status, from: from, to: to, pageNo: pageNo, pageSize: pageSize) { (response, error) in
@@ -667,7 +667,7 @@ Name | Type | Description  | Notes
  **from** | **Date** | From date time in utc timezone. | [optional] 
  **to** | **Date** | Til date time in utc timezone. | [optional] 
  **pageNo** | **Int** | Page number. | [optional] [default to 1]
- **pageSize** | **Int** | Page size. | [optional] [default to 25]
+ **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
@@ -691,7 +691,7 @@ No authorization required
 
 Get organization consented financial account transactions of an individual based on accountId.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -701,8 +701,8 @@ let accountId = 987 // UUID | Account id.
 let filters = "filters_example" // String | Filters. (optional)
 let fromDateTimeUtc = Date() // Date | From date time in utc timezone. (optional)
 let toDateTimeUtc = Date() // Date | Til date time in utc timezone. (optional)
-let pageNo = 987 // Int | Page no. (optional) (default to 1)
-let pageSize = 987 // Int | Page size. (optional) (default to 25)
+let pageNo = 987 // Int | Page number. (optional) (default to 1)
+let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
 // Get organization consented financial account transactions of an individual based on accountId.
 DataConsentsAPI.getOrgConsentedAccountTransactions(consentId: consentId, accountId: accountId, filters: filters, fromDateTimeUtc: fromDateTimeUtc, toDateTimeUtc: toDateTimeUtc, pageNo: pageNo, pageSize: pageSize) { (response, error) in
@@ -721,13 +721,13 @@ DataConsentsAPI.getOrgConsentedAccountTransactions(consentId: consentId, account
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
- **accountId** | [**UUID**](.md) | Account id. | 
+ **consentId** | **UUID** | Consent id. | 
+ **accountId** | **UUID** | Account id. | 
  **filters** | **String** | Filters. | [optional] 
  **fromDateTimeUtc** | **Date** | From date time in utc timezone. | [optional] 
  **toDateTimeUtc** | **Date** | Til date time in utc timezone. | [optional] 
- **pageNo** | **Int** | Page no. | [optional] [default to 1]
- **pageSize** | **Int** | Page size. | [optional] [default to 25]
+ **pageNo** | **Int** | Page number. | [optional] [default to 1]
+ **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
@@ -751,7 +751,7 @@ No authorization required
 
 Get all organization consent details by consent id.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -775,7 +775,7 @@ DataConsentsAPI.getOrganizationConsentDetailsById(consentId: consentId) { (respo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
+ **consentId** | **UUID** | Consent id. | 
 
 ### Return type
 
@@ -799,7 +799,7 @@ No authorization required
 
 Get organization consent document based on document id.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -824,8 +824,8 @@ DataConsentsAPI.getOrganizationConsentedDocumentById(consentId: consentId, docum
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | [**UUID**](.md) | Consent id. | 
- **documentId** | [**UUID**](.md) | Document Id. | 
+ **consentId** | **UUID** | Consent id. | 
+ **documentId** | **UUID** | Document Id. | 
 
 ### Return type
 

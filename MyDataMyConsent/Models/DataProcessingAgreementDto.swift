@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct DataProcessingAgreementDto: Codable, Hashable {
+public struct DataProcessingAgreementDto: Codable, JSONEncodable, Hashable {
 
     public var id: UUID
     public var version: String

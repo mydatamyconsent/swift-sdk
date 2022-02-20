@@ -12,12 +12,12 @@ Method | HTTP request | Description
 
 # **getIssuedDocumentById**
 ```swift
-    open class func getIssuedDocumentById(documentId: UUID, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getIssuedDocumentById(documentId: UUID, completion: @escaping (_ data: IssuedDocument?, _ error: Error?) -> Void)
 ```
 
 Get issued document.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -41,11 +41,11 @@ DocumentsAPI.getIssuedDocumentById(documentId: documentId) { (response, error) i
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **documentId** | [**UUID**](.md) | Document id. | 
+ **documentId** | **UUID** | Document id. | 
 
 ### Return type
 
-Void (empty response body)
+[**IssuedDocument**](IssuedDocument.md)
 
 ### Authorization
 
@@ -54,18 +54,18 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getIssuedDocuments**
 ```swift
-    open class func getIssuedDocuments(documentTypeId: UUID? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageSize: Int? = nil, pageNo: Int? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getIssuedDocuments(documentTypeId: UUID? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageSize: Int? = nil, pageNo: Int? = nil, completion: @escaping (_ data: IssuedDocumentPaginatedList?, _ error: Error?) -> Void)
 ```
 
 Get issued documents.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -93,7 +93,7 @@ DocumentsAPI.getIssuedDocuments(documentTypeId: documentTypeId, fromDateTime: fr
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **documentTypeId** | [**UUID**](.md) |  | [optional] 
+ **documentTypeId** | **UUID** |  | [optional] 
  **fromDateTime** | **Date** |  | [optional] 
  **toDateTime** | **Date** |  | [optional] 
  **pageSize** | **Int** |  | [optional] [default to 25]
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**IssuedDocumentPaginatedList**](IssuedDocumentPaginatedList.md)
 
 ### Authorization
 
@@ -110,27 +110,27 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRegisteredDocumentTypes**
 ```swift
-    open class func getRegisteredDocumentTypes(pageSize: Int? = nil, pageNo: Int? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getRegisteredDocumentTypes(pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: DocumentTypeDetailsDtoPaginatedList?, _ error: Error?) -> Void)
 ```
 
 Get registered document types.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let pageSize = 987 // Int |  (optional) (default to 25)
-let pageNo = 987 // Int |  (optional) (default to 1)
+let pageNo = 987 // Int | Page number. (optional) (default to 1)
+let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
 // Get registered document types.
-DocumentsAPI.getRegisteredDocumentTypes(pageSize: pageSize, pageNo: pageNo) { (response, error) in
+DocumentsAPI.getRegisteredDocumentTypes(pageNo: pageNo, pageSize: pageSize) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -146,12 +146,12 @@ DocumentsAPI.getRegisteredDocumentTypes(pageSize: pageSize, pageNo: pageNo) { (r
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Int** |  | [optional] [default to 25]
- **pageNo** | **Int** |  | [optional] [default to 1]
+ **pageNo** | **Int** | Page number. | [optional] [default to 1]
+ **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
-Void (empty response body)
+[**DocumentTypeDetailsDtoPaginatedList**](DocumentTypeDetailsDtoPaginatedList.md)
 
 ### Authorization
 
@@ -160,18 +160,18 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **issueDocument**
 ```swift
-    open class func issueDocument(documentIssueRequest: DocumentIssueRequest, completion: @escaping (_ data: Bool?, _ error: Error?) -> Void)
+    open class func issueDocument(documentIssueRequest: DocumentIssueRequest, completion: @escaping (_ data: IssuedDocument?, _ error: Error?) -> Void)
 ```
 
 Issue a new document.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Bool**
+[**IssuedDocument**](IssuedDocument.md)
 
 ### Authorization
 

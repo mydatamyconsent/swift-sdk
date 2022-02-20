@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct UserAccountFinancialTransactionsDtoPaginatedList: Codable, Hashable {
+public struct UserAccountFinancialTransactionsDtoPaginatedList: Codable, JSONEncodable, Hashable {
 
     public var pageIndex: Int?
     public var pageSize: Int?

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct DataConsentRequestedDocument: Codable, Hashable {
+public struct DataConsentRequestedDocument: Codable, JSONEncodable, Hashable {
 
     public var customKey: String?
     public var drn: String?

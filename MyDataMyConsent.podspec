@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name = 'MyDataMyConsent'
-  s.ios.deployment_target = '9.0'
-  s.osx.deployment_target = '10.11'
-  s.tvos.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
+  s.osx.deployment_target = '10.12'
+  s.tvos.deployment_target = '10.0'
   s.watchos.deployment_target = '3.0'
   s.version = '1.0.0'
   s.source = 'https://github.com/mydatamyconsent/swift-sdk'
@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.summary = 'MyDataMyConsent Swift SDK'
   s.description = 'My Data My Consent Rest API Swift SDK'
   s.source_files = 'MyDataMyConsent/**/*.swift'
-  s.dependency 'Alamofire', '~> 4.9.1'
   s.dependency 'AnyCodable-FlightSchool', '~> 0.6.1'
+  s.dependency 'Alamofire', '~> 5.4.3'
 end

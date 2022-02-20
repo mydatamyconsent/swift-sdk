@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Document: Codable, Hashable {
+public struct Document: Codable, JSONEncodable, Hashable {
 
     public var fieldTitle: String
     public var fieldSlug: String

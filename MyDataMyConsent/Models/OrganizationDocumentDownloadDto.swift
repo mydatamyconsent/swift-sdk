@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct OrganizationDocumentDownloadDto: Codable, Hashable {
+public struct OrganizationDocumentDownloadDto: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var storageUrl: String?

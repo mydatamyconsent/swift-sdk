@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct IdentitySupportedFields: Codable, Hashable {
+public struct IdentitySupportedFields: Codable, JSONEncodable, Hashable {
 
     public var icon: Int
     public var title: String

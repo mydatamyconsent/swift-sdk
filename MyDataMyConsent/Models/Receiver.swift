@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Receiver: Codable, Hashable {
+public struct Receiver: Codable, JSONEncodable, Hashable {
 
     public var type: ReceiverType?
     public var identifiers: [IdentifierStringKeyValuePair]?

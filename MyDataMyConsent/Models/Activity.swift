@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Activity: Codable, Hashable {
+public struct Activity: Codable, JSONEncodable, Hashable {
 
     public var actorName: String?
     public var description: String?

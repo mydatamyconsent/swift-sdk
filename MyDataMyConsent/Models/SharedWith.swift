@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SharedWith: Codable, Hashable {
+public struct SharedWith: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var receiverId: UUID?

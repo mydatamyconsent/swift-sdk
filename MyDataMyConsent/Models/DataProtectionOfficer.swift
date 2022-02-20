@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct DataProtectionOfficer: Codable, Hashable {
+public struct DataProtectionOfficer: Codable, JSONEncodable, Hashable {
 
     public var name: String?
     public var email: String?

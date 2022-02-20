@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct UserDataConsentInfoDto: Codable, Hashable {
+public struct UserDataConsentInfoDto: Codable, JSONEncodable, Hashable {
 
     public var consentRequestId: UUID?
     public var userId: UUID?

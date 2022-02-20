@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Cancel the individual data consent request based on Id.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -45,7 +45,7 @@ DataConsentRequestsAPI.cancelIndividualDataConsentRequest(requestId: requestId) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestId** | [**UUID**](.md) | Individual consent request id. | 
+ **requestId** | **UUID** | Individual consent request id. | 
 
 ### Return type
 
@@ -69,7 +69,7 @@ No authorization required
 
 Cancel the Organization data consent request based on Id.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -93,7 +93,7 @@ DataConsentRequestsAPI.cancelOrganizationDataConsentRequest(requestId: requestId
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestId** | [**UUID**](.md) | Organization consent request id. | 
+ **requestId** | **UUID** | Organization consent request id. | 
 
 ### Return type
 
@@ -117,7 +117,7 @@ No authorization required
 
 Create a individual data consent request.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -165,7 +165,7 @@ No authorization required
 
 Create a organization data consent request.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -213,7 +213,7 @@ No authorization required
 
 Get all Consent Requests sent to Individuals.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -221,8 +221,8 @@ import MyDataMyConsent
 let status = DataConsentStatus() // DataConsentStatus | Data consent status. (optional)
 let startDateTime = Date() // Date | Start date time. (optional)
 let endDateTime = Date() // Date | End date time. (optional)
-let pageNo = 987 // Int | Page no. (optional) (default to 1)
-let pageSize = 987 // Int | Page size. (optional) (default to 25)
+let pageNo = 987 // Int | Page number. (optional) (default to 1)
+let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
 // Get all Consent Requests sent to Individuals.
 DataConsentRequestsAPI.getAllConsentRequestsToIndividuals(status: status, startDateTime: startDateTime, endDateTime: endDateTime, pageNo: pageNo, pageSize: pageSize) { (response, error) in
@@ -244,8 +244,8 @@ Name | Type | Description  | Notes
  **status** | [**DataConsentStatus**](.md) | Data consent status. | [optional] 
  **startDateTime** | **Date** | Start date time. | [optional] 
  **endDateTime** | **Date** | End date time. | [optional] 
- **pageNo** | **Int** | Page no. | [optional] [default to 1]
- **pageSize** | **Int** | Page size. | [optional] [default to 25]
+ **pageNo** | **Int** | Page number. | [optional] [default to 1]
+ **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
@@ -269,7 +269,7 @@ No authorization required
 
 Get All Consent Requests sent to Organizations.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -277,8 +277,8 @@ import MyDataMyConsent
 let status = DataConsentStatus() // DataConsentStatus | Data consent status. (optional)
 let startDateTime = Date() // Date | Start date time. (optional)
 let endDateTime = Date() // Date | End date time. (optional)
-let pageNo = 987 // Int | Page no. (optional) (default to 1)
-let pageSize = 987 // Int | Page size. (optional) (default to 25)
+let pageNo = 987 // Int | Page number. (optional) (default to 1)
+let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
 // Get All Consent Requests sent to Organizations.
 DataConsentRequestsAPI.getAllConsentRequestsToOrganizations(status: status, startDateTime: startDateTime, endDateTime: endDateTime, pageNo: pageNo, pageSize: pageSize) { (response, error) in
@@ -300,8 +300,8 @@ Name | Type | Description  | Notes
  **status** | [**DataConsentStatus**](.md) | Data consent status. | [optional] 
  **startDateTime** | **Date** | Start date time. | [optional] 
  **endDateTime** | **Date** | End date time. | [optional] 
- **pageNo** | **Int** | Page no. | [optional] [default to 1]
- **pageSize** | **Int** | Page size. | [optional] [default to 25]
+ **pageNo** | **Int** | Page number. | [optional] [default to 1]
+ **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
@@ -325,7 +325,7 @@ No authorization required
 
 Get a Consent Request by ID.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -349,7 +349,7 @@ DataConsentRequestsAPI.getIndividualConsentRequestById(requestId: requestId) { (
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestId** | [**UUID**](.md) | Individual consent request id. | 
+ **requestId** | **UUID** | Individual consent request id. | 
 
 ### Return type
 
@@ -373,7 +373,7 @@ No authorization required
 
 Get a OrganizationConsent Request by Id.
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
@@ -397,7 +397,7 @@ DataConsentRequestsAPI.getOrganizationConsentRequestById(requestId: requestId) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestId** | [**UUID**](.md) | Organization consent request id. | 
+ **requestId** | **UUID** | Organization consent request id. | 
 
 ### Return type
 

@@ -40,6 +40,9 @@ MyDataMyConsent/Models/DigitalSignature.swift
 MyDataMyConsent/Models/Document.swift
 MyDataMyConsent/Models/DocumentCategoryType.swift
 MyDataMyConsent/Models/DocumentIssueRequest.swift
+MyDataMyConsent/Models/DocumentSubCategoryType.swift
+MyDataMyConsent/Models/DocumentTypeDetailsDto.swift
+MyDataMyConsent/Models/DocumentTypeDetailsDtoPaginatedList.swift
 MyDataMyConsent/Models/DocumentsRequired.swift
 MyDataMyConsent/Models/FetchTypes.swift
 MyDataMyConsent/Models/FileType.swift
@@ -53,6 +56,8 @@ MyDataMyConsent/Models/Identifier.swift
 MyDataMyConsent/Models/IdentifierStringKeyValuePair.swift
 MyDataMyConsent/Models/IdentitySupportedFields.swift
 MyDataMyConsent/Models/IndividualDataConsentRequestResponse.swift
+MyDataMyConsent/Models/IssuedDocument.swift
+MyDataMyConsent/Models/IssuedDocumentPaginatedList.swift
 MyDataMyConsent/Models/Life.swift
 MyDataMyConsent/Models/OrganizationDataConsentInfoDto.swift
 MyDataMyConsent/Models/OrganizationDataConsentInfoDtoPaginatedList.swift
@@ -68,6 +73,7 @@ MyDataMyConsent/Models/PushUriResponse.swift
 MyDataMyConsent/Models/Receiver.swift
 MyDataMyConsent/Models/ReceiverType.swift
 MyDataMyConsent/Models/SharedWith.swift
+MyDataMyConsent/Models/SupportedEntityType.swift
 MyDataMyConsent/Models/UpdateDataProcessingAgreementRequestModel.swift
 MyDataMyConsent/Models/UriDetails.swift
 MyDataMyConsent/Models/UserAccountFinancialTransactionsDto.swift
@@ -111,6 +117,9 @@ docs/DigitalSignature.md
 docs/Document.md
 docs/DocumentCategoryType.md
 docs/DocumentIssueRequest.md
+docs/DocumentSubCategoryType.md
+docs/DocumentTypeDetailsDto.md
+docs/DocumentTypeDetailsDtoPaginatedList.md
 docs/DocumentsAPI.md
 docs/DocumentsRequired.md
 docs/FetchTypes.md
@@ -125,6 +134,8 @@ docs/Identifier.md
 docs/IdentifierStringKeyValuePair.md
 docs/IdentitySupportedFields.md
 docs/IndividualDataConsentRequestResponse.md
+docs/IssuedDocument.md
+docs/IssuedDocumentPaginatedList.md
 docs/Life.md
 docs/OrganizationDataConsentInfoDto.md
 docs/OrganizationDataConsentInfoDtoPaginatedList.md
@@ -140,6 +151,7 @@ docs/PushUriResponse.md
 docs/Receiver.md
 docs/ReceiverType.md
 docs/SharedWith.md
+docs/SupportedEntityType.md
 docs/UpdateDataProcessingAgreementRequestModel.md
 docs/UriDetails.md
 docs/UserAccountFinancialTransactionsDto.md

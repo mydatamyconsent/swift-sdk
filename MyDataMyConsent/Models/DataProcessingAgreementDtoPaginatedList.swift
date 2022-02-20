@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct DataProcessingAgreementDtoPaginatedList: Codable, Hashable {
+public struct DataProcessingAgreementDtoPaginatedList: Codable, JSONEncodable, Hashable {
 
     public var pageIndex: Int?
     public var pageSize: Int?

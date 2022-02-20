@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct PushUriResponse: Codable, Hashable {
+public struct PushUriResponse: Codable, JSONEncodable, Hashable {
 
     public var responseStatus: String?
     public var responseMessage: String?

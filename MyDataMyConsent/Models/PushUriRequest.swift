@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct PushUriRequest: Codable, Hashable {
+public struct PushUriRequest: Codable, JSONEncodable, Hashable {
 
     public var uriDetails: UriDetails?
     public var ns2: String?

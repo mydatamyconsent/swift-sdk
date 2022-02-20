@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct UriDetails: Codable, Hashable {
+public struct UriDetails: Codable, JSONEncodable, Hashable {
 
     public var aadhaar: String?
     public var uri: String?

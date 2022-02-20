@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 /** Organization Data Consent Request Response. */
-public struct OrganizationDataConsentRequestResponse: Codable, Hashable {
+public struct OrganizationDataConsentRequestResponse: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var templateId: UUID?
