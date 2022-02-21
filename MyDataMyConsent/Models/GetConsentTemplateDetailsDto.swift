@@ -23,12 +23,17 @@ public struct GetConsentTemplateDetailsDto: Codable, JSONEncodable, Hashable {
     public var createdAtUtc: Date?
     public var status: String?
     public var templateType: ConsentTemplateTypes?
+    public var dataLife: Life?
+    public var requestLife: Life?
     public var frequency: Life?
     public var identity: [IdentitySupportedFields]?
     public var documents: [Document]?
     public var financials: [Financial]?
+    public var healthRecords: [AnyCodable]?
+    public var approvedBy: UUID?
+    public var approvedAtUtc: Date?
 
-    public init(id: UUID? = nil, name: String? = nil, description: String? = nil, consentPurpose: String? = nil, collectables: [CollectibleTypes]? = nil, fetchType: FetchTypes? = nil, shortId: String? = nil, createdBy: String? = nil, createdAtUtc: Date? = nil, status: String? = nil, templateType: ConsentTemplateTypes? = nil, frequency: Life? = nil, identity: [IdentitySupportedFields]? = nil, documents: [Document]? = nil, financials: [Financial]? = nil) {
+    public init(id: UUID? = nil, name: String? = nil, description: String? = nil, consentPurpose: String? = nil, collectables: [CollectibleTypes]? = nil, fetchType: FetchTypes? = nil, shortId: String? = nil, createdBy: String? = nil, createdAtUtc: Date? = nil, status: String? = nil, templateType: ConsentTemplateTypes? = nil, dataLife: Life? = nil, requestLife: Life? = nil, frequency: Life? = nil, identity: [IdentitySupportedFields]? = nil, documents: [Document]? = nil, financials: [Financial]? = nil, healthRecords: [AnyCodable]? = nil, approvedBy: UUID? = nil, approvedAtUtc: Date? = nil) {
         self.id = id
         self.name = name
         self.description = description
@@ -40,10 +45,15 @@ public struct GetConsentTemplateDetailsDto: Codable, JSONEncodable, Hashable {
         self.createdAtUtc = createdAtUtc
         self.status = status
         self.templateType = templateType
+        self.dataLife = dataLife
+        self.requestLife = requestLife
         self.frequency = frequency
         self.identity = identity
         self.documents = documents
         self.financials = financials
+        self.healthRecords = healthRecords
+        self.approvedBy = approvedBy
+        self.approvedAtUtc = approvedAtUtc
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -58,10 +68,15 @@ public struct GetConsentTemplateDetailsDto: Codable, JSONEncodable, Hashable {
         case createdAtUtc
         case status
         case templateType
+        case dataLife
+        case requestLife
         case frequency
         case identity
         case documents
         case financials
+        case healthRecords
+        case approvedBy
+        case approvedAtUtc
     }
 
     // Encodable protocol methods
@@ -79,10 +94,15 @@ public struct GetConsentTemplateDetailsDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(createdAtUtc, forKey: .createdAtUtc)
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(templateType, forKey: .templateType)
+        try container.encodeIfPresent(dataLife, forKey: .dataLife)
+        try container.encodeIfPresent(requestLife, forKey: .requestLife)
         try container.encodeIfPresent(frequency, forKey: .frequency)
         try container.encodeIfPresent(identity, forKey: .identity)
         try container.encodeIfPresent(documents, forKey: .documents)
         try container.encodeIfPresent(financials, forKey: .financials)
+        try container.encodeIfPresent(healthRecords, forKey: .healthRecords)
+        try container.encodeIfPresent(approvedBy, forKey: .approvedBy)
+        try container.encodeIfPresent(approvedAtUtc, forKey: .approvedAtUtc)
     }
 }
 

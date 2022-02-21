@@ -15,14 +15,16 @@ public struct DataConsentRequesterDto: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var logoUrl: String?
     public var description: String?
+    public var location: String?
     public var website: String?
     public var supportEmail: String?
     public var helpLineNumber: String?
 
-    public init(name: String? = nil, logoUrl: String? = nil, description: String? = nil, website: String? = nil, supportEmail: String? = nil, helpLineNumber: String? = nil) {
+    public init(name: String? = nil, logoUrl: String? = nil, description: String? = nil, location: String? = nil, website: String? = nil, supportEmail: String? = nil, helpLineNumber: String? = nil) {
         self.name = name
         self.logoUrl = logoUrl
         self.description = description
+        self.location = location
         self.website = website
         self.supportEmail = supportEmail
         self.helpLineNumber = helpLineNumber
@@ -32,6 +34,7 @@ public struct DataConsentRequesterDto: Codable, JSONEncodable, Hashable {
         case name
         case logoUrl
         case description
+        case location
         case website
         case supportEmail
         case helpLineNumber
@@ -44,6 +47,7 @@ public struct DataConsentRequesterDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(logoUrl, forKey: .logoUrl)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(location, forKey: .location)
         try container.encodeIfPresent(website, forKey: .website)
         try container.encodeIfPresent(supportEmail, forKey: .supportEmail)
         try container.encodeIfPresent(helpLineNumber, forKey: .helpLineNumber)

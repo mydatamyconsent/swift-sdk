@@ -14,10 +14,15 @@ Name | Type | Description | Notes
 **createdAtUtc** | **Date** |  | [optional] 
 **status** | **String** |  | [optional] 
 **templateType** | [**ConsentTemplateTypes**](ConsentTemplateTypes.md) |  | [optional] 
+**dataLife** | [**Life**](Life.md) |  | [optional] 
+**requestLife** | [**Life**](Life.md) |  | [optional] 
 **frequency** | [**Life**](Life.md) |  | [optional] 
 **identity** | [IdentitySupportedFields] |  | [optional] 
 **documents** | [Document] |  | [optional] 
 **financials** | [Financial] |  | [optional] 
+**healthRecords** | [AnyCodable] |  | [optional] 
+**approvedBy** | **UUID** |  | [optional] 
+**approvedAtUtc** | **Date** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
