@@ -41,8 +41,8 @@ MyDataMyConsent/Models/Document.swift
 MyDataMyConsent/Models/DocumentCategoryType.swift
 MyDataMyConsent/Models/DocumentIssueRequest.swift
 MyDataMyConsent/Models/DocumentSubCategoryType.swift
-MyDataMyConsent/Models/DocumentTypeDetailsDto.swift
-MyDataMyConsent/Models/DocumentTypeDetailsDtoPaginatedList.swift
+MyDataMyConsent/Models/DocumentType.swift
+MyDataMyConsent/Models/DocumentTypePaginatedList.swift
 MyDataMyConsent/Models/DocumentsRequired.swift
 MyDataMyConsent/Models/FetchTypes.swift
 MyDataMyConsent/Models/FileType.swift
@@ -118,8 +118,8 @@ docs/Document.md
 docs/DocumentCategoryType.md
 docs/DocumentIssueRequest.md
 docs/DocumentSubCategoryType.md
-docs/DocumentTypeDetailsDto.md
-docs/DocumentTypeDetailsDtoPaginatedList.md
+docs/DocumentType.md
+docs/DocumentTypePaginatedList.md
 docs/DocumentsAPI.md
 docs/DocumentsRequired.md
 docs/FetchTypes.md

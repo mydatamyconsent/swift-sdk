@@ -125,7 +125,7 @@ open class DocumentsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getRegisteredDocumentTypes(pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DocumentTypeDetailsDtoPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getRegisteredDocumentTypes(pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DocumentTypePaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
         return getRegisteredDocumentTypesWithRequestBuilder(pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -141,9 +141,9 @@ open class DocumentsAPI {
      - GET /v1/documents/types
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
-     - returns: RequestBuilder<DocumentTypeDetailsDtoPaginatedList> 
+     - returns: RequestBuilder<DocumentTypePaginatedList> 
      */
-    open class func getRegisteredDocumentTypesWithRequestBuilder(pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<DocumentTypeDetailsDtoPaginatedList> {
+    open class func getRegisteredDocumentTypesWithRequestBuilder(pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<DocumentTypePaginatedList> {
         let localVariablePath = "/v1/documents/types"
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -160,7 +160,7 @@ open class DocumentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DocumentTypeDetailsDtoPaginatedList>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DocumentTypePaginatedList>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

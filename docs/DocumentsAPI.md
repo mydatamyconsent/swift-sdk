@@ -116,7 +116,7 @@ No authorization required
 
 # **getRegisteredDocumentTypes**
 ```swift
-    open class func getRegisteredDocumentTypes(pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: DocumentTypeDetailsDtoPaginatedList?, _ error: Error?) -> Void)
+    open class func getRegisteredDocumentTypes(pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: DocumentTypePaginatedList?, _ error: Error?) -> Void)
 ```
 
 Get registered document types.
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DocumentTypeDetailsDtoPaginatedList**](DocumentTypeDetailsDtoPaginatedList.md)
+[**DocumentTypePaginatedList**](DocumentTypePaginatedList.md)
 
 ### Authorization
 
