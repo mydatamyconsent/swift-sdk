@@ -15,6 +15,7 @@
                 "additionalProperties": {
                     "projectName": "MyDataMyConsent",
                     "swiftPackagePath": "MyDataMyConsent",
+                    "basePath": "https://api.mydatamyconsent.com",
                     "library": "alamofire",
                     "useAlamofire": true,
                     "developerEmail": "developers@mydatamyconsent.com",
