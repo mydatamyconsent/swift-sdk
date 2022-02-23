@@ -13,6 +13,7 @@ import AnyCodable
 /** Organization Data Consent Request. */
 public struct CreateOrganizationDataConsentRequest: Codable, JSONEncodable, Hashable {
 
+    /** Consent template id */
     public var consentTemplateId: UUID?
     public var receiver: Receiver
 

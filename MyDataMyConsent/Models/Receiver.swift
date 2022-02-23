@@ -10,9 +10,11 @@ import Foundation
 import AnyCodable
 #endif
 
+/** Consent request receiver details */
 public struct Receiver: Codable, JSONEncodable, Hashable {
 
     public var type: ReceiverType?
+    /** Consent request receiver identifiers */
     public var identifiers: [IdentifierStringKeyValuePair]?
     public var identificationStrategy: IdentificationStrategy?
 

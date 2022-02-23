@@ -13,11 +13,16 @@ import AnyCodable
 /** Individual Data Consent Request Response. */
 public struct IndividualDataConsentRequestResponse: Codable, JSONEncodable, Hashable {
 
+    /** Consent request id */
     public var id: UUID?
+    /** Consent request template id */
     public var templateId: UUID?
+    /** Requested date time in utc zone */
     public var requestedAtUtc: Date?
+    /** Request expires date time in utc zone */
     public var requestExpiresAtUtc: Date?
     public var status: DataConsentStatus?
+    /** Requested transaction id */
     public var transactionId: String?
 
     public init(id: UUID? = nil, templateId: UUID? = nil, requestedAtUtc: Date? = nil, requestExpiresAtUtc: Date? = nil, status: DataConsentStatus? = nil, transactionId: String? = nil) {

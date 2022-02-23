@@ -59,19 +59,19 @@ open class DocumentsAPI {
     }
 
     /**
-     Get issued documents.
+     Get paginated list of issued documents of given document type.
      
-     - parameter documentTypeId: (query)  (optional)
-     - parameter fromDateTime: (query)  (optional)
-     - parameter toDateTime: (query)  (optional)
-     - parameter pageSize: (query)  (optional, default to 25)
-     - parameter pageNo: (query)  (optional, default to 1)
+     - parameter documentTypeId: (path) Document type id. 
+     - parameter fromDateTime: (query) From DateTime. (optional)
+     - parameter toDateTime: (query) To DateTime. (optional)
+     - parameter pageNo: (query) Page number. (optional, default to 1)
+     - parameter pageSize: (query) Number of items to return. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getIssuedDocuments(documentTypeId: UUID? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageSize: Int? = nil, pageNo: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: IssuedDocumentPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return getIssuedDocumentsWithRequestBuilder(documentTypeId: documentTypeId, fromDateTime: fromDateTime, toDateTime: toDateTime, pageSize: pageSize, pageNo: pageNo).execute(apiResponseQueue) { result in
+    open class func getIssuedDocuments(documentTypeId: UUID, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: IssuedDocumentPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return getIssuedDocumentsWithRequestBuilder(documentTypeId: documentTypeId, fromDateTime: fromDateTime, toDateTime: toDateTime, pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -82,27 +82,29 @@ open class DocumentsAPI {
     }
 
     /**
-     Get issued documents.
-     - GET /v1/documents/issued
-     - parameter documentTypeId: (query)  (optional)
-     - parameter fromDateTime: (query)  (optional)
-     - parameter toDateTime: (query)  (optional)
-     - parameter pageSize: (query)  (optional, default to 25)
-     - parameter pageNo: (query)  (optional, default to 1)
+     Get paginated list of issued documents of given document type.
+     - GET /v1/documents/issued/{documentTypeId}
+     - parameter documentTypeId: (path) Document type id. 
+     - parameter fromDateTime: (query) From DateTime. (optional)
+     - parameter toDateTime: (query) To DateTime. (optional)
+     - parameter pageNo: (query) Page number. (optional, default to 1)
+     - parameter pageSize: (query) Number of items to return. (optional, default to 25)
      - returns: RequestBuilder<IssuedDocumentPaginatedList> 
      */
-    open class func getIssuedDocumentsWithRequestBuilder(documentTypeId: UUID? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageSize: Int? = nil, pageNo: Int? = nil) -> RequestBuilder<IssuedDocumentPaginatedList> {
-        let localVariablePath = "/v1/documents/issued"
+    open class func getIssuedDocumentsWithRequestBuilder(documentTypeId: UUID, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<IssuedDocumentPaginatedList> {
+        var localVariablePath = "/v1/documents/issued/{documentTypeId}"
+        let documentTypeIdPreEscape = "\(APIHelper.mapValueToPathItem(documentTypeId))"
+        let documentTypeIdPostEscape = documentTypeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{documentTypeId}", with: documentTypeIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "documentTypeId": documentTypeId?.encodeToJSON(),
             "fromDateTime": fromDateTime?.encodeToJSON(),
             "toDateTime": toDateTime?.encodeToJSON(),
-            "pageSize": pageSize?.encodeToJSON(),
             "pageNo": pageNo?.encodeToJSON(),
+            "pageSize": pageSize?.encodeToJSON(),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -166,15 +168,15 @@ open class DocumentsAPI {
     }
 
     /**
-     Issue a new document.
+     Issue a new document to an individual user.
      
-     - parameter documentIssueRequest: (body) Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest. 
+     - parameter documentIssueRequest: (body) Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func issueDocument(documentIssueRequest: DocumentIssueRequest, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: IssuedDocument?, _ error: Error?) -> Void)) -> RequestTask {
-        return issueDocumentWithRequestBuilder(documentIssueRequest: documentIssueRequest).execute(apiResponseQueue) { result in
+    open class func issueDocumentToIndividual(documentIssueRequest: DocumentIssueRequest, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DocumentIssueRequestDetails?, _ error: Error?) -> Void)) -> RequestTask {
+        return issueDocumentToIndividualWithRequestBuilder(documentIssueRequest: documentIssueRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -185,13 +187,13 @@ open class DocumentsAPI {
     }
 
     /**
-     Issue a new document.
-     - POST /v1/documents/issue
-     - parameter documentIssueRequest: (body) Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest. 
-     - returns: RequestBuilder<IssuedDocument> 
+     Issue a new document to an individual user.
+     - POST /v1/documents/issue/individual
+     - parameter documentIssueRequest: (body) Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. 
+     - returns: RequestBuilder<DocumentIssueRequestDetails> 
      */
-    open class func issueDocumentWithRequestBuilder(documentIssueRequest: DocumentIssueRequest) -> RequestBuilder<IssuedDocument> {
-        let localVariablePath = "/v1/documents/issue"
+    open class func issueDocumentToIndividualWithRequestBuilder(documentIssueRequest: DocumentIssueRequest) -> RequestBuilder<DocumentIssueRequestDetails> {
+        let localVariablePath = "/v1/documents/issue/individual"
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: documentIssueRequest)
 
@@ -203,7 +205,156 @@ open class DocumentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<IssuedDocument>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DocumentIssueRequestDetails>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Issue a new document to an organization.
+     
+     - parameter documentIssueRequest: (body) Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func issueDocumentToOrganization(documentIssueRequest: DocumentIssueRequest, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DocumentIssueRequestDetails?, _ error: Error?) -> Void)) -> RequestTask {
+        return issueDocumentToOrganizationWithRequestBuilder(documentIssueRequest: documentIssueRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Issue a new document to an organization.
+     - POST /v1/documents/issue/organization
+     - parameter documentIssueRequest: (body) Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. 
+     - returns: RequestBuilder<DocumentIssueRequestDetails> 
+     */
+    open class func issueDocumentToOrganizationWithRequestBuilder(documentIssueRequest: DocumentIssueRequest) -> RequestBuilder<DocumentIssueRequestDetails> {
+        let localVariablePath = "/v1/documents/issue/organization"
+        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: documentIssueRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<DocumentIssueRequestDetails>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Upload a document for issuance request of individual.
+     
+     - parameter issueRequestId: (path) Issue Request Id System.Guid. 
+     - parameter formFile: (form)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func uploadDocumentForIndividual(issueRequestId: UUID, formFile: URL? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return uploadDocumentForIndividualWithRequestBuilder(issueRequestId: issueRequestId, formFile: formFile).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Upload a document for issuance request of individual.
+     - POST /v1/documents/issue/individual/upload/{issueRequestId}
+     - parameter issueRequestId: (path) Issue Request Id System.Guid. 
+     - parameter formFile: (form)  (optional)
+     - returns: RequestBuilder<String> 
+     */
+    open class func uploadDocumentForIndividualWithRequestBuilder(issueRequestId: UUID, formFile: URL? = nil) -> RequestBuilder<String> {
+        var localVariablePath = "/v1/documents/issue/individual/upload/{issueRequestId}"
+        let issueRequestIdPreEscape = "\(APIHelper.mapValueToPathItem(issueRequestId))"
+        let issueRequestIdPostEscape = issueRequestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{issueRequestId}", with: issueRequestIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
+        let localVariableFormParams: [String: Any?] = [
+            "formFile": formFile?.encodeToJSON(),
+        ]
+
+        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
+        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "multipart/form-data",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Upload a document for issuance request of organization.
+     
+     - parameter issueRequestId: (path) Issue Request Id System.Guid. 
+     - parameter formFile: (form)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func uploadDocumentForOrganization(issueRequestId: UUID, formFile: URL? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return uploadDocumentForOrganizationWithRequestBuilder(issueRequestId: issueRequestId, formFile: formFile).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Upload a document for issuance request of organization.
+     - POST /v1/documents/issue/organization/upload/{issueRequestId}
+     - parameter issueRequestId: (path) Issue Request Id System.Guid. 
+     - parameter formFile: (form)  (optional)
+     - returns: RequestBuilder<String> 
+     */
+    open class func uploadDocumentForOrganizationWithRequestBuilder(issueRequestId: UUID, formFile: URL? = nil) -> RequestBuilder<String> {
+        var localVariablePath = "/v1/documents/issue/organization/upload/{issueRequestId}"
+        let issueRequestIdPreEscape = "\(APIHelper.mapValueToPathItem(issueRequestId))"
+        let issueRequestIdPostEscape = issueRequestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{issueRequestId}", with: issueRequestIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
+        let localVariableFormParams: [String: Any?] = [
+            "formFile": formFile?.encodeToJSON(),
+        ]
+
+        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
+        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "multipart/form-data",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

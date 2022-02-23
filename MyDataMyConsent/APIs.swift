@@ -14,7 +14,7 @@ import Foundation
 public typealias MyDataMyConsent = MyDataMyConsentAPI
 
 open class MyDataMyConsentAPI {
-    public static var basePath = "http://localhost"
+    public static var basePath = "https://api.mydatamyconsent.com"
     public static var customHeaders: [String: String] = [:]
     public static var credential: URLCredential?
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()

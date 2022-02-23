@@ -16,14 +16,12 @@ public struct ProblemDetails: Codable, JSONEncodable, Hashable {
     public var title: String?
     public var status: Int?
     public var detail: String?
-    public var instance: String?
 
-    public init(type: String? = nil, title: String? = nil, status: Int? = nil, detail: String? = nil, instance: String? = nil) {
+    public init(type: String? = nil, title: String? = nil, status: Int? = nil, detail: String? = nil) {
         self.type = type
         self.title = title
         self.status = status
         self.detail = detail
-        self.instance = instance
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -31,7 +29,6 @@ public struct ProblemDetails: Codable, JSONEncodable, Hashable {
         case title
         case status
         case detail
-        case instance
     }
 
     // Encodable protocol methods
@@ -42,7 +39,6 @@ public struct ProblemDetails: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(detail, forKey: .detail)
-        try container.encodeIfPresent(instance, forKey: .instance)
     }
 }
 

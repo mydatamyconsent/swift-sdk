@@ -207,52 +207,6 @@ open class DataConsentsAPI {
     }
 
     /**
-     Get all organizational consented financial accounts.
-     
-     - parameter consentId: (path) Consent id. 
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func getAllOrganizationConsentedAccounts(consentId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DataConsentFinancialsDto?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAllOrganizationConsentedAccountsWithRequestBuilder(consentId: consentId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Get all organizational consented financial accounts.
-     - GET /v1/consents/organizations/{consentId}/accounts
-     - parameter consentId: (path) Consent id. 
-     - returns: RequestBuilder<DataConsentFinancialsDto> 
-     */
-    open class func getAllOrganizationConsentedAccountsWithRequestBuilder(consentId: UUID) -> RequestBuilder<DataConsentFinancialsDto> {
-        var localVariablePath = "/v1/consents/organizations/{consentId}/accounts"
-        let consentIdPreEscape = "\(APIHelper.mapValueToPathItem(consentId))"
-        let consentIdPostEscape = consentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{consentId}", with: consentIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<DataConsentFinancialsDto>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
      Get the organization documents based on ConsentId.
      
      - parameter consentId: (path) Consent id. 
@@ -340,6 +294,52 @@ open class DataConsentsAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<DataConsentDetailsDto>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Get all organizational consented financial accounts.
+     
+     - parameter consentId: (path) Consent id. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getConsentFinancialAccounts(consentId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DataConsentFinancialsDto?, _ error: Error?) -> Void)) -> RequestTask {
+        return getConsentFinancialAccountsWithRequestBuilder(consentId: consentId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get all organizational consented financial accounts.
+     - GET /v1/consents/organizations/{consentId}/accounts
+     - parameter consentId: (path) Consent id. 
+     - returns: RequestBuilder<DataConsentFinancialsDto> 
+     */
+    open class func getConsentFinancialAccountsWithRequestBuilder(consentId: UUID) -> RequestBuilder<DataConsentFinancialsDto> {
+        var localVariablePath = "/v1/consents/organizations/{consentId}/accounts"
+        let consentIdPreEscape = "\(APIHelper.mapValueToPathItem(consentId))"
+        let consentIdPostEscape = consentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{consentId}", with: consentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<DataConsentFinancialsDto>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -566,64 +566,6 @@ open class DataConsentsAPI {
     }
 
     /**
-     Get the list of Consents Sent to Individuals.
-     
-     - parameter status: (query) Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional)
-     - parameter from: (query) From date time in utc timezone. (optional)
-     - parameter to: (query) Til date time in utc timezone. (optional)
-     - parameter pageNo: (query) Page number. (optional, default to 1)
-     - parameter pageSize: (query) Number of items to return. (optional, default to 25)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func getConsents(status: DataConsentStatus? = nil, from: Date? = nil, to: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: UserDataConsentInfoDtoPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return getConsentsWithRequestBuilder(status: status, from: from, to: to, pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Get the list of Consents Sent to Individuals.
-     - GET /v1/consents/individuals
-     - parameter status: (query) Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional)
-     - parameter from: (query) From date time in utc timezone. (optional)
-     - parameter to: (query) Til date time in utc timezone. (optional)
-     - parameter pageNo: (query) Page number. (optional, default to 1)
-     - parameter pageSize: (query) Number of items to return. (optional, default to 25)
-     - returns: RequestBuilder<UserDataConsentInfoDtoPaginatedList> 
-     */
-    open class func getConsentsWithRequestBuilder(status: DataConsentStatus? = nil, from: Date? = nil, to: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<UserDataConsentInfoDtoPaginatedList> {
-        let localVariablePath = "/v1/consents/individuals"
-        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "status": status?.encodeToJSON(),
-            "from": from?.encodeToJSON(),
-            "to": to?.encodeToJSON(),
-            "pageNo": pageNo?.encodeToJSON(),
-            "pageSize": pageSize?.encodeToJSON(),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<UserDataConsentInfoDtoPaginatedList>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
      Get the list of data consents sent for organizations.
      
      - parameter status: (query) Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional)
@@ -677,6 +619,64 @@ open class DataConsentsAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<OrganizationDataConsentInfoDtoPaginatedList>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Get the list of Consents Sent to Individuals.
+     
+     - parameter status: (query) Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional)
+     - parameter from: (query) From date time in utc timezone. (optional)
+     - parameter to: (query) Til date time in utc timezone. (optional)
+     - parameter pageNo: (query) Page number. (optional, default to 1)
+     - parameter pageSize: (query) Number of items to return. (optional, default to 25)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getConsentsSentToIndividuals(status: DataConsentStatus? = nil, from: Date? = nil, to: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: UserDataConsentInfoDtoPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return getConsentsSentToIndividualsWithRequestBuilder(status: status, from: from, to: to, pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get the list of Consents Sent to Individuals.
+     - GET /v1/consents/individuals
+     - parameter status: (query) Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional)
+     - parameter from: (query) From date time in utc timezone. (optional)
+     - parameter to: (query) Til date time in utc timezone. (optional)
+     - parameter pageNo: (query) Page number. (optional, default to 1)
+     - parameter pageSize: (query) Number of items to return. (optional, default to 25)
+     - returns: RequestBuilder<UserDataConsentInfoDtoPaginatedList> 
+     */
+    open class func getConsentsSentToIndividualsWithRequestBuilder(status: DataConsentStatus? = nil, from: Date? = nil, to: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<UserDataConsentInfoDtoPaginatedList> {
+        let localVariablePath = "/v1/consents/individuals"
+        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "status": status?.encodeToJSON(),
+            "from": from?.encodeToJSON(),
+            "to": to?.encodeToJSON(),
+            "pageNo": pageNo?.encodeToJSON(),
+            "pageSize": pageSize?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UserDataConsentInfoDtoPaginatedList>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

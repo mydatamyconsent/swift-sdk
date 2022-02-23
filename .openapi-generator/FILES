@@ -9,6 +9,7 @@ MyDataMyConsent/APIs/DataProcessingAgreementsAPI.swift
 MyDataMyConsent/APIs/DataProviderDiscoveryAPI.swift
 MyDataMyConsent/APIs/DigiLockerCompatIssuerAPI.swift
 MyDataMyConsent/APIs/DocumentsAPI.swift
+MyDataMyConsent/APIs/SupportedIdentifiersAPI.swift
 MyDataMyConsent/CodableHelper.swift
 MyDataMyConsent/Configuration.swift
 MyDataMyConsent/Extensions.swift
@@ -40,6 +41,8 @@ MyDataMyConsent/Models/DigitalSignature.swift
 MyDataMyConsent/Models/Document.swift
 MyDataMyConsent/Models/DocumentCategoryType.swift
 MyDataMyConsent/Models/DocumentIssueRequest.swift
+MyDataMyConsent/Models/DocumentIssueRequestDetails.swift
+MyDataMyConsent/Models/DocumentReceiver.swift
 MyDataMyConsent/Models/DocumentSubCategoryType.swift
 MyDataMyConsent/Models/DocumentType.swift
 MyDataMyConsent/Models/DocumentTypePaginatedList.swift
@@ -73,7 +76,10 @@ MyDataMyConsent/Models/PushUriResponse.swift
 MyDataMyConsent/Models/Receiver.swift
 MyDataMyConsent/Models/ReceiverType.swift
 MyDataMyConsent/Models/SharedWith.swift
+MyDataMyConsent/Models/StringStringKeyValuePair.swift
 MyDataMyConsent/Models/SupportedEntityType.swift
+MyDataMyConsent/Models/SupportedIdentifier.swift
+MyDataMyConsent/Models/SupportedIdentifiersByCountry.swift
 MyDataMyConsent/Models/UpdateDataProcessingAgreementRequestModel.swift
 MyDataMyConsent/Models/UriDetails.swift
 MyDataMyConsent/Models/UserAccountFinancialTransactionsDto.swift
@@ -117,6 +123,8 @@ docs/DigitalSignature.md
 docs/Document.md
 docs/DocumentCategoryType.md
 docs/DocumentIssueRequest.md
+docs/DocumentIssueRequestDetails.md
+docs/DocumentReceiver.md
 docs/DocumentSubCategoryType.md
 docs/DocumentType.md
 docs/DocumentTypePaginatedList.md
@@ -151,7 +159,11 @@ docs/PushUriResponse.md
 docs/Receiver.md
 docs/ReceiverType.md
 docs/SharedWith.md
+docs/StringStringKeyValuePair.md
 docs/SupportedEntityType.md
+docs/SupportedIdentifier.md
+docs/SupportedIdentifiersAPI.md
+docs/SupportedIdentifiersByCountry.md
 docs/UpdateDataProcessingAgreementRequestModel.md
 docs/UriDetails.md
 docs/UserAccountFinancialTransactionsDto.md

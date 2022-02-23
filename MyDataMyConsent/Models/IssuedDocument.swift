@@ -10,16 +10,20 @@ import Foundation
 import AnyCodable
 #endif
 
+/** Issued Document Identifier. */
 public struct IssuedDocument: Codable, JSONEncodable, Hashable {
 
-    public var documentId: UUID?
-    public var identifier: String?
-    public var documentType: String?
-    public var issuedTo: String?
-    public var issuedAtUtc: Date?
+    /** Document Identifier. */
+    public var id: UUID
+    /** Document Identifier. eg: GJ05FG67866586. */
+    public var identifier: String
+    /** Document type name. eg: Driving License. */
+    public var documentType: String
+    public var issuedTo: String
+    public var issuedAtUtc: Date
 
-    public init(documentId: UUID? = nil, identifier: String? = nil, documentType: String? = nil, issuedTo: String? = nil, issuedAtUtc: Date? = nil) {
-        self.documentId = documentId
+    public init(id: UUID, identifier: String, documentType: String, issuedTo: String, issuedAtUtc: Date) {
+        self.id = id
         self.identifier = identifier
         self.documentType = documentType
         self.issuedTo = issuedTo
@@ -27,7 +31,7 @@ public struct IssuedDocument: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case documentId
+        case id
         case identifier
         case documentType
         case issuedTo
@@ -38,11 +42,11 @@ public struct IssuedDocument: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(documentId, forKey: .documentId)
-        try container.encodeIfPresent(identifier, forKey: .identifier)
-        try container.encodeIfPresent(documentType, forKey: .documentType)
-        try container.encodeIfPresent(issuedTo, forKey: .issuedTo)
-        try container.encodeIfPresent(issuedAtUtc, forKey: .issuedAtUtc)
+        try container.encode(id, forKey: .id)
+        try container.encode(identifier, forKey: .identifier)
+        try container.encode(documentType, forKey: .documentType)
+        try container.encode(issuedTo, forKey: .issuedTo)
+        try container.encode(issuedAtUtc, forKey: .issuedAtUtc)
     }
 }
 
