@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Organization Data Consent Request. */
+/** Create organization data consent request */
 public struct CreateOrganizationDataConsentRequest: Codable, JSONEncodable, Hashable {
 
     /** Consent template id */

@@ -9,8 +9,10 @@ Method | HTTP request | Description
 
 # **getAllSupportedIdentifiers**
 ```swift
-    open class func getAllSupportedIdentifiers(countryIso2Code: String, completion: @escaping (_ data: SupportedIdentifiersByCountry?, _ error: Error?) -> Void)
+    open class func getAllSupportedIdentifiers(countryIso2Code: String, completion: @escaping (_ data: SupportedIdentifier?, _ error: Error?) -> Void)
 ```
+
+Get all supported identifiers by country.
 
 Get all supported identifiers by country.
 
@@ -42,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SupportedIdentifiersByCountry**](SupportedIdentifiersByCountry.md)
+[**SupportedIdentifier**](SupportedIdentifier.md)
 
 ### Authorization
 

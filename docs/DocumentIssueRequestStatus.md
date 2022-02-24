@@ -1,4 +1,4 @@
-# ConsentTemplateTypes
+# DocumentIssueRequestStatus
 
 ## Properties
 Name | Type | Description | Notes

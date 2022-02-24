@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Individual Data Consent Request Response. */
+/** IndividualDataConsentRequestResponse */
 public struct IndividualDataConsentRequestResponse: Codable, JSONEncodable, Hashable {
 
     /** Consent request id */

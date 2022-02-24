@@ -20,7 +20,7 @@ open class SupportedIdentifiersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAllSupportedIdentifiers(countryIso2Code: String, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: SupportedIdentifiersByCountry?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getAllSupportedIdentifiers(countryIso2Code: String, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: SupportedIdentifier?, _ error: Error?) -> Void)) -> RequestTask {
         return getAllSupportedIdentifiersWithRequestBuilder(countryIso2Code: countryIso2Code).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -34,10 +34,11 @@ open class SupportedIdentifiersAPI {
     /**
      Get all supported identifiers by country.
      - GET /v1/supported-identifiers/{countryIso2Code}
+     - Get all supported identifiers by country.
      - parameter countryIso2Code: (path) Country ISO 2 code. 
-     - returns: RequestBuilder<SupportedIdentifiersByCountry> 
+     - returns: RequestBuilder<SupportedIdentifier> 
      */
-    open class func getAllSupportedIdentifiersWithRequestBuilder(countryIso2Code: String) -> RequestBuilder<SupportedIdentifiersByCountry> {
+    open class func getAllSupportedIdentifiersWithRequestBuilder(countryIso2Code: String) -> RequestBuilder<SupportedIdentifier> {
         var localVariablePath = "/v1/supported-identifiers/{countryIso2Code}"
         let countryIso2CodePreEscape = "\(APIHelper.mapValueToPathItem(countryIso2Code))"
         let countryIso2CodePostEscape = countryIso2CodePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -53,7 +54,7 @@ open class SupportedIdentifiersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<SupportedIdentifiersByCountry>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SupportedIdentifier>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

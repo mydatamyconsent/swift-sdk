@@ -12,61 +12,81 @@ import AnyCodable
 
 public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: UUID
+    public var title: String?
+    public var description: String?
+    public var dataLife: Life?
+    public var requesterName: String?
+    public var requesterLogo: String?
+    public var location: String?
     public var status: DataConsentStatus?
     public var approvedAtUtc: Date?
     public var rejectedAtUtc: Date?
     public var expiresAtUtc: Date?
     public var requestedAtUtc: Date?
-    public var requester: DataConsentRequesterDto?
-    public var consentDetails: GetConsentTemplateDetailsDto?
-    public var identifiers: [DataConsentIdentifier]?
-    public var approvedDocuments: [DataConsentRequestedDocument]?
-    public var approvedFinancials: [DataConsentRequestedFinancialAccount]?
+    public var identifiers: JsonSchema?
+    public var documents: String?
+    public var financials: String?
+    public var healthRecords: String?
 
-    public init(id: UUID? = nil, status: DataConsentStatus? = nil, approvedAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, expiresAtUtc: Date? = nil, requestedAtUtc: Date? = nil, requester: DataConsentRequesterDto? = nil, consentDetails: GetConsentTemplateDetailsDto? = nil, identifiers: [DataConsentIdentifier]? = nil, approvedDocuments: [DataConsentRequestedDocument]? = nil, approvedFinancials: [DataConsentRequestedFinancialAccount]? = nil) {
+    public init(id: UUID, title: String? = nil, description: String? = nil, dataLife: Life? = nil, requesterName: String? = nil, requesterLogo: String? = nil, location: String? = nil, status: DataConsentStatus? = nil, approvedAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, expiresAtUtc: Date? = nil, requestedAtUtc: Date? = nil, identifiers: JsonSchema? = nil, documents: String? = nil, financials: String? = nil, healthRecords: String? = nil) {
         self.id = id
+        self.title = title
+        self.description = description
+        self.dataLife = dataLife
+        self.requesterName = requesterName
+        self.requesterLogo = requesterLogo
+        self.location = location
         self.status = status
         self.approvedAtUtc = approvedAtUtc
         self.rejectedAtUtc = rejectedAtUtc
         self.expiresAtUtc = expiresAtUtc
         self.requestedAtUtc = requestedAtUtc
-        self.requester = requester
-        self.consentDetails = consentDetails
         self.identifiers = identifiers
-        self.approvedDocuments = approvedDocuments
-        self.approvedFinancials = approvedFinancials
+        self.documents = documents
+        self.financials = financials
+        self.healthRecords = healthRecords
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case title
+        case description
+        case dataLife
+        case requesterName
+        case requesterLogo
+        case location
         case status
         case approvedAtUtc
         case rejectedAtUtc
         case expiresAtUtc
         case requestedAtUtc
-        case requester
-        case consentDetails
         case identifiers
-        case approvedDocuments
-        case approvedFinancials
+        case documents
+        case financials
+        case healthRecords
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
+        try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(dataLife, forKey: .dataLife)
+        try container.encodeIfPresent(requesterName, forKey: .requesterName)
+        try container.encodeIfPresent(requesterLogo, forKey: .requesterLogo)
+        try container.encodeIfPresent(location, forKey: .location)
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(approvedAtUtc, forKey: .approvedAtUtc)
         try container.encodeIfPresent(rejectedAtUtc, forKey: .rejectedAtUtc)
         try container.encodeIfPresent(expiresAtUtc, forKey: .expiresAtUtc)
         try container.encodeIfPresent(requestedAtUtc, forKey: .requestedAtUtc)
-        try container.encodeIfPresent(requester, forKey: .requester)
-        try container.encodeIfPresent(consentDetails, forKey: .consentDetails)
         try container.encodeIfPresent(identifiers, forKey: .identifiers)
-        try container.encodeIfPresent(approvedDocuments, forKey: .approvedDocuments)
-        try container.encodeIfPresent(approvedFinancials, forKey: .approvedFinancials)
+        try container.encodeIfPresent(documents, forKey: .documents)
+        try container.encodeIfPresent(financials, forKey: .financials)
+        try container.encodeIfPresent(healthRecords, forKey: .healthRecords)
     }
 }
 

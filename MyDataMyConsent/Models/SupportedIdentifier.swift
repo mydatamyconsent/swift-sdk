@@ -12,33 +12,33 @@ import AnyCodable
 
 public struct SupportedIdentifier: Codable, JSONEncodable, Hashable {
 
-    public var key: String?
+    public var iso2: String?
     public var name: String?
-    public var description: String?
-    public var exampleValue: String?
+    public var individualIdentifiers: [Identifier]?
+    public var organizationIdentifiers: [Identifier]?
 
-    public init(key: String? = nil, name: String? = nil, description: String? = nil, exampleValue: String? = nil) {
-        self.key = key
+    public init(iso2: String? = nil, name: String? = nil, individualIdentifiers: [Identifier]? = nil, organizationIdentifiers: [Identifier]? = nil) {
+        self.iso2 = iso2
         self.name = name
-        self.description = description
-        self.exampleValue = exampleValue
+        self.individualIdentifiers = individualIdentifiers
+        self.organizationIdentifiers = organizationIdentifiers
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case key
+        case iso2
         case name
-        case description
-        case exampleValue
+        case individualIdentifiers
+        case organizationIdentifiers
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(key, forKey: .key)
+        try container.encodeIfPresent(iso2, forKey: .iso2)
         try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(exampleValue, forKey: .exampleValue)
+        try container.encodeIfPresent(individualIdentifiers, forKey: .individualIdentifiers)
+        try container.encodeIfPresent(organizationIdentifiers, forKey: .organizationIdentifiers)
     }
 }
 

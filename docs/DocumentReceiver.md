@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**countryIso2Code** | **String** |  | 
 **identifiers** | [StringStringKeyValuePair] |  | 
 **identificationStrategy** | [**IdentificationStrategy**](IdentificationStrategy.md) |  | 
 

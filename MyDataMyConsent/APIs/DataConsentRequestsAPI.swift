@@ -107,7 +107,7 @@ open class DataConsentRequestsAPI {
     /**
      Create a individual data consent request.
      
-     - parameter createIndividualDataConsentRequest: (body) M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateIndividualDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateIndividualDataConsentRequest). 
+     - parameter createIndividualDataConsentRequest: (body) The Individual data consent request payload 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -126,7 +126,8 @@ open class DataConsentRequestsAPI {
     /**
      Create a individual data consent request.
      - POST /v1/consent-requests/individual
-     - parameter createIndividualDataConsentRequest: (body) M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateIndividualDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateIndividualDataConsentRequest). 
+     - Create a individual data consent request.
+     - parameter createIndividualDataConsentRequest: (body) The Individual data consent request payload 
      - returns: RequestBuilder<IndividualDataConsentRequestResponse> 
      */
     open class func createIndividualDataConsentRequestWithRequestBuilder(createIndividualDataConsentRequest: CreateIndividualDataConsentRequest) -> RequestBuilder<IndividualDataConsentRequestResponse> {
@@ -169,6 +170,7 @@ open class DataConsentRequestsAPI {
     /**
      Create a organization data consent request.
      - POST /v1/consent-requests/organization
+     - Create a organization data consent request.
      - parameter createOrganizationDataConsentRequest: (body) M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateOrganizationDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateOrganizationDataConsentRequest). 
      - returns: RequestBuilder<OrganizationDataConsentRequestResponse> 
      */

@@ -10,12 +10,35 @@ import Foundation
 import AnyCodable
 #endif
 
-public enum Identifier: String, Codable, CaseIterable {
-    case email = "Email"
-    case permanentAccountNumber = "PermanentAccountNumber"
-    case aadhaarNumber = "AadhaarNumber"
-    case mobileNumber = "MobileNumber"
-    case corporateIdentificationNumber = "CorporateIdentificationNumber"
-    case taxDeductionAccountNumber = "TaxDeductionAccountNumber"
-    case goodsAndServicesTaxIdentificationNumber = "GoodsAndServicesTaxIdentificationNumber"
+public struct Identifier: Codable, JSONEncodable, Hashable {
+
+    public var key: String?
+    public var name: String?
+    public var description: String?
+    public var exampleValue: String?
+
+    public init(key: String? = nil, name: String? = nil, description: String? = nil, exampleValue: String? = nil) {
+        self.key = key
+        self.name = name
+        self.description = description
+        self.exampleValue = exampleValue
+    }
+
+    public enum CodingKeys: String, CodingKey, CaseIterable {
+        case key
+        case name
+        case description
+        case exampleValue
+    }
+
+    // Encodable protocol methods
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(key, forKey: .key)
+        try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(exampleValue, forKey: .exampleValue)
+    }
 }
+

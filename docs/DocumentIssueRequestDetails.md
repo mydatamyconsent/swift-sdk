@@ -3,9 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **UUID** | Request Id. | 
 **documentTypeId** | **UUID** |  | 
 **documentTypeName** | **String** |  | 
 **documentIdentifier** | **String** |  | 
+**status** | [**DocumentIssueRequestStatus**](DocumentIssueRequestStatus.md) |  | [optional] 
 **description** | **String** |  | 
 **receiver** | [**AnyCodable**](.md) |  | 
 **expiresAtUtc** | **Date** |  | [optional] 

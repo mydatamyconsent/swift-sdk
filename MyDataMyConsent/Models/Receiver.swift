@@ -15,10 +15,10 @@ public struct Receiver: Codable, JSONEncodable, Hashable {
 
     public var type: ReceiverType?
     /** Consent request receiver identifiers */
-    public var identifiers: [IdentifierStringKeyValuePair]?
+    public var identifiers: [StringStringKeyValuePair]?
     public var identificationStrategy: IdentificationStrategy?
 
-    public init(type: ReceiverType? = nil, identifiers: [IdentifierStringKeyValuePair]? = nil, identificationStrategy: IdentificationStrategy? = nil) {
+    public init(type: ReceiverType? = nil, identifiers: [StringStringKeyValuePair]? = nil, identificationStrategy: IdentificationStrategy? = nil) {
         self.type = type
         self.identifiers = identifiers
         self.identificationStrategy = identificationStrategy
