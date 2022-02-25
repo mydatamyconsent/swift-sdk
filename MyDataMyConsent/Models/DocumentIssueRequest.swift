@@ -14,26 +14,32 @@ import AnyCodable
 public struct DocumentIssueRequest: Codable, JSONEncodable, Hashable {
 
     public var documentTypeId: UUID
-    public var documentIdentifier: String
+    public var identifier: String
     public var description: String
     public var receiver: DocumentReceiver
+    public var issuedAtUtc: Date
+    public var validFromUtc: Date
     public var expiresAtUtc: Date?
     public var metadata: [String: String]?
 
-    public init(documentTypeId: UUID, documentIdentifier: String, description: String, receiver: DocumentReceiver, expiresAtUtc: Date? = nil, metadata: [String: String]? = nil) {
+    public init(documentTypeId: UUID, identifier: String, description: String, receiver: DocumentReceiver, issuedAtUtc: Date, validFromUtc: Date, expiresAtUtc: Date? = nil, metadata: [String: String]? = nil) {
         self.documentTypeId = documentTypeId
-        self.documentIdentifier = documentIdentifier
+        self.identifier = identifier
         self.description = description
         self.receiver = receiver
+        self.issuedAtUtc = issuedAtUtc
+        self.validFromUtc = validFromUtc
         self.expiresAtUtc = expiresAtUtc
         self.metadata = metadata
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case documentTypeId
-        case documentIdentifier
+        case identifier
         case description
         case receiver
+        case issuedAtUtc
+        case validFromUtc
         case expiresAtUtc
         case metadata
     }
@@ -43,9 +49,11 @@ public struct DocumentIssueRequest: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(documentTypeId, forKey: .documentTypeId)
-        try container.encode(documentIdentifier, forKey: .documentIdentifier)
+        try container.encode(identifier, forKey: .identifier)
         try container.encode(description, forKey: .description)
         try container.encode(receiver, forKey: .receiver)
+        try container.encode(issuedAtUtc, forKey: .issuedAtUtc)
+        try container.encode(validFromUtc, forKey: .validFromUtc)
         try container.encodeIfPresent(expiresAtUtc, forKey: .expiresAtUtc)
         try container.encodeIfPresent(metadata, forKey: .metadata)
     }

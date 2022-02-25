@@ -15,9 +15,9 @@ public struct CreateIndividualDataConsentRequest: Codable, JSONEncodable, Hashab
 
     /** Consent template id */
     public var consentTemplateId: UUID?
-    public var receiver: Receiver
+    public var receiver: ConsentRequestReceiver
 
-    public init(consentTemplateId: UUID? = nil, receiver: Receiver) {
+    public init(consentTemplateId: UUID? = nil, receiver: ConsentRequestReceiver) {
         self.consentTemplateId = consentTemplateId
         self.receiver = receiver
     }

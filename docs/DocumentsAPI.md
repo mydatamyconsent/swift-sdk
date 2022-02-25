@@ -179,7 +179,7 @@ Issue a new document to an individual user.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let documentIssueRequest = DocumentIssueRequest(documentTypeId: 123, documentIdentifier: "documentIdentifier_example", description: "description_example", receiver: DocumentReceiver(countryIso2Code: "countryIso2Code_example", identifiers: [StringStringKeyValuePair(key: "key_example", value: "value_example")], identificationStrategy: IdentificationStrategy()), expiresAtUtc: Date(), metadata: "TODO") // DocumentIssueRequest | Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest.
+let documentIssueRequest = DocumentIssueRequest(documentTypeId: 123, identifier: "identifier_example", description: "description_example", receiver: DocumentReceiver(countryIso2Code: "countryIso2Code_example", identifiers: [StringStringKeyValuePair(key: "key_example", value: "value_example")], identificationStrategy: IdentificationStrategy()), issuedAtUtc: Date(), validFromUtc: Date(), expiresAtUtc: Date(), metadata: "TODO") // DocumentIssueRequest | Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest.
 
 // Issue a new document to an individual user.
 DocumentsAPI.issueDocumentToIndividual(documentIssueRequest: documentIssueRequest) { (response, error) in
@@ -227,7 +227,7 @@ Issue a new document to an organization.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let documentIssueRequest = DocumentIssueRequest(documentTypeId: 123, documentIdentifier: "documentIdentifier_example", description: "description_example", receiver: DocumentReceiver(countryIso2Code: "countryIso2Code_example", identifiers: [StringStringKeyValuePair(key: "key_example", value: "value_example")], identificationStrategy: IdentificationStrategy()), expiresAtUtc: Date(), metadata: "TODO") // DocumentIssueRequest | Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest.
+let documentIssueRequest = DocumentIssueRequest(documentTypeId: 123, identifier: "identifier_example", description: "description_example", receiver: DocumentReceiver(countryIso2Code: "countryIso2Code_example", identifiers: [StringStringKeyValuePair(key: "key_example", value: "value_example")], identificationStrategy: IdentificationStrategy()), issuedAtUtc: Date(), validFromUtc: Date(), expiresAtUtc: Date(), metadata: "TODO") // DocumentIssueRequest | Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest.
 
 // Issue a new document to an organization.
 DocumentsAPI.issueDocumentToOrganization(documentIssueRequest: documentIssueRequest) { (response, error) in

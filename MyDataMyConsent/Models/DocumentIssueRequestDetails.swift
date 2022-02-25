@@ -16,38 +16,44 @@ public struct DocumentIssueRequestDetails: Codable, JSONEncodable, Hashable {
     /** Request Id. */
     public var id: UUID
     public var documentTypeId: UUID
-    public var documentTypeName: String
-    public var documentIdentifier: String
-    public var status: DocumentIssueRequestStatus?
+    public var typeName: String
+    public var identifier: String
+    public var status: DocumentIssueRequestStatus
     public var description: String
     public var receiver: AnyCodable?
+    public var issuedAtUtc: Date
+    public var validFromUtc: Date
     public var expiresAtUtc: Date?
-    public var metadata: AnyCodable?
+    public var metaData: AnyCodable?
     public var createdAtUtc: Date
 
-    public init(id: UUID, documentTypeId: UUID, documentTypeName: String, documentIdentifier: String, status: DocumentIssueRequestStatus? = nil, description: String, receiver: AnyCodable?, expiresAtUtc: Date? = nil, metadata: AnyCodable? = nil, createdAtUtc: Date) {
+    public init(id: UUID, documentTypeId: UUID, typeName: String, identifier: String, status: DocumentIssueRequestStatus, description: String, receiver: AnyCodable?, issuedAtUtc: Date, validFromUtc: Date, expiresAtUtc: Date? = nil, metaData: AnyCodable? = nil, createdAtUtc: Date) {
         self.id = id
         self.documentTypeId = documentTypeId
-        self.documentTypeName = documentTypeName
-        self.documentIdentifier = documentIdentifier
+        self.typeName = typeName
+        self.identifier = identifier
         self.status = status
         self.description = description
         self.receiver = receiver
+        self.issuedAtUtc = issuedAtUtc
+        self.validFromUtc = validFromUtc
         self.expiresAtUtc = expiresAtUtc
-        self.metadata = metadata
+        self.metaData = metaData
         self.createdAtUtc = createdAtUtc
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case documentTypeId
-        case documentTypeName
-        case documentIdentifier
+        case typeName
+        case identifier
         case status
         case description
         case receiver
+        case issuedAtUtc
+        case validFromUtc
         case expiresAtUtc
-        case metadata
+        case metaData
         case createdAtUtc
     }
 
@@ -57,13 +63,15 @@ public struct DocumentIssueRequestDetails: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(documentTypeId, forKey: .documentTypeId)
-        try container.encode(documentTypeName, forKey: .documentTypeName)
-        try container.encode(documentIdentifier, forKey: .documentIdentifier)
-        try container.encodeIfPresent(status, forKey: .status)
+        try container.encode(typeName, forKey: .typeName)
+        try container.encode(identifier, forKey: .identifier)
+        try container.encode(status, forKey: .status)
         try container.encode(description, forKey: .description)
         try container.encode(receiver, forKey: .receiver)
+        try container.encode(issuedAtUtc, forKey: .issuedAtUtc)
+        try container.encode(validFromUtc, forKey: .validFromUtc)
         try container.encodeIfPresent(expiresAtUtc, forKey: .expiresAtUtc)
-        try container.encodeIfPresent(metadata, forKey: .metadata)
+        try container.encodeIfPresent(metaData, forKey: .metaData)
         try container.encode(createdAtUtc, forKey: .createdAtUtc)
     }
 }

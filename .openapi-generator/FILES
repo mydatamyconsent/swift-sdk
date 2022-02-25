@@ -19,6 +19,7 @@ MyDataMyConsent/Models.swift
 MyDataMyConsent/Models/Activity.swift
 MyDataMyConsent/Models/ApprovedConsentRequest.swift
 MyDataMyConsent/Models/BankAccountType.swift
+MyDataMyConsent/Models/ConsentRequestReceiver.swift
 MyDataMyConsent/Models/CreateDataProcessingAgreementRequestModel.swift
 MyDataMyConsent/Models/CreateIndividualDataConsentRequest.swift
 MyDataMyConsent/Models/CreateOrganizationDataConsentRequest.swift
@@ -67,8 +68,6 @@ MyDataMyConsent/Models/OrganizationFinancialTransactionsDtoPaginatedList.swift
 MyDataMyConsent/Models/ProblemDetails.swift
 MyDataMyConsent/Models/PushUriRequest.swift
 MyDataMyConsent/Models/PushUriResponse.swift
-MyDataMyConsent/Models/Receiver.swift
-MyDataMyConsent/Models/ReceiverType.swift
 MyDataMyConsent/Models/SharedWith.swift
 MyDataMyConsent/Models/StringStringKeyValuePair.swift
 MyDataMyConsent/Models/SupportedEntityType.swift
@@ -89,6 +88,7 @@ README.md
 docs/Activity.md
 docs/ApprovedConsentRequest.md
 docs/BankAccountType.md
+docs/ConsentRequestReceiver.md
 docs/CreateDataProcessingAgreementRequestModel.md
 docs/CreateIndividualDataConsentRequest.md
 docs/CreateOrganizationDataConsentRequest.md
@@ -143,8 +143,6 @@ docs/OrganizationFinancialTransactionsDtoPaginatedList.md
 docs/ProblemDetails.md
 docs/PushUriRequest.md
 docs/PushUriResponse.md
-docs/Receiver.md
-docs/ReceiverType.md
 docs/SharedWith.md
 docs/StringStringKeyValuePair.md
 docs/SupportedEntityType.md

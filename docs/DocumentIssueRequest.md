@@ -4,9 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **documentTypeId** | **UUID** |  | 
-**documentIdentifier** | **String** |  | 
+**identifier** | **String** |  | 
 **description** | **String** |  | 
 **receiver** | [**DocumentReceiver**](DocumentReceiver.md) |  | 
+**issuedAtUtc** | **Date** |  | 
+**validFromUtc** | **Date** |  | 
 **expiresAtUtc** | **Date** |  | [optional] 
 **metadata** | **[String: String]** |  | [optional] 
 

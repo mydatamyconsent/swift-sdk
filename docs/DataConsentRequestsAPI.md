@@ -124,7 +124,7 @@ Create a individual data consent request.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let createIndividualDataConsentRequest = CreateIndividualDataConsentRequest(consentTemplateId: 123, receiver: Receiver(type: ReceiverType(), identifiers: [StringStringKeyValuePair(key: "key_example", value: "value_example")], identificationStrategy: IdentificationStrategy())) // CreateIndividualDataConsentRequest | The Individual data consent request payload
+let createIndividualDataConsentRequest = CreateIndividualDataConsentRequest(consentTemplateId: 123, receiver: ConsentRequestReceiver(identifiers: [StringStringKeyValuePair(key: "key_example", value: "value_example")], identificationStrategy: IdentificationStrategy())) // CreateIndividualDataConsentRequest | The Individual data consent request payload
 
 // Create a individual data consent request.
 DataConsentRequestsAPI.createIndividualDataConsentRequest(createIndividualDataConsentRequest: createIndividualDataConsentRequest) { (response, error) in
@@ -174,7 +174,7 @@ Create a organization data consent request.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let createOrganizationDataConsentRequest = CreateOrganizationDataConsentRequest(consentTemplateId: 123, receiver: Receiver(type: ReceiverType(), identifiers: [StringStringKeyValuePair(key: "key_example", value: "value_example")], identificationStrategy: IdentificationStrategy())) // CreateOrganizationDataConsentRequest | M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateOrganizationDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateOrganizationDataConsentRequest).
+let createOrganizationDataConsentRequest = CreateOrganizationDataConsentRequest(consentTemplateId: 123, receiver: ConsentRequestReceiver(identifiers: [StringStringKeyValuePair(key: "key_example", value: "value_example")], identificationStrategy: IdentificationStrategy())) // CreateOrganizationDataConsentRequest | M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateOrganizationDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateOrganizationDataConsentRequest).
 
 // Create a organization data consent request.
 DataConsentRequestsAPI.createOrganizationDataConsentRequest(createOrganizationDataConsentRequest: createOrganizationDataConsentRequest) { (response, error) in
