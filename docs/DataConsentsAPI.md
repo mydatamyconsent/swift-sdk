@@ -7,24 +7,24 @@ Method | HTTP request | Description
 [**downloadConsentedDocumentById**](DataConsentsAPI.md#downloadconsenteddocumentbyid) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId}/download | Download a individuals consented document.
 [**downloadOrgConsentedDocumentById**](DataConsentsAPI.md#downloadorgconsenteddocumentbyid) | **GET** /v1/consents/organizations/{consentId}/documents/{documentId}/download | Download a organizations consented document.
 [**getAllConsentedDocuments**](DataConsentsAPI.md#getallconsenteddocuments) | **GET** /v1/consents/individuals/{consentId}/documents | Get the individual documents based on ConsentId.
-[**getAllConsentedFinancialAccounts**](DataConsentsAPI.md#getallconsentedfinancialaccounts) | **GET** /v1/consents/individuals/{consentId}/accounts | Get all individual consented financial accounts.
+[**getAllConsentedFinancialAccounts**](DataConsentsAPI.md#getallconsentedfinancialaccounts) | **GET** /v1/consents/individuals/{consentId}/financial-accounts | Get all individual consented financial accounts.
 [**getAllOrganizationConsentedDocuments**](DataConsentsAPI.md#getallorganizationconsenteddocuments) | **GET** /v1/consents/organizations/{consentId}/documents | Get the organization documents based on ConsentId.
 [**getConsentDetailsById**](DataConsentsAPI.md#getconsentdetailsbyid) | **GET** /v1/consents/individuals/{consentId} | Get all individuals consent details by consent id.
-[**getConsentFinancialAccounts**](DataConsentsAPI.md#getconsentfinancialaccounts) | **GET** /v1/consents/organizations/{consentId}/accounts | Get all organizational consented financial accounts.
-[**getConsentedAccountById**](DataConsentsAPI.md#getconsentedaccountbyid) | **GET** /v1/consents/individuals/{consentId}/accounts/{accountId} | Get individual consented financial account details based on account id.
+[**getConsentFinancialAccounts**](DataConsentsAPI.md#getconsentfinancialaccounts) | **GET** /v1/consents/organizations/{consentId}/financial-accounts | Get all organizational consented financial accounts.
+[**getConsentedAccountById**](DataConsentsAPI.md#getconsentedaccountbyid) | **GET** /v1/consents/individuals/{consentId}/financial-accounts/{accountId} | Get individual consented financial account details based on account id.
 [**getConsentedDocumentById**](DataConsentsAPI.md#getconsenteddocumentbyid) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId} | Get individuals consent document based on document id.
-[**getConsentedFinancialAccount**](DataConsentsAPI.md#getconsentedfinancialaccount) | **GET** /v1/consents/organizations/{consentId}/accounts/{accountId} | Get organization consented financial account details based on account id.
-[**getConsentedFinancialAccountTransactions**](DataConsentsAPI.md#getconsentedfinancialaccounttransactions) | **GET** /v1/consents/individuals/{consentId}/accounts/{accountId}/transactions | Get individual consented financial account transactions of an individual based on accountId.
+[**getConsentedFinancialAccount**](DataConsentsAPI.md#getconsentedfinancialaccount) | **GET** /v1/consents/organizations/{consentId}/financial-accounts/{accountId} | Get organization consented financial account details based on account id.
+[**getConsentedFinancialAccountTransactions**](DataConsentsAPI.md#getconsentedfinancialaccounttransactions) | **GET** /v1/consents/individuals/{consentId}/financial-accounts/{accountId}/transactions | Get individual consented financial account transactions of an individual based on accountId.
 [**getConsentsForOrganizations**](DataConsentsAPI.md#getconsentsfororganizations) | **GET** /v1/consents/organizations | Get the list of data consents sent for organizations.
 [**getConsentsSentToIndividuals**](DataConsentsAPI.md#getconsentssenttoindividuals) | **GET** /v1/consents/individuals | Get the list of Consents Sent to Individuals.
-[**getOrgConsentedAccountTransactions**](DataConsentsAPI.md#getorgconsentedaccounttransactions) | **GET** /v1/consents/organizations/{consentId}/accounts/{accountId}/transactions | Get organization consented financial account transactions of an individual based on accountId.
+[**getOrgConsentedAccountTransactions**](DataConsentsAPI.md#getorgconsentedaccounttransactions) | **GET** /v1/consents/organizations/{consentId}/financial-accounts/{accountId}/transactions | Get organization consented financial account transactions of an individual based on accountId.
 [**getOrganizationConsentDetailsById**](DataConsentsAPI.md#getorganizationconsentdetailsbyid) | **GET** /v1/consents/organizations/{consentId} | Get all organization consent details by consent id.
 [**getOrganizationConsentedDocumentById**](DataConsentsAPI.md#getorganizationconsenteddocumentbyid) | **GET** /v1/consents/organizations/{consentId}/documents/{documentId} | Get organization consent document based on document id.
 
 
 # **downloadConsentedDocumentById**
 ```swift
-    open class func downloadConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: UserDocumentDownloadDto?, _ error: Error?) -> Void)
+    open class func downloadConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: UserDocumentDownload?, _ error: Error?) -> Void)
 ```
 
 Download a individuals consented document.
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserDocumentDownloadDto**](UserDocumentDownloadDto.md)
+[**UserDocumentDownload**](UserDocumentDownload.md)
 
 ### Authorization
 
@@ -414,7 +414,7 @@ No authorization required
 
 # **getConsentedDocumentById**
 ```swift
-    open class func getConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: UserDocumentDetailsDto?, _ error: Error?) -> Void)
+    open class func getConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: UserDocumentDetails?, _ error: Error?) -> Void)
 ```
 
 Get individuals consent document based on document id.
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserDocumentDetailsDto**](UserDocumentDetailsDto.md)
+[**UserDocumentDetails**](UserDocumentDetails.md)
 
 ### Authorization
 
@@ -794,7 +794,7 @@ No authorization required
 
 # **getOrganizationConsentedDocumentById**
 ```swift
-    open class func getOrganizationConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: OrganizationDocumentDetailsDto?, _ error: Error?) -> Void)
+    open class func getOrganizationConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: OrganizationDocumentDetails?, _ error: Error?) -> Void)
 ```
 
 Get organization consent document based on document id.
@@ -829,7 +829,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationDocumentDetailsDto**](OrganizationDocumentDetailsDto.md)
+[**OrganizationDocumentDetails**](OrganizationDocumentDetails.md)
 
 ### Authorization
 

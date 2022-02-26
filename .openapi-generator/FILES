@@ -60,7 +60,7 @@ MyDataMyConsent/Models/Life.swift
 MyDataMyConsent/Models/OrganizationDataConsentInfoDto.swift
 MyDataMyConsent/Models/OrganizationDataConsentInfoDtoPaginatedList.swift
 MyDataMyConsent/Models/OrganizationDataConsentRequestResponse.swift
-MyDataMyConsent/Models/OrganizationDocumentDetailsDto.swift
+MyDataMyConsent/Models/OrganizationDocumentDetails.swift
 MyDataMyConsent/Models/OrganizationDocumentDownloadDto.swift
 MyDataMyConsent/Models/OrganizationFinancialAccountDto.swift
 MyDataMyConsent/Models/OrganizationFinancialTransactionsDto.swift
@@ -78,8 +78,8 @@ MyDataMyConsent/Models/UserAccountFinancialTransactionsDto.swift
 MyDataMyConsent/Models/UserAccountFinancialTransactionsDtoPaginatedList.swift
 MyDataMyConsent/Models/UserDataConsentInfoDto.swift
 MyDataMyConsent/Models/UserDataConsentInfoDtoPaginatedList.swift
-MyDataMyConsent/Models/UserDocumentDetailsDto.swift
-MyDataMyConsent/Models/UserDocumentDownloadDto.swift
+MyDataMyConsent/Models/UserDocumentDetails.swift
+MyDataMyConsent/Models/UserDocumentDownload.swift
 MyDataMyConsent/OpenISO8601DateFormatter.swift
 MyDataMyConsent/SynchronizedDictionary.swift
 MyDataMyConsent/URLSessionImplementations.swift
@@ -135,7 +135,7 @@ docs/Life.md
 docs/OrganizationDataConsentInfoDto.md
 docs/OrganizationDataConsentInfoDtoPaginatedList.md
 docs/OrganizationDataConsentRequestResponse.md
-docs/OrganizationDocumentDetailsDto.md
+docs/OrganizationDocumentDetails.md
 docs/OrganizationDocumentDownloadDto.md
 docs/OrganizationFinancialAccountDto.md
 docs/OrganizationFinancialTransactionsDto.md
@@ -154,6 +154,6 @@ docs/UserAccountFinancialTransactionsDto.md
 docs/UserAccountFinancialTransactionsDtoPaginatedList.md
 docs/UserDataConsentInfoDto.md
 docs/UserDataConsentInfoDtoPaginatedList.md
-docs/UserDocumentDetailsDto.md
-docs/UserDocumentDownloadDto.md
+docs/UserDocumentDetails.md
+docs/UserDocumentDownload.md
 project.yml

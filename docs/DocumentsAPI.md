@@ -265,7 +265,7 @@ No authorization required
 
 # **uploadDocumentForIndividual**
 ```swift
-    open class func uploadDocumentForIndividual(issueRequestId: UUID, formFile: URL? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+    open class func uploadDocumentForIndividual(issueRequestId: UUID, formFile: URL, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
 ```
 
 Upload a document for issuance request of individual.
@@ -276,7 +276,7 @@ Upload a document for issuance request of individual.
 import MyDataMyConsent
 
 let issueRequestId = 987 // UUID | Issue Request Id System.Guid.
-let formFile = URL(string: "https://example.com")! // URL |  (optional)
+let formFile = URL(string: "https://example.com")! // URL | 
 
 // Upload a document for issuance request of individual.
 DocumentsAPI.uploadDocumentForIndividual(issueRequestId: issueRequestId, formFile: formFile) { (response, error) in
@@ -296,7 +296,7 @@ DocumentsAPI.uploadDocumentForIndividual(issueRequestId: issueRequestId, formFil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **issueRequestId** | **UUID** | Issue Request Id System.Guid. | 
- **formFile** | **URL** |  | [optional] 
+ **formFile** | **URL** |  | 
 
 ### Return type
 
