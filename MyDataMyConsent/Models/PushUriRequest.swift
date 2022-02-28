@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct PushUriRequest: Codable, JSONEncodable, Hashable {
 
-    public var uriDetails: UriDetails?
+    public var uriDetails: UriDetails
     public var ns2: String?
     public var ver: String?
     public var ts: String?
@@ -20,7 +20,7 @@ public struct PushUriRequest: Codable, JSONEncodable, Hashable {
     public var orgId: String?
     public var keyhash: String?
 
-    public init(uriDetails: UriDetails? = nil, ns2: String? = nil, ver: String? = nil, ts: String? = nil, txn: String? = nil, orgId: String? = nil, keyhash: String? = nil) {
+    public init(uriDetails: UriDetails, ns2: String? = nil, ver: String? = nil, ts: String? = nil, txn: String? = nil, orgId: String? = nil, keyhash: String? = nil) {
         self.uriDetails = uriDetails
         self.ns2 = ns2
         self.ver = ver
@@ -44,7 +44,7 @@ public struct PushUriRequest: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(uriDetails, forKey: .uriDetails)
+        try container.encode(uriDetails, forKey: .uriDetails)
         try container.encodeIfPresent(ns2, forKey: .ns2)
         try container.encodeIfPresent(ver, forKey: .ver)
         try container.encodeIfPresent(ts, forKey: .ts)

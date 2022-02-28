@@ -25,11 +25,11 @@ public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
     public var expiresAtUtc: Date?
     public var requestedAtUtc: Date?
     public var identifiers: JsonSchema?
-    public var documents: String?
+    public var documents: [DataConsentDocumentDetailsDto]?
     public var financials: String?
     public var healthRecords: String?
 
-    public init(id: UUID, title: String? = nil, description: String? = nil, dataLife: Life? = nil, requesterName: String? = nil, requesterLogo: String? = nil, location: String? = nil, status: DataConsentStatus? = nil, approvedAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, expiresAtUtc: Date? = nil, requestedAtUtc: Date? = nil, identifiers: JsonSchema? = nil, documents: String? = nil, financials: String? = nil, healthRecords: String? = nil) {
+    public init(id: UUID, title: String? = nil, description: String? = nil, dataLife: Life? = nil, requesterName: String? = nil, requesterLogo: String? = nil, location: String? = nil, status: DataConsentStatus? = nil, approvedAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, expiresAtUtc: Date? = nil, requestedAtUtc: Date? = nil, identifiers: JsonSchema? = nil, documents: [DataConsentDocumentDetailsDto]? = nil, financials: String? = nil, healthRecords: String? = nil) {
         self.id = id
         self.title = title
         self.description = description

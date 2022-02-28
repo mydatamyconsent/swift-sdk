@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **expiresAtUtc** | **Date** |  | [optional] 
 **requestedAtUtc** | **Date** |  | [optional] 
 **identifiers** | [**JsonSchema**](JsonSchema.md) |  | [optional] 
-**documents** | **String** |  | [optional] 
+**documents** | [DataConsentDocumentDetailsDto] |  | [optional] 
 **financials** | **String** |  | [optional] 
 **healthRecords** | **String** |  | [optional] 
 

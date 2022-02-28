@@ -12,18 +12,18 @@ import AnyCodable
 
 public struct UriDetails: Codable, JSONEncodable, Hashable {
 
-    public var aadhaar: String?
-    public var uri: String?
-    public var docType: String?
-    public var docName: String?
-    public var docId: String?
-    public var issuedOn: String?
-    public var validFrom: String?
+    public var aadhaar: String
+    public var uri: String
+    public var docType: String
+    public var docName: String
+    public var docId: String
+    public var issuedOn: String
+    public var validFrom: String
     public var validTo: String?
     public var timestamp: String?
     public var action: String?
 
-    public init(aadhaar: String? = nil, uri: String? = nil, docType: String? = nil, docName: String? = nil, docId: String? = nil, issuedOn: String? = nil, validFrom: String? = nil, validTo: String? = nil, timestamp: String? = nil, action: String? = nil) {
+    public init(aadhaar: String, uri: String, docType: String, docName: String, docId: String, issuedOn: String, validFrom: String, validTo: String? = nil, timestamp: String? = nil, action: String? = nil) {
         self.aadhaar = aadhaar
         self.uri = uri
         self.docType = docType
@@ -53,13 +53,13 @@ public struct UriDetails: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(aadhaar, forKey: .aadhaar)
-        try container.encodeIfPresent(uri, forKey: .uri)
-        try container.encodeIfPresent(docType, forKey: .docType)
-        try container.encodeIfPresent(docName, forKey: .docName)
-        try container.encodeIfPresent(docId, forKey: .docId)
-        try container.encodeIfPresent(issuedOn, forKey: .issuedOn)
-        try container.encodeIfPresent(validFrom, forKey: .validFrom)
+        try container.encode(aadhaar, forKey: .aadhaar)
+        try container.encode(uri, forKey: .uri)
+        try container.encode(docType, forKey: .docType)
+        try container.encode(docName, forKey: .docName)
+        try container.encode(docId, forKey: .docId)
+        try container.encode(issuedOn, forKey: .issuedOn)
+        try container.encode(validFrom, forKey: .validFrom)
         try container.encodeIfPresent(validTo, forKey: .validTo)
         try container.encodeIfPresent(timestamp, forKey: .timestamp)
         try container.encodeIfPresent(action, forKey: .action)

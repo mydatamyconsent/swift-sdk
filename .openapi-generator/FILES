@@ -24,6 +24,7 @@ MyDataMyConsent/Models/CreateDataProcessingAgreementRequestModel.swift
 MyDataMyConsent/Models/CreateIndividualDataConsentRequest.swift
 MyDataMyConsent/Models/CreateOrganizationDataConsentRequest.swift
 MyDataMyConsent/Models/DataConsentDetailsDto.swift
+MyDataMyConsent/Models/DataConsentDocumentDetailsDto.swift
 MyDataMyConsent/Models/DataConsentDocumentsDto.swift
 MyDataMyConsent/Models/DataConsentFinancialsDto.swift
 MyDataMyConsent/Models/DataConsentRequestedDocument.swift
@@ -70,6 +71,9 @@ MyDataMyConsent/Models/PushUriRequest.swift
 MyDataMyConsent/Models/PushUriResponse.swift
 MyDataMyConsent/Models/SharedWith.swift
 MyDataMyConsent/Models/StringStringKeyValuePair.swift
+MyDataMyConsent/Models/SupportedDocumentDetailsDto.swift
+MyDataMyConsent/Models/SupportedDocumentProviderDetailsDto.swift
+MyDataMyConsent/Models/SupportedDocumentTypeCategoryDetailsDto.swift
 MyDataMyConsent/Models/SupportedEntityType.swift
 MyDataMyConsent/Models/SupportedIdentifier.swift
 MyDataMyConsent/Models/UpdateDataProcessingAgreementRequestModel.swift
@@ -93,6 +97,7 @@ docs/CreateDataProcessingAgreementRequestModel.md
 docs/CreateIndividualDataConsentRequest.md
 docs/CreateOrganizationDataConsentRequest.md
 docs/DataConsentDetailsDto.md
+docs/DataConsentDocumentDetailsDto.md
 docs/DataConsentDocumentsDto.md
 docs/DataConsentFinancialsDto.md
 docs/DataConsentRequestedDocument.md
@@ -145,6 +150,9 @@ docs/PushUriRequest.md
 docs/PushUriResponse.md
 docs/SharedWith.md
 docs/StringStringKeyValuePair.md
+docs/SupportedDocumentDetailsDto.md
+docs/SupportedDocumentProviderDetailsDto.md
+docs/SupportedDocumentTypeCategoryDetailsDto.md
 docs/SupportedEntityType.md
 docs/SupportedIdentifier.md
 docs/SupportedIdentifiersAPI.md
