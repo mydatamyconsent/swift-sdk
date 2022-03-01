@@ -56,7 +56,6 @@ MyDataMyConsent/Models/Identifier.swift
 MyDataMyConsent/Models/IndividualDataConsentRequestResponse.swift
 MyDataMyConsent/Models/IssuedDocument.swift
 MyDataMyConsent/Models/IssuedDocumentPaginatedList.swift
-MyDataMyConsent/Models/JsonSchema.swift
 MyDataMyConsent/Models/Life.swift
 MyDataMyConsent/Models/OrganizationDataConsentInfoDto.swift
 MyDataMyConsent/Models/OrganizationDataConsentInfoDtoPaginatedList.swift
@@ -69,6 +68,7 @@ MyDataMyConsent/Models/OrganizationFinancialTransactionsDtoPaginatedList.swift
 MyDataMyConsent/Models/ProblemDetails.swift
 MyDataMyConsent/Models/PushUriRequest.swift
 MyDataMyConsent/Models/PushUriResponse.swift
+MyDataMyConsent/Models/Requester.swift
 MyDataMyConsent/Models/SharedWith.swift
 MyDataMyConsent/Models/StringStringKeyValuePair.swift
 MyDataMyConsent/Models/SupportedDocumentDetailsDto.swift
@@ -135,7 +135,6 @@ docs/Identifier.md
 docs/IndividualDataConsentRequestResponse.md
 docs/IssuedDocument.md
 docs/IssuedDocumentPaginatedList.md
-docs/JsonSchema.md
 docs/Life.md
 docs/OrganizationDataConsentInfoDto.md
 docs/OrganizationDataConsentInfoDtoPaginatedList.md
@@ -148,6 +147,7 @@ docs/OrganizationFinancialTransactionsDtoPaginatedList.md
 docs/ProblemDetails.md
 docs/PushUriRequest.md
 docs/PushUriResponse.md
+docs/Requester.md
 docs/SharedWith.md
 docs/StringStringKeyValuePair.md
 docs/SupportedDocumentDetailsDto.md
