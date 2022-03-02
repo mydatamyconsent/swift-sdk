@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID
+    public var consentRequestId: UUID
     public var title: String?
     public var description: String?
     public var dataLife: Life?
@@ -20,15 +20,14 @@ public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
     public var status: DataConsentStatus?
     public var approvedAtUtc: Date?
     public var rejectedAtUtc: Date?
-    public var expiresAtUtc: Date?
+    public var revokedAtUtc: Date?
+    public var requestedExpiresAtUtc: Date?
     public var requestedAtUtc: Date?
     public var identifiers: AnyCodable?
     public var documents: [DataConsentDocumentDetailsDto]?
-    public var financials: String?
-    public var healthRecords: String?
 
-    public init(id: UUID, title: String? = nil, description: String? = nil, dataLife: Life? = nil, requestedByOrg: Requester? = nil, status: DataConsentStatus? = nil, approvedAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, expiresAtUtc: Date? = nil, requestedAtUtc: Date? = nil, identifiers: AnyCodable? = nil, documents: [DataConsentDocumentDetailsDto]? = nil, financials: String? = nil, healthRecords: String? = nil) {
-        self.id = id
+    public init(consentRequestId: UUID, title: String? = nil, description: String? = nil, dataLife: Life? = nil, requestedByOrg: Requester? = nil, status: DataConsentStatus? = nil, approvedAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, revokedAtUtc: Date? = nil, requestedExpiresAtUtc: Date? = nil, requestedAtUtc: Date? = nil, identifiers: AnyCodable? = nil, documents: [DataConsentDocumentDetailsDto]? = nil) {
+        self.consentRequestId = consentRequestId
         self.title = title
         self.description = description
         self.dataLife = dataLife
@@ -36,16 +35,15 @@ public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
         self.status = status
         self.approvedAtUtc = approvedAtUtc
         self.rejectedAtUtc = rejectedAtUtc
-        self.expiresAtUtc = expiresAtUtc
+        self.revokedAtUtc = revokedAtUtc
+        self.requestedExpiresAtUtc = requestedExpiresAtUtc
         self.requestedAtUtc = requestedAtUtc
         self.identifiers = identifiers
         self.documents = documents
-        self.financials = financials
-        self.healthRecords = healthRecords
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
+        case consentRequestId
         case title
         case description
         case dataLife
@@ -53,19 +51,18 @@ public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
         case status
         case approvedAtUtc
         case rejectedAtUtc
-        case expiresAtUtc
+        case revokedAtUtc
+        case requestedExpiresAtUtc
         case requestedAtUtc
         case identifiers
         case documents
-        case financials
-        case healthRecords
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
+        try container.encode(consentRequestId, forKey: .consentRequestId)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(dataLife, forKey: .dataLife)
@@ -73,12 +70,11 @@ public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(approvedAtUtc, forKey: .approvedAtUtc)
         try container.encodeIfPresent(rejectedAtUtc, forKey: .rejectedAtUtc)
-        try container.encodeIfPresent(expiresAtUtc, forKey: .expiresAtUtc)
+        try container.encodeIfPresent(revokedAtUtc, forKey: .revokedAtUtc)
+        try container.encodeIfPresent(requestedExpiresAtUtc, forKey: .requestedExpiresAtUtc)
         try container.encodeIfPresent(requestedAtUtc, forKey: .requestedAtUtc)
         try container.encodeIfPresent(identifiers, forKey: .identifiers)
         try container.encodeIfPresent(documents, forKey: .documents)
-        try container.encodeIfPresent(financials, forKey: .financials)
-        try container.encodeIfPresent(healthRecords, forKey: .healthRecords)
     }
 }
 
