@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **requestedByOrg** | [**Requester**](Requester.md) |  | [optional] 
 **status** | [**DataConsentStatus**](DataConsentStatus.md) |  | [optional] 
 **approvedAtUtc** | **Date** |  | [optional] 
+**approvedExpiresAtUtc** | **Date** |  | [optional] 
 **rejectedAtUtc** | **Date** |  | [optional] 
 **revokedAtUtc** | **Date** |  | [optional] 
 **requestedExpiresAtUtc** | **Date** |  | [optional] 

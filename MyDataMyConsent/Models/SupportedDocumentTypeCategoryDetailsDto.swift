@@ -15,9 +15,9 @@ public struct SupportedDocumentTypeCategoryDetailsDto: Codable, JSONEncodable, H
     public var documentTypeCategoryId: UUID
     public var documentTypeCategoryName: String
     public var supportedDocuments: [SupportedDocumentDetailsDto]
-    public var supportedDocumentProviderDetails: [SupportedDocumentProviderDetailsDto]
+    public var supportedDocumentProviderDetails: [SupportedDocumentProviderDetailsDto]?
 
-    public init(documentTypeCategoryId: UUID, documentTypeCategoryName: String, supportedDocuments: [SupportedDocumentDetailsDto], supportedDocumentProviderDetails: [SupportedDocumentProviderDetailsDto]) {
+    public init(documentTypeCategoryId: UUID, documentTypeCategoryName: String, supportedDocuments: [SupportedDocumentDetailsDto], supportedDocumentProviderDetails: [SupportedDocumentProviderDetailsDto]? = nil) {
         self.documentTypeCategoryId = documentTypeCategoryId
         self.documentTypeCategoryName = documentTypeCategoryName
         self.supportedDocuments = supportedDocuments
@@ -38,7 +38,7 @@ public struct SupportedDocumentTypeCategoryDetailsDto: Codable, JSONEncodable, H
         try container.encode(documentTypeCategoryId, forKey: .documentTypeCategoryId)
         try container.encode(documentTypeCategoryName, forKey: .documentTypeCategoryName)
         try container.encode(supportedDocuments, forKey: .supportedDocuments)
-        try container.encode(supportedDocumentProviderDetails, forKey: .supportedDocumentProviderDetails)
+        try container.encodeIfPresent(supportedDocumentProviderDetails, forKey: .supportedDocumentProviderDetails)
     }
 }
 

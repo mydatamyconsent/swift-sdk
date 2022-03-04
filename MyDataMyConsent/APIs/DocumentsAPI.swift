@@ -310,12 +310,12 @@ open class DocumentsAPI {
      Upload a document for issuance request of organization.
      
      - parameter issueRequestId: (path) Issue Request Id System.Guid. 
-     - parameter formFile: (form)  (optional)
+     - parameter formFile: (form)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func uploadDocumentForOrganization(issueRequestId: UUID, formFile: URL? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func uploadDocumentForOrganization(issueRequestId: UUID, formFile: URL, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
         return uploadDocumentForOrganizationWithRequestBuilder(issueRequestId: issueRequestId, formFile: formFile).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -330,17 +330,17 @@ open class DocumentsAPI {
      Upload a document for issuance request of organization.
      - POST /v1/documents/issue/organization/upload/{issueRequestId}
      - parameter issueRequestId: (path) Issue Request Id System.Guid. 
-     - parameter formFile: (form)  (optional)
+     - parameter formFile: (form)  
      - returns: RequestBuilder<String> 
      */
-    open class func uploadDocumentForOrganizationWithRequestBuilder(issueRequestId: UUID, formFile: URL? = nil) -> RequestBuilder<String> {
+    open class func uploadDocumentForOrganizationWithRequestBuilder(issueRequestId: UUID, formFile: URL) -> RequestBuilder<String> {
         var localVariablePath = "/v1/documents/issue/organization/upload/{issueRequestId}"
         let issueRequestIdPreEscape = "\(APIHelper.mapValueToPathItem(issueRequestId))"
         let issueRequestIdPostEscape = issueRequestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{issueRequestId}", with: issueRequestIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableFormParams: [String: Any?] = [
-            "formFile": formFile?.encodeToJSON(),
+            "formFile": formFile.encodeToJSON(),
         ]
 
         let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)

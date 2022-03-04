@@ -19,6 +19,7 @@ public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
     public var requestedByOrg: Requester?
     public var status: DataConsentStatus?
     public var approvedAtUtc: Date?
+    public var approvedExpiresAtUtc: Date?
     public var rejectedAtUtc: Date?
     public var revokedAtUtc: Date?
     public var requestedExpiresAtUtc: Date?
@@ -26,7 +27,7 @@ public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
     public var identifiers: AnyCodable?
     public var documents: [DataConsentDocumentDetailsDto]?
 
-    public init(consentRequestId: UUID, title: String? = nil, description: String? = nil, dataLife: Life? = nil, requestedByOrg: Requester? = nil, status: DataConsentStatus? = nil, approvedAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, revokedAtUtc: Date? = nil, requestedExpiresAtUtc: Date? = nil, requestedAtUtc: Date? = nil, identifiers: AnyCodable? = nil, documents: [DataConsentDocumentDetailsDto]? = nil) {
+    public init(consentRequestId: UUID, title: String? = nil, description: String? = nil, dataLife: Life? = nil, requestedByOrg: Requester? = nil, status: DataConsentStatus? = nil, approvedAtUtc: Date? = nil, approvedExpiresAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, revokedAtUtc: Date? = nil, requestedExpiresAtUtc: Date? = nil, requestedAtUtc: Date? = nil, identifiers: AnyCodable? = nil, documents: [DataConsentDocumentDetailsDto]? = nil) {
         self.consentRequestId = consentRequestId
         self.title = title
         self.description = description
@@ -34,6 +35,7 @@ public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
         self.requestedByOrg = requestedByOrg
         self.status = status
         self.approvedAtUtc = approvedAtUtc
+        self.approvedExpiresAtUtc = approvedExpiresAtUtc
         self.rejectedAtUtc = rejectedAtUtc
         self.revokedAtUtc = revokedAtUtc
         self.requestedExpiresAtUtc = requestedExpiresAtUtc
@@ -50,6 +52,7 @@ public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
         case requestedByOrg
         case status
         case approvedAtUtc
+        case approvedExpiresAtUtc
         case rejectedAtUtc
         case revokedAtUtc
         case requestedExpiresAtUtc
@@ -69,6 +72,7 @@ public struct DataConsentDetailsDto: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(requestedByOrg, forKey: .requestedByOrg)
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(approvedAtUtc, forKey: .approvedAtUtc)
+        try container.encodeIfPresent(approvedExpiresAtUtc, forKey: .approvedExpiresAtUtc)
         try container.encodeIfPresent(rejectedAtUtc, forKey: .rejectedAtUtc)
         try container.encodeIfPresent(revokedAtUtc, forKey: .revokedAtUtc)
         try container.encodeIfPresent(requestedExpiresAtUtc, forKey: .requestedExpiresAtUtc)
