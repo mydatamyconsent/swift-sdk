@@ -19,6 +19,7 @@ MyDataMyConsent/Models.swift
 MyDataMyConsent/Models/Activity.swift
 MyDataMyConsent/Models/ApprovedConsentRequest.swift
 MyDataMyConsent/Models/BankAccountType.swift
+MyDataMyConsent/Models/CollectibleTypes.swift
 MyDataMyConsent/Models/ConsentRequestReceiver.swift
 MyDataMyConsent/Models/CreateDataProcessingAgreementRequestModel.swift
 MyDataMyConsent/Models/CreateIndividualDataConsentRequest.swift
@@ -92,6 +93,7 @@ README.md
 docs/Activity.md
 docs/ApprovedConsentRequest.md
 docs/BankAccountType.md
+docs/CollectibleTypes.md
 docs/ConsentRequestReceiver.md
 docs/CreateDataProcessingAgreementRequestModel.md
 docs/CreateIndividualDataConsentRequest.md

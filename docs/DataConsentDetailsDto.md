@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **dataLife** | [**Life**](Life.md) |  | [optional] 
 **requestedByOrg** | [**Requester**](Requester.md) |  | [optional] 
+**collectables** | [CollectibleTypes] |  | 
 **status** | [**DataConsentStatus**](DataConsentStatus.md) |  | [optional] 
 **approvedAtUtc** | **Date** |  | [optional] 
 **approvedExpiresAtUtc** | **Date** |  | [optional] 
