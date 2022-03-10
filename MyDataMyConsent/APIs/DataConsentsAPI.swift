@@ -13,6 +13,57 @@ import AnyCodable
 open class DataConsentsAPI {
 
     /**
+     Get analysis of a consented document.
+     
+     - parameter consentId: (path)  
+     - parameter documentId: (path) Document Id. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func downloadConsentedDocumentAnalysis(consentId: String, documentId: String, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return downloadConsentedDocumentAnalysisWithRequestBuilder(consentId: consentId, documentId: documentId).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get analysis of a consented document.
+     - GET /v1/consents/{consentId}/documents/{documentId}/analysis
+     - parameter consentId: (path)  
+     - parameter documentId: (path) Document Id. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func downloadConsentedDocumentAnalysisWithRequestBuilder(consentId: String, documentId: String) -> RequestBuilder<Void> {
+        var localVariablePath = "/v1/consents/{consentId}/documents/{documentId}/analysis"
+        let consentIdPreEscape = "\(APIHelper.mapValueToPathItem(consentId))"
+        let consentIdPostEscape = consentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{consentId}", with: consentIdPostEscape, options: .literal, range: nil)
+        let documentIdPreEscape = "\(APIHelper.mapValueToPathItem(documentId))"
+        let documentIdPostEscape = documentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{documentId}", with: documentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsentAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
      Download a individuals consented document.
      
      - parameter consentId: (path) Consent id. 
@@ -493,6 +544,57 @@ open class DataConsentsAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<OrganizationFinancialAccountDto>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Get consented financial account insights.
+     
+     - parameter consentId: (path)  
+     - parameter accountId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getConsentedFinancialAccountInsights(consentId: String, accountId: String, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return getConsentedFinancialAccountInsightsWithRequestBuilder(consentId: consentId, accountId: accountId).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get consented financial account insights.
+     - GET /v1/consents/{consentId}/financial-accounts/{accountId}/insights
+     - parameter consentId: (path)  
+     - parameter accountId: (path)  
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getConsentedFinancialAccountInsightsWithRequestBuilder(consentId: String, accountId: String) -> RequestBuilder<Void> {
+        var localVariablePath = "/v1/consents/{consentId}/financial-accounts/{accountId}/insights"
+        let consentIdPreEscape = "\(APIHelper.mapValueToPathItem(consentId))"
+        let consentIdPostEscape = consentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{consentId}", with: consentIdPostEscape, options: .literal, range: nil)
+        let accountIdPreEscape = "\(APIHelper.mapValueToPathItem(accountId))"
+        let accountIdPostEscape = accountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{accountId}", with: accountIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsentAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
