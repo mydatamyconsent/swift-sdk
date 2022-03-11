@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getIssuedDocumentById**](DocumentsAPI.md#getissueddocumentbyid) | **GET** /v1/documents/issued/{documentId} | Get issued document.
 [**getIssuedDocuments**](DocumentsAPI.md#getissueddocuments) | **GET** /v1/documents/issued/{documentTypeId} | Get paginated list of issued documents of given document type.
-[**getRegisteredDocumentTypes**](DocumentsAPI.md#getregistereddocumenttypes) | **GET** /v1/documents/types | Get registered document types.
+[**getRegisteredDocumentTypes**](DocumentsAPI.md#getregistereddocumenttypes) | **GET** /v1/documents/types | Get paginated list of registered document types.
 [**issueDocumentToIndividual**](DocumentsAPI.md#issuedocumenttoindividual) | **POST** /v1/documents/issue/individual | Issue a new document to an individual user.
 [**issueDocumentToOrganization**](DocumentsAPI.md#issuedocumenttoorganization) | **POST** /v1/documents/issue/organization | Issue a new document to an organization.
 [**uploadDocumentForIndividual**](DocumentsAPI.md#uploaddocumentforindividual) | **POST** /v1/documents/issue/individual/upload/{issueRequestId} | Upload a document for issuance request of individual.
@@ -74,8 +74,8 @@ Get paginated list of issued documents of given document type.
 import MyDataMyConsent
 
 let documentTypeId = 987 // UUID | Document type id.
-let fromDateTime = Date() // Date | From DateTime. (optional)
-let toDateTime = Date() // Date | To DateTime. (optional)
+let fromDateTime = Date() // Date | From DateTime in UTC timezone. (optional)
+let toDateTime = Date() // Date | To DateTime in UTC timezone. (optional)
 let pageNo = 987 // Int | Page number. (optional) (default to 1)
 let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
@@ -97,8 +97,8 @@ DocumentsAPI.getIssuedDocuments(documentTypeId: documentTypeId, fromDateTime: fr
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **documentTypeId** | **UUID** | Document type id. | 
- **fromDateTime** | **Date** | From DateTime. | [optional] 
- **toDateTime** | **Date** | To DateTime. | [optional] 
+ **fromDateTime** | **Date** | From DateTime in UTC timezone. | [optional] 
+ **toDateTime** | **Date** | To DateTime in UTC timezone. | [optional] 
  **pageNo** | **Int** | Page number. | [optional] [default to 1]
  **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
 
@@ -122,7 +122,7 @@ No authorization required
     open class func getRegisteredDocumentTypes(pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: DocumentTypePaginatedList?, _ error: Error?) -> Void)
 ```
 
-Get registered document types.
+Get paginated list of registered document types.
 
 ### Example
 ```swift
@@ -132,7 +132,7 @@ import MyDataMyConsent
 let pageNo = 987 // Int | Page number. (optional) (default to 1)
 let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
-// Get registered document types.
+// Get paginated list of registered document types.
 DocumentsAPI.getRegisteredDocumentTypes(pageNo: pageNo, pageSize: pageSize) { (response, error) in
     guard error == nil else {
         print(error)
@@ -265,7 +265,7 @@ No authorization required
 
 # **uploadDocumentForIndividual**
 ```swift
-    open class func uploadDocumentForIndividual(issueRequestId: UUID, formFile: URL, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+    open class func uploadDocumentForIndividual(issueRequestId: UUID, formFile: URL, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Upload a document for issuance request of individual.
@@ -275,7 +275,7 @@ Upload a document for issuance request of individual.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let issueRequestId = 987 // UUID | Issue Request Id System.Guid.
+let issueRequestId = 987 // UUID | Document issue request id.
 let formFile = URL(string: "https://example.com")! // URL | 
 
 // Upload a document for issuance request of individual.
@@ -295,12 +295,12 @@ DocumentsAPI.uploadDocumentForIndividual(issueRequestId: issueRequestId, formFil
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **issueRequestId** | **UUID** | Issue Request Id System.Guid. | 
+ **issueRequestId** | **UUID** | Document issue request id. | 
  **formFile** | **URL** |  | 
 
 ### Return type
 
-**String**
+Void (empty response body)
 
 ### Authorization
 
@@ -315,7 +315,7 @@ No authorization required
 
 # **uploadDocumentForOrganization**
 ```swift
-    open class func uploadDocumentForOrganization(issueRequestId: UUID, formFile: URL, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+    open class func uploadDocumentForOrganization(issueRequestId: UUID, formFile: URL, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Upload a document for issuance request of organization.
@@ -325,7 +325,7 @@ Upload a document for issuance request of organization.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let issueRequestId = 987 // UUID | Issue Request Id System.Guid.
+let issueRequestId = 987 // UUID | Document issue request id System.Guid.
 let formFile = URL(string: "https://example.com")! // URL | 
 
 // Upload a document for issuance request of organization.
@@ -345,12 +345,12 @@ DocumentsAPI.uploadDocumentForOrganization(issueRequestId: issueRequestId, formF
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **issueRequestId** | **UUID** | Issue Request Id System.Guid. | 
+ **issueRequestId** | **UUID** | Document issue request id System.Guid. | 
  **formFile** | **URL** |  | 
 
 ### Return type
 
-**String**
+Void (empty response body)
 
 ### Authorization
 

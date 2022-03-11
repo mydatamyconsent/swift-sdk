@@ -13,13 +13,15 @@ import AnyCodable
 /** Issued Document Identifier. */
 public struct IssuedDocument: Codable, JSONEncodable, Hashable {
 
-    /** Document Identifier. */
+    /** Document Id. */
     public var id: UUID
-    /** Document Identifier. eg: GJ05FG67866586. */
+    /** Document Identifier. */
     public var identifier: String
-    /** Document type name. eg: Driving License. */
+    /** Document type name. */
     public var documentType: String
+    /** User name. */
     public var issuedTo: String
+    /** Issued datetime in UTC timezone. */
     public var issuedAtUtc: Date
 
     public init(id: UUID, identifier: String, documentType: String, issuedTo: String, issuedAtUtc: Date) {

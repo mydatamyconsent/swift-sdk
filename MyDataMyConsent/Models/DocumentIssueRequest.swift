@@ -13,13 +13,20 @@ import AnyCodable
 /** Document Issue Request. */
 public struct DocumentIssueRequest: Codable, JSONEncodable, Hashable {
 
+    /** Document type id. */
     public var documentTypeId: UUID
+    /** Document identifier. */
     public var identifier: String
+    /** Document description. */
     public var description: String
     public var receiver: DocumentReceiver
+    /** Datetime of issue in UTC timezone. */
     public var issuedAtUtc: Date
+    /** Valid from datetime in UTC timezone. */
     public var validFromUtc: Date
+    /** Datetime of expiry in UTC timezone. */
     public var expiresAtUtc: Date?
+    /** Metadata. */
     public var metadata: [String: String]?
 
     public init(documentTypeId: UUID, identifier: String, description: String, receiver: DocumentReceiver, issuedAtUtc: Date, validFromUtc: Date, expiresAtUtc: Date? = nil, metadata: [String: String]? = nil) {

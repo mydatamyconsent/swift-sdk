@@ -19,7 +19,7 @@ Digilocker Compatible endpoint to issue document.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let pushUriRequest = PushUriRequest(uriDetails: UriDetails(aadhaar: "aadhaar_example", uri: "uri_example", docType: "docType_example", docName: "docName_example", docId: "docId_example", issuedOn: "issuedOn_example", validFrom: "validFrom_example", validTo: "validTo_example", timestamp: "timestamp_example", action: "action_example"), ns2: "ns2_example", ver: "ver_example", ts: "ts_example", txn: "txn_example", orgId: "orgId_example", keyhash: "keyhash_example") // PushUriRequest | Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
+let pushUriRequest = PushUriRequest(uriDetails: UriDetails(aadhaar: "aadhaar_example", uri: "uri_example", docType: "docType_example", docName: "docName_example", docId: "docId_example", issuedOn: "issuedOn_example", validFrom: "validFrom_example", validTo: "validTo_example", timestamp: "timestamp_example", action: "action_example"), ns2: "ns2_example", ver: "ver_example", ts: "ts_example", txn: "txn_example", orgId: "orgId_example", keyhash: "keyhash_example") // PushUriRequest | Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest. (optional)
 
 // Digilocker Compatible endpoint to issue document.
 DigiLockerCompatIssuerAPI.digilockerCompatIssueDocument(pushUriRequest: pushUriRequest) { (response, error) in
@@ -38,7 +38,7 @@ DigiLockerCompatIssuerAPI.digilockerCompatIssueDocument(pushUriRequest: pushUriR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pushUriRequest** | [**PushUriRequest**](PushUriRequest.md) | Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. | [optional] 
+ **pushUriRequest** | [**PushUriRequest**](PushUriRequest.md) | Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest. | [optional] 
 
 ### Return type
 

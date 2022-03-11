@@ -3,18 +3,18 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** | Request Id. | 
-**documentTypeId** | **UUID** |  | 
-**typeName** | **String** |  | 
-**identifier** | **String** |  | 
+**id** | **UUID** | Document issue request Id. | 
+**documentTypeId** | **UUID** | Document type Id. | 
+**typeName** | **String** | Document type name. | 
+**identifier** | **String** | Document identifier. | 
 **status** | [**DocumentIssueRequestStatus**](DocumentIssueRequestStatus.md) |  | 
-**description** | **String** |  | 
-**receiver** | [**AnyCodable**](.md) |  | 
-**issuedAtUtc** | **Date** |  | 
-**validFromUtc** | **Date** |  | 
-**expiresAtUtc** | **Date** |  | [optional] 
-**metaData** | [**AnyCodable**](.md) |  | [optional] 
-**createdAtUtc** | **Date** |  | 
+**description** | **String** | Document description. | 
+**receiver** | [**AnyCodable**](.md) | Document receiver details. | 
+**issuedAtUtc** | **Date** | Datetime of issue in UTC timezone. | 
+**validFromUtc** | **Date** | Valid from datetime in UTC timezone. | 
+**expiresAtUtc** | **Date** | Datetime of expiry in UTC timezone. | [optional] 
+**metaData** | [**AnyCodable**](.md) | Metadata. | [optional] 
+**createdAtUtc** | **Date** | Creation datetime of issue request in UTC timezone. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

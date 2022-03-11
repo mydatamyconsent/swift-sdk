@@ -15,7 +15,7 @@ open class DigiLockerCompatIssuerAPI {
     /**
      Digilocker Compatible endpoint to issue document.
      
-     - parameter pushUriRequest: (body) Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
+     - parameter pushUriRequest: (body) Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -34,7 +34,7 @@ open class DigiLockerCompatIssuerAPI {
     /**
      Digilocker Compatible endpoint to issue document.
      - POST /issuer/issuedoc/1/xml
-     - parameter pushUriRequest: (body) Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
+     - parameter pushUriRequest: (body) Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest. (optional)
      - returns: RequestBuilder<PushUriResponse> 
      */
     open class func digilockerCompatIssueDocumentWithRequestBuilder(pushUriRequest: PushUriRequest? = nil) -> RequestBuilder<PushUriResponse> {

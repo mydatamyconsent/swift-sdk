@@ -62,8 +62,8 @@ open class DocumentsAPI {
      Get paginated list of issued documents of given document type.
      
      - parameter documentTypeId: (path) Document type id. 
-     - parameter fromDateTime: (query) From DateTime. (optional)
-     - parameter toDateTime: (query) To DateTime. (optional)
+     - parameter fromDateTime: (query) From DateTime in UTC timezone. (optional)
+     - parameter toDateTime: (query) To DateTime in UTC timezone. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -85,8 +85,8 @@ open class DocumentsAPI {
      Get paginated list of issued documents of given document type.
      - GET /v1/documents/issued/{documentTypeId}
      - parameter documentTypeId: (path) Document type id. 
-     - parameter fromDateTime: (query) From DateTime. (optional)
-     - parameter toDateTime: (query) To DateTime. (optional)
+     - parameter fromDateTime: (query) From DateTime in UTC timezone. (optional)
+     - parameter toDateTime: (query) To DateTime in UTC timezone. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
      - returns: RequestBuilder<IssuedDocumentPaginatedList> 
@@ -119,7 +119,7 @@ open class DocumentsAPI {
     }
 
     /**
-     Get registered document types.
+     Get paginated list of registered document types.
      
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
@@ -139,7 +139,7 @@ open class DocumentsAPI {
     }
 
     /**
-     Get registered document types.
+     Get paginated list of registered document types.
      - GET /v1/documents/types
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
@@ -256,17 +256,17 @@ open class DocumentsAPI {
     /**
      Upload a document for issuance request of individual.
      
-     - parameter issueRequestId: (path) Issue Request Id System.Guid. 
+     - parameter issueRequestId: (path) Document issue request id. 
      - parameter formFile: (form)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func uploadDocumentForIndividual(issueRequestId: UUID, formFile: URL, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func uploadDocumentForIndividual(issueRequestId: UUID, formFile: URL, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return uploadDocumentForIndividualWithRequestBuilder(issueRequestId: issueRequestId, formFile: formFile).execute(apiResponseQueue) { result in
             switch result {
-            case let .success(response):
-                completion(response.body, nil)
+            case .success:
+                completion((), nil)
             case let .failure(error):
                 completion(nil, error)
             }
@@ -276,11 +276,11 @@ open class DocumentsAPI {
     /**
      Upload a document for issuance request of individual.
      - POST /v1/documents/issue/individual/upload/{issueRequestId}
-     - parameter issueRequestId: (path) Issue Request Id System.Guid. 
+     - parameter issueRequestId: (path) Document issue request id. 
      - parameter formFile: (form)  
-     - returns: RequestBuilder<String> 
+     - returns: RequestBuilder<Void> 
      */
-    open class func uploadDocumentForIndividualWithRequestBuilder(issueRequestId: UUID, formFile: URL) -> RequestBuilder<String> {
+    open class func uploadDocumentForIndividualWithRequestBuilder(issueRequestId: UUID, formFile: URL) -> RequestBuilder<Void> {
         var localVariablePath = "/v1/documents/issue/individual/upload/{issueRequestId}"
         let issueRequestIdPreEscape = "\(APIHelper.mapValueToPathItem(issueRequestId))"
         let issueRequestIdPostEscape = issueRequestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -301,7 +301,7 @@ open class DocumentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<String>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsentAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -309,17 +309,17 @@ open class DocumentsAPI {
     /**
      Upload a document for issuance request of organization.
      
-     - parameter issueRequestId: (path) Issue Request Id System.Guid. 
+     - parameter issueRequestId: (path) Document issue request id System.Guid. 
      - parameter formFile: (form)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func uploadDocumentForOrganization(issueRequestId: UUID, formFile: URL, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func uploadDocumentForOrganization(issueRequestId: UUID, formFile: URL, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return uploadDocumentForOrganizationWithRequestBuilder(issueRequestId: issueRequestId, formFile: formFile).execute(apiResponseQueue) { result in
             switch result {
-            case let .success(response):
-                completion(response.body, nil)
+            case .success:
+                completion((), nil)
             case let .failure(error):
                 completion(nil, error)
             }
@@ -329,11 +329,11 @@ open class DocumentsAPI {
     /**
      Upload a document for issuance request of organization.
      - POST /v1/documents/issue/organization/upload/{issueRequestId}
-     - parameter issueRequestId: (path) Issue Request Id System.Guid. 
+     - parameter issueRequestId: (path) Document issue request id System.Guid. 
      - parameter formFile: (form)  
-     - returns: RequestBuilder<String> 
+     - returns: RequestBuilder<Void> 
      */
-    open class func uploadDocumentForOrganizationWithRequestBuilder(issueRequestId: UUID, formFile: URL) -> RequestBuilder<String> {
+    open class func uploadDocumentForOrganizationWithRequestBuilder(issueRequestId: UUID, formFile: URL) -> RequestBuilder<Void> {
         var localVariablePath = "/v1/documents/issue/organization/upload/{issueRequestId}"
         let issueRequestIdPreEscape = "\(APIHelper.mapValueToPathItem(issueRequestId))"
         let issueRequestIdPostEscape = issueRequestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -354,7 +354,7 @@ open class DocumentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<String>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsentAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
