@@ -7,14 +7,14 @@ Method | HTTP request | Description
 [**createDataProcessingAgreement**](DataProcessingAgreementsAPI.md#createdataprocessingagreement) | **POST** /v1/data-agreements | Create a data processing agreement.
 [**deleteDataProcessingAgreementById**](DataProcessingAgreementsAPI.md#deletedataprocessingagreementbyid) | **DELETE** /v1/data-agreements/{id} | Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
 [**getDataProcessingAgreementById**](DataProcessingAgreementsAPI.md#getdataprocessingagreementbyid) | **GET** /v1/data-agreements/{id} | Get data processing agreement by id.
-[**getDataProcessingAgreements**](DataProcessingAgreementsAPI.md#getdataprocessingagreements) | **GET** /v1/data-agreements | Get all data processing agreements.
+[**getDataProcessingAgreements**](DataProcessingAgreementsAPI.md#getdataprocessingagreements) | **GET** /v1/data-agreements | Get paginated data processing agreements.
 [**terminateDataProcessingAgreementById**](DataProcessingAgreementsAPI.md#terminatedataprocessingagreementbyid) | **PUT** /v1/data-agreements/{id}/terminate | Terminate a data processing agreement.
 [**updateDataProcessingAgreement**](DataProcessingAgreementsAPI.md#updatedataprocessingagreement) | **PUT** /v1/data-agreements/{id} | Update a data processing agreement.
 
 
 # **createDataProcessingAgreement**
 ```swift
-    open class func createDataProcessingAgreement(createDataProcessingAgreementRequestModel: CreateDataProcessingAgreementRequestModel? = nil, completion: @escaping (_ data: DataProcessingAgreementDto?, _ error: Error?) -> Void)
+    open class func createDataProcessingAgreement(createDataProcessingAgreement: CreateDataProcessingAgreement, completion: @escaping (_ data: DataProcessingAgreement?, _ error: Error?) -> Void)
 ```
 
 Create a data processing agreement.
@@ -24,10 +24,10 @@ Create a data processing agreement.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let createDataProcessingAgreementRequestModel = CreateDataProcessingAgreementRequestModel(version: "version_example", body: "body_example", attachmentUrl: "attachmentUrl_example") // CreateDataProcessingAgreementRequestModel | Create data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.CreateDataProcessingAgreementRequestModel. (optional)
+let createDataProcessingAgreement = CreateDataProcessingAgreement(version: "version_example", body: "body_example", attachmentUrl: "attachmentUrl_example") // CreateDataProcessingAgreement | Create data processing agreement payload
 
 // Create a data processing agreement.
-DataProcessingAgreementsAPI.createDataProcessingAgreement(createDataProcessingAgreementRequestModel: createDataProcessingAgreementRequestModel) { (response, error) in
+DataProcessingAgreementsAPI.createDataProcessingAgreement(createDataProcessingAgreement: createDataProcessingAgreement) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -43,11 +43,11 @@ DataProcessingAgreementsAPI.createDataProcessingAgreement(createDataProcessingAg
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createDataProcessingAgreementRequestModel** | [**CreateDataProcessingAgreementRequestModel**](CreateDataProcessingAgreementRequestModel.md) | Create data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.CreateDataProcessingAgreementRequestModel. | [optional] 
+ **createDataProcessingAgreement** | [**CreateDataProcessingAgreement**](CreateDataProcessingAgreement.md) | Create data processing agreement payload | 
 
 ### Return type
 
-[**DataProcessingAgreementDto**](DataProcessingAgreementDto.md)
+[**DataProcessingAgreement**](DataProcessingAgreement.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ No authorization required
 
 # **getDataProcessingAgreementById**
 ```swift
-    open class func getDataProcessingAgreementById(id: UUID, completion: @escaping (_ data: DataProcessingAgreementDto?, _ error: Error?) -> Void)
+    open class func getDataProcessingAgreementById(id: UUID, completion: @escaping (_ data: DataProcessingAgreement?, _ error: Error?) -> Void)
 ```
 
 Get data processing agreement by id.
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DataProcessingAgreementDto**](DataProcessingAgreementDto.md)
+[**DataProcessingAgreement**](DataProcessingAgreement.md)
 
 ### Authorization
 
@@ -158,10 +158,10 @@ No authorization required
 
 # **getDataProcessingAgreements**
 ```swift
-    open class func getDataProcessingAgreements(pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: DataProcessingAgreementDtoPaginatedList?, _ error: Error?) -> Void)
+    open class func getDataProcessingAgreements(pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: DataProcessingAgreementPaginatedList?, _ error: Error?) -> Void)
 ```
 
-Get all data processing agreements.
+Get paginated data processing agreements.
 
 ### Example
 ```swift
@@ -171,7 +171,7 @@ import MyDataMyConsent
 let pageNo = 987 // Int | Page number. (optional) (default to 1)
 let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
-// Get all data processing agreements.
+// Get paginated data processing agreements.
 DataProcessingAgreementsAPI.getDataProcessingAgreements(pageNo: pageNo, pageSize: pageSize) { (response, error) in
     guard error == nil else {
         print(error)
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DataProcessingAgreementDtoPaginatedList**](DataProcessingAgreementDtoPaginatedList.md)
+[**DataProcessingAgreementPaginatedList**](DataProcessingAgreementPaginatedList.md)
 
 ### Authorization
 
@@ -256,7 +256,7 @@ No authorization required
 
 # **updateDataProcessingAgreement**
 ```swift
-    open class func updateDataProcessingAgreement(id: UUID, updateDataProcessingAgreementRequestModel: UpdateDataProcessingAgreementRequestModel? = nil, completion: @escaping (_ data: DataProcessingAgreementDto?, _ error: Error?) -> Void)
+    open class func updateDataProcessingAgreement(id: UUID, updateDataProcessingAgreement: UpdateDataProcessingAgreement, completion: @escaping (_ data: DataProcessingAgreement?, _ error: Error?) -> Void)
 ```
 
 Update a data processing agreement.
@@ -267,10 +267,10 @@ Update a data processing agreement.
 import MyDataMyConsent
 
 let id = 987 // UUID | Agreement id.
-let updateDataProcessingAgreementRequestModel = UpdateDataProcessingAgreementRequestModel(version: "version_example", body: "body_example", attachmentUrl: "attachmentUrl_example") // UpdateDataProcessingAgreementRequestModel | Updated data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.UpdateDataProcessingAgreementRequestModel. (optional)
+let updateDataProcessingAgreement = UpdateDataProcessingAgreement(version: "version_example", body: "body_example", attachmentUrl: "attachmentUrl_example") // UpdateDataProcessingAgreement | Update data processing agreement payload
 
 // Update a data processing agreement.
-DataProcessingAgreementsAPI.updateDataProcessingAgreement(id: id, updateDataProcessingAgreementRequestModel: updateDataProcessingAgreementRequestModel) { (response, error) in
+DataProcessingAgreementsAPI.updateDataProcessingAgreement(id: id, updateDataProcessingAgreement: updateDataProcessingAgreement) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -287,11 +287,11 @@ DataProcessingAgreementsAPI.updateDataProcessingAgreement(id: id, updateDataProc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **UUID** | Agreement id. | 
- **updateDataProcessingAgreementRequestModel** | [**UpdateDataProcessingAgreementRequestModel**](UpdateDataProcessingAgreementRequestModel.md) | Updated data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.UpdateDataProcessingAgreementRequestModel. | [optional] 
+ **updateDataProcessingAgreement** | [**UpdateDataProcessingAgreement**](UpdateDataProcessingAgreement.md) | Update data processing agreement payload | 
 
 ### Return type
 
-[**DataProcessingAgreementDto**](DataProcessingAgreementDto.md)
+[**DataProcessingAgreement**](DataProcessingAgreement.md)
 
 ### Authorization
 

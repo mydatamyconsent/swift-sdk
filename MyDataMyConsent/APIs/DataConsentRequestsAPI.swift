@@ -13,18 +13,18 @@ import AnyCodable
 open class DataConsentRequestsAPI {
 
     /**
-     Cancel the individual data consent request based on Id.
+     Cancel the individual data consent request by Id.
      
      - parameter requestId: (path) Individual consent request id. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func cancelIndividualDataConsentRequest(requestId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: IndividualDataConsentRequestResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func cancelIndividualDataConsentRequest(requestId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return cancelIndividualDataConsentRequestWithRequestBuilder(requestId: requestId).execute(apiResponseQueue) { result in
             switch result {
-            case let .success(response):
-                completion(response.body, nil)
+            case .success:
+                completion((), nil)
             case let .failure(error):
                 completion(nil, error)
             }
@@ -32,12 +32,12 @@ open class DataConsentRequestsAPI {
     }
 
     /**
-     Cancel the individual data consent request based on Id.
+     Cancel the individual data consent request by Id.
      - PUT /v1/consent-requests/individual/{requestId}/cancel
      - parameter requestId: (path) Individual consent request id. 
-     - returns: RequestBuilder<IndividualDataConsentRequestResponse> 
+     - returns: RequestBuilder<Void> 
      */
-    open class func cancelIndividualDataConsentRequestWithRequestBuilder(requestId: UUID) -> RequestBuilder<IndividualDataConsentRequestResponse> {
+    open class func cancelIndividualDataConsentRequestWithRequestBuilder(requestId: UUID) -> RequestBuilder<Void> {
         var localVariablePath = "/v1/consent-requests/individual/{requestId}/cancel"
         let requestIdPreEscape = "\(APIHelper.mapValueToPathItem(requestId))"
         let requestIdPostEscape = requestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -53,24 +53,24 @@ open class DataConsentRequestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<IndividualDataConsentRequestResponse>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsentAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
-     Cancel the Organization data consent request based on Id.
+     Cancel the organization data consent request by Id.
      
      - parameter requestId: (path) Organization consent request id. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func cancelOrganizationDataConsentRequest(requestId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: OrganizationDataConsentRequestResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func cancelOrganizationDataConsentRequest(requestId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return cancelOrganizationDataConsentRequestWithRequestBuilder(requestId: requestId).execute(apiResponseQueue) { result in
             switch result {
-            case let .success(response):
-                completion(response.body, nil)
+            case .success:
+                completion((), nil)
             case let .failure(error):
                 completion(nil, error)
             }
@@ -78,12 +78,12 @@ open class DataConsentRequestsAPI {
     }
 
     /**
-     Cancel the Organization data consent request based on Id.
+     Cancel the organization data consent request by Id.
      - PUT /v1/consent-requests/organization/{requestId}/cancel
      - parameter requestId: (path) Organization consent request id. 
-     - returns: RequestBuilder<OrganizationDataConsentRequestResponse> 
+     - returns: RequestBuilder<Void> 
      */
-    open class func cancelOrganizationDataConsentRequestWithRequestBuilder(requestId: UUID) -> RequestBuilder<OrganizationDataConsentRequestResponse> {
+    open class func cancelOrganizationDataConsentRequestWithRequestBuilder(requestId: UUID) -> RequestBuilder<Void> {
         var localVariablePath = "/v1/consent-requests/organization/{requestId}/cancel"
         let requestIdPreEscape = "\(APIHelper.mapValueToPathItem(requestId))"
         let requestIdPostEscape = requestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -99,21 +99,21 @@ open class DataConsentRequestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OrganizationDataConsentRequestResponse>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = MyDataMyConsentAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
-     Create a individual data consent request.
+     Create data consent request for an individual.
      
-     - parameter createIndividualDataConsentRequest: (body) The Individual data consent request payload 
+     - parameter createDataConsentRequest: (body) The Individual data consent request payload 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createIndividualDataConsentRequest(createIndividualDataConsentRequest: CreateIndividualDataConsentRequest, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: IndividualDataConsentRequestResponse?, _ error: Error?) -> Void)) -> RequestTask {
-        return createIndividualDataConsentRequestWithRequestBuilder(createIndividualDataConsentRequest: createIndividualDataConsentRequest).execute(apiResponseQueue) { result in
+    open class func createIndividualDataConsentRequest(createDataConsentRequest: CreateDataConsentRequest, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: IndividualDataConsentRequestDetails?, _ error: Error?) -> Void)) -> RequestTask {
+        return createIndividualDataConsentRequestWithRequestBuilder(createDataConsentRequest: createDataConsentRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -124,16 +124,16 @@ open class DataConsentRequestsAPI {
     }
 
     /**
-     Create a individual data consent request.
+     Create data consent request for an individual.
      - POST /v1/consent-requests/individual
-     - Create a individual data consent request.
-     - parameter createIndividualDataConsentRequest: (body) The Individual data consent request payload 
-     - returns: RequestBuilder<IndividualDataConsentRequestResponse> 
+     - Create data consent request for an individual.
+     - parameter createDataConsentRequest: (body) The Individual data consent request payload 
+     - returns: RequestBuilder<IndividualDataConsentRequestDetails> 
      */
-    open class func createIndividualDataConsentRequestWithRequestBuilder(createIndividualDataConsentRequest: CreateIndividualDataConsentRequest) -> RequestBuilder<IndividualDataConsentRequestResponse> {
+    open class func createIndividualDataConsentRequestWithRequestBuilder(createDataConsentRequest: CreateDataConsentRequest) -> RequestBuilder<IndividualDataConsentRequestDetails> {
         let localVariablePath = "/v1/consent-requests/individual"
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createIndividualDataConsentRequest)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createDataConsentRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -143,21 +143,21 @@ open class DataConsentRequestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<IndividualDataConsentRequestResponse>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<IndividualDataConsentRequestDetails>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
-     Create a organization data consent request.
+     Create data consent request for an organization.
      
-     - parameter createOrganizationDataConsentRequest: (body) M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateOrganizationDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateOrganizationDataConsentRequest). 
+     - parameter createDataConsentRequest: (body) The Organization data consent request payload 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createOrganizationDataConsentRequest(createOrganizationDataConsentRequest: CreateOrganizationDataConsentRequest, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: OrganizationDataConsentRequestResponse?, _ error: Error?) -> Void)) -> RequestTask {
-        return createOrganizationDataConsentRequestWithRequestBuilder(createOrganizationDataConsentRequest: createOrganizationDataConsentRequest).execute(apiResponseQueue) { result in
+    open class func createOrganizationDataConsentRequest(createDataConsentRequest: CreateDataConsentRequest, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: OrganizationDataConsentRequestDetails?, _ error: Error?) -> Void)) -> RequestTask {
+        return createOrganizationDataConsentRequestWithRequestBuilder(createDataConsentRequest: createDataConsentRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -168,16 +168,16 @@ open class DataConsentRequestsAPI {
     }
 
     /**
-     Create a organization data consent request.
+     Create data consent request for an organization.
      - POST /v1/consent-requests/organization
-     - Create a organization data consent request.
-     - parameter createOrganizationDataConsentRequest: (body) M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateOrganizationDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateOrganizationDataConsentRequest). 
-     - returns: RequestBuilder<OrganizationDataConsentRequestResponse> 
+     - Create data consent request for an organization.
+     - parameter createDataConsentRequest: (body) The Organization data consent request payload 
+     - returns: RequestBuilder<OrganizationDataConsentRequestDetails> 
      */
-    open class func createOrganizationDataConsentRequestWithRequestBuilder(createOrganizationDataConsentRequest: CreateOrganizationDataConsentRequest) -> RequestBuilder<OrganizationDataConsentRequestResponse> {
+    open class func createOrganizationDataConsentRequestWithRequestBuilder(createDataConsentRequest: CreateDataConsentRequest) -> RequestBuilder<OrganizationDataConsentRequestDetails> {
         let localVariablePath = "/v1/consent-requests/organization"
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createOrganizationDataConsentRequest)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createDataConsentRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -187,24 +187,24 @@ open class DataConsentRequestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OrganizationDataConsentRequestResponse>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<OrganizationDataConsentRequestDetails>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
-     Get all Consent Requests sent to Individuals.
+     Get all Consent Requests sent to individuals.
      
      - parameter status: (query) Data consent status. (optional)
-     - parameter startDateTime: (query) Start date time. (optional)
-     - parameter endDateTime: (query) End date time. (optional)
+     - parameter startDateTime: (query) Start datetime in UTC timezone. (optional)
+     - parameter endDateTime: (query) End datetime in UTC timezone. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAllConsentRequestsToIndividuals(status: DataConsentStatus? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: UserDataConsentInfoDtoPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getAllConsentRequestsToIndividuals(status: DataConsentStatus? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: IndividualDataConsentRequestDetailsPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
         return getAllConsentRequestsToIndividualsWithRequestBuilder(status: status, startDateTime: startDateTime, endDateTime: endDateTime, pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -216,16 +216,16 @@ open class DataConsentRequestsAPI {
     }
 
     /**
-     Get all Consent Requests sent to Individuals.
+     Get all Consent Requests sent to individuals.
      - GET /v1/consent-requests/individuals
      - parameter status: (query) Data consent status. (optional)
-     - parameter startDateTime: (query) Start date time. (optional)
-     - parameter endDateTime: (query) End date time. (optional)
+     - parameter startDateTime: (query) Start datetime in UTC timezone. (optional)
+     - parameter endDateTime: (query) End datetime in UTC timezone. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
-     - returns: RequestBuilder<UserDataConsentInfoDtoPaginatedList> 
+     - returns: RequestBuilder<IndividualDataConsentRequestDetailsPaginatedList> 
      */
-    open class func getAllConsentRequestsToIndividualsWithRequestBuilder(status: DataConsentStatus? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<UserDataConsentInfoDtoPaginatedList> {
+    open class func getAllConsentRequestsToIndividualsWithRequestBuilder(status: DataConsentStatus? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<IndividualDataConsentRequestDetailsPaginatedList> {
         let localVariablePath = "/v1/consent-requests/individuals"
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -245,24 +245,24 @@ open class DataConsentRequestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UserDataConsentInfoDtoPaginatedList>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<IndividualDataConsentRequestDetailsPaginatedList>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
-     Get All Consent Requests sent to Organizations.
+     Get all Consent Requests sent to organizations.
      
      - parameter status: (query) Data consent status. (optional)
-     - parameter startDateTime: (query) Start date time. (optional)
-     - parameter endDateTime: (query) End date time. (optional)
+     - parameter startDateTime: (query) Start datetime in UTC timezone. (optional)
+     - parameter endDateTime: (query) End datetime in UTC timezone. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAllConsentRequestsToOrganizations(status: DataConsentStatus? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: OrganizationDataConsentInfoDtoPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getAllConsentRequestsToOrganizations(status: DataConsentStatus? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: OrganizationDataConsentRequestDetailsPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
         return getAllConsentRequestsToOrganizationsWithRequestBuilder(status: status, startDateTime: startDateTime, endDateTime: endDateTime, pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -274,16 +274,16 @@ open class DataConsentRequestsAPI {
     }
 
     /**
-     Get All Consent Requests sent to Organizations.
+     Get all Consent Requests sent to organizations.
      - GET /v1/consent-requests/organizations
      - parameter status: (query) Data consent status. (optional)
-     - parameter startDateTime: (query) Start date time. (optional)
-     - parameter endDateTime: (query) End date time. (optional)
+     - parameter startDateTime: (query) Start datetime in UTC timezone. (optional)
+     - parameter endDateTime: (query) End datetime in UTC timezone. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
-     - returns: RequestBuilder<OrganizationDataConsentInfoDtoPaginatedList> 
+     - returns: RequestBuilder<OrganizationDataConsentRequestDetailsPaginatedList> 
      */
-    open class func getAllConsentRequestsToOrganizationsWithRequestBuilder(status: DataConsentStatus? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<OrganizationDataConsentInfoDtoPaginatedList> {
+    open class func getAllConsentRequestsToOrganizationsWithRequestBuilder(status: DataConsentStatus? = nil, startDateTime: Date? = nil, endDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<OrganizationDataConsentRequestDetailsPaginatedList> {
         let localVariablePath = "/v1/consent-requests/organizations"
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -303,20 +303,20 @@ open class DataConsentRequestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OrganizationDataConsentInfoDtoPaginatedList>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<OrganizationDataConsentRequestDetailsPaginatedList>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
-     Get a Consent Request by ID.
+     Get individual data consent request by id.
      
-     - parameter requestId: (path) Individual consent request id. 
+     - parameter requestId: (path) Individual data consent request id. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getIndividualConsentRequestById(requestId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DataConsentDetailsDto?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getIndividualConsentRequestById(requestId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DataConsentRequest?, _ error: Error?) -> Void)) -> RequestTask {
         return getIndividualConsentRequestByIdWithRequestBuilder(requestId: requestId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -328,12 +328,12 @@ open class DataConsentRequestsAPI {
     }
 
     /**
-     Get a Consent Request by ID.
+     Get individual data consent request by id.
      - GET /v1/consent-requests/individuals/{requestId}
-     - parameter requestId: (path) Individual consent request id. 
-     - returns: RequestBuilder<DataConsentDetailsDto> 
+     - parameter requestId: (path) Individual data consent request id. 
+     - returns: RequestBuilder<DataConsentRequest> 
      */
-    open class func getIndividualConsentRequestByIdWithRequestBuilder(requestId: UUID) -> RequestBuilder<DataConsentDetailsDto> {
+    open class func getIndividualConsentRequestByIdWithRequestBuilder(requestId: UUID) -> RequestBuilder<DataConsentRequest> {
         var localVariablePath = "/v1/consent-requests/individuals/{requestId}"
         let requestIdPreEscape = "\(APIHelper.mapValueToPathItem(requestId))"
         let requestIdPostEscape = requestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -349,7 +349,7 @@ open class DataConsentRequestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DataConsentDetailsDto>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DataConsentRequest>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -362,7 +362,7 @@ open class DataConsentRequestsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOrganizationConsentRequestById(requestId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DataConsentDetailsDto?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getOrganizationConsentRequestById(requestId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DataConsentRequest?, _ error: Error?) -> Void)) -> RequestTask {
         return getOrganizationConsentRequestByIdWithRequestBuilder(requestId: requestId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -377,9 +377,9 @@ open class DataConsentRequestsAPI {
      Get a OrganizationConsent Request by Id.
      - GET /v1/consent-requests/organizations/{requestId}
      - parameter requestId: (path) Organization consent request id. 
-     - returns: RequestBuilder<DataConsentDetailsDto> 
+     - returns: RequestBuilder<DataConsentRequest> 
      */
-    open class func getOrganizationConsentRequestByIdWithRequestBuilder(requestId: UUID) -> RequestBuilder<DataConsentDetailsDto> {
+    open class func getOrganizationConsentRequestByIdWithRequestBuilder(requestId: UUID) -> RequestBuilder<DataConsentRequest> {
         var localVariablePath = "/v1/consent-requests/organizations/{requestId}"
         let requestIdPreEscape = "\(APIHelper.mapValueToPathItem(requestId))"
         let requestIdPostEscape = requestIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -395,7 +395,7 @@ open class DataConsentRequestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DataConsentDetailsDto>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DataConsentRequest>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

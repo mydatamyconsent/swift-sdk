@@ -5,23 +5,23 @@ All URIs are relative to *https://api.mydatamyconsent.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**downloadConsentedDocumentAnalysis**](DataConsentsAPI.md#downloadconsenteddocumentanalysis) | **GET** /v1/consents/{consentId}/documents/{documentId}/analysis | Get analysis of a consented document.
-[**downloadConsentedDocumentById**](DataConsentsAPI.md#downloadconsenteddocumentbyid) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId}/download | Download a individuals consented document.
-[**downloadOrgConsentedDocumentById**](DataConsentsAPI.md#downloadorgconsenteddocumentbyid) | **GET** /v1/consents/organizations/{consentId}/documents/{documentId}/download | Download a organizations consented document.
-[**getAllConsentedDocuments**](DataConsentsAPI.md#getallconsenteddocuments) | **GET** /v1/consents/individuals/{consentId}/documents | Get the individual documents based on ConsentId.
+[**downloadIndividualConsentedDocumentById**](DataConsentsAPI.md#downloadindividualconsenteddocumentbyid) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId}/download | Download individual consented document by document id.
+[**downloadOrganizationConsentedDocumentById**](DataConsentsAPI.md#downloadorganizationconsenteddocumentbyid) | **GET** /v1/consents/organizations/{consentId}/documents/{documentId}/download | Download organization consent document based on document id.
 [**getAllConsentedFinancialAccounts**](DataConsentsAPI.md#getallconsentedfinancialaccounts) | **GET** /v1/consents/individuals/{consentId}/financial-accounts | Get all individual consented financial accounts.
-[**getAllOrganizationConsentedDocuments**](DataConsentsAPI.md#getallorganizationconsenteddocuments) | **GET** /v1/consents/organizations/{consentId}/documents | Get the organization documents based on ConsentId.
-[**getConsentDetailsById**](DataConsentsAPI.md#getconsentdetailsbyid) | **GET** /v1/consents/individuals/{consentId} | Get all individuals consent details by consent id.
 [**getConsentFinancialAccounts**](DataConsentsAPI.md#getconsentfinancialaccounts) | **GET** /v1/consents/organizations/{consentId}/financial-accounts | Get all organizational consented financial accounts.
 [**getConsentedAccountById**](DataConsentsAPI.md#getconsentedaccountbyid) | **GET** /v1/consents/individuals/{consentId}/financial-accounts/{accountId} | Get individual consented financial account details based on account id.
-[**getConsentedDocumentById**](DataConsentsAPI.md#getconsenteddocumentbyid) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId} | Get individuals consent document based on document id.
+[**getConsentedDocumentById**](DataConsentsAPI.md#getconsenteddocumentbyid) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId} | Get individual consented document by document id.
 [**getConsentedFinancialAccount**](DataConsentsAPI.md#getconsentedfinancialaccount) | **GET** /v1/consents/organizations/{consentId}/financial-accounts/{accountId} | Get organization consented financial account details based on account id.
 [**getConsentedFinancialAccountInsights**](DataConsentsAPI.md#getconsentedfinancialaccountinsights) | **GET** /v1/consents/{consentId}/financial-accounts/{accountId}/insights | Get consented financial account insights.
 [**getConsentedFinancialAccountTransactions**](DataConsentsAPI.md#getconsentedfinancialaccounttransactions) | **GET** /v1/consents/individuals/{consentId}/financial-accounts/{accountId}/transactions | Get individual consented financial account transactions of an individual based on accountId.
-[**getConsentsForOrganizations**](DataConsentsAPI.md#getconsentsfororganizations) | **GET** /v1/consents/organizations | Get the list of data consents sent for organizations.
-[**getConsentsSentToIndividuals**](DataConsentsAPI.md#getconsentssenttoindividuals) | **GET** /v1/consents/individuals | Get the list of Consents Sent to Individuals.
+[**getConsents**](DataConsentsAPI.md#getconsents) | **GET** /v1/consents/individuals | Get the paginated list of individual data consents.
+[**getIndividualConsentedDocuments**](DataConsentsAPI.md#getindividualconsenteddocuments) | **GET** /v1/consents/individuals/{consentId}/documents | Get individual consented documents by consent id.
+[**getIndividualDataConsentById**](DataConsentsAPI.md#getindividualdataconsentbyid) | **GET** /v1/consents/individuals/{consentId} | Get individuals data consent details by consent id.
 [**getOrgConsentedAccountTransactions**](DataConsentsAPI.md#getorgconsentedaccounttransactions) | **GET** /v1/consents/organizations/{consentId}/financial-accounts/{accountId}/transactions | Get organization consented financial account transactions of an individual based on accountId.
-[**getOrganizationConsentDetailsById**](DataConsentsAPI.md#getorganizationconsentdetailsbyid) | **GET** /v1/consents/organizations/{consentId} | Get all organization consent details by consent id.
 [**getOrganizationConsentedDocumentById**](DataConsentsAPI.md#getorganizationconsenteddocumentbyid) | **GET** /v1/consents/organizations/{consentId}/documents/{documentId} | Get organization consent document based on document id.
+[**getOrganizationConsentedDocuments**](DataConsentsAPI.md#getorganizationconsenteddocuments) | **GET** /v1/consents/organizations/{consentId}/documents | Get organization consented documents by consent id.
+[**getOrganizationDataConsentById**](DataConsentsAPI.md#getorganizationdataconsentbyid) | **GET** /v1/consents/organizations/{consentId} | Get organizations data consent details by consent id.
+[**getOrganizationDataConsents**](DataConsentsAPI.md#getorganizationdataconsents) | **GET** /v1/consents/organizations | Get the paginated list of organization data consents.
 
 
 # **downloadConsentedDocumentAnalysis**
@@ -36,8 +36,8 @@ Get analysis of a consented document.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let consentId = "consentId_example" // String | 
-let documentId = "documentId_example" // String | Document Id.
+let consentId = "consentId_example" // String | Data consent id.
+let documentId = "documentId_example" // String | Consented document Id.
 
 // Get analysis of a consented document.
 DataConsentsAPI.downloadConsentedDocumentAnalysis(consentId: consentId, documentId: documentId) { (response, error) in
@@ -56,8 +56,8 @@ DataConsentsAPI.downloadConsentedDocumentAnalysis(consentId: consentId, document
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | **String** |  | 
- **documentId** | **String** | Document Id. | 
+ **consentId** | **String** | Data consent id. | 
+ **documentId** | **String** | Consented document Id. | 
 
 ### Return type
 
@@ -74,23 +74,23 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **downloadConsentedDocumentById**
+# **downloadIndividualConsentedDocumentById**
 ```swift
-    open class func downloadConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: UserDocumentDownload?, _ error: Error?) -> Void)
+    open class func downloadIndividualConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
-Download a individuals consented document.
+Download individual consented document by document id.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let consentId = 987 // UUID | Consent id.
-let documentId = 987 // UUID | Document id.
+let consentId = 987 // UUID | Individual data consent id.
+let documentId = 987 // UUID | Consented document id.
 
-// Download a individuals consented document.
-DataConsentsAPI.downloadConsentedDocumentById(consentId: consentId, documentId: documentId) { (response, error) in
+// Download individual consented document by document id.
+DataConsentsAPI.downloadIndividualConsentedDocumentById(consentId: consentId, documentId: documentId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -106,12 +106,12 @@ DataConsentsAPI.downloadConsentedDocumentById(consentId: consentId, documentId: 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | **UUID** | Consent id. | 
- **documentId** | **UUID** | Document id. | 
+ **consentId** | **UUID** | Individual data consent id. | 
+ **documentId** | **UUID** | Consented document id. | 
 
 ### Return type
 
-[**UserDocumentDownload**](UserDocumentDownload.md)
+Void (empty response body)
 
 ### Authorization
 
@@ -124,23 +124,23 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **downloadOrgConsentedDocumentById**
+# **downloadOrganizationConsentedDocumentById**
 ```swift
-    open class func downloadOrgConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: OrganizationDocumentDownloadDto?, _ error: Error?) -> Void)
+    open class func downloadOrganizationConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
-Download a organizations consented document.
+Download organization consent document based on document id.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let consentId = 987 // UUID | Consent id.
-let documentId = 987 // UUID | Document id.
+let consentId = 987 // UUID | Organization data consent id.
+let documentId = 987 // UUID | Organization consented document Id.
 
-// Download a organizations consented document.
-DataConsentsAPI.downloadOrgConsentedDocumentById(consentId: consentId, documentId: documentId) { (response, error) in
+// Download organization consent document based on document id.
+DataConsentsAPI.downloadOrganizationConsentedDocumentById(consentId: consentId, documentId: documentId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -156,60 +156,12 @@ DataConsentsAPI.downloadOrgConsentedDocumentById(consentId: consentId, documentI
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | **UUID** | Consent id. | 
- **documentId** | **UUID** | Document id. | 
+ **consentId** | **UUID** | Organization data consent id. | 
+ **documentId** | **UUID** | Organization consented document Id. | 
 
 ### Return type
 
-[**OrganizationDocumentDownloadDto**](OrganizationDocumentDownloadDto.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getAllConsentedDocuments**
-```swift
-    open class func getAllConsentedDocuments(consentId: UUID, completion: @escaping (_ data: DataConsentDocumentsDto?, _ error: Error?) -> Void)
-```
-
-Get the individual documents based on ConsentId.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import MyDataMyConsent
-
-let consentId = 987 // UUID | Consent id.
-
-// Get the individual documents based on ConsentId.
-DataConsentsAPI.getAllConsentedDocuments(consentId: consentId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **consentId** | **UUID** | Consent id. | 
-
-### Return type
-
-[**DataConsentDocumentsDto**](DataConsentDocumentsDto.md)
+Void (empty response body)
 
 ### Authorization
 
@@ -258,102 +210,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DataConsentFinancialsDto**](DataConsentFinancialsDto.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getAllOrganizationConsentedDocuments**
-```swift
-    open class func getAllOrganizationConsentedDocuments(consentId: UUID, completion: @escaping (_ data: DataConsentDocumentsDto?, _ error: Error?) -> Void)
-```
-
-Get the organization documents based on ConsentId.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import MyDataMyConsent
-
-let consentId = 987 // UUID | Consent id.
-
-// Get the organization documents based on ConsentId.
-DataConsentsAPI.getAllOrganizationConsentedDocuments(consentId: consentId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **consentId** | **UUID** | Consent id. | 
-
-### Return type
-
-[**DataConsentDocumentsDto**](DataConsentDocumentsDto.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getConsentDetailsById**
-```swift
-    open class func getConsentDetailsById(consentId: UUID, completion: @escaping (_ data: DataConsentDetailsDto?, _ error: Error?) -> Void)
-```
-
-Get all individuals consent details by consent id.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import MyDataMyConsent
-
-let consentId = 987 // UUID | Consent id.
-
-// Get all individuals consent details by consent id.
-DataConsentsAPI.getConsentDetailsById(consentId: consentId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **consentId** | **UUID** | Consent id. | 
-
-### Return type
-
-[**DataConsentDetailsDto**](DataConsentDetailsDto.md)
 
 ### Authorization
 
@@ -466,20 +322,20 @@ No authorization required
 
 # **getConsentedDocumentById**
 ```swift
-    open class func getConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: UserDocumentDetails?, _ error: Error?) -> Void)
+    open class func getConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: IndividualDataConsentDocument?, _ error: Error?) -> Void)
 ```
 
-Get individuals consent document based on document id.
+Get individual consented document by document id.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let consentId = 987 // UUID | Consent id.
-let documentId = 987 // UUID | Document Id.
+let consentId = 987 // UUID | Individual data consent id.
+let documentId = 987 // UUID | Consented document id.
 
-// Get individuals consent document based on document id.
+// Get individual consented document by document id.
 DataConsentsAPI.getConsentedDocumentById(consentId: consentId, documentId: documentId) { (response, error) in
     guard error == nil else {
         print(error)
@@ -496,12 +352,12 @@ DataConsentsAPI.getConsentedDocumentById(consentId: consentId, documentId: docum
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | **UUID** | Consent id. | 
- **documentId** | **UUID** | Document Id. | 
+ **consentId** | **UUID** | Individual data consent id. | 
+ **documentId** | **UUID** | Consented document id. | 
 
 ### Return type
 
-[**UserDocumentDetails**](UserDocumentDetails.md)
+[**IndividualDataConsentDocument**](IndividualDataConsentDocument.md)
 
 ### Authorization
 
@@ -674,12 +530,14 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getConsentsForOrganizations**
+# **getConsents**
 ```swift
-    open class func getConsentsForOrganizations(status: DataConsentStatus? = nil, from: Date? = nil, to: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: OrganizationDataConsentInfoDtoPaginatedList?, _ error: Error?) -> Void)
+    open class func getConsents(status: DataConsentStatus? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: IndividualDataConsentDetailsPaginatedList?, _ error: Error?) -> Void)
 ```
 
-Get the list of data consents sent for organizations.
+Get the paginated list of individual data consents.
+
+GetIndividualDataConsents
 
 ### Example
 ```swift
@@ -687,13 +545,13 @@ Get the list of data consents sent for organizations.
 import MyDataMyConsent
 
 let status = DataConsentStatus() // DataConsentStatus | Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional)
-let from = Date() // Date | From date time in utc timezone. (optional)
-let to = Date() // Date | Til date time in utc timezone. (optional)
+let fromDateTime = Date() // Date | From datetime in UTC timezone. (optional)
+let toDateTime = Date() // Date | To datetime in UTC timezone. (optional)
 let pageNo = 987 // Int | Page number. (optional) (default to 1)
 let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
-// Get the list of data consents sent for organizations.
-DataConsentsAPI.getConsentsForOrganizations(status: status, from: from, to: to, pageNo: pageNo, pageSize: pageSize) { (response, error) in
+// Get the paginated list of individual data consents.
+DataConsentsAPI.getConsents(status: status, fromDateTime: fromDateTime, toDateTime: toDateTime, pageNo: pageNo, pageSize: pageSize) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -710,14 +568,14 @@ DataConsentsAPI.getConsentsForOrganizations(status: status, from: from, to: to, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | [**DataConsentStatus**](.md) | Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. | [optional] 
- **from** | **Date** | From date time in utc timezone. | [optional] 
- **to** | **Date** | Til date time in utc timezone. | [optional] 
+ **fromDateTime** | **Date** | From datetime in UTC timezone. | [optional] 
+ **toDateTime** | **Date** | To datetime in UTC timezone. | [optional] 
  **pageNo** | **Int** | Page number. | [optional] [default to 1]
  **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
-[**OrganizationDataConsentInfoDtoPaginatedList**](OrganizationDataConsentInfoDtoPaginatedList.md)
+[**IndividualDataConsentDetailsPaginatedList**](IndividualDataConsentDetailsPaginatedList.md)
 
 ### Authorization
 
@@ -730,26 +588,22 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getConsentsSentToIndividuals**
+# **getIndividualConsentedDocuments**
 ```swift
-    open class func getConsentsSentToIndividuals(status: DataConsentStatus? = nil, from: Date? = nil, to: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: UserDataConsentInfoDtoPaginatedList?, _ error: Error?) -> Void)
+    open class func getIndividualConsentedDocuments(consentId: UUID, completion: @escaping (_ data: [IndividualDataConsentDocument]?, _ error: Error?) -> Void)
 ```
 
-Get the list of Consents Sent to Individuals.
+Get individual consented documents by consent id.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let status = DataConsentStatus() // DataConsentStatus | Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional)
-let from = Date() // Date | From date time in utc timezone. (optional)
-let to = Date() // Date | Til date time in utc timezone. (optional)
-let pageNo = 987 // Int | Page number. (optional) (default to 1)
-let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
+let consentId = 987 // UUID | Individual data consent id.
 
-// Get the list of Consents Sent to Individuals.
-DataConsentsAPI.getConsentsSentToIndividuals(status: status, from: from, to: to, pageNo: pageNo, pageSize: pageSize) { (response, error) in
+// Get individual consented documents by consent id.
+DataConsentsAPI.getIndividualConsentedDocuments(consentId: consentId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -765,15 +619,59 @@ DataConsentsAPI.getConsentsSentToIndividuals(status: status, from: from, to: to,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | [**DataConsentStatus**](.md) | Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. | [optional] 
- **from** | **Date** | From date time in utc timezone. | [optional] 
- **to** | **Date** | Til date time in utc timezone. | [optional] 
- **pageNo** | **Int** | Page number. | [optional] [default to 1]
- **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
+ **consentId** | **UUID** | Individual data consent id. | 
 
 ### Return type
 
-[**UserDataConsentInfoDtoPaginatedList**](UserDataConsentInfoDtoPaginatedList.md)
+[**[IndividualDataConsentDocument]**](IndividualDataConsentDocument.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getIndividualDataConsentById**
+```swift
+    open class func getIndividualDataConsentById(consentId: UUID, completion: @escaping (_ data: GetIndividualDataConsentById200?, _ error: Error?) -> Void)
+```
+
+Get individuals data consent details by consent id.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import MyDataMyConsent
+
+let consentId = 987 // UUID | Individual data consent id.
+
+// Get individuals data consent details by consent id.
+DataConsentsAPI.getIndividualDataConsentById(consentId: consentId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consentId** | **UUID** | Individual data consent id. | 
+
+### Return type
+
+[**GetIndividualDataConsentById200**](GetIndividualDataConsentById200.md)
 
 ### Authorization
 
@@ -846,57 +744,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getOrganizationConsentDetailsById**
-```swift
-    open class func getOrganizationConsentDetailsById(consentId: UUID, completion: @escaping (_ data: DataConsentDetailsDto?, _ error: Error?) -> Void)
-```
-
-Get all organization consent details by consent id.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import MyDataMyConsent
-
-let consentId = 987 // UUID | Consent id.
-
-// Get all organization consent details by consent id.
-DataConsentsAPI.getOrganizationConsentDetailsById(consentId: consentId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **consentId** | **UUID** | Consent id. | 
-
-### Return type
-
-[**DataConsentDetailsDto**](DataConsentDetailsDto.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **getOrganizationConsentedDocumentById**
 ```swift
-    open class func getOrganizationConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: OrganizationDocumentDetails?, _ error: Error?) -> Void)
+    open class func getOrganizationConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: OrganizationDataConsentDocument?, _ error: Error?) -> Void)
 ```
 
 Get organization consent document based on document id.
@@ -906,8 +756,8 @@ Get organization consent document based on document id.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let consentId = 987 // UUID | Consent id.
-let documentId = 987 // UUID | Document Id.
+let consentId = 987 // UUID | Organization data consent id.
+let documentId = 987 // UUID | Organization consented document Id.
 
 // Get organization consent document based on document id.
 DataConsentsAPI.getOrganizationConsentedDocumentById(consentId: consentId, documentId: documentId) { (response, error) in
@@ -926,12 +776,164 @@ DataConsentsAPI.getOrganizationConsentedDocumentById(consentId: consentId, docum
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | **UUID** | Consent id. | 
- **documentId** | **UUID** | Document Id. | 
+ **consentId** | **UUID** | Organization data consent id. | 
+ **documentId** | **UUID** | Organization consented document Id. | 
 
 ### Return type
 
-[**OrganizationDocumentDetails**](OrganizationDocumentDetails.md)
+[**OrganizationDataConsentDocument**](OrganizationDataConsentDocument.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getOrganizationConsentedDocuments**
+```swift
+    open class func getOrganizationConsentedDocuments(consentId: UUID, completion: @escaping (_ data: [OrganizationDataConsentDocument]?, _ error: Error?) -> Void)
+```
+
+Get organization consented documents by consent id.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import MyDataMyConsent
+
+let consentId = 987 // UUID | Organization data consent id.
+
+// Get organization consented documents by consent id.
+DataConsentsAPI.getOrganizationConsentedDocuments(consentId: consentId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consentId** | **UUID** | Organization data consent id. | 
+
+### Return type
+
+[**[OrganizationDataConsentDocument]**](OrganizationDataConsentDocument.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getOrganizationDataConsentById**
+```swift
+    open class func getOrganizationDataConsentById(consentId: UUID, completion: @escaping (_ data: GetOrganizationDataConsentById200?, _ error: Error?) -> Void)
+```
+
+Get organizations data consent details by consent id.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import MyDataMyConsent
+
+let consentId = 987 // UUID | Organization data consent id.
+
+// Get organizations data consent details by consent id.
+DataConsentsAPI.getOrganizationDataConsentById(consentId: consentId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consentId** | **UUID** | Organization data consent id. | 
+
+### Return type
+
+[**GetOrganizationDataConsentById200**](GetOrganizationDataConsentById200.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getOrganizationDataConsents**
+```swift
+    open class func getOrganizationDataConsents(status: DataConsentStatus? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: OrganizationDataConsentDetailsPaginatedList?, _ error: Error?) -> Void)
+```
+
+Get the paginated list of organization data consents.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import MyDataMyConsent
+
+let status = DataConsentStatus() // DataConsentStatus | Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional)
+let fromDateTime = Date() // Date | From datetime in UTC timezone. (optional)
+let toDateTime = Date() // Date | To datetime in UTC timezone. (optional)
+let pageNo = 987 // Int | Page number. (optional) (default to 1)
+let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
+
+// Get the paginated list of organization data consents.
+DataConsentsAPI.getOrganizationDataConsents(status: status, fromDateTime: fromDateTime, toDateTime: toDateTime, pageNo: pageNo, pageSize: pageSize) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | [**DataConsentStatus**](.md) | Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. | [optional] 
+ **fromDateTime** | **Date** | From datetime in UTC timezone. | [optional] 
+ **toDateTime** | **Date** | To datetime in UTC timezone. | [optional] 
+ **pageNo** | **Int** | Page number. | [optional] [default to 1]
+ **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
+
+### Return type
+
+[**OrganizationDataConsentDetailsPaginatedList**](OrganizationDataConsentDetailsPaginatedList.md)
 
 ### Authorization
 

@@ -12,65 +12,65 @@ import AnyCodable
 
 public struct DataProvider: Codable, JSONEncodable, Hashable {
 
-    public var id: String?
-    public var name: String?
+    public var id: String
+    public var name: String
+    public var category: String
     public var logoUrl: String?
     public var website: String?
-    public var email: String?
-    public var supportPhoneNumber: String?
+    public var supportEmail: String?
+    public var helpLineNumber: String?
     public var privacyPolicy: String?
     public var termOfService: String?
-    public var category: String?
     public var dataProtectionOfficer: DataProtectionOfficer?
+    public var supportedDocumentTypes: [String]
     public var supportedAccountTypes: [String]?
-    public var supportedDocumentTypes: [String]?
 
-    public init(id: String? = nil, name: String? = nil, logoUrl: String? = nil, website: String? = nil, email: String? = nil, supportPhoneNumber: String? = nil, privacyPolicy: String? = nil, termOfService: String? = nil, category: String? = nil, dataProtectionOfficer: DataProtectionOfficer? = nil, supportedAccountTypes: [String]? = nil, supportedDocumentTypes: [String]? = nil) {
+    public init(id: String, name: String, category: String, logoUrl: String? = nil, website: String? = nil, supportEmail: String? = nil, helpLineNumber: String? = nil, privacyPolicy: String? = nil, termOfService: String? = nil, dataProtectionOfficer: DataProtectionOfficer? = nil, supportedDocumentTypes: [String], supportedAccountTypes: [String]? = nil) {
         self.id = id
         self.name = name
+        self.category = category
         self.logoUrl = logoUrl
         self.website = website
-        self.email = email
-        self.supportPhoneNumber = supportPhoneNumber
+        self.supportEmail = supportEmail
+        self.helpLineNumber = helpLineNumber
         self.privacyPolicy = privacyPolicy
         self.termOfService = termOfService
-        self.category = category
         self.dataProtectionOfficer = dataProtectionOfficer
-        self.supportedAccountTypes = supportedAccountTypes
         self.supportedDocumentTypes = supportedDocumentTypes
+        self.supportedAccountTypes = supportedAccountTypes
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
+        case category
         case logoUrl
         case website
-        case email
-        case supportPhoneNumber
+        case supportEmail
+        case helpLineNumber
         case privacyPolicy
         case termOfService
-        case category
         case dataProtectionOfficer
-        case supportedAccountTypes
         case supportedDocumentTypes
+        case supportedAccountTypes
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(name, forKey: .name)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(category, forKey: .category)
         try container.encodeIfPresent(logoUrl, forKey: .logoUrl)
         try container.encodeIfPresent(website, forKey: .website)
-        try container.encodeIfPresent(email, forKey: .email)
-        try container.encodeIfPresent(supportPhoneNumber, forKey: .supportPhoneNumber)
+        try container.encodeIfPresent(supportEmail, forKey: .supportEmail)
+        try container.encodeIfPresent(helpLineNumber, forKey: .helpLineNumber)
         try container.encodeIfPresent(privacyPolicy, forKey: .privacyPolicy)
         try container.encodeIfPresent(termOfService, forKey: .termOfService)
-        try container.encodeIfPresent(category, forKey: .category)
         try container.encodeIfPresent(dataProtectionOfficer, forKey: .dataProtectionOfficer)
+        try container.encode(supportedDocumentTypes, forKey: .supportedDocumentTypes)
         try container.encodeIfPresent(supportedAccountTypes, forKey: .supportedAccountTypes)
-        try container.encodeIfPresent(supportedDocumentTypes, forKey: .supportedDocumentTypes)
     }
 }
 

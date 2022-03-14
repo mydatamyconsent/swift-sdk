@@ -170,7 +170,7 @@ open class DocumentsAPI {
     /**
      Issue a new document to an individual user.
      
-     - parameter documentIssueRequest: (body) Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. 
+     - parameter documentIssueRequest: (body) Document issue request payload 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -189,7 +189,7 @@ open class DocumentsAPI {
     /**
      Issue a new document to an individual user.
      - POST /v1/documents/issue/individual
-     - parameter documentIssueRequest: (body) Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. 
+     - parameter documentIssueRequest: (body) Document issue request payload 
      - returns: RequestBuilder<DocumentIssueRequestDetails> 
      */
     open class func issueDocumentToIndividualWithRequestBuilder(documentIssueRequest: DocumentIssueRequest) -> RequestBuilder<DocumentIssueRequestDetails> {
@@ -213,7 +213,7 @@ open class DocumentsAPI {
     /**
      Issue a new document to an organization.
      
-     - parameter documentIssueRequest: (body) Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. 
+     - parameter documentIssueRequest: (body) Document issue request payload 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -232,7 +232,7 @@ open class DocumentsAPI {
     /**
      Issue a new document to an organization.
      - POST /v1/documents/issue/organization
-     - parameter documentIssueRequest: (body) Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. 
+     - parameter documentIssueRequest: (body) Document issue request payload 
      - returns: RequestBuilder<DocumentIssueRequestDetails> 
      */
     open class func issueDocumentToOrganizationWithRequestBuilder(documentIssueRequest: DocumentIssueRequest) -> RequestBuilder<DocumentIssueRequestDetails> {

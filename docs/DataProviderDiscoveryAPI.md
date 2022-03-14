@@ -4,7 +4,7 @@ All URIs are relative to *https://api.mydatamyconsent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getDataProviderById**](DataProviderDiscoveryAPI.md#getdataproviderbyid) | **GET** /v1/data-providers/{providerId} | Get a Data Provider details based on provider id.
+[**getDataProviderById**](DataProviderDiscoveryAPI.md#getdataproviderbyid) | **GET** /v1/data-providers/{providerId} | Get a Data Provider details by provider id.
 [**getDataProviders**](DataProviderDiscoveryAPI.md#getdataproviders) | **GET** /v1/data-providers | Discover all data providers in My Data My Consent by country and filters.
 
 
@@ -13,16 +13,16 @@ Method | HTTP request | Description
     open class func getDataProviderById(providerId: String, completion: @escaping (_ data: DataProvider?, _ error: Error?) -> Void)
 ```
 
-Get a Data Provider details based on provider id.
+Get a Data Provider details by provider id.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let providerId = "providerId_example" // String | Provider id.
+let providerId = "providerId_example" // String | Data provider id.
 
-// Get a Data Provider details based on provider id.
+// Get a Data Provider details by provider id.
 DataProviderDiscoveryAPI.getDataProviderById(providerId: providerId) { (response, error) in
     guard error == nil else {
         print(error)
@@ -39,7 +39,7 @@ DataProviderDiscoveryAPI.getDataProviderById(providerId: providerId) { (response
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **providerId** | **String** | Provider id. | 
+ **providerId** | **String** | Data provider id. | 
 
 ### Return type
 
@@ -58,7 +58,7 @@ No authorization required
 
 # **getDataProviders**
 ```swift
-    open class func getDataProviders(accountType: String? = nil, documentType: String? = nil, organizationCategory: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil, country: String? = nil, completion: @escaping (_ data: DataProviderPaginatedList?, _ error: Error?) -> Void)
+    open class func getDataProviders(accountType: String? = nil, documentType: String? = nil, organizationCategory: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil, countryIso2Code: String? = nil, completion: @escaping (_ data: DataProviderPaginatedList?, _ error: Error?) -> Void)
 ```
 
 Discover all data providers in My Data My Consent by country and filters.
@@ -73,10 +73,10 @@ let documentType = "documentType_example" // String | Document type. (optional)
 let organizationCategory = "organizationCategory_example" // String | Organization category. (optional)
 let pageNo = 987 // Int | Page number. (optional) (default to 1)
 let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
-let country = "country_example" // String | ISO2 Country code. (optional) (default to "IN")
+let countryIso2Code = "countryIso2Code_example" // String | ISO2 Country code. (optional) (default to "IN")
 
 // Discover all data providers in My Data My Consent by country and filters.
-DataProviderDiscoveryAPI.getDataProviders(accountType: accountType, documentType: documentType, organizationCategory: organizationCategory, pageNo: pageNo, pageSize: pageSize, country: country) { (response, error) in
+DataProviderDiscoveryAPI.getDataProviders(accountType: accountType, documentType: documentType, organizationCategory: organizationCategory, pageNo: pageNo, pageSize: pageSize, countryIso2Code: countryIso2Code) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
  **organizationCategory** | **String** | Organization category. | [optional] 
  **pageNo** | **Int** | Page number. | [optional] [default to 1]
  **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
- **country** | **String** | ISO2 Country code. | [optional] [default to &quot;IN&quot;]
+ **countryIso2Code** | **String** | ISO2 Country code. | [optional] [default to &quot;IN&quot;]
 
 ### Return type
 

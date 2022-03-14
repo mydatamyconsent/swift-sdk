@@ -13,9 +13,9 @@ import AnyCodable
 open class DataProviderDiscoveryAPI {
 
     /**
-     Get a Data Provider details based on provider id.
+     Get a Data Provider details by provider id.
      
-     - parameter providerId: (path) Provider id. 
+     - parameter providerId: (path) Data provider id. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -32,9 +32,9 @@ open class DataProviderDiscoveryAPI {
     }
 
     /**
-     Get a Data Provider details based on provider id.
+     Get a Data Provider details by provider id.
      - GET /v1/data-providers/{providerId}
-     - parameter providerId: (path) Provider id. 
+     - parameter providerId: (path) Data provider id. 
      - returns: RequestBuilder<DataProvider> 
      */
     open class func getDataProviderByIdWithRequestBuilder(providerId: String) -> RequestBuilder<DataProvider> {
@@ -66,13 +66,13 @@ open class DataProviderDiscoveryAPI {
      - parameter organizationCategory: (query) Organization category. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
-     - parameter country: (query) ISO2 Country code. (optional, default to "IN")
+     - parameter countryIso2Code: (query) ISO2 Country code. (optional, default to "IN")
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDataProviders(accountType: String? = nil, documentType: String? = nil, organizationCategory: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil, country: String? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DataProviderPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDataProvidersWithRequestBuilder(accountType: accountType, documentType: documentType, organizationCategory: organizationCategory, pageNo: pageNo, pageSize: pageSize, country: country).execute(apiResponseQueue) { result in
+    open class func getDataProviders(accountType: String? = nil, documentType: String? = nil, organizationCategory: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil, countryIso2Code: String? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DataProviderPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDataProvidersWithRequestBuilder(accountType: accountType, documentType: documentType, organizationCategory: organizationCategory, pageNo: pageNo, pageSize: pageSize, countryIso2Code: countryIso2Code).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -90,10 +90,10 @@ open class DataProviderDiscoveryAPI {
      - parameter organizationCategory: (query) Organization category. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
-     - parameter country: (query) ISO2 Country code. (optional, default to "IN")
+     - parameter countryIso2Code: (query) ISO2 Country code. (optional, default to "IN")
      - returns: RequestBuilder<DataProviderPaginatedList> 
      */
-    open class func getDataProvidersWithRequestBuilder(accountType: String? = nil, documentType: String? = nil, organizationCategory: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil, country: String? = nil) -> RequestBuilder<DataProviderPaginatedList> {
+    open class func getDataProvidersWithRequestBuilder(accountType: String? = nil, documentType: String? = nil, organizationCategory: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil, countryIso2Code: String? = nil) -> RequestBuilder<DataProviderPaginatedList> {
         let localVariablePath = "/v1/data-providers"
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -105,7 +105,7 @@ open class DataProviderDiscoveryAPI {
             "organizationCategory": organizationCategory?.encodeToJSON(),
             "pageNo": pageNo?.encodeToJSON(),
             "pageSize": pageSize?.encodeToJSON(),
-            "country": country?.encodeToJSON(),
+            "countryIso2Code": countryIso2Code?.encodeToJSON(),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
