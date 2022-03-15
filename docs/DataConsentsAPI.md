@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 # **downloadConsentedDocumentAnalysis**
 ```swift
-    open class func downloadConsentedDocumentAnalysis(consentId: String, documentId: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func downloadConsentedDocumentAnalysis(consentId: String, documentId: String, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get analysis of a consented document.
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ No authorization required
 
 # **downloadIndividualConsentedDocumentById**
 ```swift
-    open class func downloadIndividualConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func downloadIndividualConsentedDocumentById(consentId: UUID, documentId: String, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Download individual consented document by document id.
@@ -87,7 +87,7 @@ Download individual consented document by document id.
 import MyDataMyConsent
 
 let consentId = 987 // UUID | Individual data consent id.
-let documentId = 987 // UUID | Consented document id.
+let documentId = "documentId_example" // String | Consented document id.
 
 // Download individual consented document by document id.
 DataConsentsAPI.downloadIndividualConsentedDocumentById(consentId: consentId, documentId: documentId) { (response, error) in
@@ -107,11 +107,11 @@ DataConsentsAPI.downloadIndividualConsentedDocumentById(consentId: consentId, do
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consentId** | **UUID** | Individual data consent id. | 
- **documentId** | **UUID** | Consented document id. | 
+ **documentId** | **String** | Consented document id. | 
 
 ### Return type
 
-Void (empty response body)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
@@ -126,7 +126,7 @@ No authorization required
 
 # **downloadOrganizationConsentedDocumentById**
 ```swift
-    open class func downloadOrganizationConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func downloadOrganizationConsentedDocumentById(consentId: UUID, documentId: String, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Download organization consent document based on document id.
@@ -137,7 +137,7 @@ Download organization consent document based on document id.
 import MyDataMyConsent
 
 let consentId = 987 // UUID | Organization data consent id.
-let documentId = 987 // UUID | Organization consented document Id.
+let documentId = "documentId_example" // String | Organization consented document Id.
 
 // Download organization consent document based on document id.
 DataConsentsAPI.downloadOrganizationConsentedDocumentById(consentId: consentId, documentId: documentId) { (response, error) in
@@ -157,11 +157,11 @@ DataConsentsAPI.downloadOrganizationConsentedDocumentById(consentId: consentId, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consentId** | **UUID** | Organization data consent id. | 
- **documentId** | **UUID** | Organization consented document Id. | 
+ **documentId** | **String** | Organization consented document Id. | 
 
 ### Return type
 
-Void (empty response body)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
@@ -322,7 +322,7 @@ No authorization required
 
 # **getConsentedDocumentById**
 ```swift
-    open class func getConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: IndividualDataConsentDocument?, _ error: Error?) -> Void)
+    open class func getConsentedDocumentById(consentId: UUID, documentId: String, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get individual consented document by document id.
@@ -333,7 +333,7 @@ Get individual consented document by document id.
 import MyDataMyConsent
 
 let consentId = 987 // UUID | Individual data consent id.
-let documentId = 987 // UUID | Consented document id.
+let documentId = "documentId_example" // String | Consented document id.
 
 // Get individual consented document by document id.
 DataConsentsAPI.getConsentedDocumentById(consentId: consentId, documentId: documentId) { (response, error) in
@@ -353,11 +353,11 @@ DataConsentsAPI.getConsentedDocumentById(consentId: consentId, documentId: docum
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consentId** | **UUID** | Individual data consent id. | 
- **documentId** | **UUID** | Consented document id. | 
+ **documentId** | **String** | Consented document id. | 
 
 ### Return type
 
-[**IndividualDataConsentDocument**](IndividualDataConsentDocument.md)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
@@ -532,7 +532,7 @@ No authorization required
 
 # **getConsents**
 ```swift
-    open class func getConsents(status: DataConsentStatus? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: IndividualDataConsentDetailsPaginatedList?, _ error: Error?) -> Void)
+    open class func getConsents(status: DataConsentStatus? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get the paginated list of individual data consents.
@@ -575,7 +575,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IndividualDataConsentDetailsPaginatedList**](IndividualDataConsentDetailsPaginatedList.md)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
@@ -590,7 +590,7 @@ No authorization required
 
 # **getIndividualConsentedDocuments**
 ```swift
-    open class func getIndividualConsentedDocuments(consentId: UUID, completion: @escaping (_ data: [IndividualDataConsentDocument]?, _ error: Error?) -> Void)
+    open class func getIndividualConsentedDocuments(consentId: UUID, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get individual consented documents by consent id.
@@ -623,7 +623,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[IndividualDataConsentDocument]**](IndividualDataConsentDocument.md)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
@@ -638,7 +638,7 @@ No authorization required
 
 # **getIndividualDataConsentById**
 ```swift
-    open class func getIndividualDataConsentById(consentId: UUID, completion: @escaping (_ data: GetIndividualDataConsentById200?, _ error: Error?) -> Void)
+    open class func getIndividualDataConsentById(consentId: UUID, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get individuals data consent details by consent id.
@@ -671,7 +671,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetIndividualDataConsentById200**](GetIndividualDataConsentById200.md)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
@@ -746,7 +746,7 @@ No authorization required
 
 # **getOrganizationConsentedDocumentById**
 ```swift
-    open class func getOrganizationConsentedDocumentById(consentId: UUID, documentId: UUID, completion: @escaping (_ data: OrganizationDataConsentDocument?, _ error: Error?) -> Void)
+    open class func getOrganizationConsentedDocumentById(consentId: UUID, documentId: String, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get organization consent document based on document id.
@@ -757,7 +757,7 @@ Get organization consent document based on document id.
 import MyDataMyConsent
 
 let consentId = 987 // UUID | Organization data consent id.
-let documentId = 987 // UUID | Organization consented document Id.
+let documentId = "documentId_example" // String | Organization consented document Id.
 
 // Get organization consent document based on document id.
 DataConsentsAPI.getOrganizationConsentedDocumentById(consentId: consentId, documentId: documentId) { (response, error) in
@@ -777,11 +777,11 @@ DataConsentsAPI.getOrganizationConsentedDocumentById(consentId: consentId, docum
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consentId** | **UUID** | Organization data consent id. | 
- **documentId** | **UUID** | Organization consented document Id. | 
+ **documentId** | **String** | Organization consented document Id. | 
 
 ### Return type
 
-[**OrganizationDataConsentDocument**](OrganizationDataConsentDocument.md)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
@@ -796,7 +796,7 @@ No authorization required
 
 # **getOrganizationConsentedDocuments**
 ```swift
-    open class func getOrganizationConsentedDocuments(consentId: UUID, completion: @escaping (_ data: [OrganizationDataConsentDocument]?, _ error: Error?) -> Void)
+    open class func getOrganizationConsentedDocuments(consentId: UUID, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get organization consented documents by consent id.
@@ -829,7 +829,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[OrganizationDataConsentDocument]**](OrganizationDataConsentDocument.md)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
@@ -844,7 +844,7 @@ No authorization required
 
 # **getOrganizationDataConsentById**
 ```swift
-    open class func getOrganizationDataConsentById(consentId: UUID, completion: @escaping (_ data: GetOrganizationDataConsentById200?, _ error: Error?) -> Void)
+    open class func getOrganizationDataConsentById(consentId: UUID, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get organizations data consent details by consent id.
@@ -877,7 +877,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetOrganizationDataConsentById200**](GetOrganizationDataConsentById200.md)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
@@ -892,7 +892,7 @@ No authorization required
 
 # **getOrganizationDataConsents**
 ```swift
-    open class func getOrganizationDataConsents(status: DataConsentStatus? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: OrganizationDataConsentDetailsPaginatedList?, _ error: Error?) -> Void)
+    open class func getOrganizationDataConsents(status: DataConsentStatus? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get the paginated list of organization data consents.
@@ -933,7 +933,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationDataConsentDetailsPaginatedList**](OrganizationDataConsentDetailsPaginatedList.md)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
