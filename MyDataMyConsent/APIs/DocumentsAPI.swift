@@ -20,7 +20,7 @@ open class DocumentsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getIssuedDocumentById(documentId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: IssuedDocument?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getIssuedDocumentById(documentId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: GetIssuedDocumentById200?, _ error: Error?) -> Void)) -> RequestTask {
         return getIssuedDocumentByIdWithRequestBuilder(documentId: documentId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -35,9 +35,9 @@ open class DocumentsAPI {
      Get issued document.
      - GET /v1/documents/issued/{documentId}
      - parameter documentId: (path) Document id. 
-     - returns: RequestBuilder<IssuedDocument> 
+     - returns: RequestBuilder<GetIssuedDocumentById200> 
      */
-    open class func getIssuedDocumentByIdWithRequestBuilder(documentId: UUID) -> RequestBuilder<IssuedDocument> {
+    open class func getIssuedDocumentByIdWithRequestBuilder(documentId: UUID) -> RequestBuilder<GetIssuedDocumentById200> {
         var localVariablePath = "/v1/documents/issued/{documentId}"
         let documentIdPreEscape = "\(APIHelper.mapValueToPathItem(documentId))"
         let documentIdPostEscape = documentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -53,7 +53,7 @@ open class DocumentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<IssuedDocument>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GetIssuedDocumentById200>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

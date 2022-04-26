@@ -23,6 +23,11 @@ MyDataMyConsent/Models/CollectibleTypes.swift
 MyDataMyConsent/Models/ConsentRequestReceiver.swift
 MyDataMyConsent/Models/CreateDataConsentRequest.swift
 MyDataMyConsent/Models/CreateDataProcessingAgreement.swift
+MyDataMyConsent/Models/DataConsent.swift
+MyDataMyConsent/Models/DataConsentDetails.swift
+MyDataMyConsent/Models/DataConsentDetailsPaginatedList.swift
+MyDataMyConsent/Models/DataConsentDocument.swift
+MyDataMyConsent/Models/DataConsentDocumentIssuer.swift
 MyDataMyConsent/Models/DataConsentFinancialsDto.swift
 MyDataMyConsent/Models/DataConsentRequest.swift
 MyDataMyConsent/Models/DataConsentRequestDetails.swift
@@ -35,6 +40,7 @@ MyDataMyConsent/Models/DataProtectionOfficer.swift
 MyDataMyConsent/Models/DataProvider.swift
 MyDataMyConsent/Models/DataProviderPaginatedList.swift
 MyDataMyConsent/Models/DocumentCategoryType.swift
+MyDataMyConsent/Models/DocumentDigitalSignature.swift
 MyDataMyConsent/Models/DocumentIssueRequest.swift
 MyDataMyConsent/Models/DocumentIssueRequestDetails.swift
 MyDataMyConsent/Models/DocumentIssueRequestStatus.swift
@@ -53,7 +59,9 @@ MyDataMyConsent/Models/Identifier.swift
 MyDataMyConsent/Models/IndividualDataConsentRequestDetails.swift
 MyDataMyConsent/Models/IndividualDataConsentRequestDetailsPaginatedList.swift
 MyDataMyConsent/Models/IssuedDocument.swift
+MyDataMyConsent/Models/IssuedDocumentDetails.swift
 MyDataMyConsent/Models/IssuedDocumentPaginatedList.swift
+MyDataMyConsent/Models/IssuedDocumentPaginatedListItemsOneOf.swift
 MyDataMyConsent/Models/Life.swift
 MyDataMyConsent/Models/OrganizationDataConsentRequestDetails.swift
 MyDataMyConsent/Models/OrganizationDataConsentRequestDetailsPaginatedList.swift
@@ -83,6 +91,11 @@ docs/CollectibleTypes.md
 docs/ConsentRequestReceiver.md
 docs/CreateDataConsentRequest.md
 docs/CreateDataProcessingAgreement.md
+docs/DataConsent.md
+docs/DataConsentDetails.md
+docs/DataConsentDetailsPaginatedList.md
+docs/DataConsentDocument.md
+docs/DataConsentDocumentIssuer.md
 docs/DataConsentFinancialsDto.md
 docs/DataConsentRequest.md
 docs/DataConsentRequestDetails.md
@@ -100,6 +113,7 @@ docs/DataProviderDiscoveryAPI.md
 docs/DataProviderPaginatedList.md
 docs/DigiLockerCompatIssuerAPI.md
 docs/DocumentCategoryType.md
+docs/DocumentDigitalSignature.md
 docs/DocumentIssueRequest.md
 docs/DocumentIssueRequestDetails.md
 docs/DocumentIssueRequestStatus.md
@@ -119,7 +133,9 @@ docs/Identifier.md
 docs/IndividualDataConsentRequestDetails.md
 docs/IndividualDataConsentRequestDetailsPaginatedList.md
 docs/IssuedDocument.md
+docs/IssuedDocumentDetails.md
 docs/IssuedDocumentPaginatedList.md
+docs/IssuedDocumentPaginatedListItemsOneOf.md
 docs/Life.md
 docs/OrganizationDataConsentRequestDetails.md
 docs/OrganizationDataConsentRequestDetailsPaginatedList.md

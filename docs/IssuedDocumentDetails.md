@@ -1,8 +1,11 @@
-# IssuedDocument
+# IssuedDocumentDetails
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**receiver** | [**DocumentReceiver**](DocumentReceiver.md) |  | 
+**metadata** | **[String: String]** | Metadata. | [optional] 
+**digitalSignatures** | [DocumentDigitalSignature] | Digital signatures. | 
 **id** | **UUID** | Document Id. | 
 **identifier** | **String** | Document Identifier. | 
 **documentType** | **String** | Document type name. | 

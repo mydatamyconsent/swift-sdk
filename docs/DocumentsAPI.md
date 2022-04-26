@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **getIssuedDocumentById**
 ```swift
-    open class func getIssuedDocumentById(documentId: UUID, completion: @escaping (_ data: IssuedDocument?, _ error: Error?) -> Void)
+    open class func getIssuedDocumentById(documentId: UUID, completion: @escaping (_ data: GetIssuedDocumentById200?, _ error: Error?) -> Void)
 ```
 
 Get issued document.
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IssuedDocument**](IssuedDocument.md)
+[**GetIssuedDocumentById200**](GetIssuedDocumentById200.md)
 
 ### Authorization
 

@@ -17,6 +17,8 @@ public struct DataConsentRequest: Codable, JSONEncodable, Hashable {
     public var id: UUID
     /** Data consent template id. */
     public var templateId: UUID?
+    /** Data consent id. */
+    public var consentId: UUID?
     /** Data consent title. */
     public var title: String
     /** Data consent description. */
@@ -26,6 +28,7 @@ public struct DataConsentRequest: Codable, JSONEncodable, Hashable {
     public var dataLife: Life?
     /** List of supported collectables. */
     public var collectables: [CollectibleTypes]
+    public var receiver: ConsentRequestReceiver
     public var status: DataConsentStatus
     /** Request creation datetime in UTC timezone. */
     public var createdAtUtc: Date
@@ -40,14 +43,16 @@ public struct DataConsentRequest: Codable, JSONEncodable, Hashable {
     /** Request revocation datetime in UTC timezone. */
     public var revokedAtUtc: Date?
 
-    public init(id: UUID, templateId: UUID? = nil, title: String, description: String, purpose: String? = nil, dataLife: Life? = nil, collectables: [CollectibleTypes], status: DataConsentStatus, createdAtUtc: Date, expiresAtUtc: Date, approvedAtUtc: Date? = nil, dataAccessExpiresAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, revokedAtUtc: Date? = nil) {
+    public init(id: UUID, templateId: UUID? = nil, consentId: UUID? = nil, title: String, description: String, purpose: String? = nil, dataLife: Life? = nil, collectables: [CollectibleTypes], receiver: ConsentRequestReceiver, status: DataConsentStatus, createdAtUtc: Date, expiresAtUtc: Date, approvedAtUtc: Date? = nil, dataAccessExpiresAtUtc: Date? = nil, rejectedAtUtc: Date? = nil, revokedAtUtc: Date? = nil) {
         self.id = id
         self.templateId = templateId
+        self.consentId = consentId
         self.title = title
         self.description = description
         self.purpose = purpose
         self.dataLife = dataLife
         self.collectables = collectables
+        self.receiver = receiver
         self.status = status
         self.createdAtUtc = createdAtUtc
         self.expiresAtUtc = expiresAtUtc
@@ -60,11 +65,13 @@ public struct DataConsentRequest: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case templateId
+        case consentId
         case title
         case description
         case purpose
         case dataLife
         case collectables
+        case receiver
         case status
         case createdAtUtc
         case expiresAtUtc
@@ -80,11 +87,13 @@ public struct DataConsentRequest: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encodeIfPresent(templateId, forKey: .templateId)
+        try container.encodeIfPresent(consentId, forKey: .consentId)
         try container.encode(title, forKey: .title)
         try container.encode(description, forKey: .description)
         try container.encodeIfPresent(purpose, forKey: .purpose)
         try container.encodeIfPresent(dataLife, forKey: .dataLife)
         try container.encode(collectables, forKey: .collectables)
+        try container.encode(receiver, forKey: .receiver)
         try container.encode(status, forKey: .status)
         try container.encode(createdAtUtc, forKey: .createdAtUtc)
         try container.encode(expiresAtUtc, forKey: .expiresAtUtc)

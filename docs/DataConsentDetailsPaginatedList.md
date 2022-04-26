@@ -1,11 +1,13 @@
-# ConsentRequestReceiver
+# DataConsentDetailsPaginatedList
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**countryIso2Code** | **String** |  | 
-**identifiers** | [StringStringKeyValuePair] |  | 
-**identificationStrategy** | [**IdentificationStrategy**](IdentificationStrategy.md) |  | 
+**pageIndex** | **Int** |  | [optional] 
+**pageSize** | **Int** |  | [optional] 
+**totalPages** | **Int** |  | [optional] [readonly] 
+**totalItems** | **Int64** |  | [optional] 
+**items** | [DataConsentDetails] |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

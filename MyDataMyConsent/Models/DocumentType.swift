@@ -39,10 +39,8 @@ public struct DocumentType: Codable, JSONEncodable, Hashable {
     public var payableAmountCurrency: String?
     /** DateTime of approval in UTC timezone. */
     public var approvedAtUtc: Date?
-    /** Document type approval status. */
-    public var approved: Bool
 
-    public init(id: UUID, categoryType: DocumentCategoryType, subCategoryType: DocumentSubCategoryType, name: String, slug: String, description: String? = nil, logoUrl: String, searchServiceName: String? = nil, repositoryServiceName: String? = nil, supportedEntityTypes: [SupportedEntityType], addedBy: String, payableAmount: Double? = nil, payableAmountCurrency: String? = nil, approvedAtUtc: Date? = nil, approved: Bool) {
+    public init(id: UUID, categoryType: DocumentCategoryType, subCategoryType: DocumentSubCategoryType, name: String, slug: String, description: String? = nil, logoUrl: String, searchServiceName: String? = nil, repositoryServiceName: String? = nil, supportedEntityTypes: [SupportedEntityType], addedBy: String, payableAmount: Double? = nil, payableAmountCurrency: String? = nil, approvedAtUtc: Date? = nil) {
         self.id = id
         self.categoryType = categoryType
         self.subCategoryType = subCategoryType
@@ -57,7 +55,6 @@ public struct DocumentType: Codable, JSONEncodable, Hashable {
         self.payableAmount = payableAmount
         self.payableAmountCurrency = payableAmountCurrency
         self.approvedAtUtc = approvedAtUtc
-        self.approved = approved
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -75,7 +72,6 @@ public struct DocumentType: Codable, JSONEncodable, Hashable {
         case payableAmount
         case payableAmountCurrency
         case approvedAtUtc
-        case approved
     }
 
     // Encodable protocol methods
@@ -96,7 +92,6 @@ public struct DocumentType: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(payableAmount, forKey: .payableAmount)
         try container.encodeIfPresent(payableAmountCurrency, forKey: .payableAmountCurrency)
         try container.encodeIfPresent(approvedAtUtc, forKey: .approvedAtUtc)
-        try container.encode(approved, forKey: .approved)
     }
 }
 

@@ -17,6 +17,8 @@ public struct DataConsentRequestDetails: Codable, JSONEncodable, Hashable {
     public var id: UUID
     /** Consent request template id */
     public var templateId: UUID?
+    /** Data Consent id */
+    public var consentId: UUID?
     /** Consent request title. */
     public var title: String
     /** Consent request description. */
@@ -28,27 +30,33 @@ public struct DataConsentRequestDetails: Codable, JSONEncodable, Hashable {
     public var transactionId: String?
     /** Request creation datetime in UTC timezone */
     public var createdAtUtc: Date
+    /** Request expiration datetime in UTC timezone */
+    public var expiresAtUtc: Date
 
-    public init(id: UUID, templateId: UUID? = nil, title: String, description: String, purpose: String? = nil, status: DataConsentStatus, transactionId: String? = nil, createdAtUtc: Date) {
+    public init(id: UUID, templateId: UUID? = nil, consentId: UUID? = nil, title: String, description: String, purpose: String? = nil, status: DataConsentStatus, transactionId: String? = nil, createdAtUtc: Date, expiresAtUtc: Date) {
         self.id = id
         self.templateId = templateId
+        self.consentId = consentId
         self.title = title
         self.description = description
         self.purpose = purpose
         self.status = status
         self.transactionId = transactionId
         self.createdAtUtc = createdAtUtc
+        self.expiresAtUtc = expiresAtUtc
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case templateId
+        case consentId
         case title
         case description
         case purpose
         case status
         case transactionId
         case createdAtUtc
+        case expiresAtUtc
     }
 
     // Encodable protocol methods
@@ -57,12 +65,14 @@ public struct DataConsentRequestDetails: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encodeIfPresent(templateId, forKey: .templateId)
+        try container.encodeIfPresent(consentId, forKey: .consentId)
         try container.encode(title, forKey: .title)
         try container.encode(description, forKey: .description)
         try container.encodeIfPresent(purpose, forKey: .purpose)
         try container.encode(status, forKey: .status)
         try container.encodeIfPresent(transactionId, forKey: .transactionId)
         try container.encode(createdAtUtc, forKey: .createdAtUtc)
+        try container.encode(expiresAtUtc, forKey: .expiresAtUtc)
     }
 }
 

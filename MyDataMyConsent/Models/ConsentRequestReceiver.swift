@@ -10,12 +10,9 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Consent request receiver details */
 public struct ConsentRequestReceiver: Codable, JSONEncodable, Hashable {
 
-    /** Consent request receiver country ISO 2 code */
     public var countryIso2Code: String
-    /** Consent request receiver identifiers */
     public var identifiers: [StringStringKeyValuePair]
     public var identificationStrategy: IdentificationStrategy
 
