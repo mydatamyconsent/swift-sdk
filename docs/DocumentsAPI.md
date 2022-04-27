@@ -5,7 +5,7 @@ All URIs are relative to *https://api.mydatamyconsent.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getIssuedDocumentById**](DocumentsAPI.md#getissueddocumentbyid) | **GET** /v1/documents/issued/{documentId} | Get issued document.
-[**getIssuedDocuments**](DocumentsAPI.md#getissueddocuments) | **GET** /v1/documents/issued/{documentTypeId} | Get paginated list of issued documents of given document type.
+[**getIssuedDocuments**](DocumentsAPI.md#getissueddocuments) | **GET** /v1/documents/issued | Get paginated list of issued documents of given document type.
 [**getRegisteredDocumentTypes**](DocumentsAPI.md#getregistereddocumenttypes) | **GET** /v1/documents/types | Get paginated list of registered document types.
 [**issueDocumentToIndividual**](DocumentsAPI.md#issuedocumenttoindividual) | **POST** /v1/documents/issue/individual | Issue a new document to an individual user.
 [**issueDocumentToOrganization**](DocumentsAPI.md#issuedocumenttoorganization) | **POST** /v1/documents/issue/organization | Issue a new document to an organization.
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **getIssuedDocumentById**
 ```swift
-    open class func getIssuedDocumentById(documentId: UUID, completion: @escaping (_ data: GetIssuedDocumentById200?, _ error: Error?) -> Void)
+    open class func getIssuedDocumentById(documentId: UUID, completion: @escaping (_ data: IssuedDocumentDetails?, _ error: Error?) -> Void)
 ```
 
 Get issued document.
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetIssuedDocumentById200**](GetIssuedDocumentById200.md)
+[**IssuedDocumentDetails**](IssuedDocumentDetails.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ No authorization required
 
 # **getIssuedDocuments**
 ```swift
-    open class func getIssuedDocuments(documentTypeId: UUID, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: IssuedDocumentPaginatedList?, _ error: Error?) -> Void)
+    open class func getIssuedDocuments(documentTypeId: UUID? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: IssuedDocumentPaginatedList?, _ error: Error?) -> Void)
 ```
 
 Get paginated list of issued documents of given document type.
@@ -73,7 +73,7 @@ Get paginated list of issued documents of given document type.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let documentTypeId = 987 // UUID | Document type id.
+let documentTypeId = 987 // UUID | Document type id. (optional)
 let fromDateTime = Date() // Date | From DateTime in UTC timezone. (optional)
 let toDateTime = Date() // Date | To DateTime in UTC timezone. (optional)
 let pageNo = 987 // Int | Page number. (optional) (default to 1)
@@ -96,7 +96,7 @@ DocumentsAPI.getIssuedDocuments(documentTypeId: documentTypeId, fromDateTime: fr
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **documentTypeId** | **UUID** | Document type id. | 
+ **documentTypeId** | **UUID** | Document type id. | [optional] 
  **fromDateTime** | **Date** | From DateTime in UTC timezone. | [optional] 
  **toDateTime** | **Date** | To DateTime in UTC timezone. | [optional] 
  **pageNo** | **Int** | Page number. | [optional] [default to 1]
@@ -119,7 +119,7 @@ No authorization required
 
 # **getRegisteredDocumentTypes**
 ```swift
-    open class func getRegisteredDocumentTypes(pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: DocumentTypePaginatedList?, _ error: Error?) -> Void)
+    open class func getRegisteredDocumentTypes(supportedEntityType: SupportedEntityType? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: DocumentTypePaginatedList?, _ error: Error?) -> Void)
 ```
 
 Get paginated list of registered document types.
@@ -129,11 +129,12 @@ Get paginated list of registered document types.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
+let supportedEntityType = SupportedEntityType() // SupportedEntityType | Supported entity type. (optional)
 let pageNo = 987 // Int | Page number. (optional) (default to 1)
 let pageSize = 987 // Int | Number of items to return. (optional) (default to 25)
 
 // Get paginated list of registered document types.
-DocumentsAPI.getRegisteredDocumentTypes(pageNo: pageNo, pageSize: pageSize) { (response, error) in
+DocumentsAPI.getRegisteredDocumentTypes(supportedEntityType: supportedEntityType, pageNo: pageNo, pageSize: pageSize) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -149,6 +150,7 @@ DocumentsAPI.getRegisteredDocumentTypes(pageNo: pageNo, pageSize: pageSize) { (r
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **supportedEntityType** | [**SupportedEntityType**](.md) | Supported entity type. | [optional] 
  **pageNo** | **Int** | Page number. | [optional] [default to 1]
  **pageSize** | **Int** | Number of items to return. | [optional] [default to 25]
 

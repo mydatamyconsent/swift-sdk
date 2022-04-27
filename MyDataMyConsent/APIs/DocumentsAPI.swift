@@ -20,7 +20,7 @@ open class DocumentsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getIssuedDocumentById(documentId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: GetIssuedDocumentById200?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getIssuedDocumentById(documentId: UUID, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: IssuedDocumentDetails?, _ error: Error?) -> Void)) -> RequestTask {
         return getIssuedDocumentByIdWithRequestBuilder(documentId: documentId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -35,9 +35,9 @@ open class DocumentsAPI {
      Get issued document.
      - GET /v1/documents/issued/{documentId}
      - parameter documentId: (path) Document id. 
-     - returns: RequestBuilder<GetIssuedDocumentById200> 
+     - returns: RequestBuilder<IssuedDocumentDetails> 
      */
-    open class func getIssuedDocumentByIdWithRequestBuilder(documentId: UUID) -> RequestBuilder<GetIssuedDocumentById200> {
+    open class func getIssuedDocumentByIdWithRequestBuilder(documentId: UUID) -> RequestBuilder<IssuedDocumentDetails> {
         var localVariablePath = "/v1/documents/issued/{documentId}"
         let documentIdPreEscape = "\(APIHelper.mapValueToPathItem(documentId))"
         let documentIdPostEscape = documentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -53,7 +53,7 @@ open class DocumentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<GetIssuedDocumentById200>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<IssuedDocumentDetails>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -61,7 +61,7 @@ open class DocumentsAPI {
     /**
      Get paginated list of issued documents of given document type.
      
-     - parameter documentTypeId: (path) Document type id. 
+     - parameter documentTypeId: (query) Document type id. (optional)
      - parameter fromDateTime: (query) From DateTime in UTC timezone. (optional)
      - parameter toDateTime: (query) To DateTime in UTC timezone. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
@@ -70,7 +70,7 @@ open class DocumentsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getIssuedDocuments(documentTypeId: UUID, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: IssuedDocumentPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getIssuedDocuments(documentTypeId: UUID? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: IssuedDocumentPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
         return getIssuedDocumentsWithRequestBuilder(documentTypeId: documentTypeId, fromDateTime: fromDateTime, toDateTime: toDateTime, pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -83,24 +83,22 @@ open class DocumentsAPI {
 
     /**
      Get paginated list of issued documents of given document type.
-     - GET /v1/documents/issued/{documentTypeId}
-     - parameter documentTypeId: (path) Document type id. 
+     - GET /v1/documents/issued
+     - parameter documentTypeId: (query) Document type id. (optional)
      - parameter fromDateTime: (query) From DateTime in UTC timezone. (optional)
      - parameter toDateTime: (query) To DateTime in UTC timezone. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
      - returns: RequestBuilder<IssuedDocumentPaginatedList> 
      */
-    open class func getIssuedDocumentsWithRequestBuilder(documentTypeId: UUID, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<IssuedDocumentPaginatedList> {
-        var localVariablePath = "/v1/documents/issued/{documentTypeId}"
-        let documentTypeIdPreEscape = "\(APIHelper.mapValueToPathItem(documentTypeId))"
-        let documentTypeIdPostEscape = documentTypeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{documentTypeId}", with: documentTypeIdPostEscape, options: .literal, range: nil)
+    open class func getIssuedDocumentsWithRequestBuilder(documentTypeId: UUID? = nil, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<IssuedDocumentPaginatedList> {
+        let localVariablePath = "/v1/documents/issued"
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "documentTypeId": documentTypeId?.encodeToJSON(),
             "fromDateTime": fromDateTime?.encodeToJSON(),
             "toDateTime": toDateTime?.encodeToJSON(),
             "pageNo": pageNo?.encodeToJSON(),
@@ -121,14 +119,15 @@ open class DocumentsAPI {
     /**
      Get paginated list of registered document types.
      
+     - parameter supportedEntityType: (query) Supported entity type. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getRegisteredDocumentTypes(pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DocumentTypePaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return getRegisteredDocumentTypesWithRequestBuilder(pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result in
+    open class func getRegisteredDocumentTypes(supportedEntityType: SupportedEntityType? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: DocumentTypePaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return getRegisteredDocumentTypesWithRequestBuilder(supportedEntityType: supportedEntityType, pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -141,17 +140,19 @@ open class DocumentsAPI {
     /**
      Get paginated list of registered document types.
      - GET /v1/documents/types
+     - parameter supportedEntityType: (query) Supported entity type. (optional)
      - parameter pageNo: (query) Page number. (optional, default to 1)
      - parameter pageSize: (query) Number of items to return. (optional, default to 25)
      - returns: RequestBuilder<DocumentTypePaginatedList> 
      */
-    open class func getRegisteredDocumentTypesWithRequestBuilder(pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<DocumentTypePaginatedList> {
+    open class func getRegisteredDocumentTypesWithRequestBuilder(supportedEntityType: SupportedEntityType? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<DocumentTypePaginatedList> {
         let localVariablePath = "/v1/documents/types"
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "supportedEntityType": supportedEntityType?.encodeToJSON(),
             "pageNo": pageNo?.encodeToJSON(),
             "pageSize": pageSize?.encodeToJSON(),
         ])

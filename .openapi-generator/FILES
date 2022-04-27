@@ -61,7 +61,6 @@ MyDataMyConsent/Models/IndividualDataConsentRequestDetailsPaginatedList.swift
 MyDataMyConsent/Models/IssuedDocument.swift
 MyDataMyConsent/Models/IssuedDocumentDetails.swift
 MyDataMyConsent/Models/IssuedDocumentPaginatedList.swift
-MyDataMyConsent/Models/IssuedDocumentPaginatedListItemsOneOf.swift
 MyDataMyConsent/Models/Life.swift
 MyDataMyConsent/Models/OrganizationDataConsentRequestDetails.swift
 MyDataMyConsent/Models/OrganizationDataConsentRequestDetailsPaginatedList.swift
@@ -135,7 +134,6 @@ docs/IndividualDataConsentRequestDetailsPaginatedList.md
 docs/IssuedDocument.md
 docs/IssuedDocumentDetails.md
 docs/IssuedDocumentPaginatedList.md
-docs/IssuedDocumentPaginatedListItemsOneOf.md
 docs/Life.md
 docs/OrganizationDataConsentRequestDetails.md
 docs/OrganizationDataConsentRequestDetailsPaginatedList.md

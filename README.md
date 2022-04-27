@@ -62,7 +62,7 @@ Class | Method | HTTP request | Description
 *DataProviderDiscoveryAPI* | [**getDataProviders**](docs/DataProviderDiscoveryAPI.md#getdataproviders) | **GET** /v1/data-providers | Discover all data providers in My Data My Consent by country and filters.
 *DigiLockerCompatIssuerAPI* | [**digilockerCompatIssueDocument**](docs/DigiLockerCompatIssuerAPI.md#digilockercompatissuedocument) | **POST** /issuer/issuedoc/1/xml | Digilocker Compatible endpoint to issue document.
 *DocumentsAPI* | [**getIssuedDocumentById**](docs/DocumentsAPI.md#getissueddocumentbyid) | **GET** /v1/documents/issued/{documentId} | Get issued document.
-*DocumentsAPI* | [**getIssuedDocuments**](docs/DocumentsAPI.md#getissueddocuments) | **GET** /v1/documents/issued/{documentTypeId} | Get paginated list of issued documents of given document type.
+*DocumentsAPI* | [**getIssuedDocuments**](docs/DocumentsAPI.md#getissueddocuments) | **GET** /v1/documents/issued | Get paginated list of issued documents of given document type.
 *DocumentsAPI* | [**getRegisteredDocumentTypes**](docs/DocumentsAPI.md#getregistereddocumenttypes) | **GET** /v1/documents/types | Get paginated list of registered document types.
 *DocumentsAPI* | [**issueDocumentToIndividual**](docs/DocumentsAPI.md#issuedocumenttoindividual) | **POST** /v1/documents/issue/individual | Issue a new document to an individual user.
 *DocumentsAPI* | [**issueDocumentToOrganization**](docs/DocumentsAPI.md#issuedocumenttoorganization) | **POST** /v1/documents/issue/organization | Issue a new document to an organization.
@@ -118,7 +118,6 @@ Class | Method | HTTP request | Description
  - [IssuedDocument](docs/IssuedDocument.md)
  - [IssuedDocumentDetails](docs/IssuedDocumentDetails.md)
  - [IssuedDocumentPaginatedList](docs/IssuedDocumentPaginatedList.md)
- - [IssuedDocumentPaginatedListItemsOneOf](docs/IssuedDocumentPaginatedListItemsOneOf.md)
  - [Life](docs/Life.md)
  - [OrganizationDataConsentRequestDetails](docs/OrganizationDataConsentRequestDetails.md)
  - [OrganizationDataConsentRequestDetailsPaginatedList](docs/OrganizationDataConsentRequestDetailsPaginatedList.md)

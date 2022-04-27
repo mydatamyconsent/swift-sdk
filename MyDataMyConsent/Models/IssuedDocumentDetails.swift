@@ -12,11 +12,6 @@ import AnyCodable
 
 public struct IssuedDocumentDetails: Codable, JSONEncodable, Hashable {
 
-    public var receiver: DocumentReceiver
-    /** Metadata. */
-    public var metadata: [String: String]?
-    /** Digital signatures. */
-    public var digitalSignatures: [DocumentDigitalSignature]
     /** Document Id. */
     public var id: UUID
     /** Document Identifier. */
@@ -31,11 +26,13 @@ public struct IssuedDocumentDetails: Codable, JSONEncodable, Hashable {
     public var expiresAtUtc: Date?
     /** Accepted datetime in UTC timezone. */
     public var acceptedAtUtc: Date?
+    public var receiver: DocumentReceiver
+    /** Metadata. */
+    public var metadata: [String: String]?
+    /** Digital signatures. */
+    public var digitalSignatures: [DocumentDigitalSignature]
 
-    public init(receiver: DocumentReceiver, metadata: [String: String]? = nil, digitalSignatures: [DocumentDigitalSignature], id: UUID, identifier: String, documentType: String, issuedTo: String, issuedAtUtc: Date, expiresAtUtc: Date? = nil, acceptedAtUtc: Date? = nil) {
-        self.receiver = receiver
-        self.metadata = metadata
-        self.digitalSignatures = digitalSignatures
+    public init(id: UUID, identifier: String, documentType: String, issuedTo: String, issuedAtUtc: Date, expiresAtUtc: Date? = nil, acceptedAtUtc: Date? = nil, receiver: DocumentReceiver, metadata: [String: String]? = nil, digitalSignatures: [DocumentDigitalSignature]) {
         self.id = id
         self.identifier = identifier
         self.documentType = documentType
@@ -43,12 +40,12 @@ public struct IssuedDocumentDetails: Codable, JSONEncodable, Hashable {
         self.issuedAtUtc = issuedAtUtc
         self.expiresAtUtc = expiresAtUtc
         self.acceptedAtUtc = acceptedAtUtc
+        self.receiver = receiver
+        self.metadata = metadata
+        self.digitalSignatures = digitalSignatures
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case receiver
-        case metadata
-        case digitalSignatures
         case id
         case identifier
         case documentType
@@ -56,15 +53,15 @@ public struct IssuedDocumentDetails: Codable, JSONEncodable, Hashable {
         case issuedAtUtc
         case expiresAtUtc
         case acceptedAtUtc
+        case receiver
+        case metadata
+        case digitalSignatures
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(receiver, forKey: .receiver)
-        try container.encodeIfPresent(metadata, forKey: .metadata)
-        try container.encode(digitalSignatures, forKey: .digitalSignatures)
         try container.encode(id, forKey: .id)
         try container.encode(identifier, forKey: .identifier)
         try container.encode(documentType, forKey: .documentType)
@@ -72,6 +69,9 @@ public struct IssuedDocumentDetails: Codable, JSONEncodable, Hashable {
         try container.encode(issuedAtUtc, forKey: .issuedAtUtc)
         try container.encodeIfPresent(expiresAtUtc, forKey: .expiresAtUtc)
         try container.encodeIfPresent(acceptedAtUtc, forKey: .acceptedAtUtc)
+        try container.encode(receiver, forKey: .receiver)
+        try container.encodeIfPresent(metadata, forKey: .metadata)
+        try container.encode(digitalSignatures, forKey: .digitalSignatures)
     }
 }
 
