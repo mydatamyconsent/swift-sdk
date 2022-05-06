@@ -34,13 +34,13 @@ public struct DocumentType: Codable, JSONEncodable, Hashable {
     /** Name of the document type creator. */
     public var addedBy: String
     /** Payable amount if document is chargeable. eg: 10.25. */
-    public var payableAmount: Double?
+    public var payableAmount: Double
     /** Payable amount currency. eg: INR, USD etc.,. */
     public var payableAmountCurrency: String?
     /** DateTime of approval in UTC timezone. */
     public var approvedAtUtc: Date?
 
-    public init(id: UUID, categoryType: DocumentCategoryType, subCategoryType: DocumentSubCategoryType, name: String, slug: String, description: String? = nil, logoUrl: String, searchServiceName: String? = nil, repositoryServiceName: String? = nil, supportedEntityTypes: [SupportedEntityType], addedBy: String, payableAmount: Double? = nil, payableAmountCurrency: String? = nil, approvedAtUtc: Date? = nil) {
+    public init(id: UUID, categoryType: DocumentCategoryType, subCategoryType: DocumentSubCategoryType, name: String, slug: String, description: String? = nil, logoUrl: String, searchServiceName: String? = nil, repositoryServiceName: String? = nil, supportedEntityTypes: [SupportedEntityType], addedBy: String, payableAmount: Double, payableAmountCurrency: String? = nil, approvedAtUtc: Date? = nil) {
         self.id = id
         self.categoryType = categoryType
         self.subCategoryType = subCategoryType
@@ -89,7 +89,7 @@ public struct DocumentType: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(repositoryServiceName, forKey: .repositoryServiceName)
         try container.encode(supportedEntityTypes, forKey: .supportedEntityTypes)
         try container.encode(addedBy, forKey: .addedBy)
-        try container.encodeIfPresent(payableAmount, forKey: .payableAmount)
+        try container.encode(payableAmount, forKey: .payableAmount)
         try container.encodeIfPresent(payableAmountCurrency, forKey: .payableAmountCurrency)
         try container.encodeIfPresent(approvedAtUtc, forKey: .approvedAtUtc)
     }

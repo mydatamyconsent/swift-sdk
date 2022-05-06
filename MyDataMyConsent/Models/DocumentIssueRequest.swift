@@ -26,10 +26,11 @@ public struct DocumentIssueRequest: Codable, JSONEncodable, Hashable {
     public var validFromUtc: Date
     /** Datetime of expiry in UTC timezone. */
     public var expiresAtUtc: Date?
+    public var paymentRequest: PaymentRequest?
     /** Metadata. */
     public var metadata: [String: String]?
 
-    public init(documentTypeId: UUID, identifier: String, description: String, receiver: DocumentReceiver, issuedAtUtc: Date, validFromUtc: Date, expiresAtUtc: Date? = nil, metadata: [String: String]? = nil) {
+    public init(documentTypeId: UUID, identifier: String, description: String, receiver: DocumentReceiver, issuedAtUtc: Date, validFromUtc: Date, expiresAtUtc: Date? = nil, paymentRequest: PaymentRequest? = nil, metadata: [String: String]? = nil) {
         self.documentTypeId = documentTypeId
         self.identifier = identifier
         self.description = description
@@ -37,6 +38,7 @@ public struct DocumentIssueRequest: Codable, JSONEncodable, Hashable {
         self.issuedAtUtc = issuedAtUtc
         self.validFromUtc = validFromUtc
         self.expiresAtUtc = expiresAtUtc
+        self.paymentRequest = paymentRequest
         self.metadata = metadata
     }
 
@@ -48,6 +50,7 @@ public struct DocumentIssueRequest: Codable, JSONEncodable, Hashable {
         case issuedAtUtc
         case validFromUtc
         case expiresAtUtc
+        case paymentRequest
         case metadata
     }
 
@@ -62,6 +65,7 @@ public struct DocumentIssueRequest: Codable, JSONEncodable, Hashable {
         try container.encode(issuedAtUtc, forKey: .issuedAtUtc)
         try container.encode(validFromUtc, forKey: .validFromUtc)
         try container.encodeIfPresent(expiresAtUtc, forKey: .expiresAtUtc)
+        try container.encodeIfPresent(paymentRequest, forKey: .paymentRequest)
         try container.encodeIfPresent(metadata, forKey: .metadata)
     }
 }

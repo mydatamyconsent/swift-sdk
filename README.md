@@ -124,6 +124,7 @@ Class | Method | HTTP request | Description
  - [OrganizationFinancialAccountDto](docs/OrganizationFinancialAccountDto.md)
  - [OrganizationFinancialTransactionsDto](docs/OrganizationFinancialTransactionsDto.md)
  - [OrganizationFinancialTransactionsDtoPaginatedList](docs/OrganizationFinancialTransactionsDtoPaginatedList.md)
+ - [PaymentRequest](docs/PaymentRequest.md)
  - [ProblemDetails](docs/ProblemDetails.md)
  - [PushUriRequest](docs/PushUriRequest.md)
  - [PushUriResponse](docs/PushUriResponse.md)

@@ -67,6 +67,7 @@ MyDataMyConsent/Models/OrganizationDataConsentRequestDetailsPaginatedList.swift
 MyDataMyConsent/Models/OrganizationFinancialAccountDto.swift
 MyDataMyConsent/Models/OrganizationFinancialTransactionsDto.swift
 MyDataMyConsent/Models/OrganizationFinancialTransactionsDtoPaginatedList.swift
+MyDataMyConsent/Models/PaymentRequest.swift
 MyDataMyConsent/Models/ProblemDetails.swift
 MyDataMyConsent/Models/PushUriRequest.swift
 MyDataMyConsent/Models/PushUriResponse.swift
@@ -140,6 +141,7 @@ docs/OrganizationDataConsentRequestDetailsPaginatedList.md
 docs/OrganizationFinancialAccountDto.md
 docs/OrganizationFinancialTransactionsDto.md
 docs/OrganizationFinancialTransactionsDtoPaginatedList.md
+docs/PaymentRequest.md
 docs/ProblemDetails.md
 docs/PushUriRequest.md
 docs/PushUriResponse.md
