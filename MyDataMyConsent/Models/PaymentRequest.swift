@@ -13,15 +13,15 @@ import AnyCodable
 public struct PaymentRequest: Codable, JSONEncodable, Hashable {
 
     public var identifier: String?
-    public var amount: String?
+    public var items: [BillPaymentOrderItem]?
     public var currencyCode: String?
     public var paymentUrl: String?
     public var description: String?
     public var dueByUtc: Date?
 
-    public init(identifier: String? = nil, amount: String? = nil, currencyCode: String? = nil, paymentUrl: String? = nil, description: String? = nil, dueByUtc: Date? = nil) {
+    public init(identifier: String? = nil, items: [BillPaymentOrderItem]? = nil, currencyCode: String? = nil, paymentUrl: String? = nil, description: String? = nil, dueByUtc: Date? = nil) {
         self.identifier = identifier
-        self.amount = amount
+        self.items = items
         self.currencyCode = currencyCode
         self.paymentUrl = paymentUrl
         self.description = description
@@ -30,7 +30,7 @@ public struct PaymentRequest: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case identifier
-        case amount
+        case items
         case currencyCode
         case paymentUrl
         case description
@@ -42,7 +42,7 @@ public struct PaymentRequest: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(identifier, forKey: .identifier)
-        try container.encodeIfPresent(amount, forKey: .amount)
+        try container.encodeIfPresent(items, forKey: .items)
         try container.encodeIfPresent(currencyCode, forKey: .currencyCode)
         try container.encodeIfPresent(paymentUrl, forKey: .paymentUrl)
         try container.encodeIfPresent(description, forKey: .description)

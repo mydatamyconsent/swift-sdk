@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identifier** | **String** |  | [optional] 
-**amount** | **String** |  | [optional] 
+**items** | [BillPaymentOrderItem] |  | [optional] 
 **currencyCode** | **String** |  | [optional] 
 **paymentUrl** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
