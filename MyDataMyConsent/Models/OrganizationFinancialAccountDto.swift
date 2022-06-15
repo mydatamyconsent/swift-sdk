@@ -24,9 +24,8 @@ public struct OrganizationFinancialAccountDto: Codable, JSONEncodable, Hashable 
     public var bankName: String?
     public var bankAccountType: BankAccountType?
     public var bankAccountProofUrl: String?
-    public var fileType: FileType?
 
-    public init(id: UUID? = nil, organizationId: UUID? = nil, organizationName: String? = nil, beneficiaryName: String? = nil, accountNumber: String? = nil, routingNumber: String? = nil, isPrimary: Bool? = nil, isVerified: Bool? = nil, logoUrl: String? = nil, bankName: String? = nil, bankAccountType: BankAccountType? = nil, bankAccountProofUrl: String? = nil, fileType: FileType? = nil) {
+    public init(id: UUID? = nil, organizationId: UUID? = nil, organizationName: String? = nil, beneficiaryName: String? = nil, accountNumber: String? = nil, routingNumber: String? = nil, isPrimary: Bool? = nil, isVerified: Bool? = nil, logoUrl: String? = nil, bankName: String? = nil, bankAccountType: BankAccountType? = nil, bankAccountProofUrl: String? = nil) {
         self.id = id
         self.organizationId = organizationId
         self.organizationName = organizationName
@@ -39,7 +38,6 @@ public struct OrganizationFinancialAccountDto: Codable, JSONEncodable, Hashable 
         self.bankName = bankName
         self.bankAccountType = bankAccountType
         self.bankAccountProofUrl = bankAccountProofUrl
-        self.fileType = fileType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -55,7 +53,6 @@ public struct OrganizationFinancialAccountDto: Codable, JSONEncodable, Hashable 
         case bankName
         case bankAccountType
         case bankAccountProofUrl
-        case fileType
     }
 
     // Encodable protocol methods
@@ -74,7 +71,6 @@ public struct OrganizationFinancialAccountDto: Codable, JSONEncodable, Hashable 
         try container.encodeIfPresent(bankName, forKey: .bankName)
         try container.encodeIfPresent(bankAccountType, forKey: .bankAccountType)
         try container.encodeIfPresent(bankAccountProofUrl, forKey: .bankAccountProofUrl)
-        try container.encodeIfPresent(fileType, forKey: .fileType)
     }
 }
 

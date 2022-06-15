@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **bankName** | **String** |  | [optional] 
 **bankAccountType** | [**BankAccountType**](BankAccountType.md) |  | [optional] 
 **bankAccountProofUrl** | **String** |  | [optional] 
-**fileType** | [**FileType**](FileType.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

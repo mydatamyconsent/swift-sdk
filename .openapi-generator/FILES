@@ -50,7 +50,7 @@ MyDataMyConsent/Models/DocumentSubCategoryType.swift
 MyDataMyConsent/Models/DocumentType.swift
 MyDataMyConsent/Models/DocumentTypePaginatedList.swift
 MyDataMyConsent/Models/DocumentsRequired.swift
-MyDataMyConsent/Models/FileType.swift
+MyDataMyConsent/Models/ErrorType.swift
 MyDataMyConsent/Models/Financial.swift
 MyDataMyConsent/Models/FinancialAccount.swift
 MyDataMyConsent/Models/FinancialAccountDetailsRequired.swift
@@ -63,6 +63,7 @@ MyDataMyConsent/Models/IssuedDocument.swift
 MyDataMyConsent/Models/IssuedDocumentDetails.swift
 MyDataMyConsent/Models/IssuedDocumentPaginatedList.swift
 MyDataMyConsent/Models/Life.swift
+MyDataMyConsent/Models/ModelError.swift
 MyDataMyConsent/Models/OrganizationDataConsentRequestDetails.swift
 MyDataMyConsent/Models/OrganizationDataConsentRequestDetailsPaginatedList.swift
 MyDataMyConsent/Models/OrganizationFinancialAccountDto.swift
@@ -125,7 +126,7 @@ docs/DocumentType.md
 docs/DocumentTypePaginatedList.md
 docs/DocumentsAPI.md
 docs/DocumentsRequired.md
-docs/FileType.md
+docs/ErrorType.md
 docs/Financial.md
 docs/FinancialAccount.md
 docs/FinancialAccountDetailsRequired.md
@@ -138,6 +139,7 @@ docs/IssuedDocument.md
 docs/IssuedDocumentDetails.md
 docs/IssuedDocumentPaginatedList.md
 docs/Life.md
+docs/ModelError.md
 docs/OrganizationDataConsentRequestDetails.md
 docs/OrganizationDataConsentRequestDetailsPaginatedList.md
 docs/OrganizationFinancialAccountDto.md
