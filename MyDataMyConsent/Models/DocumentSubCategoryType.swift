@@ -26,7 +26,6 @@ public enum DocumentSubCategoryType: String, Codable, CaseIterable {
     case insurance = "Insurance"
     case receiptsAndSubscriptions = "ReceiptsAndSubscriptions"
     case taxes = "Taxes"
-    case licencesAndCertificates = "LicencesAndCertificates"
     case corporates = "Corporates"
     case competitions = "Competitions"
     case intellectualProperties = "IntellectualProperties"
@@ -34,4 +33,6 @@ public enum DocumentSubCategoryType: String, Codable, CaseIterable {
     case applicationsAndCertificates = "ApplicationsAndCertificates"
     case licenses = "Licenses"
     case organizationIds = "OrganizationIds"
+    case permits = "Permits"
+    case legal = "Legal"
 }
