@@ -12,45 +12,29 @@ import AnyCodable
 
 public struct ModelError: Codable, JSONEncodable, Hashable {
 
-    public var type: ErrorType?
-    public var title: String?
-    public var status: Int?
-    public var code: Int?
-    public var detail: String?
-    public var traceId: String?
-    public var errors: [String]?
+    public var title: String
+    public var status: Int
+    public var errorType: ApiErrorType
 
-    public init(type: ErrorType? = nil, title: String? = nil, status: Int? = nil, code: Int? = nil, detail: String? = nil, traceId: String? = nil, errors: [String]? = nil) {
-        self.type = type
+    public init(title: String, status: Int, errorType: ApiErrorType) {
         self.title = title
         self.status = status
-        self.code = code
-        self.detail = detail
-        self.traceId = traceId
-        self.errors = errors
+        self.errorType = errorType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case type
         case title
         case status
-        case code
-        case detail
-        case traceId
-        case errors
+        case errorType = "error_type"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(type, forKey: .type)
-        try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(status, forKey: .status)
-        try container.encodeIfPresent(code, forKey: .code)
-        try container.encodeIfPresent(detail, forKey: .detail)
-        try container.encodeIfPresent(traceId, forKey: .traceId)
-        try container.encodeIfPresent(errors, forKey: .errors)
+        try container.encode(title, forKey: .title)
+        try container.encode(status, forKey: .status)
+        try container.encode(errorType, forKey: .errorType)
     }
 }
 

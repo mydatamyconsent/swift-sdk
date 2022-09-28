@@ -10,11 +10,11 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Data processing agreement details. */
+/** DataProcessingAgreement : Data processing agreement details. */
 public struct DataProcessingAgreement: Codable, JSONEncodable, Hashable {
 
     /** Agreement id. */
-    public var id: UUID
+    public var id: String
     /** Agreement version. */
     public var version: String
     /** Agreement body content. */
@@ -22,7 +22,7 @@ public struct DataProcessingAgreement: Codable, JSONEncodable, Hashable {
     /** Agreement attachment file URL. */
     public var attachmentUrl: String
 
-    public init(id: UUID, version: String, body: String, attachmentUrl: String) {
+    public init(id: String, version: String, body: String, attachmentUrl: String) {
         self.id = id
         self.version = version
         self.body = body

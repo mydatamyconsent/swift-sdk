@@ -10,14 +10,19 @@ import Foundation
 import AnyCodable
 #endif
 
+/** Supported identifier details for a particular country. */
 public struct SupportedIdentifier: Codable, JSONEncodable, Hashable {
 
-    public var iso2: String?
-    public var name: String?
-    public var individualIdentifiers: [Identifier]?
-    public var organizationIdentifiers: [Identifier]?
+    /** Country ISO 2 code. Example: IN, US, etc. */
+    public var iso2: String
+    /** Country name. Example: India, United States of America, etc. */
+    public var name: String
+    /** List of supported identifiers for an individual. */
+    public var individualIdentifiers: [Identifier]
+    /** List of supported identifiers for an organization. */
+    public var organizationIdentifiers: [Identifier]
 
-    public init(iso2: String? = nil, name: String? = nil, individualIdentifiers: [Identifier]? = nil, organizationIdentifiers: [Identifier]? = nil) {
+    public init(iso2: String, name: String, individualIdentifiers: [Identifier], organizationIdentifiers: [Identifier]) {
         self.iso2 = iso2
         self.name = name
         self.individualIdentifiers = individualIdentifiers
@@ -35,10 +40,10 @@ public struct SupportedIdentifier: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(iso2, forKey: .iso2)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(individualIdentifiers, forKey: .individualIdentifiers)
-        try container.encodeIfPresent(organizationIdentifiers, forKey: .organizationIdentifiers)
+        try container.encode(iso2, forKey: .iso2)
+        try container.encode(name, forKey: .name)
+        try container.encode(individualIdentifiers, forKey: .individualIdentifiers)
+        try container.encode(organizationIdentifiers, forKey: .organizationIdentifiers)
     }
 }
 

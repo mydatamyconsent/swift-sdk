@@ -16,14 +16,12 @@ public struct DataProtectionOfficer: Codable, JSONEncodable, Hashable {
     public var email: String?
     public var phoneNumber: String?
     public var website: String?
-    public var postalAddress: String?
 
-    public init(name: String? = nil, email: String? = nil, phoneNumber: String? = nil, website: String? = nil, postalAddress: String? = nil) {
+    public init(name: String? = nil, email: String? = nil, phoneNumber: String? = nil, website: String? = nil) {
         self.name = name
         self.email = email
         self.phoneNumber = phoneNumber
         self.website = website
-        self.postalAddress = postalAddress
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -31,7 +29,6 @@ public struct DataProtectionOfficer: Codable, JSONEncodable, Hashable {
         case email
         case phoneNumber
         case website
-        case postalAddress
     }
 
     // Encodable protocol methods
@@ -42,7 +39,6 @@ public struct DataProtectionOfficer: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(email, forKey: .email)
         try container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
         try container.encodeIfPresent(website, forKey: .website)
-        try container.encodeIfPresent(postalAddress, forKey: .postalAddress)
     }
 }
 

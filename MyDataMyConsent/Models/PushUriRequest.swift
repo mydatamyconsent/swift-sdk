@@ -18,16 +18,16 @@ public struct PushUriRequest: Codable, JSONEncodable, Hashable {
     public var ts: String?
     public var txn: String?
     public var orgId: String?
-    public var keyhash: String?
+    public var keyHash: String?
 
-    public init(uriDetails: UriDetails, ns2: String? = nil, ver: String? = nil, ts: String? = nil, txn: String? = nil, orgId: String? = nil, keyhash: String? = nil) {
+    public init(uriDetails: UriDetails, ns2: String? = nil, ver: String? = nil, ts: String? = nil, txn: String? = nil, orgId: String? = nil, keyHash: String? = nil) {
         self.uriDetails = uriDetails
         self.ns2 = ns2
         self.ver = ver
         self.ts = ts
         self.txn = txn
         self.orgId = orgId
-        self.keyhash = keyhash
+        self.keyHash = keyHash
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,7 +37,7 @@ public struct PushUriRequest: Codable, JSONEncodable, Hashable {
         case ts
         case txn
         case orgId
-        case keyhash
+        case keyHash
     }
 
     // Encodable protocol methods
@@ -50,7 +50,7 @@ public struct PushUriRequest: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(ts, forKey: .ts)
         try container.encodeIfPresent(txn, forKey: .txn)
         try container.encodeIfPresent(orgId, forKey: .orgId)
-        try container.encodeIfPresent(keyhash, forKey: .keyhash)
+        try container.encodeIfPresent(keyHash, forKey: .keyHash)
     }
 }
 

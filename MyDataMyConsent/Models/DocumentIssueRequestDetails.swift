@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Document issue request details. */
+/** DocumentIssueRequestDetails : Document issue request details. */
 public struct DocumentIssueRequestDetails: Codable, JSONEncodable, Hashable {
 
     /** Document issue request Id. */
-    public var id: UUID
+    public var id: String
     /** Document type Id. */
-    public var documentTypeId: UUID
+    public var documentTypeId: String
     /** Document type name. */
     public var typeName: String
     /** Document identifier. */
@@ -24,8 +24,8 @@ public struct DocumentIssueRequestDetails: Codable, JSONEncodable, Hashable {
     public var status: DocumentIssueRequestStatus
     /** Document description. */
     public var description: String
-    /** Document receiver details. */
-    public var receiver: AnyCodable?
+    public var receiver: DocumentIssueRequestDetailsReceiver
+    public var paymentRequest: PaymentRequest?
     /** Datetime of issue in UTC timezone. */
     public var issuedAtUtc: Date
     /** Valid from datetime in UTC timezone. */
@@ -37,7 +37,7 @@ public struct DocumentIssueRequestDetails: Codable, JSONEncodable, Hashable {
     /** Creation datetime of issue request in UTC timezone. */
     public var createdAtUtc: Date
 
-    public init(id: UUID, documentTypeId: UUID, typeName: String, identifier: String, status: DocumentIssueRequestStatus, description: String, receiver: AnyCodable?, issuedAtUtc: Date, validFromUtc: Date, expiresAtUtc: Date? = nil, metaData: AnyCodable? = nil, createdAtUtc: Date) {
+    public init(id: String, documentTypeId: String, typeName: String, identifier: String, status: DocumentIssueRequestStatus, description: String, receiver: DocumentIssueRequestDetailsReceiver, paymentRequest: PaymentRequest? = nil, issuedAtUtc: Date, validFromUtc: Date, expiresAtUtc: Date? = nil, metaData: AnyCodable? = nil, createdAtUtc: Date) {
         self.id = id
         self.documentTypeId = documentTypeId
         self.typeName = typeName
@@ -45,6 +45,7 @@ public struct DocumentIssueRequestDetails: Codable, JSONEncodable, Hashable {
         self.status = status
         self.description = description
         self.receiver = receiver
+        self.paymentRequest = paymentRequest
         self.issuedAtUtc = issuedAtUtc
         self.validFromUtc = validFromUtc
         self.expiresAtUtc = expiresAtUtc
@@ -60,6 +61,7 @@ public struct DocumentIssueRequestDetails: Codable, JSONEncodable, Hashable {
         case status
         case description
         case receiver
+        case paymentRequest
         case issuedAtUtc
         case validFromUtc
         case expiresAtUtc
@@ -78,6 +80,7 @@ public struct DocumentIssueRequestDetails: Codable, JSONEncodable, Hashable {
         try container.encode(status, forKey: .status)
         try container.encode(description, forKey: .description)
         try container.encode(receiver, forKey: .receiver)
+        try container.encodeIfPresent(paymentRequest, forKey: .paymentRequest)
         try container.encode(issuedAtUtc, forKey: .issuedAtUtc)
         try container.encode(validFromUtc, forKey: .validFromUtc)
         try container.encodeIfPresent(expiresAtUtc, forKey: .expiresAtUtc)

@@ -13,10 +13,10 @@ import AnyCodable
 public struct DocumentReceiver: Codable, JSONEncodable, Hashable {
 
     public var countryIso2Code: String
-    public var identifiers: [StringStringKeyValuePair]
+    public var identifiers: [KeyValuePair]
     public var identificationStrategy: IdentificationStrategy
 
-    public init(countryIso2Code: String, identifiers: [StringStringKeyValuePair], identificationStrategy: IdentificationStrategy) {
+    public init(countryIso2Code: String, identifiers: [KeyValuePair], identificationStrategy: IdentificationStrategy) {
         self.countryIso2Code = countryIso2Code
         self.identifiers = identifiers
         self.identificationStrategy = identificationStrategy

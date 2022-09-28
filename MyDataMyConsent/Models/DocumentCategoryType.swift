@@ -17,7 +17,6 @@ public enum DocumentCategoryType: String, Codable, CaseIterable {
     case finance = "Finance"
     case professional = "Professional"
     case licenses = "Licenses"
-    case permits = "Permits"
     case certificates = "Certificates"
     case legal = "Legal"
     case others = "Others"

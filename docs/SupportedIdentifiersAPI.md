@@ -4,15 +4,13 @@ All URIs are relative to *https://api.mydatamyconsent.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAllSupportedIdentifiers**](SupportedIdentifiersAPI.md#getallsupportedidentifiers) | **GET** /v1/supported-identifiers/{countryIso2Code} | Get all supported identifiers by country.
+[**v1SupportedIdentifiersCountryIso2CodeGet**](SupportedIdentifiersAPI.md#v1supportedidentifierscountryiso2codeget) | **GET** /v1/supported-identifiers/{country_iso2_code} | Get all supported identifiers by country.
 
 
-# **getAllSupportedIdentifiers**
+# **v1SupportedIdentifiersCountryIso2CodeGet**
 ```swift
-    open class func getAllSupportedIdentifiers(countryIso2Code: String, completion: @escaping (_ data: SupportedIdentifier?, _ error: Error?) -> Void)
+    open class func v1SupportedIdentifiersCountryIso2CodeGet(countryIso2Code: String, completion: @escaping (_ data: SupportedIdentifier?, _ error: Error?) -> Void)
 ```
-
-Get all supported identifiers by country.
 
 Get all supported identifiers by country.
 
@@ -21,10 +19,10 @@ Get all supported identifiers by country.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let countryIso2Code = "countryIso2Code_example" // String | Country ISO 2 code.
+let countryIso2Code = "countryIso2Code_example" // String | 
 
 // Get all supported identifiers by country.
-SupportedIdentifiersAPI.getAllSupportedIdentifiers(countryIso2Code: countryIso2Code) { (response, error) in
+SupportedIdentifiersAPI.v1SupportedIdentifiersCountryIso2CodeGet(countryIso2Code: countryIso2Code) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -40,7 +38,7 @@ SupportedIdentifiersAPI.getAllSupportedIdentifiers(countryIso2Code: countryIso2C
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **countryIso2Code** | **String** | Country ISO 2 code. | 
+ **countryIso2Code** | **String** |  | 
 
 ### Return type
 
@@ -48,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[OAuth2ClientCredentials](../README.md#OAuth2ClientCredentials)
 
 ### HTTP request headers
 

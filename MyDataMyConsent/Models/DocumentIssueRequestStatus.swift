@@ -10,6 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
+/** Document issue request status. */
 public enum DocumentIssueRequestStatus: String, Codable, CaseIterable {
     case created = "Created"
     case issued = "Issued"

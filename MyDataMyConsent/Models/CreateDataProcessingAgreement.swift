@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Create data processing agreement details. */
+/** CreateDataProcessingAgreement : Create data processing agreement details. */
 public struct CreateDataProcessingAgreement: Codable, JSONEncodable, Hashable {
 
     /** Agreement version. */

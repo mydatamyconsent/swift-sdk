@@ -15,13 +15,13 @@ open class SupportedIdentifiersAPI {
     /**
      Get all supported identifiers by country.
      
-     - parameter countryIso2Code: (path) Country ISO 2 code. 
+     - parameter countryIso2Code: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAllSupportedIdentifiers(countryIso2Code: String, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: SupportedIdentifier?, _ error: Error?) -> Void)) -> RequestTask {
-        return getAllSupportedIdentifiersWithRequestBuilder(countryIso2Code: countryIso2Code).execute(apiResponseQueue) { result in
+    open class func v1SupportedIdentifiersCountryIso2CodeGet(countryIso2Code: String, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: SupportedIdentifier?, _ error: Error?) -> Void)) -> RequestTask {
+        return v1SupportedIdentifiersCountryIso2CodeGetWithRequestBuilder(countryIso2Code: countryIso2Code).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -33,16 +33,18 @@ open class SupportedIdentifiersAPI {
 
     /**
      Get all supported identifiers by country.
-     - GET /v1/supported-identifiers/{countryIso2Code}
-     - Get all supported identifiers by country.
-     - parameter countryIso2Code: (path) Country ISO 2 code. 
+     - GET /v1/supported-identifiers/{country_iso2_code}
+     - OAuth:
+       - type: oauth2
+       - name: OAuth2ClientCredentials
+     - parameter countryIso2Code: (path)  
      - returns: RequestBuilder<SupportedIdentifier> 
      */
-    open class func getAllSupportedIdentifiersWithRequestBuilder(countryIso2Code: String) -> RequestBuilder<SupportedIdentifier> {
-        var localVariablePath = "/v1/supported-identifiers/{countryIso2Code}"
+    open class func v1SupportedIdentifiersCountryIso2CodeGetWithRequestBuilder(countryIso2Code: String) -> RequestBuilder<SupportedIdentifier> {
+        var localVariablePath = "/v1/supported-identifiers/{country_iso2_code}"
         let countryIso2CodePreEscape = "\(APIHelper.mapValueToPathItem(countryIso2Code))"
         let countryIso2CodePostEscape = countryIso2CodePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{countryIso2Code}", with: countryIso2CodePostEscape, options: .literal, range: nil)
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{country_iso2_code}", with: countryIso2CodePostEscape, options: .literal, range: nil)
         let localVariableURLString = MyDataMyConsentAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
@@ -56,6 +58,6 @@ open class SupportedIdentifiersAPI {
 
         let localVariableRequestBuilder: RequestBuilder<SupportedIdentifier>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }

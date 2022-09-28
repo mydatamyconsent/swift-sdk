@@ -10,11 +10,11 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Issued Document Identifier. */
+/** IssuedDocument : Issued Document Identifier. */
 public struct IssuedDocument: Codable, JSONEncodable, Hashable {
 
     /** Document Id. */
-    public var id: UUID
+    public var id: String
     /** Document Identifier. */
     public var identifier: String
     /** Document type name. */
@@ -26,9 +26,9 @@ public struct IssuedDocument: Codable, JSONEncodable, Hashable {
     /** Expires datetime in UTC timezone. */
     public var expiresAtUtc: Date?
     /** Accepted datetime in UTC timezone. */
-    public var acceptedAtUtc: Date?
+    public var acceptedAtUtc: Date
 
-    public init(id: UUID, identifier: String, documentType: String, issuedTo: String, issuedAtUtc: Date, expiresAtUtc: Date? = nil, acceptedAtUtc: Date? = nil) {
+    public init(id: String, identifier: String, documentType: String, issuedTo: String, issuedAtUtc: Date, expiresAtUtc: Date? = nil, acceptedAtUtc: Date) {
         self.id = id
         self.identifier = identifier
         self.documentType = documentType
@@ -58,7 +58,7 @@ public struct IssuedDocument: Codable, JSONEncodable, Hashable {
         try container.encode(issuedTo, forKey: .issuedTo)
         try container.encode(issuedAtUtc, forKey: .issuedAtUtc)
         try container.encodeIfPresent(expiresAtUtc, forKey: .expiresAtUtc)
-        try container.encodeIfPresent(acceptedAtUtc, forKey: .acceptedAtUtc)
+        try container.encode(acceptedAtUtc, forKey: .acceptedAtUtc)
     }
 }
 

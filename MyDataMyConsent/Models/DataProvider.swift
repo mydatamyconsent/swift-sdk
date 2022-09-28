@@ -21,11 +21,9 @@ public struct DataProvider: Codable, JSONEncodable, Hashable {
     public var helpLineNumber: String?
     public var privacyPolicy: String?
     public var termOfService: String?
-    public var dataProtectionOfficer: DataProtectionOfficer?
-    public var supportedDocumentTypes: [String]
-    public var supportedAccountTypes: [String]?
+    public var dataProtectionOfficer: DataProtectionOfficer
 
-    public init(id: String, name: String, category: String, logoUrl: String? = nil, website: String? = nil, supportEmail: String? = nil, helpLineNumber: String? = nil, privacyPolicy: String? = nil, termOfService: String? = nil, dataProtectionOfficer: DataProtectionOfficer? = nil, supportedDocumentTypes: [String], supportedAccountTypes: [String]? = nil) {
+    public init(id: String, name: String, category: String, logoUrl: String? = nil, website: String? = nil, supportEmail: String? = nil, helpLineNumber: String? = nil, privacyPolicy: String? = nil, termOfService: String? = nil, dataProtectionOfficer: DataProtectionOfficer) {
         self.id = id
         self.name = name
         self.category = category
@@ -36,8 +34,6 @@ public struct DataProvider: Codable, JSONEncodable, Hashable {
         self.privacyPolicy = privacyPolicy
         self.termOfService = termOfService
         self.dataProtectionOfficer = dataProtectionOfficer
-        self.supportedDocumentTypes = supportedDocumentTypes
-        self.supportedAccountTypes = supportedAccountTypes
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -51,8 +47,6 @@ public struct DataProvider: Codable, JSONEncodable, Hashable {
         case privacyPolicy
         case termOfService
         case dataProtectionOfficer
-        case supportedDocumentTypes
-        case supportedAccountTypes
     }
 
     // Encodable protocol methods
@@ -68,9 +62,7 @@ public struct DataProvider: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(helpLineNumber, forKey: .helpLineNumber)
         try container.encodeIfPresent(privacyPolicy, forKey: .privacyPolicy)
         try container.encodeIfPresent(termOfService, forKey: .termOfService)
-        try container.encodeIfPresent(dataProtectionOfficer, forKey: .dataProtectionOfficer)
-        try container.encode(supportedDocumentTypes, forKey: .supportedDocumentTypes)
-        try container.encodeIfPresent(supportedAccountTypes, forKey: .supportedAccountTypes)
+        try container.encode(dataProtectionOfficer, forKey: .dataProtectionOfficer)
     }
 }
 

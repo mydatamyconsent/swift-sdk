@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public enum CollectibleTypes: String, Codable, CaseIterable {
-    case personalDetails = "PersonalDetails"
+    case identity = "Identity"
     case documents = "Documents"
     case financials = "Financials"
     case health = "Health"

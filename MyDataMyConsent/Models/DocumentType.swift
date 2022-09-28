@@ -10,16 +10,16 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Issuable Document Type details. */
+/** DocumentType : Issuable Document Type details. */
 public struct DocumentType: Codable, JSONEncodable, Hashable {
 
     /** Document Type Identifier. */
-    public var id: UUID
+    public var id: String
     public var categoryType: DocumentCategoryType
     public var subCategoryType: DocumentSubCategoryType
     /** Document Type Name. eg: Driving License. */
     public var name: String
-    /** Document Type Unique Slug. eg: \"in.gov.gj.transport.dl\". */
+    /** Document Type Unique Slug. eg: \\\"in.gov.gj.transport.dl\\\". */
     public var slug: String
     /** Document Type description. eg: Gujarat State Driving License. */
     public var description: String?
@@ -29,18 +29,17 @@ public struct DocumentType: Codable, JSONEncodable, Hashable {
     public var searchServiceName: String?
     /** Document repository service name. */
     public var repositoryServiceName: String?
-    /** Supported entity types. eg: Individual, Organization. */
-    public var supportedEntityTypes: [SupportedEntityType]
+    public var supportedEntityType: SupportedEntityType
     /** Name of the document type creator. */
     public var addedBy: String
     /** Payable amount if document is chargeable. eg: 10.25. */
-    public var payableAmount: Double
+    public var payableAmount: Decimal
     /** Payable amount currency. eg: INR, USD etc.,. */
-    public var payableAmountCurrency: String?
+    public var payableAmountCurrency: String
     /** DateTime of approval in UTC timezone. */
     public var approvedAtUtc: Date?
 
-    public init(id: UUID, categoryType: DocumentCategoryType, subCategoryType: DocumentSubCategoryType, name: String, slug: String, description: String? = nil, logoUrl: String, searchServiceName: String? = nil, repositoryServiceName: String? = nil, supportedEntityTypes: [SupportedEntityType], addedBy: String, payableAmount: Double, payableAmountCurrency: String? = nil, approvedAtUtc: Date? = nil) {
+    public init(id: String, categoryType: DocumentCategoryType, subCategoryType: DocumentSubCategoryType, name: String, slug: String, description: String? = nil, logoUrl: String, searchServiceName: String? = nil, repositoryServiceName: String? = nil, supportedEntityType: SupportedEntityType, addedBy: String, payableAmount: Decimal, payableAmountCurrency: String, approvedAtUtc: Date? = nil) {
         self.id = id
         self.categoryType = categoryType
         self.subCategoryType = subCategoryType
@@ -50,7 +49,7 @@ public struct DocumentType: Codable, JSONEncodable, Hashable {
         self.logoUrl = logoUrl
         self.searchServiceName = searchServiceName
         self.repositoryServiceName = repositoryServiceName
-        self.supportedEntityTypes = supportedEntityTypes
+        self.supportedEntityType = supportedEntityType
         self.addedBy = addedBy
         self.payableAmount = payableAmount
         self.payableAmountCurrency = payableAmountCurrency
@@ -67,7 +66,7 @@ public struct DocumentType: Codable, JSONEncodable, Hashable {
         case logoUrl
         case searchServiceName
         case repositoryServiceName
-        case supportedEntityTypes
+        case supportedEntityType
         case addedBy
         case payableAmount
         case payableAmountCurrency
@@ -87,10 +86,10 @@ public struct DocumentType: Codable, JSONEncodable, Hashable {
         try container.encode(logoUrl, forKey: .logoUrl)
         try container.encodeIfPresent(searchServiceName, forKey: .searchServiceName)
         try container.encodeIfPresent(repositoryServiceName, forKey: .repositoryServiceName)
-        try container.encode(supportedEntityTypes, forKey: .supportedEntityTypes)
+        try container.encode(supportedEntityType, forKey: .supportedEntityType)
         try container.encode(addedBy, forKey: .addedBy)
         try container.encode(payableAmount, forKey: .payableAmount)
-        try container.encodeIfPresent(payableAmountCurrency, forKey: .payableAmountCurrency)
+        try container.encode(payableAmountCurrency, forKey: .payableAmountCurrency)
         try container.encodeIfPresent(approvedAtUtc, forKey: .approvedAtUtc)
     }
 }

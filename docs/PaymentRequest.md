@@ -3,12 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identifier** | **String** |  | [optional] 
-**items** | [BillPaymentOrderItem] |  | [optional] 
-**currencyCode** | **String** |  | [optional] 
+**identifier** | **String** |  | 
+**items** | [PaymentOrderItem] |  | 
+**currencyCode** | **String** |  | 
 **paymentUrl** | **String** |  | [optional] 
-**description** | **String** |  | [optional] 
-**dueByUtc** | **Date** |  | [optional] 
+**description** | **String** |  | 
+**dueByUtc** | **Date** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

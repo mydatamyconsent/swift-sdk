@@ -12,77 +12,61 @@ import AnyCodable
 
 public struct FinancialAccount: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
-    public var issuer: String?
-    public var logoUrl: String?
-    public var categoryId: String?
-    public var categoryName: String?
-    public var accountName: String?
-    public var accountLogoUrl: String?
-    public var balance: String?
-    public var balanceType: String?
-    public var isShared: Bool?
-    public var sharedWith: [SharedWith]?
-    public var isReceived: Bool?
-    public var expiresAtUtc: Date?
-    public var activities: [Activity]?
-    public var approvedConsentRequests: [ApprovedConsentRequest]?
+    public var type: String
+    public var id: String
+    public var name: String
+    public var identifier: String
+    public var balance: Double
+    public var profile: Profile
+    public var summary: EquitySummary
+    public var maskedAccountNumber: String
+    public var linkedAccountRef: String
+    public var version: Float
+    public var amount: Double
 
-    public init(id: UUID? = nil, issuer: String? = nil, logoUrl: String? = nil, categoryId: String? = nil, categoryName: String? = nil, accountName: String? = nil, accountLogoUrl: String? = nil, balance: String? = nil, balanceType: String? = nil, isShared: Bool? = nil, sharedWith: [SharedWith]? = nil, isReceived: Bool? = nil, expiresAtUtc: Date? = nil, activities: [Activity]? = nil, approvedConsentRequests: [ApprovedConsentRequest]? = nil) {
+    public init(type: String, id: String, name: String, identifier: String, balance: Double, profile: Profile, summary: EquitySummary, maskedAccountNumber: String, linkedAccountRef: String, version: Float, amount: Double) {
+        self.type = type
         self.id = id
-        self.issuer = issuer
-        self.logoUrl = logoUrl
-        self.categoryId = categoryId
-        self.categoryName = categoryName
-        self.accountName = accountName
-        self.accountLogoUrl = accountLogoUrl
+        self.name = name
+        self.identifier = identifier
         self.balance = balance
-        self.balanceType = balanceType
-        self.isShared = isShared
-        self.sharedWith = sharedWith
-        self.isReceived = isReceived
-        self.expiresAtUtc = expiresAtUtc
-        self.activities = activities
-        self.approvedConsentRequests = approvedConsentRequests
+        self.profile = profile
+        self.summary = summary
+        self.maskedAccountNumber = maskedAccountNumber
+        self.linkedAccountRef = linkedAccountRef
+        self.version = version
+        self.amount = amount
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case type
         case id
-        case issuer
-        case logoUrl
-        case categoryId
-        case categoryName
-        case accountName
-        case accountLogoUrl
+        case name
+        case identifier
         case balance
-        case balanceType
-        case isShared
-        case sharedWith
-        case isReceived
-        case expiresAtUtc
-        case activities
-        case approvedConsentRequests
+        case profile
+        case summary
+        case maskedAccountNumber = "masked_account_number"
+        case linkedAccountRef = "linked_account_ref"
+        case version
+        case amount
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(issuer, forKey: .issuer)
-        try container.encodeIfPresent(logoUrl, forKey: .logoUrl)
-        try container.encodeIfPresent(categoryId, forKey: .categoryId)
-        try container.encodeIfPresent(categoryName, forKey: .categoryName)
-        try container.encodeIfPresent(accountName, forKey: .accountName)
-        try container.encodeIfPresent(accountLogoUrl, forKey: .accountLogoUrl)
-        try container.encodeIfPresent(balance, forKey: .balance)
-        try container.encodeIfPresent(balanceType, forKey: .balanceType)
-        try container.encodeIfPresent(isShared, forKey: .isShared)
-        try container.encodeIfPresent(sharedWith, forKey: .sharedWith)
-        try container.encodeIfPresent(isReceived, forKey: .isReceived)
-        try container.encodeIfPresent(expiresAtUtc, forKey: .expiresAtUtc)
-        try container.encodeIfPresent(activities, forKey: .activities)
-        try container.encodeIfPresent(approvedConsentRequests, forKey: .approvedConsentRequests)
+        try container.encode(type, forKey: .type)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(identifier, forKey: .identifier)
+        try container.encode(balance, forKey: .balance)
+        try container.encode(profile, forKey: .profile)
+        try container.encode(summary, forKey: .summary)
+        try container.encode(maskedAccountNumber, forKey: .maskedAccountNumber)
+        try container.encode(linkedAccountRef, forKey: .linkedAccountRef)
+        try container.encode(version, forKey: .version)
+        try container.encode(amount, forKey: .amount)
     }
 }
 

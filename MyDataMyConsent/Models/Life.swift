@@ -10,12 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
+/** Life : Life with unit and value. */
 public struct Life: Codable, JSONEncodable, Hashable {
 
-    public var unit: String?
-    public var value: String?
+    /** Life unit. Example: days, hours, minutes. */
+    public var unit: String
+    /** Life value in number. */
+    public var value: String
 
-    public init(unit: String? = nil, value: String? = nil) {
+    public init(unit: String, value: String) {
         self.unit = unit
         self.value = value
     }
@@ -29,8 +32,8 @@ public struct Life: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(unit, forKey: .unit)
-        try container.encodeIfPresent(value, forKey: .value)
+        try container.encode(unit, forKey: .unit)
+        try container.encode(value, forKey: .value)
     }
 }
 

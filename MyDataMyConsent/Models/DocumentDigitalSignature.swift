@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Document digital signature. */
+/** DocumentDigitalSignature : Document digital signature. */
 public struct DocumentDigitalSignature: Codable, JSONEncodable, Hashable {
 
     /** Name. */
@@ -20,11 +20,11 @@ public struct DocumentDigitalSignature: Codable, JSONEncodable, Hashable {
     /** Signature issuer name. */
     public var issuerName: String
     /** Signature valid from datatime in UTC timezone. */
-    public var validFromUtc: Date
+    public var validFromUtc: String
     /** Signature valid to datatime in UTC timezone. */
-    public var validToUtc: Date
+    public var validToUtc: String
 
-    public init(name: String, issuedBy: String, issuerName: String, validFromUtc: Date, validToUtc: Date) {
+    public init(name: String, issuedBy: String, issuerName: String, validFromUtc: String, validToUtc: String) {
         self.name = name
         self.issuedBy = issuedBy
         self.issuerName = issuerName
@@ -34,10 +34,10 @@ public struct DocumentDigitalSignature: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
-        case issuedBy
-        case issuerName
-        case validFromUtc
-        case validToUtc
+        case issuedBy = "issued_by"
+        case issuerName = "issuer_name"
+        case validFromUtc = "valid_from_utc"
+        case validToUtc = "valid_to_utc"
     }
 
     // Encodable protocol methods

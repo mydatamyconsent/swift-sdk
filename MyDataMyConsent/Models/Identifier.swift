@@ -10,14 +10,19 @@ import Foundation
 import AnyCodable
 #endif
 
+/** Identifier details. */
 public struct Identifier: Codable, JSONEncodable, Hashable {
 
-    public var key: String?
-    public var name: String?
-    public var description: String?
-    public var exampleValue: String?
+    /** Identifier key. EMAIL, MOBILE_NUMBER, etc. */
+    public var key: String
+    /** Identifier name. Email, Mobile Number, etc. */
+    public var name: String
+    /** Identifier description. User's email, User's mobile number, etc. */
+    public var description: String
+    /** Example value. example@email.com, +919090909090, etc. */
+    public var exampleValue: String
 
-    public init(key: String? = nil, name: String? = nil, description: String? = nil, exampleValue: String? = nil) {
+    public init(key: String, name: String, description: String, exampleValue: String) {
         self.key = key
         self.name = name
         self.description = description
@@ -28,17 +33,17 @@ public struct Identifier: Codable, JSONEncodable, Hashable {
         case key
         case name
         case description
-        case exampleValue
+        case exampleValue = "example_value"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(key, forKey: .key)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(exampleValue, forKey: .exampleValue)
+        try container.encode(key, forKey: .key)
+        try container.encode(name, forKey: .name)
+        try container.encode(description, forKey: .description)
+        try container.encode(exampleValue, forKey: .exampleValue)
     }
 }
 

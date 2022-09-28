@@ -3,13 +3,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** | Document issue request Id. | 
-**documentTypeId** | **UUID** | Document type Id. | 
+**id** | **String** | Document issue request Id. | 
+**documentTypeId** | **String** | Document type Id. | 
 **typeName** | **String** | Document type name. | 
 **identifier** | **String** | Document identifier. | 
 **status** | [**DocumentIssueRequestStatus**](DocumentIssueRequestStatus.md) |  | 
 **description** | **String** | Document description. | 
-**receiver** | [**AnyCodable**](.md) | Document receiver details. | 
+**receiver** | [**DocumentIssueRequestDetailsReceiver**](DocumentIssueRequestDetailsReceiver.md) |  | 
+**paymentRequest** | [**PaymentRequest**](PaymentRequest.md) |  | [optional] 
 **issuedAtUtc** | **Date** | Datetime of issue in UTC timezone. | 
 **validFromUtc** | **Date** | Valid from datetime in UTC timezone. | 
 **expiresAtUtc** | **Date** | Datetime of expiry in UTC timezone. | [optional] 
