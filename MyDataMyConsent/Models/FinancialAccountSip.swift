@@ -15,23 +15,38 @@ public struct FinancialAccountSip: Codable, JSONEncodable, Hashable {
     public var type: String
     public var id: String
     public var name: String
-    public var identifier: String
-    public var amount: Double
+    public var investmentValue: Double
+    public var currentValue: Double
+    public var currencyCode: String
+    public var planInfo: SipPlanInformation
+    public var investmentInfo: SipInvestmentInformation
+    public var holder: Holder
+    public var transactions: Bool
 
-    public init(type: String, id: String, name: String, identifier: String, amount: Double) {
+    public init(type: String, id: String, name: String, investmentValue: Double, currentValue: Double, currencyCode: String, planInfo: SipPlanInformation, investmentInfo: SipInvestmentInformation, holder: Holder, transactions: Bool) {
         self.type = type
         self.id = id
         self.name = name
-        self.identifier = identifier
-        self.amount = amount
+        self.investmentValue = investmentValue
+        self.currentValue = currentValue
+        self.currencyCode = currencyCode
+        self.planInfo = planInfo
+        self.investmentInfo = investmentInfo
+        self.holder = holder
+        self.transactions = transactions
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case type
         case id
         case name
-        case identifier
-        case amount
+        case investmentValue = "investment_value"
+        case currentValue = "current_value"
+        case currencyCode = "currency_code"
+        case planInfo = "plan_info"
+        case investmentInfo = "investment_info"
+        case holder
+        case transactions
     }
 
     // Encodable protocol methods
@@ -41,8 +56,13 @@ public struct FinancialAccountSip: Codable, JSONEncodable, Hashable {
         try container.encode(type, forKey: .type)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
-        try container.encode(identifier, forKey: .identifier)
-        try container.encode(amount, forKey: .amount)
+        try container.encode(investmentValue, forKey: .investmentValue)
+        try container.encode(currentValue, forKey: .currentValue)
+        try container.encode(currencyCode, forKey: .currencyCode)
+        try container.encode(planInfo, forKey: .planInfo)
+        try container.encode(investmentInfo, forKey: .investmentInfo)
+        try container.encode(holder, forKey: .holder)
+        try container.encode(transactions, forKey: .transactions)
     }
 }
 

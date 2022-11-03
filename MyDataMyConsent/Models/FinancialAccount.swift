@@ -15,41 +15,77 @@ public struct FinancialAccount: Codable, JSONEncodable, Hashable {
     public var type: String
     public var id: String
     public var name: String
-    public var identifier: String
-    public var balance: Double
-    public var profile: Profile
-    public var summary: EquitySummary
-    public var maskedAccountNumber: String
-    public var linkedAccountRef: String
-    public var version: Float
-    public var amount: Double
+    public var issuerName: String
+    public var exchange: String
+    public var isin: String
+    public var units: Double
+    public var investmentValue: Double
+    public var currentValue: Double
+    public var currencyCode: String
+    public var holder: Holder
+    public var transactions: Bool
+    public var amc: String?
+    public var registrar: String?
+    public var fundName: String
+    public var folioNumber: String
+    public var schemeCode: String?
+    public var fundType: String?
+    public var fundCategory: String?
+    public var lienUnits: String?
+    public var creationDate: Date?
+    public var planInfo: SipPlanInformation
+    public var investmentInfo: SipInvestmentInformation
 
-    public init(type: String, id: String, name: String, identifier: String, balance: Double, profile: Profile, summary: EquitySummary, maskedAccountNumber: String, linkedAccountRef: String, version: Float, amount: Double) {
+    public init(type: String, id: String, name: String, issuerName: String, exchange: String, isin: String, units: Double, investmentValue: Double, currentValue: Double, currencyCode: String, holder: Holder, transactions: Bool, amc: String? = nil, registrar: String? = nil, fundName: String, folioNumber: String, schemeCode: String? = nil, fundType: String? = nil, fundCategory: String? = nil, lienUnits: String? = nil, creationDate: Date? = nil, planInfo: SipPlanInformation, investmentInfo: SipInvestmentInformation) {
         self.type = type
         self.id = id
         self.name = name
-        self.identifier = identifier
-        self.balance = balance
-        self.profile = profile
-        self.summary = summary
-        self.maskedAccountNumber = maskedAccountNumber
-        self.linkedAccountRef = linkedAccountRef
-        self.version = version
-        self.amount = amount
+        self.issuerName = issuerName
+        self.exchange = exchange
+        self.isin = isin
+        self.units = units
+        self.investmentValue = investmentValue
+        self.currentValue = currentValue
+        self.currencyCode = currencyCode
+        self.holder = holder
+        self.transactions = transactions
+        self.amc = amc
+        self.registrar = registrar
+        self.fundName = fundName
+        self.folioNumber = folioNumber
+        self.schemeCode = schemeCode
+        self.fundType = fundType
+        self.fundCategory = fundCategory
+        self.lienUnits = lienUnits
+        self.creationDate = creationDate
+        self.planInfo = planInfo
+        self.investmentInfo = investmentInfo
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case type
         case id
         case name
-        case identifier
-        case balance
-        case profile
-        case summary
-        case maskedAccountNumber = "masked_account_number"
-        case linkedAccountRef = "linked_account_ref"
-        case version
-        case amount
+        case issuerName = "issuer_name"
+        case exchange
+        case isin
+        case units
+        case investmentValue = "investment_value"
+        case currentValue = "current_value"
+        case currencyCode = "currency_code"
+        case holder
+        case transactions
+        case amc
+        case registrar
+        case fundName = "fund_name"
+        case folioNumber = "folio_number"
+        case schemeCode = "scheme_code"
+        case fundType = "fund_type"
+        case fundCategory = "fund_category"
+        case lienUnits = "lien_units"
+        case creationDate = "creation_date"
+        case planInfo = "plan_info"
+        case investmentInfo = "investment_info"
     }
 
     // Encodable protocol methods
@@ -59,14 +95,26 @@ public struct FinancialAccount: Codable, JSONEncodable, Hashable {
         try container.encode(type, forKey: .type)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
-        try container.encode(identifier, forKey: .identifier)
-        try container.encode(balance, forKey: .balance)
-        try container.encode(profile, forKey: .profile)
-        try container.encode(summary, forKey: .summary)
-        try container.encode(maskedAccountNumber, forKey: .maskedAccountNumber)
-        try container.encode(linkedAccountRef, forKey: .linkedAccountRef)
-        try container.encode(version, forKey: .version)
-        try container.encode(amount, forKey: .amount)
+        try container.encode(issuerName, forKey: .issuerName)
+        try container.encode(exchange, forKey: .exchange)
+        try container.encode(isin, forKey: .isin)
+        try container.encode(units, forKey: .units)
+        try container.encode(investmentValue, forKey: .investmentValue)
+        try container.encode(currentValue, forKey: .currentValue)
+        try container.encode(currencyCode, forKey: .currencyCode)
+        try container.encode(holder, forKey: .holder)
+        try container.encode(transactions, forKey: .transactions)
+        try container.encodeIfPresent(amc, forKey: .amc)
+        try container.encodeIfPresent(registrar, forKey: .registrar)
+        try container.encode(fundName, forKey: .fundName)
+        try container.encode(folioNumber, forKey: .folioNumber)
+        try container.encodeIfPresent(schemeCode, forKey: .schemeCode)
+        try container.encodeIfPresent(fundType, forKey: .fundType)
+        try container.encodeIfPresent(fundCategory, forKey: .fundCategory)
+        try container.encodeIfPresent(lienUnits, forKey: .lienUnits)
+        try container.encodeIfPresent(creationDate, forKey: .creationDate)
+        try container.encode(planInfo, forKey: .planInfo)
+        try container.encode(investmentInfo, forKey: .investmentInfo)
     }
 }
 

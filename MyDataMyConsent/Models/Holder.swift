@@ -13,40 +13,28 @@ import AnyCodable
 public struct Holder: Codable, JSONEncodable, Hashable {
 
     public var name: String
-    public var dob: Date?
+    public var dateOfBirth: Date?
     public var mobile: String?
-    public var nominee: HoldingNominee?
     public var dematId: String
-    public var landline: String?
-    public var address: String?
     public var email: String
     public var pan: String?
-    public var ckycCompliance: Bool
 
-    public init(name: String, dob: Date? = nil, mobile: String? = nil, nominee: HoldingNominee? = nil, dematId: String, landline: String? = nil, address: String? = nil, email: String, pan: String? = nil, ckycCompliance: Bool) {
+    public init(name: String, dateOfBirth: Date? = nil, mobile: String? = nil, dematId: String, email: String, pan: String? = nil) {
         self.name = name
-        self.dob = dob
+        self.dateOfBirth = dateOfBirth
         self.mobile = mobile
-        self.nominee = nominee
         self.dematId = dematId
-        self.landline = landline
-        self.address = address
         self.email = email
         self.pan = pan
-        self.ckycCompliance = ckycCompliance
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
-        case dob
+        case dateOfBirth = "date_of_birth"
         case mobile
-        case nominee
-        case dematId
-        case landline
-        case address
+        case dematId = "demat_id"
         case email
         case pan
-        case ckycCompliance
     }
 
     // Encodable protocol methods
@@ -54,15 +42,11 @@ public struct Holder: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
-        try container.encodeIfPresent(dob, forKey: .dob)
+        try container.encodeIfPresent(dateOfBirth, forKey: .dateOfBirth)
         try container.encodeIfPresent(mobile, forKey: .mobile)
-        try container.encodeIfPresent(nominee, forKey: .nominee)
         try container.encode(dematId, forKey: .dematId)
-        try container.encodeIfPresent(landline, forKey: .landline)
-        try container.encodeIfPresent(address, forKey: .address)
         try container.encode(email, forKey: .email)
         try container.encodeIfPresent(pan, forKey: .pan)
-        try container.encode(ckycCompliance, forKey: .ckycCompliance)
     }
 }
 

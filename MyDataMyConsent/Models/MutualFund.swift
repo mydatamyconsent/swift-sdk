@@ -14,36 +14,63 @@ public struct MutualFund: Codable, JSONEncodable, Hashable {
 
     public var id: String
     public var name: String
-    public var identifier: String
-    public var balance: Double
-    public var profile: Profile
-    public var summary: MutualFundSummary
-    public var maskedAccountNumber: String
-    public var linkedAccountRef: String
-    public var version: Float
+    public var investmentValue: Double
+    public var currentValue: Double
+    public var currencyCode: String
+    public var amc: String?
+    public var registrar: String?
+    public var fundName: String
+    public var isin: String
+    public var folioNumber: String
+    public var schemeCode: String?
+    public var fundType: String?
+    public var fundCategory: String?
+    public var units: Double
+    public var lienUnits: String?
+    public var creationDate: Date?
+    public var holder: Holder
+    public var transactions: Bool
 
-    public init(id: String, name: String, identifier: String, balance: Double, profile: Profile, summary: MutualFundSummary, maskedAccountNumber: String, linkedAccountRef: String, version: Float) {
+    public init(id: String, name: String, investmentValue: Double, currentValue: Double, currencyCode: String, amc: String? = nil, registrar: String? = nil, fundName: String, isin: String, folioNumber: String, schemeCode: String? = nil, fundType: String? = nil, fundCategory: String? = nil, units: Double, lienUnits: String? = nil, creationDate: Date? = nil, holder: Holder, transactions: Bool) {
         self.id = id
         self.name = name
-        self.identifier = identifier
-        self.balance = balance
-        self.profile = profile
-        self.summary = summary
-        self.maskedAccountNumber = maskedAccountNumber
-        self.linkedAccountRef = linkedAccountRef
-        self.version = version
+        self.investmentValue = investmentValue
+        self.currentValue = currentValue
+        self.currencyCode = currencyCode
+        self.amc = amc
+        self.registrar = registrar
+        self.fundName = fundName
+        self.isin = isin
+        self.folioNumber = folioNumber
+        self.schemeCode = schemeCode
+        self.fundType = fundType
+        self.fundCategory = fundCategory
+        self.units = units
+        self.lienUnits = lienUnits
+        self.creationDate = creationDate
+        self.holder = holder
+        self.transactions = transactions
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
-        case identifier
-        case balance
-        case profile
-        case summary
-        case maskedAccountNumber = "masked_account_number"
-        case linkedAccountRef = "linked_account_ref"
-        case version
+        case investmentValue = "investment_value"
+        case currentValue = "current_value"
+        case currencyCode = "currency_code"
+        case amc
+        case registrar
+        case fundName = "fund_name"
+        case isin
+        case folioNumber = "folio_number"
+        case schemeCode = "scheme_code"
+        case fundType = "fund_type"
+        case fundCategory = "fund_category"
+        case units
+        case lienUnits = "lien_units"
+        case creationDate = "creation_date"
+        case holder
+        case transactions
     }
 
     // Encodable protocol methods
@@ -52,13 +79,22 @@ public struct MutualFund: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
-        try container.encode(identifier, forKey: .identifier)
-        try container.encode(balance, forKey: .balance)
-        try container.encode(profile, forKey: .profile)
-        try container.encode(summary, forKey: .summary)
-        try container.encode(maskedAccountNumber, forKey: .maskedAccountNumber)
-        try container.encode(linkedAccountRef, forKey: .linkedAccountRef)
-        try container.encode(version, forKey: .version)
+        try container.encode(investmentValue, forKey: .investmentValue)
+        try container.encode(currentValue, forKey: .currentValue)
+        try container.encode(currencyCode, forKey: .currencyCode)
+        try container.encodeIfPresent(amc, forKey: .amc)
+        try container.encodeIfPresent(registrar, forKey: .registrar)
+        try container.encode(fundName, forKey: .fundName)
+        try container.encode(isin, forKey: .isin)
+        try container.encode(folioNumber, forKey: .folioNumber)
+        try container.encodeIfPresent(schemeCode, forKey: .schemeCode)
+        try container.encodeIfPresent(fundType, forKey: .fundType)
+        try container.encodeIfPresent(fundCategory, forKey: .fundCategory)
+        try container.encode(units, forKey: .units)
+        try container.encodeIfPresent(lienUnits, forKey: .lienUnits)
+        try container.encodeIfPresent(creationDate, forKey: .creationDate)
+        try container.encode(holder, forKey: .holder)
+        try container.encode(transactions, forKey: .transactions)
     }
 }
 

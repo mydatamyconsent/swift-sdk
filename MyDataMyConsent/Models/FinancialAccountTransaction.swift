@@ -14,14 +14,6 @@ public struct FinancialAccountTransaction: Codable, JSONEncodable, Hashable {
 
     public var type: String
     public var id: String
-    public var txnType: CreditCardTransactionType
-    public var txnDate: Date
-    public var amount: String
-    public var valueDate: Date
-    public var narration: String
-    public var statementDate: Date
-    public var mcc: String
-    public var maskedCardNumber: String
     public var amc: String
     public var registrar: String
     public var schemeCode: String
@@ -33,6 +25,7 @@ public struct FinancialAccountTransaction: Codable, JSONEncodable, Hashable {
     public var schemeTypes: MutualFundSchemeType
     public var schemeCategory: MutualFundSchemeCategory
     public var ucc: String
+    public var amount: String
     public var closingUnits: String
     public var lienUnits: String
     public var nav: String
@@ -42,18 +35,11 @@ public struct FinancialAccountTransaction: Codable, JSONEncodable, Hashable {
     public var lockinFlag: String
     public var lockinDays: String
     public var mode: MutualFundHoldingMode
+    public var narration: String
 
-    public init(type: String, id: String, txnType: CreditCardTransactionType, txnDate: Date, amount: String, valueDate: Date, narration: String, statementDate: Date, mcc: String, maskedCardNumber: String, amc: String, registrar: String, schemeCode: String, schemePlan: MutualFundSchemePlan, isin: String, amfiCode: String, fundType: MutualFundFundType, schemeOption: MutualFundSchemeOption, schemeTypes: MutualFundSchemeType, schemeCategory: MutualFundSchemeCategory, ucc: String, closingUnits: String, lienUnits: String, nav: String, navDate: Date, orderDate: Date, executionDate: Date, lockinFlag: String, lockinDays: String, mode: MutualFundHoldingMode) {
+    public init(type: String, id: String, amc: String, registrar: String, schemeCode: String, schemePlan: MutualFundSchemePlan, isin: String, amfiCode: String, fundType: MutualFundFundType, schemeOption: MutualFundSchemeOption, schemeTypes: MutualFundSchemeType, schemeCategory: MutualFundSchemeCategory, ucc: String, amount: String, closingUnits: String, lienUnits: String, nav: String, navDate: Date, orderDate: Date, executionDate: Date, lockinFlag: String, lockinDays: String, mode: MutualFundHoldingMode, narration: String) {
         self.type = type
         self.id = id
-        self.txnType = txnType
-        self.txnDate = txnDate
-        self.amount = amount
-        self.valueDate = valueDate
-        self.narration = narration
-        self.statementDate = statementDate
-        self.mcc = mcc
-        self.maskedCardNumber = maskedCardNumber
         self.amc = amc
         self.registrar = registrar
         self.schemeCode = schemeCode
@@ -65,6 +51,7 @@ public struct FinancialAccountTransaction: Codable, JSONEncodable, Hashable {
         self.schemeTypes = schemeTypes
         self.schemeCategory = schemeCategory
         self.ucc = ucc
+        self.amount = amount
         self.closingUnits = closingUnits
         self.lienUnits = lienUnits
         self.nav = nav
@@ -74,19 +61,12 @@ public struct FinancialAccountTransaction: Codable, JSONEncodable, Hashable {
         self.lockinFlag = lockinFlag
         self.lockinDays = lockinDays
         self.mode = mode
+        self.narration = narration
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case type
         case id
-        case txnType = "txn_type"
-        case txnDate = "txn_date"
-        case amount
-        case valueDate = "value_date"
-        case narration
-        case statementDate = "statement_date"
-        case mcc
-        case maskedCardNumber = "masked_card_number"
         case amc
         case registrar
         case schemeCode = "scheme_code"
@@ -98,6 +78,7 @@ public struct FinancialAccountTransaction: Codable, JSONEncodable, Hashable {
         case schemeTypes = "scheme_types"
         case schemeCategory = "scheme_category"
         case ucc
+        case amount
         case closingUnits = "closing_units"
         case lienUnits = "lien_units"
         case nav
@@ -107,6 +88,7 @@ public struct FinancialAccountTransaction: Codable, JSONEncodable, Hashable {
         case lockinFlag = "lockin_flag"
         case lockinDays = "lockin_days"
         case mode
+        case narration
     }
 
     // Encodable protocol methods
@@ -115,14 +97,6 @@ public struct FinancialAccountTransaction: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)
         try container.encode(id, forKey: .id)
-        try container.encode(txnType, forKey: .txnType)
-        try container.encode(txnDate, forKey: .txnDate)
-        try container.encode(amount, forKey: .amount)
-        try container.encode(valueDate, forKey: .valueDate)
-        try container.encode(narration, forKey: .narration)
-        try container.encode(statementDate, forKey: .statementDate)
-        try container.encode(mcc, forKey: .mcc)
-        try container.encode(maskedCardNumber, forKey: .maskedCardNumber)
         try container.encode(amc, forKey: .amc)
         try container.encode(registrar, forKey: .registrar)
         try container.encode(schemeCode, forKey: .schemeCode)
@@ -134,6 +108,7 @@ public struct FinancialAccountTransaction: Codable, JSONEncodable, Hashable {
         try container.encode(schemeTypes, forKey: .schemeTypes)
         try container.encode(schemeCategory, forKey: .schemeCategory)
         try container.encode(ucc, forKey: .ucc)
+        try container.encode(amount, forKey: .amount)
         try container.encode(closingUnits, forKey: .closingUnits)
         try container.encode(lienUnits, forKey: .lienUnits)
         try container.encode(nav, forKey: .nav)
@@ -143,6 +118,7 @@ public struct FinancialAccountTransaction: Codable, JSONEncodable, Hashable {
         try container.encode(lockinFlag, forKey: .lockinFlag)
         try container.encode(lockinDays, forKey: .lockinDays)
         try container.encode(mode, forKey: .mode)
+        try container.encode(narration, forKey: .narration)
     }
 }
 

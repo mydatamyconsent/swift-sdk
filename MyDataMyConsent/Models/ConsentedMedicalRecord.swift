@@ -19,6 +19,10 @@ public struct ConsentedMedicalRecord: Codable, JSONEncodable, Hashable {
     public var fieldTitle: String
     /** Health field slug. */
     public var fieldSlug: String
+    /** Issuer id. */
+    public var issuerId: String
+    /** Issuer name. */
+    public var issuerName: String
     /** health category type. */
     public var category: String
     /** To Date */
@@ -26,10 +30,12 @@ public struct ConsentedMedicalRecord: Codable, JSONEncodable, Hashable {
     /** From Date */
     public var fromDate: Date?
 
-    public init(id: String? = nil, fieldTitle: String, fieldSlug: String, category: String, toDate: Date? = nil, fromDate: Date? = nil) {
+    public init(id: String? = nil, fieldTitle: String, fieldSlug: String, issuerId: String, issuerName: String, category: String, toDate: Date? = nil, fromDate: Date? = nil) {
         self.id = id
         self.fieldTitle = fieldTitle
         self.fieldSlug = fieldSlug
+        self.issuerId = issuerId
+        self.issuerName = issuerName
         self.category = category
         self.toDate = toDate
         self.fromDate = fromDate
@@ -39,6 +45,8 @@ public struct ConsentedMedicalRecord: Codable, JSONEncodable, Hashable {
         case id
         case fieldTitle
         case fieldSlug
+        case issuerId
+        case issuerName
         case category
         case toDate
         case fromDate
@@ -51,6 +59,8 @@ public struct ConsentedMedicalRecord: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encode(fieldTitle, forKey: .fieldTitle)
         try container.encode(fieldSlug, forKey: .fieldSlug)
+        try container.encode(issuerId, forKey: .issuerId)
+        try container.encode(issuerName, forKey: .issuerName)
         try container.encode(category, forKey: .category)
         try container.encodeIfPresent(toDate, forKey: .toDate)
         try container.encodeIfPresent(fromDate, forKey: .fromDate)

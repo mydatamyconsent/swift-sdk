@@ -15,38 +15,44 @@ public struct FinancialAccountEquity: Codable, JSONEncodable, Hashable {
     public var type: String
     public var id: String
     public var name: String
-    public var identifier: String
-    public var balance: Double
-    public var profile: Profile
-    public var summary: EquitySummary
-    public var maskedAccountNumber: String
-    public var linkedAccountRef: String
-    public var version: Float
+    public var issuerName: String
+    public var exchange: String
+    public var isin: String
+    public var units: Int64
+    public var investmentValue: Double
+    public var currentValue: Double
+    public var currencyCode: String
+    public var holder: Holder
+    public var transactions: Bool
 
-    public init(type: String, id: String, name: String, identifier: String, balance: Double, profile: Profile, summary: EquitySummary, maskedAccountNumber: String, linkedAccountRef: String, version: Float) {
+    public init(type: String, id: String, name: String, issuerName: String, exchange: String, isin: String, units: Int64, investmentValue: Double, currentValue: Double, currencyCode: String, holder: Holder, transactions: Bool) {
         self.type = type
         self.id = id
         self.name = name
-        self.identifier = identifier
-        self.balance = balance
-        self.profile = profile
-        self.summary = summary
-        self.maskedAccountNumber = maskedAccountNumber
-        self.linkedAccountRef = linkedAccountRef
-        self.version = version
+        self.issuerName = issuerName
+        self.exchange = exchange
+        self.isin = isin
+        self.units = units
+        self.investmentValue = investmentValue
+        self.currentValue = currentValue
+        self.currencyCode = currencyCode
+        self.holder = holder
+        self.transactions = transactions
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case type
         case id
         case name
-        case identifier
-        case balance
-        case profile
-        case summary
-        case maskedAccountNumber = "masked_account_number"
-        case linkedAccountRef = "linked_account_ref"
-        case version
+        case issuerName = "issuer_name"
+        case exchange
+        case isin
+        case units
+        case investmentValue = "investment_value"
+        case currentValue = "current_value"
+        case currencyCode = "currency_code"
+        case holder
+        case transactions
     }
 
     // Encodable protocol methods
@@ -56,13 +62,15 @@ public struct FinancialAccountEquity: Codable, JSONEncodable, Hashable {
         try container.encode(type, forKey: .type)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
-        try container.encode(identifier, forKey: .identifier)
-        try container.encode(balance, forKey: .balance)
-        try container.encode(profile, forKey: .profile)
-        try container.encode(summary, forKey: .summary)
-        try container.encode(maskedAccountNumber, forKey: .maskedAccountNumber)
-        try container.encode(linkedAccountRef, forKey: .linkedAccountRef)
-        try container.encode(version, forKey: .version)
+        try container.encode(issuerName, forKey: .issuerName)
+        try container.encode(exchange, forKey: .exchange)
+        try container.encode(isin, forKey: .isin)
+        try container.encode(units, forKey: .units)
+        try container.encode(investmentValue, forKey: .investmentValue)
+        try container.encode(currentValue, forKey: .currentValue)
+        try container.encode(currencyCode, forKey: .currencyCode)
+        try container.encode(holder, forKey: .holder)
+        try container.encode(transactions, forKey: .transactions)
     }
 }
 
