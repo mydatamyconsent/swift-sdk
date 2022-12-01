@@ -1,4 +1,4 @@
-# FinancialAccountEquityTransactionAllOf
+# FinancialAccountTransactionEquityTransactionAllOf
 
 ## Properties
 Name | Type | Description | Notes
