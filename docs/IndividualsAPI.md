@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**v1IndividualsConsentRequestsGet**](IndividualsAPI.md#v1individualsconsentrequestsget) | **GET** /v1/individuals/consent-requests | Get all consent requests sent to Individuals.
 [**v1IndividualsConsentRequestsPost**](IndividualsAPI.md#v1individualsconsentrequestspost) | **POST** /v1/individuals/consent-requests | Create individual consent request.
 [**v1IndividualsConsentRequestsRequestIdCancelPut**](IndividualsAPI.md#v1individualsconsentrequestsrequestidcancelput) | **PUT** /v1/individuals/consent-requests/{request_id}/cancel | Cancel the Individual data request by id.
-[**v1IndividualsConsentRequestsRequestIdGet**](IndividualsAPI.md#v1individualsconsentrequestsrequestidget) | **GET** /v1/individuals/consent-requests/{request_id} | Get Individual data request by id.
+[**v1IndividualsConsentRequestsRequestIdGet**](IndividualsAPI.md#v1individualsconsentrequestsrequestidget) | **GET** /v1/individuals/consent-requests/{request_id} | Get Individual data consent request by id.
 [**v1IndividualsConsentTemplatesGet**](IndividualsAPI.md#v1individualsconsenttemplatesget) | **GET** /v1/individuals/consent-templates | Get the paginated list of individual consent templates.
 [**v1IndividualsConsentTemplatesTemplateIdGet**](IndividualsAPI.md#v1individualsconsenttemplatestemplateidget) | **GET** /v1/individuals/consent-templates/{template_id} | Get Individual consent template details by consent id.
 [**v1IndividualsConsentsConsentIdDocumentsDocumentIdDownloadGet**](IndividualsAPI.md#v1individualsconsentsconsentiddocumentsdocumentiddownloadget) | **GET** /v1/individuals/consents/{consent_id}/documents/{document_id}/download | Download Individual consented document by document id.
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet**](IndividualsAPI.md#v1individualsconsentsconsentidfinancialaccountsaccountidtransactionsget) | **GET** /v1/individuals/consents/{consent_id}/financial-accounts/{account_id}/transactions | Get individual consented financial account transactions.
 [**v1IndividualsConsentsConsentIdFinancialAccountsGet**](IndividualsAPI.md#v1individualsconsentsconsentidfinancialaccountsget) | **GET** /v1/individuals/consents/{consent_id}/financial-accounts | Get all individual consented financial accounts.
 [**v1IndividualsConsentsConsentIdGet**](IndividualsAPI.md#v1individualsconsentsconsentidget) | **GET** /v1/individuals/consents/{consent_id} | Get Individuals consent details by consent id.
-[**v1IndividualsConsentsConsentIdHealthFhirBundleGet**](IndividualsAPI.md#v1individualsconsentsconsentidhealthfhirbundleget) | **GET** /v1/individuals/consents/{consent_id}/health/fhir/bundle | Get Individual consented document by consent id.
+[**v1IndividualsConsentsConsentIdHealthFhirBundleGet**](IndividualsAPI.md#v1individualsconsentsconsentidhealthfhirbundleget) | **GET** /v1/individuals/consents/{consent_id}/health/fhir/bundle | Get Individual consented Health Records by consent id.
 [**v1IndividualsConsentsGet**](IndividualsAPI.md#v1individualsconsentsget) | **GET** /v1/individuals/consents | Get the paginated list of Individual consents.
 [**v1IndividualsDocumentsIssueIssueRequestIdUploadPost**](IndividualsAPI.md#v1individualsdocumentsissueissuerequestiduploadpost) | **POST** /v1/individuals/documents/issue/{issue_request_id}/upload | Upload a document for issuance request of individual.
 [**v1IndividualsDocumentsIssuePost**](IndividualsAPI.md#v1individualsdocumentsissuepost) | **POST** /v1/individuals/documents/issue | Issue a new document to an individual user.
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
     open class func v1IndividualsConsentRequestsRequestIdGet(requestId: String, completion: @escaping (_ data: ConsentRequest?, _ error: Error?) -> Void)
 ```
 
-Get Individual data request by id.
+Get Individual data consent request by id.
 
 ### Example
 ```swift
@@ -241,7 +241,7 @@ import MyDataMyConsent
 
 let requestId = "requestId_example" // String | 
 
-// Get Individual data request by id.
+// Get Individual data consent request by id.
 IndividualsAPI.v1IndividualsConsentRequestsRequestIdGet(requestId: requestId) { (response, error) in
     guard error == nil else {
         print(error)
@@ -729,10 +729,10 @@ Name | Type | Description  | Notes
 
 # **v1IndividualsConsentsConsentIdHealthFhirBundleGet**
 ```swift
-    open class func v1IndividualsConsentsConsentIdHealthFhirBundleGet(consentId: String, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
+    open class func v1IndividualsConsentsConsentIdHealthFhirBundleGet(consentId: String, completion: @escaping (_ data: [HealthRecord]?, _ error: Error?) -> Void)
 ```
 
-Get Individual consented document by consent id.
+Get Individual consented Health Records by consent id.
 
 ### Example
 ```swift
@@ -741,7 +741,7 @@ import MyDataMyConsent
 
 let consentId = "consentId_example" // String | 
 
-// Get Individual consented document by consent id.
+// Get Individual consented Health Records by consent id.
 IndividualsAPI.v1IndividualsConsentsConsentIdHealthFhirBundleGet(consentId: consentId) { (response, error) in
     guard error == nil else {
         print(error)
@@ -762,7 +762,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AnyCodable**](AnyCodable.md)
+[**[HealthRecord]**](HealthRecord.md)
 
 ### Authorization
 

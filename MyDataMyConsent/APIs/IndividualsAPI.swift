@@ -215,7 +215,7 @@ open class IndividualsAPI {
     }
 
     /**
-     Get Individual data request by id.
+     Get Individual data consent request by id.
      
      - parameter requestId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -234,7 +234,7 @@ open class IndividualsAPI {
     }
 
     /**
-     Get Individual data request by id.
+     Get Individual data consent request by id.
      - GET /v1/individuals/consent-requests/{request_id}
      - OAuth:
        - type: oauth2
@@ -746,14 +746,14 @@ open class IndividualsAPI {
     }
 
     /**
-     Get Individual consented document by consent id.
+     Get Individual consented Health Records by consent id.
      
      - parameter consentId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func v1IndividualsConsentsConsentIdHealthFhirBundleGet(consentId: String, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: AnyCodable?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func v1IndividualsConsentsConsentIdHealthFhirBundleGet(consentId: String, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: [HealthRecord]?, _ error: Error?) -> Void)) -> RequestTask {
         return v1IndividualsConsentsConsentIdHealthFhirBundleGetWithRequestBuilder(consentId: consentId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -765,15 +765,15 @@ open class IndividualsAPI {
     }
 
     /**
-     Get Individual consented document by consent id.
+     Get Individual consented Health Records by consent id.
      - GET /v1/individuals/consents/{consent_id}/health/fhir/bundle
      - OAuth:
        - type: oauth2
        - name: OAuth2ClientCredentials
      - parameter consentId: (path)  
-     - returns: RequestBuilder<AnyCodable> 
+     - returns: RequestBuilder<[HealthRecord]> 
      */
-    open class func v1IndividualsConsentsConsentIdHealthFhirBundleGetWithRequestBuilder(consentId: String) -> RequestBuilder<AnyCodable> {
+    open class func v1IndividualsConsentsConsentIdHealthFhirBundleGetWithRequestBuilder(consentId: String) -> RequestBuilder<[HealthRecord]> {
         var localVariablePath = "/v1/individuals/consents/{consent_id}/health/fhir/bundle"
         let consentIdPreEscape = "\(APIHelper.mapValueToPathItem(consentId))"
         let consentIdPostEscape = consentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -789,7 +789,7 @@ open class IndividualsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AnyCodable>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[HealthRecord]>.Type = MyDataMyConsentAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

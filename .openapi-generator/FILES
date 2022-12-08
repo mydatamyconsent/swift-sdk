@@ -15,7 +15,11 @@ MyDataMyConsent/Extensions.swift
 MyDataMyConsent/JSONDataEncoding.swift
 MyDataMyConsent/JSONEncodingHelper.swift
 MyDataMyConsent/Models.swift
+MyDataMyConsent/Models/AllergyDetails.swift
+MyDataMyConsent/Models/AllergyIntoleranceReaction.swift
 MyDataMyConsent/Models/ApiErrorType.swift
+MyDataMyConsent/Models/CodeableConcept.swift
+MyDataMyConsent/Models/Coding.swift
 MyDataMyConsent/Models/CollectibleTypes.swift
 MyDataMyConsent/Models/Consent.swift
 MyDataMyConsent/Models/ConsentDetails.swift
@@ -69,6 +73,9 @@ MyDataMyConsent/Models/FinancialAccountTransactionMutualFundTransactionAllOf.swi
 MyDataMyConsent/Models/FinancialAccountTransactionPeriod.swift
 MyDataMyConsent/Models/FinancialAccountTransactionSipTransaction.swift
 MyDataMyConsent/Models/FinancialAccountTransactionSipTransactionAllOf.swift
+MyDataMyConsent/Models/HealthRecord.swift
+MyDataMyConsent/Models/HealthRecordAllergyDetails.swift
+MyDataMyConsent/Models/HealthRecordAllergyDetailsAllOf.swift
 MyDataMyConsent/Models/Holder.swift
 MyDataMyConsent/Models/IdentificationStrategy.swift
 MyDataMyConsent/Models/Identifier.swift
@@ -123,7 +130,11 @@ MyDataMyConsent/SynchronizedDictionary.swift
 MyDataMyConsent/URLSessionImplementations.swift
 Package.swift
 README.md
+docs/AllergyDetails.md
+docs/AllergyIntoleranceReaction.md
 docs/ApiErrorType.md
+docs/CodeableConcept.md
+docs/Coding.md
 docs/CollectibleTypes.md
 docs/Consent.md
 docs/ConsentDetails.md
@@ -179,6 +190,9 @@ docs/FinancialAccountTransactionMutualFundTransactionAllOf.md
 docs/FinancialAccountTransactionPeriod.md
 docs/FinancialAccountTransactionSipTransaction.md
 docs/FinancialAccountTransactionSipTransactionAllOf.md
+docs/HealthRecord.md
+docs/HealthRecordAllergyDetails.md
+docs/HealthRecordAllergyDetailsAllOf.md
 docs/Holder.md
 docs/IdentificationStrategy.md
 docs/Identifier.md
