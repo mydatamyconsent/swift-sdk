@@ -79,11 +79,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [AllergyDetails](docs/AllergyDetails.md)
- - [AllergyIntoleranceReaction](docs/AllergyIntoleranceReaction.md)
  - [ApiErrorType](docs/ApiErrorType.md)
- - [CodeableConcept](docs/CodeableConcept.md)
- - [Coding](docs/Coding.md)
  - [CollectibleTypes](docs/CollectibleTypes.md)
  - [Consent](docs/Consent.md)
  - [ConsentDetails](docs/ConsentDetails.md)
@@ -137,9 +133,6 @@ Class | Method | HTTP request | Description
  - [FinancialAccountTransactionPeriod](docs/FinancialAccountTransactionPeriod.md)
  - [FinancialAccountTransactionSipTransaction](docs/FinancialAccountTransactionSipTransaction.md)
  - [FinancialAccountTransactionSipTransactionAllOf](docs/FinancialAccountTransactionSipTransactionAllOf.md)
- - [HealthRecord](docs/HealthRecord.md)
- - [HealthRecordAllergyDetails](docs/HealthRecordAllergyDetails.md)
- - [HealthRecordAllergyDetailsAllOf](docs/HealthRecordAllergyDetailsAllOf.md)
  - [Holder](docs/Holder.md)
  - [IdentificationStrategy](docs/IdentificationStrategy.md)
  - [Identifier](docs/Identifier.md)

@@ -729,7 +729,7 @@ Name | Type | Description  | Notes
 
 # **v1IndividualsConsentsConsentIdHealthFhirBundleGet**
 ```swift
-    open class func v1IndividualsConsentsConsentIdHealthFhirBundleGet(consentId: String, completion: @escaping (_ data: [HealthRecord]?, _ error: Error?) -> Void)
+    open class func v1IndividualsConsentsConsentIdHealthFhirBundleGet(consentId: String, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get Individual consented Health Records by consent id.
@@ -762,7 +762,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[HealthRecord]**](HealthRecord.md)
+[**AnyCodable**](AnyCodable.md)
 
 ### Authorization
 
