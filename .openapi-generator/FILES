@@ -50,6 +50,7 @@ MyDataMyConsent/Models/DocumentSubCategoryType.swift
 MyDataMyConsent/Models/DocumentType.swift
 MyDataMyConsent/Models/Equity.swift
 MyDataMyConsent/Models/EquityTransaction.swift
+MyDataMyConsent/Models/FhirBundleany.swift
 MyDataMyConsent/Models/FinancialAccount.swift
 MyDataMyConsent/Models/FinancialAccountCategoryType.swift
 MyDataMyConsent/Models/FinancialAccountDetailsRequired.swift
@@ -160,6 +161,7 @@ docs/DocumentSubCategoryType.md
 docs/DocumentType.md
 docs/Equity.md
 docs/EquityTransaction.md
+docs/FhirBundleany.md
 docs/FinancialAccount.md
 docs/FinancialAccountCategoryType.md
 docs/FinancialAccountDetailsRequired.md

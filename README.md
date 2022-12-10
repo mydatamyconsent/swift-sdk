@@ -114,6 +114,7 @@ Class | Method | HTTP request | Description
  - [DocumentType](docs/DocumentType.md)
  - [Equity](docs/Equity.md)
  - [EquityTransaction](docs/EquityTransaction.md)
+ - [FhirBundleany](docs/FhirBundleany.md)
  - [FinancialAccount](docs/FinancialAccount.md)
  - [FinancialAccountCategoryType](docs/FinancialAccountCategoryType.md)
  - [FinancialAccountDetailsRequired](docs/FinancialAccountDetailsRequired.md)
