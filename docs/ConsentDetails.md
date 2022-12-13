@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **identifiers** | [ConsentedIdentifier] | Consented identity details. | [optional] 
 **documents** | [ConsentedDocument] | List of consented documents. | [optional] 
 **medicalRecords** | [ConsentedMedicalRecord] | List of consented medical records. | [optional] 
-**financialAccounts** | [ConsentedFinancialAccount] | List of consented financial accounts. | [optional] 
+**financialAccounts** | [ConsentedFinancialAccountField] | List of consented financial accounts. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

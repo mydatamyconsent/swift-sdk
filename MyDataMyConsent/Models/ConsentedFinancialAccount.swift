@@ -21,28 +21,17 @@ public struct ConsentedFinancialAccount: Codable, JSONEncodable, Hashable {
     public var subCategory: FinancialAccountSubCategoryType
     /** Financial account identifier. */
     public var identifier: String
-    /** Financial account field title. */
-    public var fieldTitle: String
-    /** Financial account field slug. */
-    public var fieldSlug: String
-    /** Requested financial account details. */
-    public var requestedDetails: [FinancialAccountDetailsRequired]
-    public var transactionPeriod: ConsentedFinancialAccountTransactionPeriod?
     /** Financial account issuer id. */
     public var issuerId: String
     /** Financial account issuer name. */
     public var issuerName: String
 
-    public init(id: String, name: String, category: FinancialAccountCategoryType, subCategory: FinancialAccountSubCategoryType, identifier: String, fieldTitle: String, fieldSlug: String, requestedDetails: [FinancialAccountDetailsRequired], transactionPeriod: ConsentedFinancialAccountTransactionPeriod? = nil, issuerId: String, issuerName: String) {
+    public init(id: String, name: String, category: FinancialAccountCategoryType, subCategory: FinancialAccountSubCategoryType, identifier: String, issuerId: String, issuerName: String) {
         self.id = id
         self.name = name
         self.category = category
         self.subCategory = subCategory
         self.identifier = identifier
-        self.fieldTitle = fieldTitle
-        self.fieldSlug = fieldSlug
-        self.requestedDetails = requestedDetails
-        self.transactionPeriod = transactionPeriod
         self.issuerId = issuerId
         self.issuerName = issuerName
     }
@@ -53,10 +42,6 @@ public struct ConsentedFinancialAccount: Codable, JSONEncodable, Hashable {
         case category
         case subCategory
         case identifier
-        case fieldTitle
-        case fieldSlug
-        case requestedDetails
-        case transactionPeriod
         case issuerId
         case issuerName
     }
@@ -70,10 +55,6 @@ public struct ConsentedFinancialAccount: Codable, JSONEncodable, Hashable {
         try container.encode(category, forKey: .category)
         try container.encode(subCategory, forKey: .subCategory)
         try container.encode(identifier, forKey: .identifier)
-        try container.encode(fieldTitle, forKey: .fieldTitle)
-        try container.encode(fieldSlug, forKey: .fieldSlug)
-        try container.encode(requestedDetails, forKey: .requestedDetails)
-        try container.encodeIfPresent(transactionPeriod, forKey: .transactionPeriod)
         try container.encode(issuerId, forKey: .issuerId)
         try container.encode(issuerName, forKey: .issuerName)
     }

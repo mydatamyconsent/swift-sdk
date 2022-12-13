@@ -26,7 +26,8 @@ MyDataMyConsent/Models/ConsentRequestTemplate.swift
 MyDataMyConsent/Models/ConsentRequestTemplateStatus.swift
 MyDataMyConsent/Models/ConsentedDocument.swift
 MyDataMyConsent/Models/ConsentedFinancialAccount.swift
-MyDataMyConsent/Models/ConsentedFinancialAccountTransactionPeriod.swift
+MyDataMyConsent/Models/ConsentedFinancialAccountField.swift
+MyDataMyConsent/Models/ConsentedFinancialAccountFieldTransactionPeriod.swift
 MyDataMyConsent/Models/ConsentedIdentifier.swift
 MyDataMyConsent/Models/ConsentedMedicalRecord.swift
 MyDataMyConsent/Models/CreateConsentRequest.swift
@@ -135,7 +136,8 @@ docs/ConsentRequestTemplate.md
 docs/ConsentRequestTemplateStatus.md
 docs/ConsentedDocument.md
 docs/ConsentedFinancialAccount.md
-docs/ConsentedFinancialAccountTransactionPeriod.md
+docs/ConsentedFinancialAccountField.md
+docs/ConsentedFinancialAccountFieldTransactionPeriod.md
 docs/ConsentedIdentifier.md
 docs/ConsentedMedicalRecord.md
 docs/CreateConsentRequest.md

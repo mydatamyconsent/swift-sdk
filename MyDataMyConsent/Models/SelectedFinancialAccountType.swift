@@ -13,11 +13,11 @@ import AnyCodable
 /** SelectedFinancialAccountType : Selected financial account type of financial account field of consent request template. */
 public struct SelectedFinancialAccountType: Codable, JSONEncodable, Hashable {
 
-    public var subCategory: FinancialAccountSubCategoryType
+    public var subCategory: FinancialAccountSubCategoryType?
     /** DRNs. */
     public var drns: [String]
 
-    public init(subCategory: FinancialAccountSubCategoryType, drns: [String]) {
+    public init(subCategory: FinancialAccountSubCategoryType? = nil, drns: [String]) {
         self.subCategory = subCategory
         self.drns = drns
     }
@@ -31,7 +31,7 @@ public struct SelectedFinancialAccountType: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(subCategory, forKey: .subCategory)
+        try container.encodeIfPresent(subCategory, forKey: .subCategory)
         try container.encode(drns, forKey: .drns)
     }
 }

@@ -43,9 +43,9 @@ public struct ConsentDetails: Codable, JSONEncodable, Hashable {
     /** List of consented medical records. */
     public var medicalRecords: [ConsentedMedicalRecord]?
     /** List of consented financial accounts. */
-    public var financialAccounts: [ConsentedFinancialAccount]?
+    public var financialAccounts: [ConsentedFinancialAccountField]?
 
-    public init(id: String, requestId: String, templateId: String? = nil, title: String, description: String, purpose: String? = nil, status: DataConsentStatus, transactionId: String? = nil, approvedAtUtc: Date, dataAccessExpiresAtUtc: Date, revokedAtUtc: Date? = nil, collectables: [CollectibleTypes], identifiers: [ConsentedIdentifier]? = nil, documents: [ConsentedDocument]? = nil, medicalRecords: [ConsentedMedicalRecord]? = nil, financialAccounts: [ConsentedFinancialAccount]? = nil) {
+    public init(id: String, requestId: String, templateId: String? = nil, title: String, description: String, purpose: String? = nil, status: DataConsentStatus, transactionId: String? = nil, approvedAtUtc: Date, dataAccessExpiresAtUtc: Date, revokedAtUtc: Date? = nil, collectables: [CollectibleTypes], identifiers: [ConsentedIdentifier]? = nil, documents: [ConsentedDocument]? = nil, medicalRecords: [ConsentedMedicalRecord]? = nil, financialAccounts: [ConsentedFinancialAccountField]? = nil) {
         self.id = id
         self.requestId = requestId
         self.templateId = templateId

@@ -8,10 +8,6 @@ Name | Type | Description | Notes
 **category** | [**FinancialAccountCategoryType**](FinancialAccountCategoryType.md) |  | 
 **subCategory** | [**FinancialAccountSubCategoryType**](FinancialAccountSubCategoryType.md) |  | 
 **identifier** | **String** | Financial account identifier. | 
-**fieldTitle** | **String** | Financial account field title. | 
-**fieldSlug** | **String** | Financial account field slug. | 
-**requestedDetails** | [FinancialAccountDetailsRequired] | Requested financial account details. | 
-**transactionPeriod** | [**ConsentedFinancialAccountTransactionPeriod**](ConsentedFinancialAccountTransactionPeriod.md) |  | [optional] 
 **issuerId** | **String** | Financial account issuer id. | 
 **issuerName** | **String** | Financial account issuer name. | 
 
