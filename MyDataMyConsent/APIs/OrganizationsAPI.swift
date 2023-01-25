@@ -583,11 +583,11 @@ open class OrganizationsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "filters": (wrappedValue: filters?.encodeToJSON(), isExplode: true),
-            "from_date_time": (wrappedValue: fromDateTime?.encodeToJSON(), isExplode: true),
-            "to_date_time": (wrappedValue: toDateTime?.encodeToJSON(), isExplode: true),
-            "page_no": (wrappedValue: pageNo?.encodeToJSON(), isExplode: true),
-            "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
+            "_filters": (wrappedValue: filters?.encodeToJSON(), isExplode: true),
+            "_from_date_time": (wrappedValue: fromDateTime?.encodeToJSON(), isExplode: true),
+            "_to_date_time": (wrappedValue: toDateTime?.encodeToJSON(), isExplode: true),
+            "_page_no": (wrappedValue: pageNo?.encodeToJSON(), isExplode: true),
+            "_page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
