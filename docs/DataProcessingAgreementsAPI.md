@@ -171,7 +171,7 @@ Update data processing agreement.
 import MyDataMyConsent
 
 let id = "id_example" // String | 
-let updateDataProcessingAgreement = UpdateDataProcessingAgreement(version: "version_example", body: "body_example", attachmentUrl: "attachmentUrl_example") // UpdateDataProcessingAgreement | 
+let updateDataProcessingAgreement = UpdateDataProcessingAgreement(name: "name_example", issuerType: IssuerType(), agreementUrl: "agreementUrl_example") // UpdateDataProcessingAgreement | 
 
 // Update data processing agreement.
 DataProcessingAgreementsAPI.v1DataAgreementsIdPut(id: id, updateDataProcessingAgreement: updateDataProcessingAgreement) { (response, error) in
@@ -268,7 +268,7 @@ Create a data processing agreement.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MyDataMyConsent
 
-let createDataProcessingAgreement = CreateDataProcessingAgreement(version: "version_example", body: "body_example", attachmentUrl: "attachmentUrl_example") // CreateDataProcessingAgreement | 
+let createDataProcessingAgreement = CreateDataProcessingAgreement(name: "name_example", issuerType: IssuerType(), agreementUrl: "agreementUrl_example") // CreateDataProcessingAgreement | 
 
 // Create a data processing agreement.
 DataProcessingAgreementsAPI.v1DataAgreementsPost(createDataProcessingAgreement: createDataProcessingAgreement) { (response, error) in

@@ -15,25 +15,24 @@ public struct DataProcessingAgreement: Codable, JSONEncodable, Hashable {
 
     /** Agreement id. */
     public var id: String
-    /** Agreement version. */
-    public var version: String
-    /** Agreement body content. */
-    public var body: String
+    /** Agreement name. */
+    public var name: String
+    public var issuerType: IssuerType
     /** Agreement attachment file URL. */
-    public var attachmentUrl: String
+    public var agreementUrl: String
 
-    public init(id: String, version: String, body: String, attachmentUrl: String) {
+    public init(id: String, name: String, issuerType: IssuerType, agreementUrl: String) {
         self.id = id
-        self.version = version
-        self.body = body
-        self.attachmentUrl = attachmentUrl
+        self.name = name
+        self.issuerType = issuerType
+        self.agreementUrl = agreementUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
-        case version
-        case body
-        case attachmentUrl
+        case name
+        case issuerType
+        case agreementUrl
     }
 
     // Encodable protocol methods
@@ -41,9 +40,9 @@ public struct DataProcessingAgreement: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
-        try container.encode(version, forKey: .version)
-        try container.encode(body, forKey: .body)
-        try container.encode(attachmentUrl, forKey: .attachmentUrl)
+        try container.encode(name, forKey: .name)
+        try container.encode(issuerType, forKey: .issuerType)
+        try container.encode(agreementUrl, forKey: .agreementUrl)
     }
 }
 

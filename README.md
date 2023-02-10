@@ -145,6 +145,7 @@ Class | Method | HTTP request | Description
  - [IndividualConsentRequestTemplateDetailsDataLife](docs/IndividualConsentRequestTemplateDetailsDataLife.md)
  - [IndividualConsentRequestTemplateDetailsRequestLife](docs/IndividualConsentRequestTemplateDetailsRequestLife.md)
  - [IssuedDocument](docs/IssuedDocument.md)
+ - [IssuerType](docs/IssuerType.md)
  - [KeyValuePair](docs/KeyValuePair.md)
  - [Life](docs/Life.md)
  - [MedicalRecordField](docs/MedicalRecordField.md)

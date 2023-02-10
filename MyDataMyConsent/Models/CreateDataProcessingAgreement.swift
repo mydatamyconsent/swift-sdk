@@ -13,32 +13,31 @@ import AnyCodable
 /** CreateDataProcessingAgreement : Create data processing agreement details. */
 public struct CreateDataProcessingAgreement: Codable, JSONEncodable, Hashable {
 
-    /** Agreement version. */
-    public var version: String
-    /** Agreement body content. */
-    public var body: String
+    /** Agreement version. Agreement body content. */
+    public var name: String
+    public var issuerType: IssuerType
     /** Agreement attachment file URL. */
-    public var attachmentUrl: String
+    public var agreementUrl: String
 
-    public init(version: String, body: String, attachmentUrl: String) {
-        self.version = version
-        self.body = body
-        self.attachmentUrl = attachmentUrl
+    public init(name: String, issuerType: IssuerType, agreementUrl: String) {
+        self.name = name
+        self.issuerType = issuerType
+        self.agreementUrl = agreementUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case version
-        case body
-        case attachmentUrl
+        case name
+        case issuerType
+        case agreementUrl
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(version, forKey: .version)
-        try container.encode(body, forKey: .body)
-        try container.encode(attachmentUrl, forKey: .attachmentUrl)
+        try container.encode(name, forKey: .name)
+        try container.encode(issuerType, forKey: .issuerType)
+        try container.encode(agreementUrl, forKey: .agreementUrl)
     }
 }
 

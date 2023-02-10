@@ -81,6 +81,7 @@ MyDataMyConsent/Models/IndividualConsentRequestTemplateDetailsDataFrequency.swif
 MyDataMyConsent/Models/IndividualConsentRequestTemplateDetailsDataLife.swift
 MyDataMyConsent/Models/IndividualConsentRequestTemplateDetailsRequestLife.swift
 MyDataMyConsent/Models/IssuedDocument.swift
+MyDataMyConsent/Models/IssuerType.swift
 MyDataMyConsent/Models/KeyValuePair.swift
 MyDataMyConsent/Models/Life.swift
 MyDataMyConsent/Models/MedicalRecordField.swift
@@ -194,6 +195,7 @@ docs/IndividualConsentRequestTemplateDetailsDataLife.md
 docs/IndividualConsentRequestTemplateDetailsRequestLife.md
 docs/IndividualsAPI.md
 docs/IssuedDocument.md
+docs/IssuerType.md
 docs/KeyValuePair.md
 docs/Life.md
 docs/MedicalRecordField.md
