@@ -31,7 +31,6 @@ MyDataMyConsent/Models/ConsentedFinancialAccountFieldTransactionPeriod.swift
 MyDataMyConsent/Models/ConsentedIdentifier.swift
 MyDataMyConsent/Models/ConsentedMedicalRecord.swift
 MyDataMyConsent/Models/CreateConsentRequest.swift
-MyDataMyConsent/Models/CreateDataProcessingAgreement.swift
 MyDataMyConsent/Models/DataConsentStatus.swift
 MyDataMyConsent/Models/DataProcessingAgreement.swift
 MyDataMyConsent/Models/DataProtectionOfficer.swift
@@ -118,7 +117,6 @@ MyDataMyConsent/Models/SipTransaction.swift
 MyDataMyConsent/Models/SupportedDocumentType.swift
 MyDataMyConsent/Models/SupportedEntityType.swift
 MyDataMyConsent/Models/SupportedIdentifier.swift
-MyDataMyConsent/Models/UpdateDataProcessingAgreement.swift
 MyDataMyConsent/Models/UploadDocumentResponse.swift
 MyDataMyConsent/Models/UriDetails.swift
 MyDataMyConsent/OpenISO8601DateFormatter.swift
@@ -142,7 +140,6 @@ docs/ConsentedFinancialAccountFieldTransactionPeriod.md
 docs/ConsentedIdentifier.md
 docs/ConsentedMedicalRecord.md
 docs/CreateConsentRequest.md
-docs/CreateDataProcessingAgreement.md
 docs/DataConsentStatus.md
 docs/DataProcessingAgreement.md
 docs/DataProcessingAgreementsAPI.md
@@ -234,7 +231,6 @@ docs/SupportedDocumentType.md
 docs/SupportedEntityType.md
 docs/SupportedIdentifier.md
 docs/SupportedIdentifiersAPI.md
-docs/UpdateDataProcessingAgreement.md
 docs/UploadDocumentResponse.md
 docs/UriDetails.md
 project.yml

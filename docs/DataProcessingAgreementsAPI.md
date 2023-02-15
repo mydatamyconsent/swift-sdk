@@ -7,9 +7,7 @@ Method | HTTP request | Description
 [**v1DataAgreementsGet**](DataProcessingAgreementsAPI.md#v1dataagreementsget) | **GET** /v1/data-agreements | Get paginated data processing agreements.
 [**v1DataAgreementsIdDelete**](DataProcessingAgreementsAPI.md#v1dataagreementsiddelete) | **DELETE** /v1/data-agreements/{id} | Delete a data processing agreement this will not delete a published or a agreement in use with consents.
 [**v1DataAgreementsIdGet**](DataProcessingAgreementsAPI.md#v1dataagreementsidget) | **GET** /v1/data-agreements/{id} | Get data processing agreement by id.
-[**v1DataAgreementsIdPut**](DataProcessingAgreementsAPI.md#v1dataagreementsidput) | **PUT** /v1/data-agreements/{id} | Update data processing agreement.
 [**v1DataAgreementsIdTerminatePut**](DataProcessingAgreementsAPI.md#v1dataagreementsidterminateput) | **PUT** /v1/data-agreements/{id}/terminate | Terminate a data processing agreement by id.
-[**v1DataAgreementsPost**](DataProcessingAgreementsAPI.md#v1dataagreementspost) | **POST** /v1/data-agreements | Create a data processing agreement.
 
 
 # **v1DataAgreementsGet**
@@ -158,56 +156,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v1DataAgreementsIdPut**
-```swift
-    open class func v1DataAgreementsIdPut(id: String, updateDataProcessingAgreement: UpdateDataProcessingAgreement, completion: @escaping (_ data: DataProcessingAgreement?, _ error: Error?) -> Void)
-```
-
-Update data processing agreement.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import MyDataMyConsent
-
-let id = "id_example" // String | 
-let updateDataProcessingAgreement = UpdateDataProcessingAgreement(name: "name_example", issuerType: IssuerType(), agreementUrl: "agreementUrl_example") // UpdateDataProcessingAgreement | 
-
-// Update data processing agreement.
-DataProcessingAgreementsAPI.v1DataAgreementsIdPut(id: id, updateDataProcessingAgreement: updateDataProcessingAgreement) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String** |  | 
- **updateDataProcessingAgreement** | [**UpdateDataProcessingAgreement**](UpdateDataProcessingAgreement.md) |  | 
-
-### Return type
-
-[**DataProcessingAgreement**](DataProcessingAgreement.md)
-
-### Authorization
-
-[OAuth2ClientCredentials](../README.md#OAuth2ClientCredentials)
-
-### HTTP request headers
-
- - **Content-Type**: application/json; charset=utf-8
- - **Accept**: application/json; charset=utf-8
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **v1DataAgreementsIdTerminatePut**
 ```swift
     open class func v1DataAgreementsIdTerminatePut(id: String, completion: @escaping (_ data: Bool?, _ error: Error?) -> Void)
@@ -252,54 +200,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json; charset=utf-8
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **v1DataAgreementsPost**
-```swift
-    open class func v1DataAgreementsPost(createDataProcessingAgreement: CreateDataProcessingAgreement, completion: @escaping (_ data: DataProcessingAgreement?, _ error: Error?) -> Void)
-```
-
-Create a data processing agreement.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import MyDataMyConsent
-
-let createDataProcessingAgreement = CreateDataProcessingAgreement(name: "name_example", issuerType: IssuerType(), agreementUrl: "agreementUrl_example") // CreateDataProcessingAgreement | 
-
-// Create a data processing agreement.
-DataProcessingAgreementsAPI.v1DataAgreementsPost(createDataProcessingAgreement: createDataProcessingAgreement) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createDataProcessingAgreement** | [**CreateDataProcessingAgreement**](CreateDataProcessingAgreement.md) |  | 
-
-### Return type
-
-[**DataProcessingAgreement**](DataProcessingAgreement.md)
-
-### Authorization
-
-[OAuth2ClientCredentials](../README.md#OAuth2ClientCredentials)
-
-### HTTP request headers
-
- - **Content-Type**: application/json; charset=utf-8
  - **Accept**: application/json; charset=utf-8
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
