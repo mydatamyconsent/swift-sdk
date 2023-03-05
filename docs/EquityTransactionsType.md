@@ -1,4 +1,4 @@
-# MutualFundFundType
+# EquityTransactionsType
 
 ## Properties
 Name | Type | Description | Notes

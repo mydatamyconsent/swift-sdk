@@ -13,13 +13,28 @@ import AnyCodable
 public struct EquityTransaction: Codable, JSONEncodable, Hashable {
 
     public var id: String
+    public var amount: String
+    public var currencyCode: String
+    public var txnType: EquityTransactionsType
+    public var units: String
+    public var transactedAtUtc: Date
 
-    public init(id: String) {
+    public init(id: String, amount: String, currencyCode: String, txnType: EquityTransactionsType, units: String, transactedAtUtc: Date) {
         self.id = id
+        self.amount = amount
+        self.currencyCode = currencyCode
+        self.txnType = txnType
+        self.units = units
+        self.transactedAtUtc = transactedAtUtc
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case amount
+        case currencyCode = "currency_code"
+        case txnType = "txn_type"
+        case units
+        case transactedAtUtc = "transacted_at_utc"
     }
 
     // Encodable protocol methods
@@ -27,6 +42,11 @@ public struct EquityTransaction: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
+        try container.encode(amount, forKey: .amount)
+        try container.encode(currencyCode, forKey: .currencyCode)
+        try container.encode(txnType, forKey: .txnType)
+        try container.encode(units, forKey: .units)
+        try container.encode(transactedAtUtc, forKey: .transactedAtUtc)
     }
 }
 

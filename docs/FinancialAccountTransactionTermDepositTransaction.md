@@ -1,4 +1,4 @@
-# FinancialAccountTransaction
+# FinancialAccountTransactionTermDepositTransaction
 
 ## Properties
 Name | Type | Description | Notes
@@ -7,11 +7,10 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **amount** | **Double** |  | 
 **currencyCode** | **String** |  | 
-**txnType** | [**TermDepositTransactionType**](TermDepositTransactionType.md) |  | 
-**units** | **String** |  | 
-**transactedAtUtc** | **Date** |  | 
 **narration** | **String** |  | 
+**txnType** | [**TermDepositTransactionType**](TermDepositTransactionType.md) |  | 
 **mode** | [**TermDepositTransactionMode**](TermDepositTransactionMode.md) |  | 
+**transactedAtUtc** | **Date** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

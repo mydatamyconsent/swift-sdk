@@ -12,83 +12,32 @@ import AnyCodable
 
 public struct FinancialAccountTransactionMutualFundTransaction: Codable, JSONEncodable, Hashable {
 
-    public var type: MutualFundTransactionType
+    public var type: String
     public var id: String
-    public var amc: String
-    public var registrar: String
-    public var schemeCode: String
-    public var schemePlan: MutualFundSchemePlan
-    public var isin: String
-    public var amfiCode: String
-    public var fundType: MutualFundFundType
-    public var schemeOption: MutualFundSchemeOption
-    public var schemeTypes: MutualFundSchemeType
-    public var schemeCategory: MutualFundSchemeCategory
-    public var ucc: String
     public var amount: String
-    public var closingUnits: String
-    public var lienUnits: String
-    public var nav: String
-    public var navDate: Date
-    public var orderDate: Date
-    public var executionDate: Date
-    public var lockinFlag: String
-    public var lockinDays: String
-    public var mode: MutualFundHoldingMode
-    public var narration: String
+    public var currencyCode: String
+    public var txnType: MutualFundTransactionType
+    public var units: String
+    public var transactedAtUtc: Date
 
-    public init(type: MutualFundTransactionType, id: String, amc: String, registrar: String, schemeCode: String, schemePlan: MutualFundSchemePlan, isin: String, amfiCode: String, fundType: MutualFundFundType, schemeOption: MutualFundSchemeOption, schemeTypes: MutualFundSchemeType, schemeCategory: MutualFundSchemeCategory, ucc: String, amount: String, closingUnits: String, lienUnits: String, nav: String, navDate: Date, orderDate: Date, executionDate: Date, lockinFlag: String, lockinDays: String, mode: MutualFundHoldingMode, narration: String) {
+    public init(type: String, id: String, amount: String, currencyCode: String, txnType: MutualFundTransactionType, units: String, transactedAtUtc: Date) {
         self.type = type
         self.id = id
-        self.amc = amc
-        self.registrar = registrar
-        self.schemeCode = schemeCode
-        self.schemePlan = schemePlan
-        self.isin = isin
-        self.amfiCode = amfiCode
-        self.fundType = fundType
-        self.schemeOption = schemeOption
-        self.schemeTypes = schemeTypes
-        self.schemeCategory = schemeCategory
-        self.ucc = ucc
         self.amount = amount
-        self.closingUnits = closingUnits
-        self.lienUnits = lienUnits
-        self.nav = nav
-        self.navDate = navDate
-        self.orderDate = orderDate
-        self.executionDate = executionDate
-        self.lockinFlag = lockinFlag
-        self.lockinDays = lockinDays
-        self.mode = mode
-        self.narration = narration
+        self.currencyCode = currencyCode
+        self.txnType = txnType
+        self.units = units
+        self.transactedAtUtc = transactedAtUtc
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case type
         case id
-        case amc
-        case registrar
-        case schemeCode = "scheme_code"
-        case schemePlan = "scheme_plan"
-        case isin
-        case amfiCode = "amfi_code"
-        case fundType = "fund_type"
-        case schemeOption = "scheme_option"
-        case schemeTypes = "scheme_types"
-        case schemeCategory = "scheme_category"
-        case ucc
         case amount
-        case closingUnits = "closing_units"
-        case lienUnits = "lien_units"
-        case nav
-        case navDate = "nav_date"
-        case orderDate = "order_date"
-        case executionDate = "execution_date"
-        case lockinFlag = "lockin_flag"
-        case lockinDays = "lockin_days"
-        case mode
-        case narration
+        case currencyCode = "currency_code"
+        case txnType = "txn_type"
+        case units
+        case transactedAtUtc = "transacted_at_utc"
     }
 
     // Encodable protocol methods
@@ -97,28 +46,11 @@ public struct FinancialAccountTransactionMutualFundTransaction: Codable, JSONEnc
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)
         try container.encode(id, forKey: .id)
-        try container.encode(amc, forKey: .amc)
-        try container.encode(registrar, forKey: .registrar)
-        try container.encode(schemeCode, forKey: .schemeCode)
-        try container.encode(schemePlan, forKey: .schemePlan)
-        try container.encode(isin, forKey: .isin)
-        try container.encode(amfiCode, forKey: .amfiCode)
-        try container.encode(fundType, forKey: .fundType)
-        try container.encode(schemeOption, forKey: .schemeOption)
-        try container.encode(schemeTypes, forKey: .schemeTypes)
-        try container.encode(schemeCategory, forKey: .schemeCategory)
-        try container.encode(ucc, forKey: .ucc)
         try container.encode(amount, forKey: .amount)
-        try container.encode(closingUnits, forKey: .closingUnits)
-        try container.encode(lienUnits, forKey: .lienUnits)
-        try container.encode(nav, forKey: .nav)
-        try container.encode(navDate, forKey: .navDate)
-        try container.encode(orderDate, forKey: .orderDate)
-        try container.encode(executionDate, forKey: .executionDate)
-        try container.encode(lockinFlag, forKey: .lockinFlag)
-        try container.encode(lockinDays, forKey: .lockinDays)
-        try container.encode(mode, forKey: .mode)
-        try container.encode(narration, forKey: .narration)
+        try container.encode(currencyCode, forKey: .currencyCode)
+        try container.encode(txnType, forKey: .txnType)
+        try container.encode(units, forKey: .units)
+        try container.encode(transactedAtUtc, forKey: .transactedAtUtc)
     }
 }
 

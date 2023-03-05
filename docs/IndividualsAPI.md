@@ -573,7 +573,7 @@ Name | Type | Description  | Notes
 
 # **v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet**
 ```swift
-    open class func v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet(consentId: String, accountId: String, filters: String? = nil, fromDateTime: String? = nil, toDateTime: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: PaginatedListOfFinancialAccountTransactions?, _ error: Error?) -> Void)
+    open class func v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet(consentId: String, accountId: String, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, completion: @escaping (_ data: PaginatedListOfFinancialAccountTransactions?, _ error: Error?) -> Void)
 ```
 
 Get individual consented financial account transactions.
@@ -585,14 +585,13 @@ import MyDataMyConsent
 
 let consentId = "consentId_example" // String | 
 let accountId = "accountId_example" // String | 
-let filters = "filters_example" // String |  (optional)
-let fromDateTime = "fromDateTime_example" // String |  (optional)
-let toDateTime = "toDateTime_example" // String |  (optional)
+let fromDateTime = Date() // Date |  (optional)
+let toDateTime = Date() // Date |  (optional)
 let pageNo = 987 // Int |  (optional)
 let pageSize = 987 // Int |  (optional)
 
 // Get individual consented financial account transactions.
-IndividualsAPI.v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet(consentId: consentId, accountId: accountId, filters: filters, fromDateTime: fromDateTime, toDateTime: toDateTime, pageNo: pageNo, pageSize: pageSize) { (response, error) in
+IndividualsAPI.v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet(consentId: consentId, accountId: accountId, fromDateTime: fromDateTime, toDateTime: toDateTime, pageNo: pageNo, pageSize: pageSize) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -610,9 +609,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consentId** | **String** |  | 
  **accountId** | **String** |  | 
- **filters** | **String** |  | [optional] 
- **fromDateTime** | **String** |  | [optional] 
- **toDateTime** | **String** |  | [optional] 
+ **fromDateTime** | **Date** |  | [optional] 
+ **toDateTime** | **Date** |  | [optional] 
  **pageNo** | **Int** |  | [optional] 
  **pageSize** | **Int** |  | [optional] 
 

@@ -1,4 +1,4 @@
-# MutualFundSchemeOption
+# SipTransactionType
 
 ## Properties
 Name | Type | Description | Notes

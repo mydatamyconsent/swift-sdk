@@ -581,7 +581,6 @@ open class IndividualsAPI {
      
      - parameter consentId: (path)  
      - parameter accountId: (path)  
-     - parameter filters: (query)  (optional)
      - parameter fromDateTime: (query)  (optional)
      - parameter toDateTime: (query)  (optional)
      - parameter pageNo: (query)  (optional)
@@ -590,8 +589,8 @@ open class IndividualsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet(consentId: String, accountId: String, filters: String? = nil, fromDateTime: String? = nil, toDateTime: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: PaginatedListOfFinancialAccountTransactions?, _ error: Error?) -> Void)) -> RequestTask {
-        return v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetWithRequestBuilder(consentId: consentId, accountId: accountId, filters: filters, fromDateTime: fromDateTime, toDateTime: toDateTime, pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result in
+    open class func v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet(consentId: String, accountId: String, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil, apiResponseQueue: DispatchQueue = MyDataMyConsentAPI.apiResponseQueue, completion: @escaping ((_ data: PaginatedListOfFinancialAccountTransactions?, _ error: Error?) -> Void)) -> RequestTask {
+        return v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetWithRequestBuilder(consentId: consentId, accountId: accountId, fromDateTime: fromDateTime, toDateTime: toDateTime, pageNo: pageNo, pageSize: pageSize).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -609,14 +608,13 @@ open class IndividualsAPI {
        - name: OAuth2ClientCredentials
      - parameter consentId: (path)  
      - parameter accountId: (path)  
-     - parameter filters: (query)  (optional)
      - parameter fromDateTime: (query)  (optional)
      - parameter toDateTime: (query)  (optional)
      - parameter pageNo: (query)  (optional)
      - parameter pageSize: (query)  (optional)
      - returns: RequestBuilder<PaginatedListOfFinancialAccountTransactions> 
      */
-    open class func v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetWithRequestBuilder(consentId: String, accountId: String, filters: String? = nil, fromDateTime: String? = nil, toDateTime: String? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<PaginatedListOfFinancialAccountTransactions> {
+    open class func v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetWithRequestBuilder(consentId: String, accountId: String, fromDateTime: Date? = nil, toDateTime: Date? = nil, pageNo: Int? = nil, pageSize: Int? = nil) -> RequestBuilder<PaginatedListOfFinancialAccountTransactions> {
         var localVariablePath = "/v1/individuals/consents/{consent_id}/financial-accounts/{account_id}/transactions"
         let consentIdPreEscape = "\(APIHelper.mapValueToPathItem(consentId))"
         let consentIdPostEscape = consentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -629,11 +627,10 @@ open class IndividualsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "_filters": (wrappedValue: filters?.encodeToJSON(), isExplode: true),
-            "_from_date_time": (wrappedValue: fromDateTime?.encodeToJSON(), isExplode: true),
-            "_to_date_time": (wrappedValue: toDateTime?.encodeToJSON(), isExplode: true),
-            "_page_no": (wrappedValue: pageNo?.encodeToJSON(), isExplode: true),
-            "_page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
+            "from_date_time": (wrappedValue: fromDateTime?.encodeToJSON(), isExplode: true),
+            "to_date_time": (wrappedValue: toDateTime?.encodeToJSON(), isExplode: true),
+            "page_no": (wrappedValue: pageNo?.encodeToJSON(), isExplode: true),
+            "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
