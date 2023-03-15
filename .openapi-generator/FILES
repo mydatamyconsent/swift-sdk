@@ -63,6 +63,8 @@ MyDataMyConsent/Models/FinancialAccountMutualFundAllOf.swift
 MyDataMyConsent/Models/FinancialAccountSip.swift
 MyDataMyConsent/Models/FinancialAccountSipAllOf.swift
 MyDataMyConsent/Models/FinancialAccountSubCategoryType.swift
+MyDataMyConsent/Models/FinancialAccountTermDeposit.swift
+MyDataMyConsent/Models/FinancialAccountTermDepositAllOf.swift
 MyDataMyConsent/Models/FinancialAccountTransaction.swift
 MyDataMyConsent/Models/FinancialAccountTransactionEquityTransaction.swift
 MyDataMyConsent/Models/FinancialAccountTransactionEquityTransactionAllOf.swift
@@ -115,6 +117,14 @@ MyDataMyConsent/Models/SipTransactionType.swift
 MyDataMyConsent/Models/SupportedDocumentType.swift
 MyDataMyConsent/Models/SupportedEntityType.swift
 MyDataMyConsent/Models/SupportedIdentifier.swift
+MyDataMyConsent/Models/TermDeposit.swift
+MyDataMyConsent/Models/TermDepositAccountDetails.swift
+MyDataMyConsent/Models/TermDepositAccountType.swift
+MyDataMyConsent/Models/TermDepositBankInformation.swift
+MyDataMyConsent/Models/TermDepositCompoundingFrequency.swift
+MyDataMyConsent/Models/TermDepositInformation.swift
+MyDataMyConsent/Models/TermDepositInterestComputation.swift
+MyDataMyConsent/Models/TermDepositInterestPayoutType.swift
 MyDataMyConsent/Models/TermDepositTransaction.swift
 MyDataMyConsent/Models/TermDepositTransactionMode.swift
 MyDataMyConsent/Models/TermDepositTransactionType.swift
@@ -175,6 +185,8 @@ docs/FinancialAccountMutualFundAllOf.md
 docs/FinancialAccountSip.md
 docs/FinancialAccountSipAllOf.md
 docs/FinancialAccountSubCategoryType.md
+docs/FinancialAccountTermDeposit.md
+docs/FinancialAccountTermDepositAllOf.md
 docs/FinancialAccountTransaction.md
 docs/FinancialAccountTransactionEquityTransaction.md
 docs/FinancialAccountTransactionEquityTransactionAllOf.md
@@ -230,6 +242,14 @@ docs/SupportedDocumentType.md
 docs/SupportedEntityType.md
 docs/SupportedIdentifier.md
 docs/SupportedIdentifiersAPI.md
+docs/TermDeposit.md
+docs/TermDepositAccountDetails.md
+docs/TermDepositAccountType.md
+docs/TermDepositBankInformation.md
+docs/TermDepositCompoundingFrequency.md
+docs/TermDepositInformation.md
+docs/TermDepositInterestComputation.md
+docs/TermDepositInterestPayoutType.md
 docs/TermDepositTransaction.md
 docs/TermDepositTransactionMode.md
 docs/TermDepositTransactionType.md

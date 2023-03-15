@@ -35,8 +35,12 @@ public struct FinancialAccount: Codable, JSONEncodable, Hashable {
     public var creationDate: Date?
     public var planInfo: SipPlanInformation
     public var investmentInfo: SipInvestmentInformation
+    public var accountNumber: String
+    public var accountType: TermDepositAccountType
+    public var issuerLogoUrl: String
+    public var accountDetails: TermDepositAccountDetails
 
-    public init(type: String, id: String, name: String, issuerName: String, exchange: String, isin: String, units: Double, investmentValue: Double, currentValue: Double, currencyCode: String, holder: Holder, transactions: Bool, amc: String? = nil, registrar: String? = nil, fundName: String, folioNumber: String, schemeCode: String? = nil, fundType: String? = nil, fundCategory: String? = nil, lienUnits: String? = nil, creationDate: Date? = nil, planInfo: SipPlanInformation, investmentInfo: SipInvestmentInformation) {
+    public init(type: String, id: String, name: String, issuerName: String, exchange: String, isin: String, units: Double, investmentValue: Double, currentValue: Double, currencyCode: String, holder: Holder, transactions: Bool, amc: String? = nil, registrar: String? = nil, fundName: String, folioNumber: String, schemeCode: String? = nil, fundType: String? = nil, fundCategory: String? = nil, lienUnits: String? = nil, creationDate: Date? = nil, planInfo: SipPlanInformation, investmentInfo: SipInvestmentInformation, accountNumber: String, accountType: TermDepositAccountType, issuerLogoUrl: String, accountDetails: TermDepositAccountDetails) {
         self.type = type
         self.id = id
         self.name = name
@@ -60,6 +64,10 @@ public struct FinancialAccount: Codable, JSONEncodable, Hashable {
         self.creationDate = creationDate
         self.planInfo = planInfo
         self.investmentInfo = investmentInfo
+        self.accountNumber = accountNumber
+        self.accountType = accountType
+        self.issuerLogoUrl = issuerLogoUrl
+        self.accountDetails = accountDetails
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -86,6 +94,10 @@ public struct FinancialAccount: Codable, JSONEncodable, Hashable {
         case creationDate = "creation_date"
         case planInfo = "plan_info"
         case investmentInfo = "investment_info"
+        case accountNumber = "account_number"
+        case accountType = "account_type"
+        case issuerLogoUrl = "issuer_logo_url"
+        case accountDetails = "account_details"
     }
 
     // Encodable protocol methods
@@ -115,6 +127,10 @@ public struct FinancialAccount: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(creationDate, forKey: .creationDate)
         try container.encode(planInfo, forKey: .planInfo)
         try container.encode(investmentInfo, forKey: .investmentInfo)
+        try container.encode(accountNumber, forKey: .accountNumber)
+        try container.encode(accountType, forKey: .accountType)
+        try container.encode(issuerLogoUrl, forKey: .issuerLogoUrl)
+        try container.encode(accountDetails, forKey: .accountDetails)
     }
 }
 

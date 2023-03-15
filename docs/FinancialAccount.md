@@ -26,6 +26,10 @@ Name | Type | Description | Notes
 **creationDate** | **Date** |  | [optional] 
 **planInfo** | [**SipPlanInformation**](SipPlanInformation.md) |  | 
 **investmentInfo** | [**SipInvestmentInformation**](SipInvestmentInformation.md) |  | 
+**accountNumber** | **String** |  | 
+**accountType** | [**TermDepositAccountType**](TermDepositAccountType.md) |  | 
+**issuerLogoUrl** | **String** |  | 
+**accountDetails** | [**TermDepositAccountDetails**](TermDepositAccountDetails.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
