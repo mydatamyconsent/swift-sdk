@@ -5235,6 +5235,10 @@
             "type": "string",
             "description": "Document identifier."
           },
+          "name": {
+            "type": "string",
+            "description": "Document name (Optional)."
+          },
           "description": {
             "type": "string",
             "description": "Document description."

@@ -17,6 +17,8 @@ public struct DocumentIssueRequest: Codable, JSONEncodable, Hashable {
     public var documentTypeId: String
     /** Document identifier. */
     public var identifier: String
+    /** Document name (Optional). */
+    public var name: String?
     /** Document description. */
     public var description: String
     public var receiver: DocumentIssueRequestReceiver
@@ -30,9 +32,10 @@ public struct DocumentIssueRequest: Codable, JSONEncodable, Hashable {
     /** Metadata. */
     public var metadata: [String: String]?
 
-    public init(documentTypeId: String, identifier: String, description: String, receiver: DocumentIssueRequestReceiver, paymentRequest: DocumentIssueRequestPaymentRequest? = nil, issuedAtUtc: Date, validFromUtc: Date, expiresAtUtc: Date? = nil, metadata: [String: String]? = nil) {
+    public init(documentTypeId: String, identifier: String, name: String? = nil, description: String, receiver: DocumentIssueRequestReceiver, paymentRequest: DocumentIssueRequestPaymentRequest? = nil, issuedAtUtc: Date, validFromUtc: Date, expiresAtUtc: Date? = nil, metadata: [String: String]? = nil) {
         self.documentTypeId = documentTypeId
         self.identifier = identifier
+        self.name = name
         self.description = description
         self.receiver = receiver
         self.paymentRequest = paymentRequest
@@ -45,6 +48,7 @@ public struct DocumentIssueRequest: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case documentTypeId
         case identifier
+        case name
         case description
         case receiver
         case paymentRequest
@@ -60,6 +64,7 @@ public struct DocumentIssueRequest: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(documentTypeId, forKey: .documentTypeId)
         try container.encode(identifier, forKey: .identifier)
+        try container.encodeIfPresent(name, forKey: .name)
         try container.encode(description, forKey: .description)
         try container.encode(receiver, forKey: .receiver)
         try container.encodeIfPresent(paymentRequest, forKey: .paymentRequest)

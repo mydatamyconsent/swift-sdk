@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **documentTypeId** | **String** | Document type id. | 
 **identifier** | **String** | Document identifier. | 
+**name** | **String** | Document name (Optional). | [optional] 
 **description** | **String** | Document description. | 
 **receiver** | [**DocumentIssueRequestReceiver**](DocumentIssueRequestReceiver.md) |  | 
 **paymentRequest** | [**DocumentIssueRequestPaymentRequest**](DocumentIssueRequestPaymentRequest.md) |  | [optional] 
